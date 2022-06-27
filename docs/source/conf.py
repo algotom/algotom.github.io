@@ -17,12 +17,12 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Algotom-doc'
+project = 'Algotom'
 copyright = '2021, Nghia T. Vo'
 author = 'Nghia T. Vo'
 
 # The full version, including alpha/beta/rc tags
-release = '1.0'
+release = '1.1.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -82,15 +82,15 @@ html_favicon = 'favicon.ico'
 # so a file named "default.css" will overwrite the builtin "default.css".
 #html_static_path = ['_static']
 
-autodoc_mock_imports = [
-   'numpy',
-   'scipy',
-   'pywt',
-   'pillow',
-   'PIL',
-   'h5py',
-   'numba'
-]
+# autodoc_mock_imports = [
+#    'numpy',
+#    'scipy',
+#    'pywt',
+#    'pillow',
+#    'PIL',
+#    'h5py',
+#    'numba'
+# ]
 
 numfig = True
 numfig_secnum_depth = 2
