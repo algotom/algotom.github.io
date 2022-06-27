@@ -208,8 +208,9 @@ Detector
 	   as (a) using 0.5 s of exposure time. (c) Projection image of a strong absorber. (d)
 	   Reconstructed image. (e) Line profile along the red line in (d).
 
-	Another common component of a detecting system is a lens which can has radial distortion
-	problem. This problem gives raise to distinguishable artifacts in reconstructed images where
+	Another common component of a detecting system is a lens which can has
+	`radial distortion problem. <https://discorpy.readthedocs.io/en/latest/tutorials.html>`__
+	This problem gives raise to distinguishable artifacts in reconstructed images where
 	artifacts only appear at some areas (:numref:`fig_1_3_13`).
 
 	.. figure:: section1_3/figs/fig_1_3_13.jpg
