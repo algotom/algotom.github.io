@@ -68,6 +68,9 @@ If install to a new environment::
     conda activate algotom
     conda install -c algotom algotom
 
+Algotom is also installable using the conda-forge channel::
+
+	conda install -c conda-forge algotom
 
 Using pip
 ---------
