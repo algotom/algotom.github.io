@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. Installation &mdash; Algotom&#39;s documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Demonstrations" href="section4.html" />
+    <link rel="prev" title="2. Features and capabilities" href="section2.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Algotom-doc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="section1.html">1. Basic tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="section2.html">2. Features and capabilities</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#from-source">3.1. From source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-conda">3.2. Using conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-pip">3.3. Using pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notes">3.4. Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="section4.html">4. Demonstrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="section5.html">5. Technical notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="section6.html">6. Update notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="section7.html">7. API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="section8.html">8. Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Algotom-doc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">3. </span>Installation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/toc/section3.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="installation">
+<h1><span class="section-number">3. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
+<p>Algotom is installable across operating systems (Windows, Linux, Mac) and
+works with Python &gt;=3.7. It is a Python library not an app. Users have to
+write Python codes to process their data. For beginners, a quick way to get started with Python
+programming is to install <a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda</a>,
+then follow instructions <a class="reference external" href="https://docs.anaconda.com/anaconda/user-guide/getting-started/">here</a>.
+There are many IDE software can be used to write and run Python codes e.g Spyder,
+Pydev, <a class="reference external" href="https://www.jetbrains.com/pycharm/download">Pycharm (Community)</a>, or Visual Studio Code. After installing these software, users
+need to configure Python interpreter by pointing to the installed location of
+Anaconda. Each software has instructions of how to do that. There is a list of standard
+Python libraries shipped with <a class="reference external" href="https://docs.anaconda.com/anaconda/packages/pkg-docs/">Anaconda</a>,
+known as the <em>base</em> environment. To install a Python package out of the list, it’s a good
+practice that users should create a separate environment from the base. This <a class="reference external" href="https://www.freecodecamp.org/news/why-you-need-python-environments-and-how-to-manage-them-with-conda-85f155f4353c/">tutorial</a>
+gives an overview about Python environment. Instructions of how to create a new
+environment and how to install new packages are <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">here</a>
+and <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-pkgs.html">here</a>.
+The following image shows the screenshot of how to use Anaconda Powershell Prompt to create
+a new environment and install Algotom.</p>
+<a class="reference internal image-reference" href="../_images/anaconda.png"><img alt="../_images/anaconda.png" class="align-center" src="../_images/anaconda.png" style="width: 98%;" /></a>
+<p>Note that the IDE software needs to be reconfigured to point to the new environment
+as shown below.</p>
+<a class="reference internal image-reference" href="../_images/pycharm.png"><img alt="../_images/pycharm.png" class="align-center" src="../_images/pycharm.png" style="width: 98%;" /></a>
+<p>If users don’t want to install Anaconda which is quite heavy due to the base
+environment shipped with it, <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/download.html">Miniconda</a>
+is enough to customize Python environment.</p>
+<div class="section" id="from-source">
+<h2><span class="section-number">3.1. </span>From source<a class="headerlink" href="#from-source" title="Permalink to this headline"></a></h2>
+<p>Clone <a class="reference external" href="https://github.com/algotom/algotom">Algotom</a> from Github repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">algotom</span><span class="o">/</span><span class="n">algotom</span><span class="o">.</span><span class="n">git</span> <span class="n">algotom</span>
+</pre></div>
+</div>
+<p>Download and install <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a> software, then:</p>
+<p>Open Linux terminal or Miniconda/Anaconda Powershell prompt and run the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">algotom</span> <span class="n">python</span><span class="o">&gt;=</span><span class="mf">3.7</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">algotom</span>
+<span class="n">cd</span> <span class="n">algotom</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-conda">
+<h2><span class="section-number">3.2. </span>Using conda<a class="headerlink" href="#using-conda" title="Permalink to this headline"></a></h2>
+<p>Install Miniconda as instructed above, then:</p>
+<p>Open Linux terminal or Miniconda/Anaconda Powershell prompt and run the following commands:</p>
+<p>If install to an existing environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">algotom</span> <span class="n">algotom</span>
+</pre></div>
+</div>
+<p>If install to a new environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">algotom</span> <span class="n">python</span><span class="o">&gt;=</span><span class="mf">3.7</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">algotom</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">algotom</span> <span class="n">algotom</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-pip">
+<h2><span class="section-number">3.3. </span>Using pip<a class="headerlink" href="#using-pip" title="Permalink to this headline"></a></h2>
+<p>Install Miniconda as instructed above, then</p>
+<p>Open Linux terminal or Miniconda/Anaconda Powershell prompt and run the following commands:</p>
+<p>If install to an existing environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">algotom</span>
+</pre></div>
+</div>
+<p>If install to a new environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">algotom</span> <span class="n">python</span><span class="o">&gt;=</span><span class="mf">3.7</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">algotom</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">algotom</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="notes">
+<h2><span class="section-number">3.4. </span>Notes<a class="headerlink" href="#notes" title="Permalink to this headline"></a></h2>
+<p>To use GPU-enabled functions, users have to make sure that their computers have
+a NVIDIA GPU and must install <a class="reference external" href="https://developer.nvidia.com/cuda-toolkit-archive">CUDA Toolkit</a>.
+Installing the latest version of CUDA Toolkit (or Python) is not recommended
+as scientific software often takes time to update.</p>
+<p>To compromise between ease-of-installation and performance, GPU-enabled reconstruction
+functions in Algotom use <a class="reference external" href="https://numba.readthedocs.io/en/stable/cuda/index.html">Numba</a>.
+Users can use other reconstruction methods; which are optimized for speed such as
+the gridding reconstruction method in <a class="reference external" href="https://tomopy.readthedocs.io/en/latest/api/tomopy.recon.algorithm.html">Tomopy</a>
+or GPU-enabled methods in <a class="reference external" href="https://www.astra-toolbox.com/docs/algs/index.html">Astra Toolbox</a>;
+using Algotom’s wrappers. Making sure that Tomopy and Astra Toolbox are installed before use.
+Referring to the websites of these packages to know how to install or acknowledge
+if you use them.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="section2.html" class="btn btn-neutral float-left" title="2. Features and capabilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="section4.html" class="btn btn-neutral float-right" title="4. Demonstrations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Nghia T. Vo.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

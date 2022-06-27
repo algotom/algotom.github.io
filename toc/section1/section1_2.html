@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1.2. Common data format at synchrotron facilities &mdash; Algotom&#39;s documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.3. Basic components of an X-ray tomography system" href="section1_3.html" />
+    <link rel="prev" title="1.1. Python for tomography scientists as beginners" href="section1_1.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Algotom-doc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../section1.html">1. Basic tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="section1_1.html">1.1. Python for tomography scientists as beginners</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1.2. Common data format at synchrotron facilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hdf-format">1.2.1. Hdf format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tiff-format">1.2.2. Tiff format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="section1_3.html">1.3. Basic components of an X-ray tomography system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="section1_4.html">1.4. Basic workflow for processing tomographic data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../section2.html">2. Features and capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section3.html">3. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section4.html">4. Demonstrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section5.html">5. Technical notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section6.html">6. Update notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section7.html">7. API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section8.html">8. Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Algotom-doc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../section1.html"><span class="section-number">1. </span>Basic tutorials</a> &raquo;</li>
+      <li><span class="section-number">1.2. </span>Common data format at synchrotron facilities</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/toc/section1/section1_2.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="common-data-format-at-synchrotron-facilities">
+<h1><span class="section-number">1.2. </span>Common data format at synchrotron facilities<a class="headerlink" href="#common-data-format-at-synchrotron-facilities" title="Permalink to this headline"></a></h1>
+<p>Two types of data format often used at most of synchrotron facilities are
+tiff and hdf. Hdf (<a class="reference external" href="https://www.hdfgroup.org/solutions/hdf5/">Hierarchical Data Format</a>)
+format allows to store multiple data-sets, multiple data-types in a single file.
+This solves a practical problem of collecting all data associated with an experiment
+such as images from a detector, stage positions, or furnace temperatures into
+one place for easy of management. More than that, hdf format allows to read/write
+subsets of data to memory/disk. This capability enables to process a large size
+dataset using a normal computer. Tiff format is used because it is
+supported by most of image-related software and it can store 32-bit grayscale
+values.</p>
+<div class="section" id="hdf-format">
+<h2><span class="section-number">1.2.1. </span>Hdf format<a class="headerlink" href="#hdf-format" title="Permalink to this headline"></a></h2>
+<p><strong>How to view the structure of a hdf file</strong></p>
+<blockquote>
+<div><p>To work with a hdf file, we need to know its structure or how to access
+its contents. This can be done using a lightweight software such as
+<a class="reference external" href="https://portal.hdfgroup.org/display/support/Download+HDFView">Hdfview</a>
+(<a class="reference internal" href="#fig-1-2-1"><span class="std std-numref">Fig. 1.2.1</span></a>). Version 2.14 seems stable and is easy-to-install for WinOS.
+List of other hdf-viewer software can be found in this
+<a class="reference external" href="https://www.hdfeos.org/software/tool.php">link</a>. A wrapper of the
+hdf format known as the <a class="reference external" href="https://www.nexusformat.org/">nexus</a> format
+is commonly used at neutron, X-ray, and muon science facilities. We can use
+the same software and Python libraries to access both hdf and nxs files.</p>
+<div class="align-center figure" id="fig-1-2-1" style="width: 90%">
+<img alt="../../_images/fig_1_2_1.png" src="../../_images/fig_1_2_1.png" />
+<p class="caption"><span class="caption-number">Fig. 1.2.1 </span><span class="caption-text">Viewing the structure of a nxs/hdf file using the Hdfview software.</span><a class="headerlink" href="#fig-1-2-1" title="Permalink to this image"></a></p>
+</div>
+<p>Another way to display a tree view of a hdf/nxs file is to use an Algotom’s
+function as shown below.</p>
+<div class="align-center figure" id="fig-1-2-2" style="width: 90%">
+<img alt="../../_images/fig_1_2_2.png" src="../../_images/fig_1_2_2.png" />
+<p class="caption"><span class="caption-number">Fig. 1.2.2 </span><span class="caption-text">Displaying the tree view of a nxs/hdf file using an Algotom’s function.</span><a class="headerlink" href="#fig-1-2-2" title="Permalink to this image"></a></p>
+</div>
+</div></blockquote>
+<p><strong>How to load datasets from a hdf file</strong></p>
+<blockquote>
+<div><p>Utilities for accessing a hdf/nxs file in Python are available in the <a class="reference external" href="https://docs.h5py.org/">h5py</a>
+library. To load/read a dataset to a Python workspace, we need a key, or path, to
+that dataset in a hdf/nxs file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">h5py</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;E:/Tomo_data/68067.nxs&quot;</span> <span class="c1"># https://doi.org/10.5281/zenodo.1443568</span>
+<span class="n">hdf_object</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;entry1/tomo_entry/data/data&quot;</span>
+<span class="n">tomo_data</span> <span class="o">=</span> <span class="n">hdf_object</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape of tomo-data: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tomo_data</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="hll"><span class="c1">#&gt;&gt; Shape of tomo-data: (1861, 2160, 2560)</span>
+</span></pre></div>
+</div>
+<p>An important feature of a hdf format is that we can load subsets of data as
+demonstrated below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psutil</span>
+
+<span class="n">mem_start</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">Process</span><span class="p">()</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">rss</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)</span>
+<span class="n">projection</span> <span class="o">=</span> <span class="n">tomo_data</span><span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
+<span class="n">mem_stop</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">Process</span><span class="p">()</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">rss</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Memory used for loading 1 projection : </span><span class="si">{}</span><span class="s2"> MB&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mem_stop</span> <span class="o">-</span> <span class="n">mem_start</span><span class="p">))</span>
+<span class="hll"><span class="c1">#&gt;&gt; Memory used for loading 1 projection : 11.3828125 MB</span>
+</span>
+<span class="n">mem_start</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">Process</span><span class="p">()</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">rss</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)</span>
+<span class="n">projections</span> <span class="o">=</span> <span class="n">tomo_data</span><span class="p">[</span><span class="mi">102</span><span class="p">:</span><span class="mi">104</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
+<span class="n">mem_stop</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">Process</span><span class="p">()</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">rss</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Memory used for loading 2 projections : </span><span class="si">{}</span><span class="s2"> MB&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mem_stop</span> <span class="o">-</span> <span class="n">mem_start</span><span class="p">))</span>
+<span class="hll"><span class="c1">#&gt;&gt; Memory used for loading 2 projections : 21.09765625 MB</span>
+</span></pre></div>
+</div>
+<p>Using functions of h5py’s library directly is quite inconvenient. <a class="reference external" href="https://algotom.readthedocs.io/en/latest/api/algotom.io.loadersaver.html">Algotom’s API</a>
+provides wrappers for these functions to make them more easy-to-use. Users can load hdf
+files, find keys to datasets, or save data in the hdf format by using a single
+line of code.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;E:/Tomo_data/68067.nxs&quot;</span>
+<span class="n">keys</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">find_hdf_key</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Find keys having &quot;data&quot; in the path.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span>
+<span class="n">tomo_data</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">keys</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># Load a dataset object</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tomo_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Notes on working with a hdf file</strong></p>
+<blockquote>
+<div><p>When working with multiple slices of a 3d data, it’s faster to load them into
+memory chunk-by-chunk then process each slice, instead of loading and processing
+slice-by-slice. Demonstration is as follows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">timeit</span>
+<span class="kn">import</span> <span class="nn">scipy.ndimage</span> <span class="k">as</span> <span class="nn">ndi</span>
+<span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;E:/Tomo_data/68067.nxs&quot;</span>
+<span class="n">tomo_data</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;entry1/tomo_entry/data/data&quot;</span><span class="p">)</span>
+<span class="n">chunk</span> <span class="o">=</span> <span class="mi">16</span>
+
+<span class="n">t_start</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span> <span class="o">+</span> <span class="n">chunk</span><span class="p">):</span>
+    <span class="n">mat</span> <span class="o">=</span> <span class="n">tomo_data</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">mat</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">t_stop</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time cost if loading and processing each slice: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t_stop</span> <span class="o">-</span> <span class="n">t_start</span><span class="p">))</span>
+<span class="hll"><span class="c1">#&gt;&gt; Time cost if loading and processing each slice: 10.171918900000001</span>
+</span>
+<span class="n">t_start</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+<span class="n">mat_chunk</span> <span class="o">=</span> <span class="n">tomo_data</span><span class="p">[:,</span> <span class="mi">1000</span><span class="p">:</span><span class="mi">1000</span> <span class="o">+</span> <span class="n">chunk</span><span class="p">,</span> <span class="p">:]</span>  <span class="c1"># Load 16 slices in one go.</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">chunk</span><span class="p">):</span>
+    <span class="n">mat</span> <span class="o">=</span> <span class="n">mat_chunk</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">mat</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">t_stop</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time cost if loading multiple-slices: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t_stop</span> <span class="o">-</span> <span class="n">t_start</span><span class="p">))</span>
+<span class="hll"><span class="c1">#&gt;&gt;Time cost if loading multiple-slices: 0.10050070000000133</span>
+</span></pre></div>
+</div>
+<p>Parallel loading datasets from a hdf file is <a class="reference external" href="https://docs.h5py.org/en/stable/mpi.html">possible</a>.
+However, this feature may be not enabled for WinOS.
+When working with large datasets using a small RAM computer, we may have to
+write/read intermediate results to/from disk as hdf files. In such cases, it
+is worth to check <a class="reference external" href="https://docs.h5py.org/en/stable/high/dataset.html?highlight=chunking#chunked-storage">tutorials</a>
+on how to optimize hdf I/O performance.</p>
+</div></blockquote>
+</div>
+<div class="section" id="tiff-format">
+<h2><span class="section-number">1.2.2. </span>Tiff format<a class="headerlink" href="#tiff-format" title="Permalink to this headline"></a></h2>
+<p>This is a very popular file format and supported by most of image-related software.
+There are 8-bit, 16-bit, and 32-bit format. 8-bit format can store grayscale
+values as 8-bit unsigned integers (range of 0 to 255 = 2 <sup>8</sup> - 1).
+16-bit format can store unsigned integers in the range of 0 to 65535
+(2 <sup>16</sup> - 1). 32-bit format is used to store 32-bit float data.
+Most of image viewer software can display a 8-bit or 16-bit, but not 32-bit tiff
+image. Users may see a black or white image if opening a 32-bit tiff image using
+common photo viewer software. In such cases, <a class="reference external" href="https://imagej.nih.gov/ij/download.html">Imagej</a>
+or <a class="reference external" href="https://imagej.net/software/fiji/downloads">Fiji</a> software can be used.</p>
+<div class="align-center figure" id="fig-1-2-3" style="width: 95%">
+<img alt="../../_images/fig_1_2_3.png" src="../../_images/fig_1_2_3.png" />
+<p class="caption"><span class="caption-number">Fig. 1.2.3 </span><span class="caption-text">Opening a 32-tiff image using Photos software (a) and Imagej software (b).</span><a class="headerlink" href="#fig-1-2-3" title="Permalink to this image"></a></p>
+</div>
+<p>Sometimes users may want to extract a 2D slice of 3D tomographic data and
+save the result as a tiff image for checking using ImageJ or photo viewer
+software. This can be done as shown below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;E:/Tomo_data/68067.nxs&quot;</span>
+<span class="n">tomo_data</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;entry1/tomo_entry/data/data&quot;</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="s2">&quot;E:/Tomo_data/Output/proj.tif&quot;</span><span class="p">,</span> <span class="n">tomo_data</span><span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:])</span>
+</pre></div>
+</div>
+<p>If tomographic data are acquired as a list of tiff files, it can be useful to
+convert them to a single hdf file first. This allows to extract subsets of
+the converted data for reconstructing a few slices or tweaking artifact
+removal methods before performing full reconstruction.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
+
+<span class="n">proj_path</span> <span class="o">=</span> <span class="s2">&quot;E:/Tomo_data/68067/projections/&quot;</span>
+<span class="n">flat_path</span> <span class="o">=</span> <span class="s2">&quot;E:/Tomo_data/68067/flats/&quot;</span>
+<span class="n">dark_path</span> <span class="o">=</span> <span class="s2">&quot;E:/Tomo_data/68067/darks/&quot;</span>
+<span class="n">output_file</span> <span class="o">=</span> <span class="s2">&quot;E:/Tomo_data/68067/tomo_68067.hdf&quot;</span>
+
+<span class="c1"># Load flat images, average them.</span>
+<span class="n">flat_path</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">find_file</span><span class="p">(</span><span class="n">flat_path</span> <span class="o">+</span> <span class="s2">&quot;/*.tif*&quot;</span><span class="p">)</span>
+<span class="n">flat</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">flat_path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">flat_path</span><span class="p">)):</span>
+    <span class="n">flat</span> <span class="o">=</span> <span class="p">(</span><span class="n">flat</span> <span class="o">+</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">flat_path</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="o">*</span> <span class="mf">0.5</span>
+
+<span class="c1"># Load dark images, average them.</span>
+<span class="n">dark_path</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">find_file</span><span class="p">(</span><span class="n">dark_path</span> <span class="o">+</span> <span class="s2">&quot;/*.tif*&quot;</span><span class="p">)</span>
+<span class="n">dark</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">dark_path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dark_path</span><span class="p">)):</span>
+    <span class="n">dark</span> <span class="o">=</span> <span class="p">(</span><span class="n">dark</span> <span class="o">+</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">dark_path</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="o">*</span> <span class="mf">0.5</span>
+
+<span class="c1"># Generate angles</span>
+<span class="n">num_angle</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">losa</span><span class="o">.</span><span class="n">find_file</span><span class="p">(</span><span class="n">proj_path</span> <span class="o">+</span> <span class="s2">&quot;/*.tif*&quot;</span><span class="p">))</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">180.0</span><span class="p">,</span> <span class="n">num_angle</span><span class="p">)</span>
+<span class="c1"># Save tiffs as a single hdf file.</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">convert_tif_to_hdf</span><span class="p">(</span><span class="n">proj_path</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="s2">&quot;entry/projection&quot;</span><span class="p">,</span>
+                        <span class="n">option</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;entry/flat&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">flat</span><span class="p">),</span>
+                                <span class="s2">&quot;entry/dark&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">dark</span><span class="p">),</span>
+                                <span class="s2">&quot;entry/rotation_angle&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">angles</span><span class="p">)})</span>
+</pre></div>
+</div>
+<p>Reconstructed slices from tomographic data are of 32-bit data, which often
+saved as 32-bit tiff images for easy to work with using analysis software
+such as <a class="reference external" href="https://www.thermofisher.com/uk/en/home/electron-microscopy/products/software-em-3d-vis/3d-visualization-analysis-software.html">Avizo</a>,
+<a class="reference external" href="https://www.theobjects.com/dragonfly/get-non-commercial-licensing-program.html">Dragon Fly</a>,
+or <a class="reference external" href="https://www.paraview.org/download/">Paraview</a>. Some of these software may not
+support 32-bit tiff images or the 32-bit data volume is too big for computer memory. In
+such cases, we can rescale these images to 8-bit tiffs or 16-bit tiffs.  It is
+important to be aware that rescaling causes information loss. The global extrema
+or user-chosen percentile of a 3D dataset or 4D dataset (time-series tomography)
+need to be used for rescaling to limit the loss. This functionality is available
+in Algotom as demonstrated below. Users can refer to Algotom’s API to know how
+data are rescaled to lower bits.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">algotom.post.postprocessing</span> <span class="k">as</span> <span class="nn">post</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;E:/Tomo_data/recon_68067.hdf&quot;</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="s2">&quot;E:/Tomo_data/rescale_8_bit/&quot;</span>
+<span class="n">post</span><span class="o">.</span><span class="n">rescale_dataset</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">output_path</span><span class="p">,</span> <span class="n">nbit</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">minmax</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="section1_1.html" class="btn btn-neutral float-left" title="1.1. Python for tomography scientists as beginners" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="section1_3.html" class="btn btn-neutral float-right" title="1.3. Basic components of an X-ray tomography system" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Nghia T. Vo.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
