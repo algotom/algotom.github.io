@@ -6,9 +6,9 @@ Data processing algorithms for tomography
 =========================================
 
 Welcome to Algotom's documentation about data processing algorithms for tomography.
-This documentation is not only to explain functions available in the Algotom
-package but also to present tomography-related tutorials, technical notes, and
-applications.
+This documentation is not only to explain functions available in the `Algotom
+package <https://github.com/algotom/algotom>`__ but also to present tomography-related tutorials,
+technical notes, and applications.
 
 Table of Contents
 =================
