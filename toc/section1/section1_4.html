@@ -15,6 +15,7 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -42,7 +43,21 @@
 <li class="toctree-l2"><a class="reference internal" href="section1_1.html">1.1. Python for tomography scientists as beginners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="section1_2.html">1.2. Common data format at synchrotron facilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="section1_3.html">1.3. Basic components of an X-ray tomography system</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">1.4. Basic workflow for processing tomographic data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1.4. Basic workflow for processing tomographic data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#read-write-data">1.4.1. Read/write data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flat-field-correction">1.4.2. Flat-field correction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zinger-removal">1.4.3. Zinger removal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ring-artifact-removal">1.4.4. Ring artifact removal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#center-of-rotation-determination">1.4.5. Center-of-rotation determination</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#denoising-or-contrast-enhancement">1.4.6. Denoising or contrast enhancement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#image-reconstruction">1.4.7. Image reconstruction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-data-processing-steps">1.4.8. Other data processing steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#distortion-correction">1.4.8.1. Distortion correction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sinogram-stitching-for-a-half-acquisition-scan">1.4.8.2. Sinogram stitching for a half-acquisition scan</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../section2.html">2. Features and capabilities</a></li>
@@ -81,6 +96,397 @@
              
   <div class="section" id="basic-workflow-for-processing-tomographic-data">
 <h1><span class="section-number">1.4. </span>Basic workflow for processing tomographic data<a class="headerlink" href="#basic-workflow-for-processing-tomographic-data" title="Permalink to this headline"></a></h1>
+<div class="section" id="read-write-data">
+<h2><span class="section-number">1.4.1. </span>Read/write data<a class="headerlink" href="#read-write-data" title="Permalink to this headline"></a></h2>
+<p>The very first step is to know how to load data to workspace. Different
+communities use different file formats: hdf/nxs, mrc, txrm, xrm, tif, dicom,
+raw,… and they need specific Python libraries to work with. The common format
+used by synchrotron/neutron community is hdf/nxs. To load a dataset from a hdf/nxs
+file we need to know the key or path to the data. This can be done using <a class="reference external" href="https://portal.hdfgroup.org/display/support/Download+HDFView">Hdfviewer</a>
+or Algotom’s function as shown in <a class="reference internal" href="section1_2.html#hdf-format"><span class="std std-ref">section 1.2</span></a>. For a tomographic
+hdf file, some basic metadata we need to know:</p>
+<ul class="simple">
+<li><p>Keys/paths to projections images, flat-field images, and dark-field images.</p></li>
+<li><p>Key to rotation angles corresponding to projection images. This information may be
+not needed if the data was acquired in the ange range of [0; 180-degree].</p></li>
+<li><p>If the data is from a helical scan, extra information such as pixel size,
+pitch, and translation positions is needed.</p></li>
+<li><p>Information which is used by specific data processing methods such as pixel
+size, sample-detector distance, or X-ray energy.</p></li>
+</ul>
+<p><a class="reference internal" href="#fig-1-4-1"><span class="std std-numref">Fig. 1.4.1</span></a> shows the content of a hdf file where users can find key/path
+to datasets used for tomographic reconstruction.</p>
+<blockquote>
+<div><div class="align-center figure" id="fig-1-4-1" style="width: 100%">
+<img alt="../../_images/fig_1_4_1.png" src="../../_images/fig_1_4_1.png" />
+<p class="caption"><span class="caption-number">Fig. 1.4.1 </span><span class="caption-text">Datasets of a tomographic <a class="reference external" href="https://tomobank.readthedocs.io/en/latest/source/data/docs.data.phasecontrast.html#multi-distance">hdf file</a>.</span><a class="headerlink" href="#fig-1-4-1" title="Permalink to this image"></a></p>
+</div>
+</div></blockquote>
+<p>To load these data using Algotom’s functions:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
+
+<span class="n">file</span> <span class="o">=</span> <span class="s2">&quot;C:/data/tomo_00064.h5&quot;</span>
+<span class="n">proj_img</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="s2">&quot;exchange/data&quot;</span><span class="p">)</span>  <span class="c1"># This is an hdf object, no data being loaded yet.</span>
+<span class="n">flat_img</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="s2">&quot;exchange/data_white&quot;</span><span class="p">)</span>
+<span class="n">dark_img</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="s2">&quot;exchange/data_dark&quot;</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="s2">&quot;exchange/theta&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Another tomographic hdf/nxs file acquired at beamline I12, Diamond Light Source (DLS) where
+the file structure, keys, and paths are different to the one before. In this data,
+dark-field images and flat-field images are at the same dataset as projection images
+where there is a dataset named “image_key” used to distinguish these images.</p>
+<blockquote>
+<div><div class="align-center figure" id="fig-1-4-2" style="width: 100%">
+<img alt="../../_images/fig_1_4_2.png" src="../../_images/fig_1_4_2.png" />
+<p class="caption"><span class="caption-number">Fig. 1.4.2 </span><span class="caption-text">Datasets of a tomographic hdf file acquired at DLS. Image-key value of 2 is
+for dark-field, 1 is for flat-field, and 0 is for projection image.</span><a class="headerlink" href="#fig-1-4-2" title="Permalink to this image"></a></p>
+</div>
+</div></blockquote>
+<p>We can load the data, extract a projection image, and save it to tif.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
+
+<span class="n">file</span> <span class="o">=</span> <span class="s2">&quot;E:/Tomo_data/68067.nxs&quot;</span>
+<span class="n">data_img</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="s2">&quot;entry1/tomo_entry/data/data&quot;</span><span class="p">)</span> <span class="c1"># This is an hdf object.</span>
+<span class="c1"># Extract a subset of data and save to tif</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># 1861 x 2160 x2560</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="s2">&quot;E:/output/image_00061.tif&quot;</span><span class="p">,</span> <span class="n">data_img</span><span class="p">[</span><span class="mi">61</span><span class="p">])</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>There are many Algotom’s functions in the <a class="reference external" href="https://algotom.readthedocs.io/en/latest/api.html#input-output">IO module</a>
+to handle different tasks such as converting tif images to hdf, displaying the
+hdf tree, or saving output to a hdf file.</p>
+</div>
+<div class="section" id="flat-field-correction">
+<h2><span class="section-number">1.4.2. </span>Flat-field correction<a class="headerlink" href="#flat-field-correction" title="Permalink to this headline"></a></h2>
+<p>The flat-field correction process is based on the Beer-Lambert’s law</p>
+<div class="math notranslate nohighlight">
+\[\frac{I}{I_0} = \int_{}e^{-\alpha (x,y,z) dx}\]</div>
+<p>in practice, it is done using the following formula</p>
+<div class="math notranslate nohighlight">
+\[\frac{P_{\theta}-D}{F-D}\]</div>
+<p>where <span class="math notranslate nohighlight">\(P_{\theta}\)</span> is a projection image of a sample at a rotation
+angle of <span class="math notranslate nohighlight">\(\theta\)</span>, <span class="math notranslate nohighlight">\(D\)</span> is a dark-field image (camera’s dark noise)
+taken with a photon source off, and <span class="math notranslate nohighlight">\(F\)</span> is a flat-field image taken without
+the sample. This can be done using Algotom as follows; data used in this
+demonstration can be download from <a class="reference external" href="https://doi.org/10.5281/zenodo.1443568">here</a></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
+
+<span class="n">file</span> <span class="o">=</span> <span class="s2">&quot;E:/Tomo_data/68067.nxs&quot;</span>
+<span class="n">data_img</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="s2">&quot;entry1/tomo_entry/data/data&quot;</span><span class="p">)</span> <span class="c1"># This is an hdf object.</span>
+<span class="c1"># Get image key</span>
+<span class="n">ikey</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="s2">&quot;entry1/tomo_entry/instrument/detector/image_key&quot;</span><span class="p">)</span>
+<span class="n">ikey</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ikey</span><span class="p">[:]))</span> <span class="c1"># Load data and convert to numpy 1d-array.</span>
+<span class="c1"># Use image_key to load flat-field images and average them</span>
+<span class="n">dark_field</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">data_img</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ikey</span> <span class="o">==</span> <span class="mf">2.0</span><span class="p">)),</span> <span class="p">:,</span> <span class="p">:]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">flat_field</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">data_img</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ikey</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">)),</span> <span class="p">:,</span> <span class="p">:]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># Get indices of projection images</span>
+<span class="n">proj_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ikey</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span>
+<span class="c1"># Apply flat-field correction to the first projection image.</span>
+<span class="n">proj_img</span> <span class="o">=</span> <span class="n">data_img</span><span class="p">[</span><span class="n">proj_idx</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">flat_dark</span> <span class="o">=</span> <span class="n">flat_field</span> <span class="o">-</span> <span class="n">dark_field</span>
+<span class="n">nmean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">flat_dark</span><span class="p">)</span>
+<span class="n">flat_dark</span><span class="p">[</span><span class="n">flat_dark</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="n">nmean</span>  <span class="c1"># Handle zero division</span>
+<span class="n">proj_norm</span> <span class="o">=</span> <span class="p">(</span><span class="n">proj_img</span> <span class="o">-</span> <span class="n">dark_field</span><span class="p">)</span> <span class="o">/</span> <span class="n">flat_dark</span>
+<span class="c1"># Save images</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="s2">&quot;E:/output/proj_before.tif&quot;</span><span class="p">,</span> <span class="n">proj_img</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="s2">&quot;E:/output/proj_after.tif&quot;</span><span class="p">,</span> <span class="n">proj_norm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Running the code gives the output images</p>
+<blockquote>
+<div><div class="align-center figure" id="fig-1-4-3" style="width: 100%">
+<img alt="../../_images/fig_1_4_3.jpg" src="../../_images/fig_1_4_3.jpg" />
+</div>
+</div></blockquote>
+<p>We can apply the process to a sinogram.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate sinogram at the middle of an image height</span>
+<span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">data_img</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">sino_idx</span> <span class="o">=</span> <span class="n">height</span> <span class="o">//</span> <span class="mi">2</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">proj_idx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">stop</span> <span class="o">=</span> <span class="n">proj_idx</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">sinogram</span> <span class="o">=</span> <span class="n">data_img</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">,</span> <span class="n">sino_idx</span><span class="p">,</span> <span class="p">:]</span>
+<span class="c1"># Apply flat-field correction the sinogram</span>
+<span class="n">sino_norm</span> <span class="o">=</span> <span class="p">(</span><span class="n">sinogram</span> <span class="o">-</span> <span class="n">dark_field</span><span class="p">[</span><span class="n">sino_idx</span><span class="p">])</span> <span class="o">/</span> <span class="n">flat_dark</span><span class="p">[</span><span class="n">sino_idx</span><span class="p">]</span>
+<span class="c1"># Save images</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="s2">&quot;E:/output/sino_before.tif&quot;</span><span class="p">,</span> <span class="n">sinogram</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="s2">&quot;E:/output/sino_after.tif&quot;</span><span class="p">,</span> <span class="n">sino_norm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>which results in</p>
+<blockquote>
+<div><div class="align-center figure" id="fig-1-4-4" style="width: 100%">
+<img alt="../../_images/fig_1_4_4.jpg" src="../../_images/fig_1_4_4.jpg" />
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="zinger-removal">
+<h2><span class="section-number">1.4.3. </span>Zinger removal<a class="headerlink" href="#zinger-removal" title="Permalink to this headline"></a></h2>
+<p>Zingers are prominent bright dots in images caused by scattered X-rays hitting
+the detector system CCD or CMOS chip (<a class="reference internal" href="#fig-1-4-5"><span class="std std-numref">Fig. 1.4.3</span></a> (a,b)). They produce
+line artifacts across a reconstructed image (<a class="reference internal" href="#fig-1-4-5"><span class="std std-numref">Fig. 1.4.3</span></a> (c)).</p>
+<blockquote>
+<div><div class="align-center figure" id="fig-1-4-5" style="width: 100%">
+<img alt="../../_images/fig_1_4_5.jpg" src="../../_images/fig_1_4_5.jpg" />
+<p class="caption"><span class="caption-number">Fig. 1.4.3 </span><span class="caption-text">Artifacts caused by zingers. (a) Zingers in the sinogram space. (b) Zingers
+in the projection space. (c) Line artifacts caused by the zingers.</span><a class="headerlink" href="#fig-1-4-5" title="Permalink to this image"></a></p>
+</div>
+</div></blockquote>
+<p>Zingers are easily removed by using a <a class="reference external" href="https://algotom.readthedocs.io/en/latest/api/algotom.prep.removal.html#algotom.prep.removal.remove_zinger">method</a>
+in Algotom</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">algotom.prep.removal</span> <span class="k">as</span> <span class="nn">rem</span>
+
+<span class="n">sino_rem1</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_zinger</span><span class="p">(</span><span class="n">sino_norm</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="ring-artifact-removal">
+<h2><span class="section-number">1.4.4. </span>Ring artifact removal<a class="headerlink" href="#ring-artifact-removal" title="Permalink to this headline"></a></h2>
+<p>Causes of ring artifacts and methods for removing them have been documented in detailed
+<a class="reference external" href="https://sarepy.readthedocs.io/">here</a>. There are many methods to choose from
+in Algotom. However the <a class="reference external" href="https://doi.org/10.1364/OE.26.028396">combination of methods</a>
+has been proven to be the most effective way to clean most of ring artifact types.
+Note that in the sinogram space, ring artifacts appear as stripe artifacts. Example
+of how to use the methods</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sino_rem2</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_all_stripe</span><span class="p">(</span><span class="n">sino_rem1</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="s2">&quot;E:/output/sino_before_ring_removal.tif&quot;</span><span class="p">,</span> <span class="n">sino_rem1</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="s2">&quot;E:/output/sino_after_ring_removal.tif&quot;</span><span class="p">,</span> <span class="n">sino_rem2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>resulting in</p>
+<blockquote>
+<div><div class="align-center figure" id="fig-1-4-6" style="width: 100%">
+<img alt="../../_images/fig_1_4_6.jpg" src="../../_images/fig_1_4_6.jpg" />
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="center-of-rotation-determination">
+<h2><span class="section-number">1.4.5. </span>Center-of-rotation determination<a class="headerlink" href="#center-of-rotation-determination" title="Permalink to this headline"></a></h2>
+<p>There are <a class="reference external" href="https://algotom.readthedocs.io/en/latest/api/algotom.prep.calculation.html">a few methods</a>
+to determine the center-of-rotation. The demonstrated method below uses a 180-degree
+sinogram for calculation.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">algotom.prep.calculation</span> <span class="k">as</span> <span class="nn">calc</span>
+
+<span class="n">center</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">find_center_vo</span><span class="p">(</span><span class="n">sino_rem2</span><span class="p">,</span> <span class="n">width</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">50</span><span class="p">,</span> <span class="n">width</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">center</span><span class="p">)</span> <span class="c1"># &gt;&gt; 1275.25</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="denoising-or-contrast-enhancement">
+<h2><span class="section-number">1.4.6. </span>Denoising or contrast enhancement<a class="headerlink" href="#denoising-or-contrast-enhancement" title="Permalink to this headline"></a></h2>
+<p>There is a method for enhancing the contrast of an image, known as the <a class="reference external" href="https://doi.org/10.1046/j.1365-2818.2002.01010.x">Paganin filter</a>
+which is commonly used at synchrotron facilities. Algotom implements a
+<a class="reference external" href="https://doi.org/10.1364/OE.418448">simplified version</a> of this filter, named
+the Fresnel filter as it is based on the Fresnel propagator. There is
+a widespread misunderstanding in the community that the resulting image of
+the Paganin filter is a phase-contrast image. It is not. Because the filter acts
+as a low-pass filter, it reduces noise and the dynamic range of an image. This helps
+to enhance the contrast between low-contrast features which can be confused if
+this enhancement comes from the phase effect. Detailed demonstration for the
+argument is at <a class="reference external" href="https://www.researchgate.net/profile/Nghia-T-Vo/publication/351559034_Data_processing_methods_and_data_acquisition_for_samples_larger_than_the_field_of_view_in_parallel-beam_tomography_selected_replies_to_technical_questions_from_reviewers/data/609d2c69a6fdcc9aa7e697ea/Selected-replies-to-technical-questions-from-reviewers.pdf">here</a>.</p>
+<p>Note that a denoising filter or smoothing filter should not be used before the above
+pre-processing methods (zinger removal, ring artifact removal, center calculation).
+Blurring an image will impact the performance of these methods.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sino_filt1</span> <span class="o">=</span> <span class="n">filt</span><span class="o">.</span><span class="n">fresnel_filter</span><span class="p">(</span><span class="n">sino_rem2</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">sino_filt2</span> <span class="o">=</span> <span class="n">filt</span><span class="o">.</span><span class="n">fresnel_filter</span><span class="p">(</span><span class="n">sino_rem2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="s2">&quot;E:/output/sino_denoising_strength_200.tif&quot;</span><span class="p">,</span> <span class="n">sino_filt1</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="s2">&quot;E:/output/sino_denoising_strength_1000.tif&quot;</span><span class="p">,</span> <span class="n">sino_filt2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="align-center figure" id="fig-1-4-7" style="width: 100%">
+<img alt="../../_images/fig_1_4_7.jpg" src="../../_images/fig_1_4_7.jpg" />
+<p class="caption"><span class="caption-number">Fig. 1.4.4 </span><span class="caption-text">Results of using the <a class="reference external" href="https://algotom.readthedocs.io/en/latest/api/algotom.prep.filtering.html#algotom.prep.filtering.fresnel_filter">Fresnel filter</a>. (a)
+Ratio = 200. (b) Ratio = 1000.</span><a class="headerlink" href="#fig-1-4-7" title="Permalink to this image"></a></p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="image-reconstruction">
+<h2><span class="section-number">1.4.7. </span>Image reconstruction<a class="headerlink" href="#image-reconstruction" title="Permalink to this headline"></a></h2>
+<p>There are many choices for reconstruction methods and open-source software. In
+the current version (&lt;=1.1), Algotom implements two FFT-based methods which is fast enough
+for a 2k x 2k x 2k dataset. Algotom also provides wrappers for other reconstruction
+methods available in <a class="reference external" href="https://tomopy.readthedocs.io/en/latest/api/tomopy.recon.algorithm.html#tomopy.recon.algorithm.recon">Tomopy (gridrec)</a>
+and <a class="reference external" href="https://www.astra-toolbox.com/docs/algs/index.html#">Astra Toolbox (FBP, SIRT, SART, CGLS,…)</a>.</p>
+<p>Examples of comparing reconstructed images before and after artifacts removal:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">algotom.rec.reconstruction</span> <span class="k">as</span> <span class="nn">rec</span>
+
+<span class="c1"># No need to pass angles if it&#39;s a 180-degree sinogram</span>
+<span class="n">rec_img1</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">dfi_reconstruction</span><span class="p">(</span><span class="n">sino_norm</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">rec_img2</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">dfi_reconstruction</span><span class="p">(</span><span class="n">sino_rem2</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="s2">&quot;E:/output/rec_with_artifacts.tif&quot;</span><span class="p">,</span> <span class="n">rec_img1</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="s2">&quot;E:/output/rec_artifacts_removed.tif&quot;</span><span class="p">,</span> <span class="n">rec_img2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="align-center figure" id="fig-1-4-8" style="width: 100%">
+<img alt="../../_images/fig_1_4_8.jpg" src="../../_images/fig_1_4_8.jpg" />
+</div>
+</div></blockquote>
+<p>Examples of comparing reconstructed images after using the Fresnel filter with
+different strengths:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rec_img3</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">dfi_reconstruction</span><span class="p">(</span><span class="n">sino_filt1</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">rec_img4</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">dfi_reconstruction</span><span class="p">(</span><span class="n">sino_filt2</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="s2">&quot;E:/output/rec_filt1.tif&quot;</span><span class="p">,</span> <span class="n">rec_img3</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="s2">&quot;E:/output/rec_filt2.tif&quot;</span><span class="p">,</span> <span class="n">rec_img4</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="align-center figure" id="fig-1-4-9" style="width: 100%">
+<img alt="../../_images/fig_1_4_9.jpg" src="../../_images/fig_1_4_9.jpg" />
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="other-data-processing-steps">
+<h2><span class="section-number">1.4.8. </span>Other data processing steps<a class="headerlink" href="#other-data-processing-steps" title="Permalink to this headline"></a></h2>
+<div class="section" id="distortion-correction">
+<h3><span class="section-number">1.4.8.1. </span>Distortion correction<a class="headerlink" href="#distortion-correction" title="Permalink to this headline"></a></h3>
+<p>If a detecting system suffers from the lens-distortion problem, the working
+routine is as follows:</p>
+<ul>
+<li><p>Acquire a <a class="reference external" href="https://discorpy.readthedocs.io/en/latest/tutorials/methods.html#extracting-reference-points-from-a-calibration-image">grid-pattern image</a>.</p></li>
+<li><p>Calculate distortion coefficients using the <a class="reference external" href="https://discorpy.readthedocs.io/en/latest/usage/demo_01.html">Discorpy package</a>. The output is a text file.</p></li>
+<li><p>Use the calculated coefficients for correction.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
+<span class="kn">import</span> <span class="nn">algotom.prep.correction</span> <span class="k">as</span> <span class="nn">corr</span>
+<span class="kn">import</span> <span class="nn">algotom.prep.removal</span> <span class="k">as</span> <span class="nn">remo</span>
+<span class="kn">import</span> <span class="nn">algotom.prep.calculation</span> <span class="k">as</span> <span class="nn">calc</span>
+<span class="kn">import</span> <span class="nn">algotom.prep.filtering</span> <span class="k">as</span> <span class="nn">filt</span>
+<span class="kn">import</span> <span class="nn">algotom.rec.reconstruction</span> <span class="k">as</span> <span class="nn">reco</span>
+
+<span class="c1"># Paths to data. Download at: https://doi.org/10.5281/zenodo.3339629</span>
+<span class="n">proj_path</span> <span class="o">=</span> <span class="s2">&quot;E:/data/tomographic_projections.hdf&quot;</span>
+<span class="n">flat_path</span> <span class="o">=</span> <span class="s2">&quot;E:/data/flats.hdf&quot;</span>
+<span class="n">dark_path</span> <span class="o">=</span> <span class="s2">&quot;E:/data/darks.hdf&quot;</span>
+<span class="n">coef_path</span> <span class="o">=</span> <span class="s2">&quot;E:/data/coefficients_bw.txt&quot;</span>
+<span class="n">key_path</span> <span class="o">=</span> <span class="s2">&quot;/entry/data/data&quot;</span>
+
+<span class="c1"># Where to save the outputs</span>
+<span class="n">output_base</span> <span class="o">=</span> <span class="s2">&quot;E:/output/&quot;</span>
+
+<span class="c1"># Load data of projection images as an hdf object</span>
+<span class="n">proj_data</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">proj_path</span><span class="p">,</span> <span class="n">key_path</span><span class="p">)</span>
+<span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">proj_data</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="c1"># Load flat-field images and dark-field images, average each of them</span>
+<span class="n">flat_field</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">flat_path</span><span class="p">,</span> <span class="n">key_path</span><span class="p">)[:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">dark_field</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">dark_path</span><span class="p">,</span> <span class="n">key_path</span><span class="p">)[:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># Load distortion coefficients</span>
+<span class="n">xcenter</span><span class="p">,</span> <span class="n">ycenter</span><span class="p">,</span> <span class="n">list_fact</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_distortion_coefficient</span><span class="p">(</span><span class="n">coef_path</span><span class="p">)</span>
+<span class="c1"># Apply distortion correction to dark- and flat-field image.</span>
+<span class="n">flat_discor</span> <span class="o">=</span> <span class="n">corr</span><span class="o">.</span><span class="n">unwarp_projection</span><span class="p">(</span><span class="n">flat_field</span><span class="p">,</span> <span class="n">xcenter</span><span class="p">,</span> <span class="n">ycenter</span><span class="p">,</span> <span class="n">list_fact</span><span class="p">)</span>
+<span class="n">dark_discor</span> <span class="o">=</span> <span class="n">corr</span><span class="o">.</span><span class="n">unwarp_projection</span><span class="p">(</span><span class="n">dark_field</span><span class="p">,</span> <span class="n">xcenter</span><span class="p">,</span> <span class="n">ycenter</span><span class="p">,</span> <span class="n">list_fact</span><span class="p">)</span>
+
+<span class="c1"># Generate a sinogram with distortion correction.</span>
+<span class="n">index</span> <span class="o">=</span> <span class="mi">800</span>
+<span class="n">sinogram</span> <span class="o">=</span> <span class="n">corr</span><span class="o">.</span><span class="n">unwarp_sinogram</span><span class="p">(</span><span class="n">proj_data</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">xcenter</span><span class="p">,</span> <span class="n">ycenter</span><span class="p">,</span> <span class="n">list_fact</span><span class="p">)</span>
+<span class="n">sinogram</span> <span class="o">=</span> <span class="n">corr</span><span class="o">.</span><span class="n">flat_field_correction</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">flat_discor</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">dark_discor</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+<span class="n">sinogram</span> <span class="o">=</span> <span class="n">remo</span><span class="o">.</span><span class="n">remove_all_stripe</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span>
+<span class="n">center</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">find_center_vo</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">width</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">50</span><span class="p">,</span> <span class="n">width</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">50</span><span class="p">)</span>
+<span class="c1"># Reconstruct image from the sinogram</span>
+<span class="n">rec_img</span> <span class="o">=</span> <span class="n">reco</span><span class="o">.</span><span class="n">dfi_reconstruction</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">apply_log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="s2">&quot;/rec_00800.tif&quot;</span><span class="p">,</span> <span class="n">rec_img</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="align-center figure" id="fig-1-4-10" style="width: 100%">
+<img alt="../../_images/fig_1_4_10.jpg" src="../../_images/fig_1_4_10.jpg" />
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="sinogram-stitching-for-a-half-acquisition-scan">
+<h3><span class="section-number">1.4.8.2. </span>Sinogram stitching for a half-acquisition scan<a class="headerlink" href="#sinogram-stitching-for-a-half-acquisition-scan" title="Permalink to this headline"></a></h3>
+<p>Half-acquisition scanning technique are being used more often at <a class="reference external" href="https://doi.org/10.1364/OE.418448">synchrotron facilities</a>.
+It is a simple technique to double the field-of-view (FOV) of a tomography system
+by shifting the rotation axis to a side of the FOV then acquiring data in the
+angle range of [0, 360-degree]. To process the data, a 360-degree sinogram is
+converted to an equivalent 180-degree sinogram by stitching two halves of
+the 360-degree sinogram, before reconstruction. For stitching, we need to know
+either the center-of-rotation, or the overlap-area and overlap-side between
+two halves of the sinogram. Algotom provides <a class="reference external" href="https://algotom.readthedocs.io/en/latest/api/algotom.prep.calculation.html#algotom.prep.calculation.find_center_360">methods</a>
+for automatically finding these parameters.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
+<span class="kn">import</span> <span class="nn">algotom.prep.correction</span> <span class="k">as</span> <span class="nn">corr</span>
+<span class="kn">import</span> <span class="nn">algotom.prep.removal</span> <span class="k">as</span> <span class="nn">remo</span>
+<span class="kn">import</span> <span class="nn">algotom.prep.calculation</span> <span class="k">as</span> <span class="nn">calc</span>
+<span class="kn">import</span> <span class="nn">algotom.prep.conversion</span> <span class="k">as</span> <span class="nn">conv</span>
+<span class="kn">import</span> <span class="nn">algotom.rec.reconstruction</span> <span class="k">as</span> <span class="nn">reco</span>
+
+<span class="n">input_base</span> <span class="o">=</span> <span class="s2">&quot;E:/data/&quot;</span>
+<span class="n">output_base</span> <span class="o">=</span> <span class="s2">&quot;E:/output/&quot;</span>
+
+<span class="c1"># Data at: https://doi.org/10.5281/zenodo.4386983</span>
+<span class="n">proj_path</span> <span class="o">=</span> <span class="n">input_base</span> <span class="o">+</span> <span class="s2">&quot;/scan_00008/projections_00000.hdf&quot;</span>
+<span class="n">flat_path</span> <span class="o">=</span> <span class="n">input_base</span> <span class="o">+</span> <span class="s2">&quot;/scan_00009/flats_00000.hdf&quot;</span>
+<span class="n">dark_path</span> <span class="o">=</span> <span class="n">input_base</span> <span class="o">+</span> <span class="s2">&quot;/scan_00009/darks_00000.hdf&quot;</span>
+<span class="n">meta_path</span> <span class="o">=</span> <span class="n">input_base</span> <span class="o">+</span> <span class="s2">&quot;/scan_00008/scan_00008.nxs&quot;</span>
+<span class="n">key_path</span> <span class="o">=</span> <span class="s2">&quot;/entry/data/data&quot;</span>
+<span class="n">angle_key</span> <span class="o">=</span> <span class="s2">&quot;/entry1/tomo_entry/data/rotation_angle&quot;</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">proj_path</span><span class="p">,</span> <span class="n">key_path</span><span class="p">)</span>
+<span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">meta_path</span><span class="p">,</span> <span class="n">angle_key</span><span class="p">)[:]))</span>
+<span class="c1"># Load dark-field images and flat-field images, averaging each result.</span>
+<span class="n">flat_field</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">flat_path</span><span class="p">,</span> <span class="n">key_path</span><span class="p">)[:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">dark_field</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">dark_path</span><span class="p">,</span> <span class="n">key_path</span><span class="p">)[:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Generate a sinogram and perform flat-field correction.</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">height</span> <span class="o">//</span> <span class="mi">2</span>
+<span class="n">sino_360</span> <span class="o">=</span> <span class="n">corr</span><span class="o">.</span><span class="n">flat_field_correction</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="n">index</span><span class="p">,</span> <span class="p">:],</span> <span class="n">flat_field</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">dark_field</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+
+<span class="hll"><span class="c1"># Calculate the center-of-rotation, the overlap-side and overlap-area used for stitching</span>
+</span><span class="p">(</span><span class="n">center0</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">find_center_360</span><span class="p">(</span><span class="n">sino_360</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Remove zingers</span>
+<span class="n">sino_360</span> <span class="o">=</span> <span class="n">remo</span><span class="o">.</span><span class="n">remove_zinger</span><span class="p">(</span><span class="n">sino_360</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">)</span>
+<span class="c1"># Remove ring artifacts</span>
+<span class="n">sino_360</span> <span class="o">=</span> <span class="n">remo</span><span class="o">.</span><span class="n">remove_all_stripe</span><span class="p">(</span><span class="n">sino_360</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span>
+<span class="c1"># Convert the 360-degree sinogram to the 180-degree sinogram.</span>
+<span class="n">sino_180</span><span class="p">,</span> <span class="n">center1</span> <span class="o">=</span> <span class="n">conv</span><span class="o">.</span><span class="n">convert_sinogram_360_to_180</span><span class="p">(</span><span class="n">sino_360</span><span class="p">,</span> <span class="n">center0</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="s2">&quot;/sino_360.tif&quot;</span><span class="p">,</span> <span class="n">sino_360</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="s2">&quot;/sino_180.tif&quot;</span><span class="p">,</span> <span class="n">sino_180</span><span class="p">)</span>
+
+<span class="c1"># Perform reconstruction</span>
+<span class="n">rec_img</span> <span class="o">=</span> <span class="n">reco</span><span class="o">.</span><span class="n">dfi_reconstruction</span><span class="p">(</span><span class="n">sino_180</span><span class="p">,</span> <span class="n">center1</span><span class="p">,</span> <span class="n">apply_log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="s2">&quot;/rec_img_1.tif&quot;</span><span class="p">,</span> <span class="n">rec_img</span><span class="p">)</span>
+
+<span class="c1"># 2nd way: extend the 360-degree sinogram. It&#39;s useful for tomography fly-scans</span>
+<span class="c1"># where the two halves of a 360-degree sinogram are mismatch due to the angle</span>
+<span class="c1"># step is not divisible.</span>
+<span class="p">(</span><span class="n">sino_ext</span><span class="p">,</span> <span class="n">center2</span><span class="p">)</span> <span class="o">=</span> <span class="n">conv</span><span class="o">.</span><span class="n">extend_sinogram</span><span class="p">(</span><span class="n">sino_360</span><span class="p">,</span> <span class="n">center0</span><span class="p">)</span>
+<span class="c1"># Perform reconstruction</span>
+<span class="c1"># Using fbp-method for angle range &gt; 180 degree</span>
+<span class="n">img_rec</span> <span class="o">=</span> <span class="n">reco</span><span class="o">.</span><span class="n">fbp_reconstruction</span><span class="p">(</span><span class="n">sino_ext</span><span class="p">,</span> <span class="n">center2</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="n">angles</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">180.0</span><span class="p">,</span>
+                                  <span class="n">apply_log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="s2">&quot;/rec_img_2.tif&quot;</span><span class="p">,</span> <span class="n">img_rec</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="align-center figure" id="fig-1-4-11" style="width: 100%">
+<img alt="../../_images/fig_1_4_11.jpg" src="../../_images/fig_1_4_11.jpg" />
+</div>
+</div></blockquote>
+</div>
+</div>
 </div>
 
 

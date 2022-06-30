@@ -12,6 +12,8 @@ dataset using a normal computer. Tiff format is used because it is
 supported by most of image-related software and it can store 32-bit grayscale
 values.
 
+.. _hdf_format:
+
 Hdf format
 ----------
 
