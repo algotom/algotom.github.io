@@ -436,6 +436,3 @@ for automatically finding these parameters.
 	   :figwidth: 100 %
 	   :align: center
 	   :figclass: align-center
-
-
-
