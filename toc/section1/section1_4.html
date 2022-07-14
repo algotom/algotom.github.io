@@ -14,6 +14,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -95,9 +96,9 @@
            <div itemprop="articleBody">
              
   <div class="section" id="basic-workflow-for-processing-tomographic-data">
-<h1><span class="section-number">1.4. </span>Basic workflow for processing tomographic data<a class="headerlink" href="#basic-workflow-for-processing-tomographic-data" title="Permalink to this headline"></a></h1>
+<h1><span class="section-number">1.4. </span>Basic workflow for processing tomographic data<a class="headerlink" href="#basic-workflow-for-processing-tomographic-data" title="Permalink to this heading"></a></h1>
 <div class="section" id="read-write-data">
-<h2><span class="section-number">1.4.1. </span>Read/write data<a class="headerlink" href="#read-write-data" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">1.4.1. </span>Read/write data<a class="headerlink" href="#read-write-data" title="Permalink to this heading"></a></h2>
 <p>The very first step is to know how to load data to workspace. Different
 communities use different file formats: hdf/nxs, mrc, txrm, xrm, tif, dicom,
 raw,… and they need specific Python libraries to work with. The common format
@@ -162,7 +163,7 @@ to handle different tasks such as converting tif images to hdf, displaying the
 hdf tree, or saving output to a hdf file.</p>
 </div>
 <div class="section" id="flat-field-correction">
-<h2><span class="section-number">1.4.2. </span>Flat-field correction<a class="headerlink" href="#flat-field-correction" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">1.4.2. </span>Flat-field correction<a class="headerlink" href="#flat-field-correction" title="Permalink to this heading"></a></h2>
 <p>The flat-field correction process is based on the Beer-Lambert’s law</p>
 <div class="math notranslate nohighlight">
 \[\frac{I}{I_0} = \int_{}e^{-\alpha (x,y,z) dx}\]</div>
@@ -230,7 +231,7 @@ demonstration can be download from <a class="reference external" href="https://d
 </div></blockquote>
 </div>
 <div class="section" id="zinger-removal">
-<h2><span class="section-number">1.4.3. </span>Zinger removal<a class="headerlink" href="#zinger-removal" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">1.4.3. </span>Zinger removal<a class="headerlink" href="#zinger-removal" title="Permalink to this heading"></a></h2>
 <p>Zingers are prominent bright dots in images caused by scattered X-rays hitting
 the detector system CCD or CMOS chip (<a class="reference internal" href="#fig-1-4-5"><span class="std std-numref">Fig. 1.4.3</span></a> (a,b)). They produce
 line artifacts across a reconstructed image (<a class="reference internal" href="#fig-1-4-5"><span class="std std-numref">Fig. 1.4.3</span></a> (c)).</p>
@@ -252,7 +253,7 @@ in Algotom</p>
 </div></blockquote>
 </div>
 <div class="section" id="ring-artifact-removal">
-<h2><span class="section-number">1.4.4. </span>Ring artifact removal<a class="headerlink" href="#ring-artifact-removal" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">1.4.4. </span>Ring artifact removal<a class="headerlink" href="#ring-artifact-removal" title="Permalink to this heading"></a></h2>
 <p>Causes of ring artifacts and methods for removing them have been documented in detailed
 <a class="reference external" href="https://sarepy.readthedocs.io/">here</a>. There are many methods to choose from
 in Algotom. However the <a class="reference external" href="https://doi.org/10.1364/OE.26.028396">combination of methods</a>
@@ -274,7 +275,7 @@ of how to use the methods</p>
 </div></blockquote>
 </div>
 <div class="section" id="center-of-rotation-determination">
-<h2><span class="section-number">1.4.5. </span>Center-of-rotation determination<a class="headerlink" href="#center-of-rotation-determination" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">1.4.5. </span>Center-of-rotation determination<a class="headerlink" href="#center-of-rotation-determination" title="Permalink to this heading"></a></h2>
 <p>There are <a class="reference external" href="https://algotom.readthedocs.io/en/latest/api/algotom.prep.calculation.html">a few methods</a>
 to determine the center-of-rotation. The demonstrated method below uses a 180-degree
 sinogram for calculation.</p>
@@ -288,7 +289,7 @@ sinogram for calculation.</p>
 </div></blockquote>
 </div>
 <div class="section" id="denoising-or-contrast-enhancement">
-<h2><span class="section-number">1.4.6. </span>Denoising or contrast enhancement<a class="headerlink" href="#denoising-or-contrast-enhancement" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">1.4.6. </span>Denoising or contrast enhancement<a class="headerlink" href="#denoising-or-contrast-enhancement" title="Permalink to this heading"></a></h2>
 <p>There is a method for enhancing the contrast of an image, known as the <a class="reference external" href="https://doi.org/10.1046/j.1365-2818.2002.01010.x">Paganin filter</a>
 which is commonly used at synchrotron facilities. Algotom implements a
 <a class="reference external" href="https://doi.org/10.1364/OE.418448">simplified version</a> of this filter, named
@@ -317,7 +318,7 @@ Ratio = 200. (b) Ratio = 1000.</span><a class="headerlink" href="#fig-1-4-7" tit
 </div></blockquote>
 </div>
 <div class="section" id="image-reconstruction">
-<h2><span class="section-number">1.4.7. </span>Image reconstruction<a class="headerlink" href="#image-reconstruction" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">1.4.7. </span>Image reconstruction<a class="headerlink" href="#image-reconstruction" title="Permalink to this heading"></a></h2>
 <p>There are many choices for reconstruction methods and open-source software. In
 the current version (&lt;=1.1), Algotom implements two FFT-based methods which is fast enough
 for a 2k x 2k x 2k dataset. Algotom also provides wrappers for other reconstruction
@@ -353,9 +354,9 @@ different strengths:</p>
 </div></blockquote>
 </div>
 <div class="section" id="other-data-processing-steps">
-<h2><span class="section-number">1.4.8. </span>Other data processing steps<a class="headerlink" href="#other-data-processing-steps" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">1.4.8. </span>Other data processing steps<a class="headerlink" href="#other-data-processing-steps" title="Permalink to this heading"></a></h2>
 <div class="section" id="distortion-correction">
-<h3><span class="section-number">1.4.8.1. </span>Distortion correction<a class="headerlink" href="#distortion-correction" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">1.4.8.1. </span>Distortion correction<a class="headerlink" href="#distortion-correction" title="Permalink to this heading"></a></h3>
 <p>If a detecting system suffers from the lens-distortion problem, the working
 routine is as follows:</p>
 <ul>
@@ -413,7 +414,7 @@ routine is as follows:</p>
 </ul>
 </div>
 <div class="section" id="sinogram-stitching-for-a-half-acquisition-scan">
-<h3><span class="section-number">1.4.8.2. </span>Sinogram stitching for a half-acquisition scan<a class="headerlink" href="#sinogram-stitching-for-a-half-acquisition-scan" title="Permalink to this headline"></a></h3>
+<span id="half-acquisition"></span><h3><span class="section-number">1.4.8.2. </span>Sinogram stitching for a half-acquisition scan<a class="headerlink" href="#sinogram-stitching-for-a-half-acquisition-scan" title="Permalink to this heading"></a></h3>
 <p>Half-acquisition scanning technique are being used more often at <a class="reference external" href="https://doi.org/10.1364/OE.418448">synchrotron facilities</a>.
 It is a simple technique to double the field-of-view (FOV) of a tomography system
 by shifting the rotation axis to a side of the FOV then acquiring data in the

@@ -357,6 +357,7 @@ routine is as follows:
 	   :align: center
 	   :figclass: align-center
 
+.. _half_acquisition:
 
 Sinogram stitching for a half-acquisition scan
 ++++++++++++++++++++++++++++++++++++++++++++++

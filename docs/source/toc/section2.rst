@@ -7,16 +7,17 @@ been developed and tested at synchrotron beamlines where massive datasets are pr
 This factor drives the methods developed to be easy-to-use, robust, and practical.
 Some featuring methods in Algotom are as follows:
 
-- Methods for processing grid scans (or tiled scans) with the offset rotation-axis
-  to multiply double the field-of-view (FOV) of a parallel-beam tomography system.
+- Methods in a full data processing pipeline: reading-writing data,
+  pre-processing, tomographic reconstruction, and post-processing.
 
-  .. figure:: section2/figs/fig_2_1.jpg
+  .. figure:: section2/figs/fig_2_1.png
    :figwidth: 90%
    :name: fig_2_1
    :align: center
    :figclass: align-center
 
-- Methods for processing helical scans (with/without the offset rotation-axis).
+- Methods for processing grid scans (or tiled scans) with the offset rotation-axis
+  to multiply double the field-of-view (FOV) of a parallel-beam tomography system.
 
   .. figure:: section2/figs/fig_2_2.jpg
    :figwidth: 90%
@@ -24,23 +25,21 @@ Some featuring methods in Algotom are as follows:
    :align: center
    :figclass: align-center
 
-- Methods for determining the center-of-rotation (COR) and auto-stitching images
-  in half-acquisition scans (360-degree acquisition with the offset COR).
+- Methods for processing helical scans (with/without the offset rotation-axis).
 
-- Methods in a full data processing pipeline: reading-writing data,
-  pre-processing, tomographic reconstruction, and post-processing.
-
-  .. figure:: section2/figs/fig_2_3.png
+  .. figure:: section2/figs/fig_2_3.jpg
    :figwidth: 90%
    :name: fig_2_3
    :align: center
    :figclass: align-center
 
+- Methods for determining the center-of-rotation (COR) and auto-stitching images
+  in :ref:`half-acquisition scans <half_acquisition>` (360-degree acquisition with the offset COR).
 - Some practical methods developed and implemented for the package:
   zinger removal, tilted sinogram generation, sinogram distortion correction,
   beam hardening correction, DFI (direct Fourier inversion) reconstruction,
-  and double-wedge filter for removing sample parts larger than the FOV in
-  a sinogram.
+  FBP reconstruction, and double-wedge filter for removing sample parts larger
+  than the FOV in a sinogram.
 
   .. figure:: section2/figs/fig_2_4.jpg
    :figwidth: 90%
@@ -50,7 +49,6 @@ Some featuring methods in Algotom are as follows:
 
 - Utility methods for customizing ring/stripe artifact removal methods and
   parallelizing computational work.
-
 - Calibration methods for determining pixel-size in helical scans.
 - Methods for generating simulation data: phantom creation, sinogram calculation
   based on the Fourier slice theorem, and artifact generation.
