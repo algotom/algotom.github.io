@@ -193,15 +193,20 @@ removal methods before performing full reconstruction.
 
     # Load flat images, average them.
     flat_path = losa.find_file(flat_path + "/*.tif*")
-    flat = losa.load_image(flat_path[0])
-    for i in range(1, len(flat_path)):
-        flat = (flat + losa.load_image(flat_path[i])) * 0.5
+    height, width = np.shape(losa.load_image(flat_path[0]))
+    num_flat = len(flat_path)
+    flat = np.zeros((num_flat, height, width), dtype=np.float32)
+    for i in range(num_flat):
+        flat[i] = losa.load_image(flat_path[i])
+    flat = np.mean(flat, axis=0)
 
     # Load dark images, average them.
     dark_path = losa.find_file(dark_path + "/*.tif*")
-    dark = losa.load_image(dark_path[0])
-    for i in range(1, len(dark_path)):
-        dark = (dark + losa.load_image(dark_path[i])) * 0.5
+    num_dark = len(dark_path)
+    dark = np.zeros((num_dark, height, width), dtype=np.float32)
+    for i in range(num_dark):
+        dark[i] = losa.load_image(dark_path[i])
+    dark = np.mean(dark, axis=0)
 
     # Generate angles
     num_angle = len(losa.find_file(proj_path + "/*.tif*"))
