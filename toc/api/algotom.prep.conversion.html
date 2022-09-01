@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7.2.2. algotom.prep.conversion &mdash; Algotom&#39;s documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7.2.3. algotom.prep.correction" href="algotom.prep.correction.html" />
+    <link rel="prev" title="7.2.1. algotom.prep.calculation" href="algotom.prep.calculation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Algotom
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../section1.html">1. Basic tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section2.html">2. Features and capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section3.html">3. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section4.html">4. Demonstrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section5.html">5. Technical notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section6.html">6. Update notes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">7. API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#input-output">7.1. Input-output</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#pre-processing">7.2. Pre-processing</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="algotom.prep.calculation.html">7.2.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.calculation</span></code></a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">7.2.2. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.conversion</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="algotom.prep.correction.html">7.2.3. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.correction</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="algotom.prep.filtering.html">7.2.4. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.filtering</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="algotom.prep.removal.html">7.2.5. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.removal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="algotom.prep.phase.html">7.2.6. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.phase</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#reconstruction">7.3. Reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#post-processing">7.4. Post-processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#utility">7.5. Utility</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../credits.html">8. Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Algotom</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../api.html"><span class="section-number">7. </span>API Reference</a> &raquo;</li>
+      <li><span class="section-number">7.2.2. </span><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.conversion</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/toc/api/algotom.prep.conversion.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-algotom.prep.conversion">
+<span id="algotom-prep-conversion"></span><h1><span class="section-number">7.2.2. </span><a class="reference internal" href="#module-algotom.prep.conversion" title="algotom.prep.conversion"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.conversion</span></code></a><a class="headerlink" href="#module-algotom.prep.conversion" title="Permalink to this heading"></a></h1>
+<dl class="simple">
+<dt>Module of conversion methods in the preprocessing stage:</dt><dd><ul class="simple">
+<li><p>Stitching images.</p></li>
+<li><p>Joining images if there is no overlapping.</p></li>
+<li><p>Converting a 360-degree sinogram with offset center-of-rotation (COR) to
+a 180-degree sinogram.</p></li>
+<li><p>Extending a 360-degree sinogram with offset COR for direct reconstruction
+instead of converting it to a 180-degree sinogram.</p></li>
+<li><p>Converting a 180-degree sinogram to a 360-sinogram.</p></li>
+<li><p>Generating a sinogram from a helical data.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric"><strong>Functions:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.prep.conversion.make_weight_matrix" title="algotom.prep.conversion.make_weight_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_weight_matrix</span></code></a>(mat1, mat2, overlap, side)</p></td>
+<td><p>Generate a linear-ramp weighting matrix for image stitching.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#algotom.prep.conversion.stitch_image" title="algotom.prep.conversion.stitch_image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stitch_image</span></code></a>(mat1, mat2, overlap, side[, ...])</p></td>
+<td><p>Stitch projection images or sinogram images using a linear ramp.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.prep.conversion.join_image" title="algotom.prep.conversion.join_image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">join_image</span></code></a>(mat1, mat2, joint_width, side[, ...])</p></td>
+<td><p>Join projection images or sinogram images.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#algotom.prep.conversion.stitch_image_multiple" title="algotom.prep.conversion.stitch_image_multiple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stitch_image_multiple</span></code></a>(list_mat, list_overlap)</p></td>
+<td><p>Stitch list of projection images or sinogram images using a linear ramp.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.prep.conversion.join_image_multiple" title="algotom.prep.conversion.join_image_multiple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">join_image_multiple</span></code></a>(list_mat, list_joint[, ...])</p></td>
+<td><p>Join list of projection images or sinogram images.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#algotom.prep.conversion.convert_sinogram_360_to_180" title="algotom.prep.conversion.convert_sinogram_360_to_180"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_sinogram_360_to_180</span></code></a>(sino_360, cor[, ...])</p></td>
+<td><p>Convert a 360-degree sinogram to a 180-degree sinogram.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.prep.conversion.convert_sinogram_180_to_360" title="algotom.prep.conversion.convert_sinogram_180_to_360"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_sinogram_180_to_360</span></code></a>(sino_180, center)</p></td>
+<td><p>Convert a 180-degree sinogram to a 360-degree sinogram (Ref.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#algotom.prep.conversion.extend_sinogram" title="algotom.prep.conversion.extend_sinogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extend_sinogram</span></code></a>(sino_360, cor[, apply_log])</p></td>
+<td><p>Extend a 360-degree sinogram (with offset center-of-rotation) for later reconstruction (Ref.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.prep.conversion.generate_sinogram_helical_scan" title="algotom.prep.conversion.generate_sinogram_helical_scan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_sinogram_helical_scan</span></code></a>(index, ...[, ...])</p></td>
+<td><p>Generate a 180-degree sinogram or a 360-degree sinogram from a helical scan dataset which is a hdf/nxs object (Ref.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#algotom.prep.conversion.generate_full_sinogram_helical_scan" title="algotom.prep.conversion.generate_full_sinogram_helical_scan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_full_sinogram_helical_scan</span></code></a>(index, ...)</p></td>
+<td><p>Generate a full sinogram from a helical scan dataset which is a hdf/nxs object (Ref.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.prep.conversion.make_weight_matrix">
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.conversion.</span></span><span class="sig-name descname"><span class="pre">make_weight_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overlap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/conversion.html#make_weight_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.conversion.make_weight_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Generate a linear-ramp weighting matrix for image stitching.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mat1</strong> (<em>array_like</em>) – 2D array. Projection image or sinogram image.</p></li>
+<li><p><strong>mat2</strong> (<em>array_like</em>) – 2D array. Projection image or sinogram image.</p></li>
+<li><p><strong>overlap</strong> (<em>int</em>) – Width of the overlap area between two images.</p></li>
+<li><p><strong>side</strong> (<em>{0, 1}</em>) – Only two options: 0 or 1. It is used to indicate the overlap side
+respects to image 1. “0” corresponds to the left side. “1” corresponds
+to the right side.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.prep.conversion.stitch_image">
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.conversion.</span></span><span class="sig-name descname"><span class="pre">stitch_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overlap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wei_mat1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wei_mat2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/conversion.html#stitch_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.conversion.stitch_image" title="Permalink to this definition"></a></dt>
+<dd><p>Stitch projection images or sinogram images using a linear ramp.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mat1</strong> (<em>array_like</em>) – 2D array. Projection image or sinogram image.</p></li>
+<li><p><strong>mat2</strong> (<em>array_like</em>) – 2D array. Projection image or sinogram image.</p></li>
+<li><p><strong>overlap</strong> (<em>float</em>) – Width of the overlap area between two images.</p></li>
+<li><p><strong>side</strong> (<em>{0, 1}</em>) – Only two options: 0 or 1. It is used to indicate the overlap side
+respects to image 1. “0” corresponds to the left side. “1” corresponds
+to the right side.</p></li>
+<li><p><strong>wei_mat1</strong> (<em>array_like, optional</em>) – Weighting matrix used for image 1.</p></li>
+<li><p><strong>wei_mat2</strong> (<em>array_like, optional</em>) – Weighting matrix used for image 2.</p></li>
+<li><p><strong>norm</strong> (<em>bool, optional</em>) – Enable/disable normalization before stitching.</p></li>
+<li><p><strong>total_width</strong> (<em>int, optional</em>) – Final width of the stitched image.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>array_like</em> – Stitched image.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.prep.conversion.join_image">
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.conversion.</span></span><span class="sig-name descname"><span class="pre">join_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">joint_width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/conversion.html#join_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.conversion.join_image" title="Permalink to this definition"></a></dt>
+<dd><p>Join projection images or sinogram images. This is useful for fixing the
+problem of non-overlap between images.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mat1</strong> (<em>array_like</em>) – 2D array. Projection image or sinogram image.</p></li>
+<li><p><strong>mat2</strong> (<em>array_like</em>) – 2D array. Projection image or sinogram image.</p></li>
+<li><p><strong>joint_width</strong> (<em>float</em>) – Width of the joint area between two images.</p></li>
+<li><p><strong>side</strong> (<em>{0, 1}</em>) – Only two options: 0 or 1. It is used to indicate the overlap side
+respects to image 1. “0” corresponds to the left side. “1” corresponds
+to the right side.</p></li>
+<li><p><strong>norm</strong> (<em>bool</em>) – Enable/disable normalization before joining.</p></li>
+<li><p><strong>total_width</strong> (<em>int, optional</em>) – Final width of the joined image.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>array_like</em> – Stitched image.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.prep.conversion.stitch_image_multiple">
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.conversion.</span></span><span class="sig-name descname"><span class="pre">stitch_image_multiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_overlap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/conversion.html#stitch_image_multiple"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.conversion.stitch_image_multiple" title="Permalink to this definition"></a></dt>
+<dd><p>Stitch list of projection images or sinogram images using a linear ramp.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>list_mat</strong> (<em>list of array_like</em>) – List of 2D array. Projection image or sinogram image.</p></li>
+<li><p><strong>list_overlap</strong> (<em>list of tuple of floats</em>) – List of [overlap, side].
+overlap : Width of the overlap area between two images.
+side : Overlap side between two images.</p></li>
+<li><p><strong>norm</strong> (<em>bool, optional</em>) – Enable/disable normalization before stitching.</p></li>
+<li><p><strong>total_width</strong> (<em>int, optional</em>) – Final width of the stitched image.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>array_like</em> – Stitched image.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.prep.conversion.join_image_multiple">
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.conversion.</span></span><span class="sig-name descname"><span class="pre">join_image_multiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_joint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/conversion.html#join_image_multiple"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.conversion.join_image_multiple" title="Permalink to this definition"></a></dt>
+<dd><p>Join list of projection images or sinogram images. This is useful for
+fixing the problem of non-overlap between images.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>list_mat</strong> (<em>list of array_like</em>) – List of 2D array. Projection image or sinogram image.</p></li>
+<li><p><strong>list_joint</strong> (<em>list of tuple of floats</em>) – List of [joint_width, side].
+joint_width : Width of the joint area between two images.
+side : Overlap side between two images.</p></li>
+<li><p><strong>norm</strong> (<em>bool, optional</em>) – Enable/disable normalization before stitching.</p></li>
+<li><p><strong>total_width</strong> (<em>int, optional</em>) – Final width of the stitched image.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>array_like</em> – Stitched image.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.prep.conversion.convert_sinogram_360_to_180">
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.conversion.</span></span><span class="sig-name descname"><span class="pre">convert_sinogram_360_to_180</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sino_360</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wei_mat1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wei_mat2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/conversion.html#convert_sinogram_360_to_180"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.conversion.convert_sinogram_360_to_180" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a 360-degree sinogram to a 180-degree sinogram.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sino_360</strong> (<em>array_like</em>) – 2D array. 360-degree sinogram.</p></li>
+<li><p><strong>cor</strong> (<em>float or tuple of float</em>) – Center-of-rotation or (Overlap_area, overlap_side).</p></li>
+<li><p><strong>wei_mat1</strong> (<em>array_like, optional</em>) – Weighting matrix used for the 1st haft of the sinogram.</p></li>
+<li><p><strong>wei_mat2</strong> (<em>array_like, optional</em>) – Weighting matrix used for the 2nd haft of the sinogram.</p></li>
+<li><p><strong>norm</strong> (<em>bool, optional</em>) – Enable/disable normalization before stitching.</p></li>
+<li><p><strong>total_width</strong> (<em>int, optional</em>) – Final width of the stitched image.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>sino_stiched</strong> (<em>array_like</em>) – Converted sinogram.</p></li>
+<li><p><strong>cor</strong> (<em>float</em>) – Updated center-of-rotation referred to the converted sinogram.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.prep.conversion.convert_sinogram_180_to_360">
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.conversion.</span></span><span class="sig-name descname"><span class="pre">convert_sinogram_180_to_360</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sino_180</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/conversion.html#convert_sinogram_180_to_360"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.conversion.convert_sinogram_180_to_360" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a 180-degree sinogram to a 360-degree sinogram (Ref. <a href="#id9"><span class="problematic" id="id1">[1]_</span></a>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sino_180</strong> (<em>array_like</em>) – 2D array. 180-degree sinogram.</p></li>
+<li><p><strong>center</strong> (<em>float</em>) – Center-of-rotation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>array_like</em> – 360-degree sinogram.</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets">1</span></dt>
+<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.22.019078">https://doi.org/10.1364/OE.22.019078</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.prep.conversion.extend_sinogram">
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.conversion.</span></span><span class="sig-name descname"><span class="pre">extend_sinogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sino_360</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/conversion.html#extend_sinogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.conversion.extend_sinogram" title="Permalink to this definition"></a></dt>
+<dd><p>Extend a 360-degree sinogram (with offset center-of-rotation) for
+later reconstruction (Ref. <a href="#id10"><span class="problematic" id="id3">[1]_</span></a>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sino_360</strong> (<em>array_like</em>) – 2D array. 360-degree sinogram.</p></li>
+<li><p><strong>cor</strong> (<em>float or tuple of float</em>) – Center-of-rotation or (Overlap_area, overlap_side).</p></li>
+<li><p><strong>apply_log</strong> (<em>bool, optional</em>) – Apply the logarithm function if True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>sino_pad</strong> (<em>array_like</em>) – Extended sinogram.</p></li>
+<li><p><strong>cor</strong> (<em>float</em>) – Updated center-of-rotation referred to the converted sinogram.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id4"><span class="brackets">1</span></dt>
+<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.prep.conversion.generate_sinogram_helical_scan">
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.conversion.</span></span><span class="sig-name descname"><span class="pre">generate_sinogram_helical_scan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tomo_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_proj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_stop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scan_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'180'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/conversion.html#generate_sinogram_helical_scan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.conversion.generate_sinogram_helical_scan" title="Permalink to this definition"></a></dt>
+<dd><p>Generate a 180-degree sinogram or a 360-degree sinogram from a helical
+scan dataset which is a hdf/nxs object (Ref. <a href="#id11"><span class="problematic" id="id5">[1]_</span></a>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int</em>) – Index of the sinogram.</p></li>
+<li><p><strong>tomo_data</strong> (<em>hdf object.</em>) – 3D array.</p></li>
+<li><p><strong>num_proj</strong> (<em>int</em>) – Number of projections per 180-degree.</p></li>
+<li><p><strong>pixel_size</strong> (<em>float</em>) – Pixel size. The unit must be the same as y-position.</p></li>
+<li><p><strong>y_start</strong> (<em>float</em>) – Y-position of the stage at the beginning of the scan.</p></li>
+<li><p><strong>y_stop</strong> (<em>float</em>) – Y-position of the stage at the end of the scan.</p></li>
+<li><p><strong>pitch</strong> (<em>float</em>) – The distance which the y-stage is translated in one full rotation.</p></li>
+<li><p><strong>scan_type</strong> (<em>{“180”, “360”}</em>) – One of two options: “180” for generating a 180-degree sinogram or
+“360” for generating a 360-degree sinogram.</p></li>
+<li><p><strong>angles</strong> (<em>array_like, optional</em>) – 1D array. List of angles (degree) corresponding to acquired projections.</p></li>
+<li><p><strong>flat</strong> (<em>array_like, optional</em>) – Flat-field image used for flat-field correction.</p></li>
+<li><p><strong>dark</strong> (<em>array_like, optional</em>) – Dark-field image used for flat-field correction.</p></li>
+<li><p><strong>mask</strong> (<em>array_like, optional</em>) – Used for removing streak artifacts caused by blobs in the flat-field
+image.</p></li>
+<li><p><strong>crop</strong> (<em>tuple of int, optional</em>) – Used for cropping images.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>sinogram</strong> (<em>array_like</em>) – 2D array. 180-degree sinogram or 360-degree sinogram.</p></li>
+<li><p><strong>list_angle</strong> (<em>array_like</em>) – 1D array. List of angles corresponding to the generated sinogram.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id6"><span class="brackets">1</span></dt>
+<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.prep.conversion.generate_full_sinogram_helical_scan">
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.conversion.</span></span><span class="sig-name descname"><span class="pre">generate_full_sinogram_helical_scan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tomo_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_proj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_stop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scan_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'180'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/conversion.html#generate_full_sinogram_helical_scan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.conversion.generate_full_sinogram_helical_scan" title="Permalink to this definition"></a></dt>
+<dd><p>Generate a full sinogram from a helical scan dataset which is a hdf/nxs
+object (Ref. <a href="#id12"><span class="problematic" id="id7">[1]_</span></a>). Full sinogram is all 1D projection of the same slice of
+a sample staying inside the field of view.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int</em>) – Index of the sinogram.</p></li>
+<li><p><strong>tomo_data</strong> (<em>hdf object.</em>) – 3D array.</p></li>
+<li><p><strong>num_proj</strong> (<em>int</em>) – Number of projections per 180-degree.</p></li>
+<li><p><strong>pixel_size</strong> (<em>float</em>) – Pixel size. The unit must be the same as y-position.</p></li>
+<li><p><strong>y_start</strong> (<em>float</em>) – Y-position of the stage at the beginning of the scan.</p></li>
+<li><p><strong>y_stop</strong> (<em>float</em>) – Y-position of the stage at the end of the scan.</p></li>
+<li><p><strong>pitch</strong> (<em>float</em>) – The distance which the y-stage is translated in one full rotation.</p></li>
+<li><p><strong>scan_type</strong> (<em>{“180”, “360”}</em>) – Data acquired is the 180-degree type or 360-degree type [1].</p></li>
+<li><p><strong>angles</strong> (<em>array_like, optional</em>) – 1D array. List of angles (degree) corresponding to acquired projections.</p></li>
+<li><p><strong>flat</strong> (<em>array_like, optional</em>) – Flat-field image used for flat-field correction.</p></li>
+<li><p><strong>dark</strong> (<em>array_like, optional</em>) – Dark-field image used for flat-field correction.</p></li>
+<li><p><strong>mask</strong> (<em>array_like, optional</em>) – Used for removing streak artifacts caused by blobs in the flat-field
+image.</p></li>
+<li><p><strong>crop</strong> (<em>tuple of int, optional</em>) – Used for cropping images.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>sinogram</strong> (<em>array_like</em>) – 2D array. Full sinogram.</p></li>
+<li><p><strong>list_angle</strong> (<em>array_like</em>) – 1D array. List of angles corresponding to the generated sinogram.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id8"><span class="brackets">1</span></dt>
+<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="algotom.prep.calculation.html" class="btn btn-neutral float-left" title="7.2.1. algotom.prep.calculation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="algotom.prep.correction.html" class="btn btn-neutral float-right" title="7.2.3. algotom.prep.correction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Nghia T. Vo.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7.5.1. algotom.util.calibration &mdash; Algotom&#39;s documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7.5.2. algotom.util.simulation" href="algotom.util.simulation.html" />
+    <link rel="prev" title="7.4.1. algotom.post.postprocessing" href="algotom.post.postprocessing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Algotom
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../section1.html">1. Basic tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section2.html">2. Features and capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section3.html">3. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section4.html">4. Demonstrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section5.html">5. Technical notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section6.html">6. Update notes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">7. API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#input-output">7.1. Input-output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#pre-processing">7.2. Pre-processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#reconstruction">7.3. Reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#post-processing">7.4. Post-processing</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#utility">7.5. Utility</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">7.5.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.calibration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="algotom.util.simulation.html">7.5.2. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.simulation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="algotom.util.utility.html">7.5.3. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.utility</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="algotom.util.correlation.html">7.5.4. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.correlation</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../credits.html">8. Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Algotom</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../api.html"><span class="section-number">7. </span>API Reference</a> &raquo;</li>
+      <li><span class="section-number">7.5.1. </span><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.calibration</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/toc/api/algotom.util.calibration.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-algotom.util.calibration">
+<span id="algotom-util-calibration"></span><h1><span class="section-number">7.5.1. </span><a class="reference internal" href="#module-algotom.util.calibration" title="algotom.util.calibration"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.calibration</span></code></a><a class="headerlink" href="#module-algotom.util.calibration" title="Permalink to this heading"></a></h1>
+<dl class="simple">
+<dt>Module of calibration methods:</dt><dd><ul class="simple">
+<li><p>Correcting the non-uniform background of an image.</p></li>
+<li><p>Binarizing an image.</p></li>
+<li><p>Calculating the distance between two point-like objects segmented from
+two images. Useful for determining pixel-size in helical scans.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric"><strong>Functions:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.util.calibration.normalize_background" title="algotom.util.calibration.normalize_background"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalize_background</span></code></a>(mat[, size])</p></td>
+<td><p>Correct a non-uniform background of an image using the median filter.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#algotom.util.calibration.normalize_background_based_fft" title="algotom.util.calibration.normalize_background_based_fft"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalize_background_based_fft</span></code></a>(mat[, sigma, ...])</p></td>
+<td><p>Correct a non-uniform background of an image using a Fourier Gaussian filter.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.util.calibration.invert_dot_contrast" title="algotom.util.calibration.invert_dot_contrast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invert_dot_contrast</span></code></a>(mat)</p></td>
+<td><p>Invert the contrast of a 2D binary array to make sure that a dot is white.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#algotom.util.calibration.calculate_threshold" title="algotom.util.calibration.calculate_threshold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_threshold</span></code></a>(mat[, bgr])</p></td>
+<td><p>Calculate threshold value based on Algorithm 4 in Ref.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.util.calibration.binarize_image" title="algotom.util.calibration.binarize_image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">binarize_image</span></code></a>(mat[, threshold, bgr, norm, ...])</p></td>
+<td><p>Binarize an image.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#algotom.util.calibration.get_dot_size" title="algotom.util.calibration.get_dot_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dot_size</span></code></a>(mat[, size_opt])</p></td>
+<td><p>Get size of binary dots given the option.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.util.calibration.check_dot_size" title="algotom.util.calibration.check_dot_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_dot_size</span></code></a>(mat, min_size, max_size)</p></td>
+<td><p>Check if the size of a dot is in a range.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#algotom.util.calibration.select_dot_based_size" title="algotom.util.calibration.select_dot_based_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select_dot_based_size</span></code></a>(mat, dot_size[, ratio])</p></td>
+<td><p>Select dots having a certain size.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.util.calibration.calculate_distance" title="algotom.util.calibration.calculate_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_distance</span></code></a>(mat1, mat2[, size_opt, ...])</p></td>
+<td><p>Calculate the distance between two point-like objects segmented from two images.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.util.calibration.normalize_background">
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">normalize_background</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">51</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#normalize_background"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.normalize_background" title="Permalink to this definition"></a></dt>
+<dd><p>Correct a non-uniform background of an image using the median filter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – Size of the median filter.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>array_like</em> – 2D array. Corrected image.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.util.calibration.normalize_background_based_fft">
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">normalize_background_based_fft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#normalize_background_based_fft"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.normalize_background_based_fft" title="Permalink to this definition"></a></dt>
+<dd><p>Correct a non-uniform background of an image using a Fourier Gaussian
+filter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
+<li><p><strong>sigma</strong> (<em>int</em>) – Sigma of the Gaussian.</p></li>
+<li><p><strong>pad</strong> (<em>int</em>) – Padding for the Fourier transform.</p></li>
+<li><p><strong>mode</strong> (<em>str, list of str, or tuple of str</em>) – Padding method. One of options : ‘reflect’, ‘edge’, ‘constant’. Full
+list is at:
+<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.pad.html">https://numpy.org/doc/stable/reference/generated/numpy.pad.html</a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>array_like</em> – 2D array. Corrected image.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.util.calibration.invert_dot_contrast">
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">invert_dot_contrast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#invert_dot_contrast"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.invert_dot_contrast" title="Permalink to this definition"></a></dt>
+<dd><p>Invert the contrast of a 2D binary array to make sure that a dot is white.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mat</strong> (<em>array_like</em>) – 2D binary array.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>array_like</em> – 2D array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.util.calibration.calculate_threshold">
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">calculate_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bgr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bright'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#calculate_threshold"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.calculate_threshold" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate threshold value based on Algorithm 4 in Ref. <a href="#id9"><span class="problematic" id="id1">[1]_</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
+<li><p><strong>bgr</strong> (<em>{“bright”, “dark”}</em>) – To indicate the brightness of the background against image features.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>float</em> – Threshold value.</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets">1</span></dt>
+<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.26.028396">https://doi.org/10.1364/OE.26.028396</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.util.calibration.binarize_image">
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">binarize_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bgr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bright'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#binarize_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.binarize_image" title="Permalink to this definition"></a></dt>
+<dd><p>Binarize an image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
+<li><p><strong>threshold</strong> (<em>float, optional</em>) – Threshold value for binarization. Automatically calculated using
+Algorithm 4 in Ref. <a href="#id10"><span class="problematic" id="id3">[1]_</span></a> if None.</p></li>
+<li><p><strong>bgr</strong> (<em>{“bright”, “dark”}</em>) – To indicate the brightness of the background against image features.</p></li>
+<li><p><strong>norm</strong> (<em>bool, optional</em>) – Apply normalization if True.</p></li>
+<li><p><strong>denoise</strong> (<em>bool, optional</em>) – Apply denoising if True.</p></li>
+<li><p><strong>invert</strong> (<em>bool, optional</em>) – Invert the contrast if needed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>array_like</em> – 2D binary array.</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id4"><span class="brackets">1</span></dt>
+<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.26.028396">https://doi.org/10.1364/OE.26.028396</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.util.calibration.get_dot_size">
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">get_dot_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_opt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'max'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#get_dot_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.get_dot_size" title="Permalink to this definition"></a></dt>
+<dd><p>Get size of binary dots given the option.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mat</strong> (<em>array_like</em>) – 2D binary array.</p></li>
+<li><p><strong>size_opt</strong> (<em>{“max”, “min”, “median”, “mean”}</em>) – Select options.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>dot_size</strong> (<em>float</em>) – Size of the dot.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.util.calibration.check_dot_size">
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">check_dot_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#check_dot_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.check_dot_size" title="Permalink to this definition"></a></dt>
+<dd><p>Check if the size of a dot is in a range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
+<li><p><strong>min_size</strong> (<em>float</em>) – Minimum size.</p></li>
+<li><p><strong>max_size</strong> (<em>float</em>) – Maximum size.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.util.calibration.select_dot_based_size">
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">select_dot_based_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dot_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#select_dot_based_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.select_dot_based_size" title="Permalink to this definition"></a></dt>
+<dd><p>Select dots having a certain size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
+<li><p><strong>dot_size</strong> (<em>float</em>) – Size of the standard dot.</p></li>
+<li><p><strong>ratio</strong> (<em>float</em>) – Used to calculate the acceptable range.
+[dot_size - ratio*dot_size; dot_size + ratio*dot_size]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>array_like</em> – 2D array. Selected dots.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.util.calibration.calculate_distance">
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">calculate_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_opt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'max'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bgr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bright'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#calculate_distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.calculate_distance" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the distance between two point-like objects segmented from
+two images. Useful for measuring pixel-size in helical scans (Ref. <a href="#id11"><span class="problematic" id="id5">[1]_</span></a>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mat1</strong> (<em>array_like</em>) – 2D array.</p></li>
+<li><p><strong>mat2</strong> (<em>array_like</em>) – 2D array.</p></li>
+<li><p><strong>size_opt</strong> (<em>{“max”, “min”, “median”, “mean”}</em>) – Options to select binary objects based on their size.</p></li>
+<li><p><strong>threshold</strong> (<em>float, optional</em>) – Threshold value for binarization. Automatically calculated using
+Algorithm 4 in Ref. <a class="footnote-reference brackets" href="#id8" id="id6">2</a> if None.</p></li>
+<li><p><strong>bgr</strong> (<em>{“bright”, “dark”}</em>) – To indicate the brightness of the background against image features.</p></li>
+<li><p><strong>norm</strong> (<em>bool, optional</em>) – Apply normalization if True.</p></li>
+<li><p><strong>denoise</strong> (<em>bool, optional</em>) – Apply denoising if True.</p></li>
+<li><p><strong>invert</strong> (<em>bool, optional</em>) – Invert the contrast if needed.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id7"><span class="brackets">1</span></dt>
+<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
+</dd>
+<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id6">2</a></span></dt>
+<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.26.028396">https://doi.org/10.1364/OE.26.028396</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="algotom.post.postprocessing.html" class="btn btn-neutral float-left" title="7.4.1. algotom.post.postprocessing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="algotom.util.simulation.html" class="btn btn-neutral float-right" title="7.5.2. algotom.util.simulation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Nghia T. Vo.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

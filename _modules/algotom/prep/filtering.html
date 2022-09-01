@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>algotom.prep.filtering &mdash; Algotom&#39;s documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Algotom
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../toc/section1.html">1. Basic tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toc/section2.html">2. Features and capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toc/section3.html">3. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toc/section4.html">4. Demonstrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toc/section5.html">5. Technical notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toc/section6.html">6. Update notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toc/api.html">7. API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toc/credits.html">8. Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Algotom</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>algotom.prep.filtering</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for algotom.prep.filtering</h1><div class="highlight"><pre>
+<span></span><span class="c1"># ============================================================================</span>
+<span class="c1"># ============================================================================</span>
+<span class="c1"># Copyright (c) 2021 Nghia T. Vo. All rights reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1"># ============================================================================</span>
+<span class="c1"># Author: Nghia T. Vo</span>
+<span class="c1"># E-mail:  </span>
+<span class="c1"># Description: Python implementations of preprocessing techniques.</span>
+<span class="c1"># Contributors:</span>
+<span class="c1"># ============================================================================</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Module of filtering methods in the preprocessing stage:</span>
+<span class="sd">    - Fresnel filter (denoising or low-pass filter), a simplified version of</span>
+<span class="sd">      the well-known Paganin&#39;s filter.</span>
+<span class="sd">    - Double-wedge filter.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy.fft</span> <span class="k">as</span> <span class="nn">fft</span>
+<span class="kn">import</span> <span class="nn">algotom.prep.conversion</span> <span class="k">as</span> <span class="nn">conv</span>
+
+
+<div class="viewcode-block" id="make_fresnel_window"><a class="viewcode-back" href="../../../toc/api/algotom.prep.filtering.html#algotom.prep.filtering.make_fresnel_window">[docs]</a><span class="k">def</span> <span class="nf">make_fresnel_window</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">ratio</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a low pass window based on the Fresnel propagator.</span>
+<span class="sd">    It is used to denoise a projection image (dim=2) or a</span>
+<span class="sd">    sinogram image (dim=1).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    height : int</span>
+<span class="sd">        Image height</span>
+<span class="sd">    width : int</span>
+<span class="sd">        Image width</span>
+<span class="sd">    ratio : float</span>
+<span class="sd">        To define the shape of the window.</span>
+<span class="sd">    dim : {1, 2}</span>
+<span class="sd">        Use &quot;1&quot; if working on a sinogram image and &quot;2&quot; if working on</span>
+<span class="sd">        a projection image.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    array_like</span>
+<span class="sd">        2D array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ycenter</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="n">height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">))</span>
+    <span class="n">xcenter</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">ulist</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">-</span> <span class="n">xcenter</span><span class="p">)</span> <span class="o">/</span> <span class="n">width</span>
+        <span class="n">vlist</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span> <span class="o">-</span> <span class="n">ycenter</span><span class="p">)</span> <span class="o">/</span> <span class="n">height</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">ulist</span><span class="p">,</span> <span class="n">vlist</span><span class="p">)</span>
+        <span class="n">window</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">+</span> <span class="n">ratio</span> <span class="o">*</span> <span class="p">(</span><span class="n">u</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">v</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ulist</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">-</span> <span class="n">xcenter</span><span class="p">)</span> <span class="o">/</span> <span class="n">width</span>
+        <span class="n">win1d</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">+</span> <span class="n">ratio</span> <span class="o">*</span> <span class="n">ulist</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="n">window</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">win1d</span><span class="p">,</span> <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">window</span></div>
+
+
+<div class="viewcode-block" id="fresnel_filter"><a class="viewcode-back" href="../../../toc/api/algotom.prep.filtering.html#algotom.prep.filtering.fresnel_filter">[docs]</a><span class="k">def</span> <span class="nf">fresnel_filter</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">ratio</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">apply_log</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Apply a low-pass filter based on the Fresnel propagator to an image</span>
+<span class="sd">    (Ref. [1]_). It can be used for improving the contrast of an image.</span>
+<span class="sd">    It&#39;s simpler than the well-known Paganin&#39;s filter (Ref. [2]_).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mat : array_like</span>
+<span class="sd">        2D array. Projection image or sinogram image.</span>
+<span class="sd">    ratio : float</span>
+<span class="sd">        Define the shape of the window. Larger is more smoothing.</span>
+<span class="sd">    dim : {1, 2}</span>
+<span class="sd">        Use &quot;1&quot; if working on a sinogram image and &quot;2&quot; if working on</span>
+<span class="sd">        a projection image.</span>
+<span class="sd">    window : array_like, optional</span>
+<span class="sd">        Window for deconvolution.</span>
+<span class="sd">    pad : int</span>
+<span class="sd">        Padding width.</span>
+<span class="sd">    apply_log : bool, optional</span>
+<span class="sd">        Apply the logarithm function to the sinogram before filtering.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    array_like</span>
+<span class="sd">        2D array. Filtered image.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] https://doi.org/10.1364/OE.418448</span>
+<span class="sd">    .. [2] https://www.researchgate.net/profile/Nghia-T-Vo/publication/351559034_Data_processing_methods_and_data_acquisition_for_samples_larger_than_the_field_of_view_in_parallel-beam_tomography_selected_replies_to_technical_questions_from_reviewers/data/609d2c69a6fdcc9aa7e697ea/Selected-replies-to-technical-questions-from-reviewers.pdf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">apply_log</span><span class="p">:</span>
+        <span class="n">mat</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">)</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span>
+    <span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">window</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">window</span> <span class="o">=</span> <span class="n">make_fresnel_window</span><span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">,</span> <span class="n">ratio</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+        <span class="n">mat_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">pad</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;edge&quot;</span><span class="p">)</span>
+        <span class="n">win_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">pad</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;edge&quot;</span><span class="p">)</span>
+        <span class="n">mat_dec</span> <span class="o">=</span> <span class="n">fft</span><span class="o">.</span><span class="n">ifft2</span><span class="p">(</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">mat_pad</span><span class="p">)</span> <span class="o">/</span> <span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">win_pad</span><span class="p">))</span>
+        <span class="n">mat_dec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">mat_dec</span><span class="p">[</span><span class="n">pad</span><span class="p">:</span><span class="n">pad</span> <span class="o">+</span> <span class="n">nrow</span><span class="p">,</span> <span class="n">pad</span><span class="p">:</span><span class="n">pad</span> <span class="o">+</span> <span class="n">ncol</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">window</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">window</span> <span class="o">=</span> <span class="n">make_fresnel_window</span><span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">,</span> <span class="n">ratio</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+        <span class="n">mat_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">pad</span><span class="p">,</span> <span class="n">pad</span><span class="p">)),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;edge&#39;</span><span class="p">)</span>
+        <span class="n">win_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">pad</span><span class="p">,</span> <span class="n">pad</span><span class="p">)),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;edge&quot;</span><span class="p">)</span>
+        <span class="n">mat_fft</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">mat_pad</span><span class="p">),</span> <span class="n">axes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">win_pad</span>
+        <span class="n">mat_dec</span> <span class="o">=</span> <span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">mat_fft</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">mat_dec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">mat_dec</span><span class="p">[:,</span> <span class="n">pad</span><span class="p">:</span><span class="n">pad</span> <span class="o">+</span> <span class="n">ncol</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">apply_log</span><span class="p">:</span>
+        <span class="n">mat_dec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">mat_dec</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">mat_dec</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="make_double_wedge_mask"><a class="viewcode-back" href="../../../toc/api/algotom.prep.filtering.html#algotom.prep.filtering.make_double_wedge_mask">[docs]</a><span class="k">def</span> <span class="nf">make_double_wedge_mask</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate a double-wedge binary mask using Eq. (3) in Ref. [1]_.</span>
+<span class="sd">    Values outside the double-wedge region correspond to 0.0.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    height : int</span>
+<span class="sd">        Image height.</span>
+<span class="sd">    width : int</span>
+<span class="sd">        Image width.</span>
+<span class="sd">    radius : int</span>
+<span class="sd">        Radius of an object, in pixel unit.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    array_like</span>
+<span class="sd">        2D binary mask.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] https://doi.org/10.1364/OE.22.019078</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">du</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">width</span>
+    <span class="n">dv</span> <span class="o">=</span> <span class="p">(</span><span class="n">height</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">height</span> <span class="o">*</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+    <span class="n">ndrop</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">ycenter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="n">height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">))</span>
+    <span class="n">xcenter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">))</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+        <span class="n">num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(((</span><span class="n">i</span> <span class="o">-</span> <span class="n">ycenter</span><span class="p">)</span> <span class="o">*</span> <span class="n">dv</span> <span class="o">/</span> <span class="n">radius</span><span class="p">)</span> <span class="o">/</span> <span class="n">du</span><span class="p">))</span>
+        <span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">((</span><span class="o">-</span><span class="n">num</span> <span class="o">+</span> <span class="n">xcenter</span><span class="p">,</span> <span class="n">num</span> <span class="o">+</span> <span class="n">xcenter</span><span class="p">)),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">mask</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">p1</span><span class="p">:</span><span class="n">p2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">mask</span><span class="p">[</span><span class="n">ycenter</span> <span class="o">-</span> <span class="n">ndrop</span><span class="p">:</span><span class="n">ycenter</span> <span class="o">+</span> <span class="n">ndrop</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="k">return</span> <span class="n">mask</span></div>
+
+
+<div class="viewcode-block" id="double_wedge_filter"><a class="viewcode-back" href="../../../toc/api/algotom.prep.filtering.html#algotom.prep.filtering.double_wedge_filter">[docs]</a><span class="k">def</span> <span class="nf">double_wedge_filter</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sino_type</span><span class="o">=</span><span class="s2">&quot;180&quot;</span><span class="p">,</span> <span class="n">iteration</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                        <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">250</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Apply double-wedge filter to a sinogram image (Ref. [1]_).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sinogram : array_like</span>
+<span class="sd">        2D array. 180-degree sinogram or 360-degree sinogram.</span>
+<span class="sd">    center : float, optional</span>
+<span class="sd">        Center-of-rotation. No need for a 360-sinogram.</span>
+<span class="sd">    sino_type : {&quot;180&quot;, &quot;360&quot;}</span>
+<span class="sd">        Sinogram type : 180-degree or 360-degree.</span>
+<span class="sd">    iteration : int</span>
+<span class="sd">        Number of iteration.</span>
+<span class="sd">    mask : array_like, optional</span>
+<span class="sd">        Double-wedge binary mask.</span>
+<span class="sd">    ratio : float, optional</span>
+<span class="sd">        Define the cut-off angle of the double-wedge filter.</span>
+<span class="sd">    pad : int</span>
+<span class="sd">        Padding width.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    array_like</span>
+<span class="sd">        2D array. Filtered sinogram.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] https://doi.org/10.1364/OE.418448</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">sino_type</span> <span class="o">==</span> <span class="s2">&quot;180&quot;</span> <span class="ow">or</span> <span class="n">sino_type</span> <span class="o">==</span> <span class="s2">&quot;360&quot;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;!!! Use only one of two options: &#39;180&#39; or &#39;360&#39;!!!&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sino_type</span> <span class="o">==</span> <span class="s2">&quot;180&quot;</span><span class="p">:</span>
+        <span class="n">nrow0</span> <span class="o">=</span> <span class="n">sinogram</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">center</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Please provide the location of the rotation axis&quot;</span><span class="p">)</span>
+        <span class="n">sinogram</span> <span class="o">=</span> <span class="n">conv</span><span class="o">.</span><span class="n">convert_sinogram_180_to_360</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">center</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">)</span> <span class="o">=</span> <span class="n">sinogram</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">ncol_pad</span> <span class="o">=</span> <span class="n">ncol</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pad</span>
+    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">make_double_wedge_mask</span><span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol_pad</span><span class="p">,</span> <span class="n">ratio</span> <span class="o">*</span> <span class="n">ncol</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">mask</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol_pad</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Shape of the left-right padded sinogram </span><span class="si">{0}</span><span class="s2"> and the mask &quot;</span>
+                <span class="s2">&quot;</span><span class="si">{1}</span><span class="s2"> is not the same!!!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol_pad</span><span class="p">),</span> <span class="n">mask</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+    <span class="n">sino_filt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">sinogram</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iteration</span><span class="p">):</span>
+        <span class="n">sino_filt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">sino_filt</span><span class="p">,</span> <span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">pad</span><span class="p">,</span> <span class="n">pad</span><span class="p">)),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;edge&quot;</span><span class="p">)</span>
+        <span class="n">sino_filt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft2</span><span class="p">(</span>
+            <span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">sino_filt</span><span class="p">))</span> <span class="o">*</span> <span class="n">mask</span><span class="p">)))</span>
+        <span class="n">sino_filt</span> <span class="o">=</span> <span class="n">sino_filt</span><span class="p">[:,</span> <span class="n">pad</span><span class="p">:</span><span class="n">ncol</span> <span class="o">+</span> <span class="n">pad</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">sino_type</span> <span class="o">==</span> <span class="s2">&quot;180&quot;</span><span class="p">:</span>
+        <span class="n">sino_filt</span> <span class="o">=</span> <span class="n">sino_filt</span><span class="p">[:</span><span class="n">nrow0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">sino_filt</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Nghia T. Vo.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

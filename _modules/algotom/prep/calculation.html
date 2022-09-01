@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>algotom.prep.calculation &mdash; Algotom&#39;s documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Algotom
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../toc/section1.html">1. Basic tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toc/section2.html">2. Features and capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toc/section3.html">3. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toc/section4.html">4. Demonstrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toc/section5.html">5. Technical notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toc/section6.html">6. Update notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toc/api.html">7. API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toc/credits.html">8. Credits</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Algotom</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>algotom.prep.calculation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for algotom.prep.calculation</h1><div class="highlight"><pre>
+<span></span><span class="c1"># ============================================================================</span>
+<span class="c1"># ============================================================================</span>
+<span class="c1"># Copyright (c) 2021 Nghia T. Vo. All rights reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1"># ============================================================================</span>
+<span class="c1"># Author: Nghia T. Vo</span>
+<span class="c1"># E-mail:  </span>
+<span class="c1"># Description: Python implementations of preprocessing techniques.</span>
+<span class="c1"># Contributors:</span>
+<span class="c1"># ============================================================================</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Module of calculation methods in the preprocessing stage:</span>
+<span class="sd">    - Calculating the center-of-rotation (COR) in a 180-degree scan using a</span>
+<span class="sd">      sinogram.</span>
+<span class="sd">    - Determining the overlap-side and overlap-area between images.</span>
+<span class="sd">    - Calculating the COR in a half-acquisition scan (360-degree scan with</span>
+<span class="sd">      offset COR).</span>
+<span class="sd">    - Using the similar technique as above to calculate the COR in a 180-degree</span>
+<span class="sd">      scan from two projections.</span>
+<span class="sd">    - Determining the relative translations between images using</span>
+<span class="sd">      phase-correlation technique.</span>
+<span class="sd">    - Calculating the COR in a 180-degree scan using phase-correlation technique.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">import</span> <span class="nn">scipy.ndimage</span> <span class="k">as</span> <span class="nn">ndi</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>
+<span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">Parallel</span><span class="p">,</span> <span class="n">delayed</span>
+<span class="kn">import</span> <span class="nn">numpy.fft</span> <span class="k">as</span> <span class="nn">fft</span>
+
+
+<div class="viewcode-block" id="make_inverse_double_wedge_mask"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.make_inverse_double_wedge_mask">[docs]</a><span class="k">def</span> <span class="nf">make_inverse_double_wedge_mask</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate a double-wedge binary mask using Eq. (3) in Ref. [1]_.</span>
+<span class="sd">    Values outside the double-wedge region correspond to 1.0.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    height : int</span>
+<span class="sd">        Image height.</span>
+<span class="sd">    width : int</span>
+<span class="sd">        Image width.</span>
+<span class="sd">    radius : int</span>
+<span class="sd">        Radius of an object, in pixel unit.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    array_like</span>
+<span class="sd">        2D binary mask.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] https://doi.org/10.1364/OE.22.019078</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">du</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">width</span>
+    <span class="n">dv</span> <span class="o">=</span> <span class="p">(</span><span class="n">height</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">height</span> <span class="o">*</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+    <span class="n">ndrop</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="mf">0.05</span> <span class="o">*</span> <span class="n">height</span><span class="p">))</span>
+    <span class="n">ycenter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="n">height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">))</span>
+    <span class="n">xcenter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">))</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+        <span class="n">num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(((</span><span class="n">i</span> <span class="o">-</span> <span class="n">ycenter</span><span class="p">)</span> <span class="o">*</span> <span class="n">dv</span> <span class="o">/</span> <span class="n">radius</span><span class="p">)</span> <span class="o">/</span> <span class="n">du</span><span class="p">))</span>
+        <span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">((</span><span class="o">-</span><span class="n">num</span> <span class="o">+</span> <span class="n">xcenter</span><span class="p">,</span> <span class="n">num</span> <span class="o">+</span> <span class="n">xcenter</span><span class="p">)),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">mask</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">p1</span><span class="p">:</span><span class="n">p2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">mask</span><span class="p">[</span><span class="n">ycenter</span> <span class="o">-</span> <span class="n">ndrop</span><span class="p">:</span><span class="n">ycenter</span> <span class="o">+</span> <span class="n">ndrop</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">mask</span><span class="p">[:,</span> <span class="n">xcenter</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span><span class="n">xcenter</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">return</span> <span class="n">mask</span></div>
+
+
+<div class="viewcode-block" id="calculate_center_metric"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.calculate_center_metric">[docs]</a><span class="k">def</span> <span class="nf">calculate_center_metric</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">sino_180</span><span class="p">,</span> <span class="n">sino_flip</span><span class="p">,</span> <span class="n">sino_comp</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate a metric of an estimated center-of-rotation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    center : float</span>
+<span class="sd">        Estimated center.</span>
+<span class="sd">    sino_180 : array_like</span>
+<span class="sd">        2D array. 180-degree sinogram.</span>
+<span class="sd">    sino_flip : array_like</span>
+<span class="sd">        2D array. Flip the 180-degree sinogram in the left/right direction.</span>
+<span class="sd">    sino_comp : array_like</span>
+<span class="sd">        2D array. Used to fill the gap left by image shifting.</span>
+<span class="sd">    mask : array_like</span>
+<span class="sd">        2D array. Used to select coefficients in the double-wedge region.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        Metric.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ncol</span> <span class="o">=</span> <span class="n">sino_180</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">center_flip</span> <span class="o">=</span> <span class="p">(</span><span class="n">ncol</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+    <span class="n">shift_col</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">center</span> <span class="o">-</span> <span class="n">center_flip</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">shift_col</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">shift_col</span><span class="p">))</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">shift_col</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">shift_col</span><span class="p">)</span>
+        <span class="n">sino_shift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">sino_flip</span><span class="p">,</span> <span class="n">shift_col</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">shift_col</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">sino_shift</span><span class="p">[:,</span> <span class="p">:</span><span class="n">shift_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">sino_comp</span><span class="p">[:,</span> <span class="p">:</span><span class="n">shift_col</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sino_shift</span><span class="p">[:,</span> <span class="n">shift_col</span><span class="p">:]</span> <span class="o">=</span> <span class="n">sino_comp</span><span class="p">[:,</span> <span class="n">shift_col</span><span class="p">:]</span>
+        <span class="n">mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">sino_180</span><span class="p">,</span> <span class="n">sino_shift</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sino_shift</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">sino_flip</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">shift_col</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                               <span class="n">prefilter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">shift_col</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">shift_int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">shift_col</span><span class="p">))</span>
+            <span class="n">sino_shift</span><span class="p">[:,</span> <span class="p">:</span><span class="n">shift_int</span><span class="p">]</span> <span class="o">=</span> <span class="n">sino_comp</span><span class="p">[:,</span> <span class="p">:</span><span class="n">shift_int</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">shift_int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">shift_col</span><span class="p">))</span>
+            <span class="n">sino_shift</span><span class="p">[:,</span> <span class="n">shift_int</span><span class="p">:]</span> <span class="o">=</span> <span class="n">sino_comp</span><span class="p">[:,</span> <span class="n">shift_int</span><span class="p">:]</span>
+        <span class="n">mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">sino_180</span><span class="p">,</span> <span class="n">sino_shift</span><span class="p">))</span>
+    <span class="n">metric</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">mat</span><span class="p">)))</span> <span class="o">*</span> <span class="n">mask</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">metric</span></div>
+
+
+<div class="viewcode-block" id="coarse_search_cor"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.coarse_search_cor">[docs]</a><span class="k">def</span> <span class="nf">coarse_search_cor</span><span class="p">(</span><span class="n">sino_180</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">denoise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                      <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Find the center-of-rotation (COR) using integer shifting.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sino_180 : array_like</span>
+<span class="sd">        2D array. 180-degree sinogram.</span>
+<span class="sd">    start : int</span>
+<span class="sd">        Starting point for searching COR.</span>
+<span class="sd">    stop : int</span>
+<span class="sd">        Ending point for searching COR.</span>
+<span class="sd">    ratio : float</span>
+<span class="sd">        Ratio between a sample and the width of the sinogram.</span>
+<span class="sd">    denoise : bool, optional</span>
+<span class="sd">        Apply a smoothing filter.</span>
+<span class="sd">    ncore: int or None</span>
+<span class="sd">        Number of cpu-cores used for computing. Automatically selected if None.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        Center of rotation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">denoise</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">sino_180</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">sino_180</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;reflect&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ncore</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ncore</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">mp</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">)</span> <span class="o">=</span> <span class="n">sino_180</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">start_cor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ncol</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">stop_cor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">stop</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ncol</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">sino_flip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fliplr</span><span class="p">(</span><span class="n">sino_180</span><span class="p">)</span>
+    <span class="n">sino_comp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">sino_180</span><span class="p">)</span>
+    <span class="n">list_cor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start_cor</span><span class="p">,</span> <span class="n">stop_cor</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">list_metric</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">list_cor</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">num_metric</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_metric</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">make_inverse_double_wedge_mask</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">,</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">ratio</span> <span class="o">*</span> <span class="n">ncol</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ncore</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cor</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_cor</span><span class="p">):</span>
+            <span class="n">list_metric</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">calculate_center_metric</span><span class="p">(</span>
+                <span class="n">list_cor</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sino_180</span><span class="p">,</span> <span class="n">sino_flip</span><span class="p">,</span> <span class="n">sino_comp</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">list_metric</span> <span class="o">=</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;threading&quot;</span><span class="p">)(</span>
+            <span class="n">delayed</span><span class="p">(</span><span class="n">calculate_center_metric</span><span class="p">)(</span><span class="n">list_cor</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sino_180</span><span class="p">,</span> <span class="n">sino_flip</span><span class="p">,</span>
+                                             <span class="n">sino_comp</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span>
+            <span class="nb">range</span><span class="p">(</span><span class="n">num_metric</span><span class="p">))</span>
+    <span class="n">min_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">list_metric</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">min_pos</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Global minimum is out of the searching range. Please &quot;</span> \
+              <span class="s2">&quot;reduce the start-value !!!&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">min_pos</span> <span class="o">==</span> <span class="p">(</span><span class="n">num_metric</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Global minimum is out of the searching range. Please &quot;</span> \
+              <span class="s2">&quot;increase the stop-value !!!&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">list_cor</span><span class="p">[</span><span class="n">min_pos</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="fine_search_cor"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.fine_search_cor">[docs]</a><span class="k">def</span> <span class="nf">fine_search_cor</span><span class="p">(</span><span class="n">sino_180</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">denoise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Find the center-of-rotation (COR) using sub-pixel shifting.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sino_180 : array_like</span>
+<span class="sd">        2D array. 180-degree sinogram.</span>
+<span class="sd">    start : float</span>
+<span class="sd">        Starting point for searching COR.</span>
+<span class="sd">    radius : float</span>
+<span class="sd">        Searching range: [start - radius; start + radius].</span>
+<span class="sd">    step : float</span>
+<span class="sd">        Searching step.</span>
+<span class="sd">    ratio : float</span>
+<span class="sd">        Ratio between a sample and the width of the sinogram.</span>
+<span class="sd">    denoise : bool, optional</span>
+<span class="sd">        Apply a smoothing filter.</span>
+<span class="sd">    ncore: int or None</span>
+<span class="sd">        Number of cpu-cores used for computing. Automatically selected if None.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        Center of rotation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">denoise</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">sino_180</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">sino_180</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;reflect&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ncore</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ncore</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">mp</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">)</span> <span class="o">=</span> <span class="n">sino_180</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">sino_flip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fliplr</span><span class="p">(</span><span class="n">sino_180</span><span class="p">)</span>
+    <span class="n">sino_comp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">sino_180</span><span class="p">)</span>
+    <span class="n">list_cor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span>
+        <span class="n">start</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">radius</span><span class="p">,</span> <span class="n">radius</span> <span class="o">+</span> <span class="n">step</span><span class="p">,</span> <span class="n">step</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">ncol</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">list_metric</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">list_cor</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">num_metric</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_metric</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">make_inverse_double_wedge_mask</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">,</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">ratio</span> <span class="o">*</span> <span class="n">ncol</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ncore</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cor</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_cor</span><span class="p">):</span>
+            <span class="n">list_metric</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">calculate_center_metric</span><span class="p">(</span>
+                <span class="n">list_cor</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sino_180</span><span class="p">,</span> <span class="n">sino_flip</span><span class="p">,</span> <span class="n">sino_comp</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">list_metric</span> <span class="o">=</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;threading&quot;</span><span class="p">)(</span>
+            <span class="n">delayed</span><span class="p">(</span><span class="n">calculate_center_metric</span><span class="p">)(</span><span class="n">list_cor</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sino_180</span><span class="p">,</span> <span class="n">sino_flip</span><span class="p">,</span>
+                                             <span class="n">sino_comp</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span>
+            <span class="nb">range</span><span class="p">(</span><span class="n">num_metric</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">list_cor</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">list_metric</span><span class="p">)]</span></div>
+
+
+<div class="viewcode-block" id="downsample_cor"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.downsample_cor">[docs]</a><span class="k">def</span> <span class="nf">downsample_cor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">dsp_fact0</span><span class="p">,</span> <span class="n">dsp_fact1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Downsample an image by averaging.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    image : array_like</span>
+<span class="sd">        2D array.</span>
+<span class="sd">    dsp_fact0 : int</span>
+<span class="sd">        Downsampling factor along axis 0.</span>
+<span class="sd">    dsp_fact1 : int</span>
+<span class="sd">        Downsampling factor along axis 1.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    array_like</span>
+<span class="sd">        2D array. Downsampled image.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">dsp_fact0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">dsp_fact0</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">height</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">dsp_fact1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">dsp_fact1</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">width</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">height_dsp</span> <span class="o">=</span> <span class="n">height</span> <span class="o">//</span> <span class="n">dsp_fact0</span>
+    <span class="n">width_dsp</span> <span class="o">=</span> <span class="n">width</span> <span class="o">//</span> <span class="n">dsp_fact1</span>
+    <span class="n">image_dsp</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">dsp_fact0</span> <span class="o">*</span> <span class="n">height_dsp</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">dsp_fact1</span> <span class="o">*</span> <span class="n">width_dsp</span><span class="p">]</span>
+    <span class="n">image_dsp</span> <span class="o">=</span> <span class="n">image_dsp</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
+        <span class="n">height_dsp</span><span class="p">,</span> <span class="n">dsp_fact0</span><span class="p">,</span> <span class="n">width_dsp</span><span class="p">,</span> <span class="n">dsp_fact1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">image_dsp</span></div>
+
+
+<div class="viewcode-block" id="find_center_vo"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_center_vo">[docs]</a><span class="k">def</span> <span class="nf">find_center_vo</span><span class="p">(</span><span class="n">sino_180</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                   <span class="n">ratio</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">dsp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Find the center-of-rotation using the method described in Ref. [1]_.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sino_180 : array_like</span>
+<span class="sd">        2D array. 180-degree sinogram.</span>
+<span class="sd">    start : float</span>
+<span class="sd">        Starting point for searching CoR. Use the value of</span>
+<span class="sd">        (width/2 - width/16) if None.</span>
+<span class="sd">    stop : float</span>
+<span class="sd">        Ending point for searching CoR. Use the value of</span>
+<span class="sd">        (width/2 + width/16) if None.</span>
+<span class="sd">    step : float</span>
+<span class="sd">        Sub-pixel accuracy of estimated CoR.</span>
+<span class="sd">    radius : float</span>
+<span class="sd">        Searching range with the sub-pixel step.</span>
+<span class="sd">    ratio : float</span>
+<span class="sd">        Ratio between the sample and the width of the sinogram.</span>
+<span class="sd">    dsp : bool</span>
+<span class="sd">        Enable/disable downsampling.</span>
+<span class="sd">    ncore: int or None</span>
+<span class="sd">        Number of cpu-cores used for computing. Automatically selected if None.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        Center-of-rotation.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] https://doi.org/10.1364/OE.22.019078</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">)</span> <span class="o">=</span> <span class="n">sino_180</span><span class="o">.</span><span class="n">shape</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">ncol</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">ncol</span> <span class="o">//</span> <span class="mi">16</span>
+    <span class="k">if</span> <span class="n">stop</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">stop</span> <span class="o">=</span> <span class="n">ncol</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">ncol</span> <span class="o">//</span> <span class="mi">16</span>
+    <span class="n">dsp_row</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">dsp_col</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">dsp</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ncol</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">:</span>
+            <span class="n">dsp_col</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">ncol</span> <span class="o">/</span> <span class="mf">640.0</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">nrow</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">:</span>
+            <span class="n">dsp_row</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">nrow</span> <span class="o">/</span> <span class="mf">900.0</span><span class="p">))</span>
+        <span class="n">sino_dns</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">sino_180</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;reflect&#39;</span><span class="p">)</span>
+        <span class="n">sino_dsp</span> <span class="o">=</span> <span class="n">downsample_cor</span><span class="p">(</span><span class="n">sino_dns</span><span class="p">,</span> <span class="n">dsp_row</span><span class="p">,</span> <span class="n">dsp_col</span><span class="p">)</span>
+        <span class="n">radius</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">radius</span><span class="p">,</span> <span class="n">dsp_col</span><span class="p">)</span>
+        <span class="n">off_set</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">dsp_col</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">start</span> <span class="o">/</span> <span class="n">dsp_col</span><span class="p">))</span>
+        <span class="n">stop</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">stop</span> <span class="o">/</span> <span class="n">dsp_col</span><span class="p">))</span>
+        <span class="n">raw_cor</span> <span class="o">=</span> <span class="n">coarse_search_cor</span><span class="p">(</span><span class="n">sino_dsp</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">ratio</span><span class="p">,</span>
+                                    <span class="n">denoise</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">)</span>
+        <span class="n">fine_cor</span> <span class="o">=</span> <span class="n">fine_search_cor</span><span class="p">(</span><span class="n">sino_180</span><span class="p">,</span> <span class="n">raw_cor</span> <span class="o">*</span> <span class="n">dsp_col</span> <span class="o">+</span> <span class="n">off_set</span><span class="p">,</span>
+                                   <span class="n">radius</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">ratio</span><span class="p">,</span> <span class="n">denoise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                   <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">raw_cor</span> <span class="o">=</span> <span class="n">coarse_search_cor</span><span class="p">(</span><span class="n">sino_180</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">ratio</span><span class="p">,</span> <span class="n">denoise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                    <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">)</span>
+        <span class="n">fine_cor</span> <span class="o">=</span> <span class="n">fine_search_cor</span><span class="p">(</span><span class="n">sino_180</span><span class="p">,</span> <span class="n">raw_cor</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">ratio</span><span class="p">,</span>
+                                   <span class="n">denoise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fine_cor</span></div>
+
+
+<div class="viewcode-block" id="calculate_curvature"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.calculate_curvature">[docs]</a><span class="k">def</span> <span class="nf">calculate_curvature</span><span class="p">(</span><span class="n">list_metric</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the curvature of a fitted curve going through the minimum</span>
+<span class="sd">    value of a metric list.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    list_metric : array_like</span>
+<span class="sd">        1D array. List of metrics.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    curvature : float</span>
+<span class="sd">        Quadratic coefficient of the parabola fitting.</span>
+<span class="sd">    min_pos : float</span>
+<span class="sd">        Position of the minimum value with sub-pixel accuracy.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">radi</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">num_metric</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_metric</span><span class="p">)</span>
+    <span class="n">min_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">list_metric</span><span class="p">),</span> <span class="n">radi</span><span class="p">,</span> <span class="n">num_metric</span> <span class="o">-</span> <span class="n">radi</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">list1</span> <span class="o">=</span> <span class="n">list_metric</span><span class="p">[</span><span class="n">min_pos</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">min_pos</span> <span class="o">+</span> <span class="n">radi</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="p">(</span><span class="n">afact1</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">radi</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">list1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">list2</span> <span class="o">=</span> <span class="n">list_metric</span><span class="p">[</span><span class="n">min_pos</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span><span class="n">min_pos</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="p">(</span><span class="n">afact2</span><span class="p">,</span> <span class="n">bfact2</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">min_pos</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">min_pos</span> <span class="o">+</span> <span class="mi">2</span><span class="p">),</span> <span class="n">list2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">curvature</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">afact1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">afact2</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">num</span> <span class="o">=</span> <span class="o">-</span> <span class="n">bfact2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">afact2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&gt;=</span> <span class="n">min_pos</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">num</span> <span class="o">&lt;=</span> <span class="n">min_pos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">min_pos</span> <span class="o">=</span> <span class="n">num</span>
+    <span class="k">return</span> <span class="n">curvature</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">min_pos</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="correlation_metric"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.correlation_metric">[docs]</a><span class="k">def</span> <span class="nf">correlation_metric</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the correlation metric. Smaller metric corresponds to better</span>
+<span class="sd">    correlation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------</span>
+<span class="sd">    mat1 : array_like</span>
+<span class="sd">    mat2 : array_like</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        Correlation metric.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">metric</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span>
+        <span class="mf">1.0</span> <span class="o">-</span> <span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">mat1</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">),</span> <span class="n">mat2</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">metric</span></div>
+
+
+<div class="viewcode-block" id="search_overlap"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.search_overlap">[docs]</a><span class="k">def</span> <span class="nf">search_overlap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">win_width</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">denoise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                   <span class="n">use_overlap</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the correlation metrics between a rectangular region, defined</span>
+<span class="sd">    by the window width, on the utmost left/right side of image 2 and the</span>
+<span class="sd">    same size region in image 1 where the region is slided across image 1.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mat1 : array_like</span>
+<span class="sd">        2D array. Projection image or sinogram image.</span>
+<span class="sd">    mat2 : array_like</span>
+<span class="sd">        2D array. Projection image or sinogram image.</span>
+<span class="sd">    win_width : int</span>
+<span class="sd">        Width of the searching window.</span>
+<span class="sd">    side : {0, 1}</span>
+<span class="sd">        Only two options: 0 or 1. It is used to indicate the overlap side</span>
+<span class="sd">        respects to image 1. &quot;0&quot; corresponds to the left side. &quot;1&quot; corresponds</span>
+<span class="sd">        to the right side.</span>
+<span class="sd">    denoise : bool, optional</span>
+<span class="sd">        Apply the Gaussian filter if True.</span>
+<span class="sd">    norm : bool, optional</span>
+<span class="sd">        Apply the normalization if True.</span>
+<span class="sd">    use_overlap : bool, optional</span>
+<span class="sd">        Use the combination of images in the overlap area for calculating</span>
+<span class="sd">        correlation coefficients if True.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list_metric : array_like</span>
+<span class="sd">        1D array. List of the correlation metrics.</span>
+<span class="sd">    offset : int</span>
+<span class="sd">        Initial position of the searching window where the position</span>
+<span class="sd">        corresponds to the center of the window.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">denoise</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">mat1</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;reflect&#39;</span><span class="p">)</span>
+        <span class="n">mat2</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">mat2</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;reflect&#39;</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">nrow1</span><span class="p">,</span> <span class="n">ncol1</span><span class="p">)</span> <span class="o">=</span> <span class="n">mat1</span><span class="o">.</span><span class="n">shape</span>
+    <span class="p">(</span><span class="n">nrow2</span><span class="p">,</span> <span class="n">ncol2</span><span class="p">)</span> <span class="o">=</span> <span class="n">mat2</span><span class="o">.</span><span class="n">shape</span>
+    <span class="k">if</span> <span class="n">nrow1</span> <span class="o">!=</span> <span class="n">nrow2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Two images are not at the same height!!!&quot;</span><span class="p">)</span>
+    <span class="n">win_width</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">win_width</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">ncol1</span><span class="p">,</span> <span class="n">ncol2</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="n">win_width</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">win_width</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">offset</span>  <span class="c1"># Make it even</span>
+    <span class="n">ramp_down</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">win_width</span><span class="p">)</span>
+    <span class="n">ramp_up</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">ramp_down</span>
+    <span class="n">wei_down</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">ramp_down</span><span class="p">,</span> <span class="p">(</span><span class="n">nrow1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">wei_up</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">ramp_up</span><span class="p">,</span> <span class="p">(</span><span class="n">nrow1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">side</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">mat2_roi</span> <span class="o">=</span> <span class="n">mat2</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="n">win_width</span><span class="p">]</span>
+        <span class="n">mat2_roi_wei</span> <span class="o">=</span> <span class="n">mat2_roi</span> <span class="o">*</span> <span class="n">wei_up</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">mat2_roi</span> <span class="o">=</span> <span class="n">mat2</span><span class="p">[:,</span> <span class="n">ncol2</span> <span class="o">-</span> <span class="n">win_width</span><span class="p">:]</span>
+        <span class="n">mat2_roi_wei</span> <span class="o">=</span> <span class="n">mat2_roi</span> <span class="o">*</span> <span class="n">wei_down</span>
+    <span class="n">list_mean2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mat2_roi</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">list_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">offset</span><span class="p">,</span> <span class="n">ncol1</span> <span class="o">-</span> <span class="n">offset</span><span class="p">)</span>
+    <span class="n">num_metric</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_pos</span><span class="p">)</span>
+    <span class="n">list_metric</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">num_metric</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_pos</span><span class="p">):</span>
+        <span class="n">mat1_roi</span> <span class="o">=</span> <span class="n">mat1</span><span class="p">[:,</span> <span class="n">pos</span> <span class="o">-</span> <span class="n">offset</span><span class="p">:</span><span class="n">pos</span> <span class="o">+</span> <span class="n">offset</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">use_overlap</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">side</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">mat1_roi_wei</span> <span class="o">=</span> <span class="n">mat1_roi</span> <span class="o">*</span> <span class="n">wei_down</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">mat1_roi_wei</span> <span class="o">=</span> <span class="n">mat1_roi</span> <span class="o">*</span> <span class="n">wei_up</span>
+        <span class="k">if</span> <span class="n">norm</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">list_mean1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mat1_roi</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">list_fact</span> <span class="o">=</span> <span class="n">list_mean2</span> <span class="o">/</span> <span class="n">list_mean1</span>
+            <span class="n">mat_fact</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">list_fact</span><span class="p">,</span> <span class="p">(</span><span class="n">win_width</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+            <span class="n">mat1_roi</span> <span class="o">=</span> <span class="n">mat1_roi</span> <span class="o">*</span> <span class="n">mat_fact</span>
+            <span class="k">if</span> <span class="n">use_overlap</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">mat1_roi_wei</span> <span class="o">=</span> <span class="n">mat1_roi_wei</span> <span class="o">*</span> <span class="n">mat_fact</span>
+        <span class="k">if</span> <span class="n">use_overlap</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">mat_comb</span> <span class="o">=</span> <span class="n">mat1_roi_wei</span> <span class="o">+</span> <span class="n">mat2_roi_wei</span>
+            <span class="n">list_metric</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">correlation_metric</span><span class="p">(</span><span class="n">mat1_roi</span><span class="p">,</span> <span class="n">mat2_roi</span><span class="p">)</span>
+                              <span class="o">+</span> <span class="n">correlation_metric</span><span class="p">(</span><span class="n">mat1_roi</span><span class="p">,</span> <span class="n">mat_comb</span><span class="p">)</span>
+                              <span class="o">+</span> <span class="n">correlation_metric</span><span class="p">(</span><span class="n">mat2_roi</span><span class="p">,</span> <span class="n">mat_comb</span><span class="p">))</span> <span class="o">/</span> <span class="mf">3.0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">list_metric</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">correlation_metric</span><span class="p">(</span><span class="n">mat1_roi</span><span class="p">,</span> <span class="n">mat2_roi</span><span class="p">)</span>
+    <span class="n">min_metric</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">list_metric</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">min_metric</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">list_metric</span> <span class="o">=</span> <span class="n">list_metric</span> <span class="o">/</span> <span class="n">min_metric</span>
+    <span class="k">return</span> <span class="n">list_metric</span><span class="p">,</span> <span class="n">offset</span></div>
+
+
+<div class="viewcode-block" id="find_overlap"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_overlap">[docs]</a><span class="k">def</span> <span class="nf">find_overlap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">win_width</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">denoise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">use_overlap</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Find the overlap area and overlap side between two images (Ref. [1]_) where</span>
+<span class="sd">    the overlap side referring to the first image.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mat1 : array_like</span>
+<span class="sd">        2D array. Projection image or sinogram image.</span>
+<span class="sd">    mat2 :  array_like</span>
+<span class="sd">        2D array. Projection image or sinogram image.</span>
+<span class="sd">    win_width : int</span>
+<span class="sd">        Width of the searching window.</span>
+<span class="sd">    side : {None, 0, 1}, optional</span>
+<span class="sd">        Only there options: None, 0, or 1. &quot;None&quot; corresponding to fully</span>
+<span class="sd">        automated determination. &quot;0&quot; corresponding to the left side. &quot;1&quot;</span>
+<span class="sd">        corresponding to the right side.</span>
+<span class="sd">    denoise : bool, optional</span>
+<span class="sd">        Apply the Gaussian filter if True.</span>
+<span class="sd">    norm : bool, optional</span>
+<span class="sd">        Apply the normalization if True.</span>
+<span class="sd">    use_overlap : bool, optional</span>
+<span class="sd">        Use the combination of images in the overlap area for calculating</span>
+<span class="sd">        correlation coefficients if True.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    overlap : float</span>
+<span class="sd">        Width of the overlap area between two images.</span>
+<span class="sd">    side : int</span>
+<span class="sd">        Overlap side between two images.</span>
+<span class="sd">    overlap_position : float</span>
+<span class="sd">        Position of the window in the first image giving the best</span>
+<span class="sd">        correlation metric.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] https://doi.org/10.1364/OE.418448</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">ncol1</span><span class="p">)</span> <span class="o">=</span> <span class="n">mat1</span><span class="o">.</span><span class="n">shape</span>
+    <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">ncol2</span><span class="p">)</span> <span class="o">=</span> <span class="n">mat2</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">win_width</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">win_width</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">ncol1</span><span class="p">,</span> <span class="n">ncol2</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">side</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="p">(</span><span class="n">list_metric</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span> <span class="o">=</span> <span class="n">search_overlap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">win_width</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span>
+                                               <span class="n">denoise</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">use_overlap</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">overlap_position</span><span class="p">)</span> <span class="o">=</span> <span class="n">calculate_curvature</span><span class="p">(</span><span class="n">list_metric</span><span class="p">)</span>
+        <span class="n">overlap_position</span> <span class="o">=</span> <span class="n">overlap_position</span> <span class="o">+</span> <span class="n">offset</span>
+        <span class="n">overlap</span> <span class="o">=</span> <span class="n">ncol1</span> <span class="o">-</span> <span class="n">overlap_position</span> <span class="o">+</span> <span class="n">win_width</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="k">elif</span> <span class="n">side</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="p">(</span><span class="n">list_metric</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span> <span class="o">=</span> <span class="n">search_overlap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">win_width</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span>
+                                               <span class="n">denoise</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">use_overlap</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">overlap_position</span><span class="p">)</span> <span class="o">=</span> <span class="n">calculate_curvature</span><span class="p">(</span><span class="n">list_metric</span><span class="p">)</span>
+        <span class="n">overlap_position</span> <span class="o">=</span> <span class="n">overlap_position</span> <span class="o">+</span> <span class="n">offset</span>
+        <span class="n">overlap</span> <span class="o">=</span> <span class="n">overlap_position</span> <span class="o">+</span> <span class="n">win_width</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="p">(</span><span class="n">list_metric1</span><span class="p">,</span> <span class="n">offset1</span><span class="p">)</span> <span class="o">=</span> <span class="n">search_overlap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">win_width</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span>
+                                                 <span class="n">denoise</span><span class="p">,</span> <span class="n">use_overlap</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">list_metric2</span><span class="p">,</span> <span class="n">offset2</span><span class="p">)</span> <span class="o">=</span> <span class="n">search_overlap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">win_width</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span>
+                                                 <span class="n">denoise</span><span class="p">,</span> <span class="n">use_overlap</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">curvature1</span><span class="p">,</span> <span class="n">overlap_position1</span><span class="p">)</span> <span class="o">=</span> <span class="n">calculate_curvature</span><span class="p">(</span><span class="n">list_metric1</span><span class="p">)</span>
+        <span class="n">overlap_position1</span> <span class="o">=</span> <span class="n">overlap_position1</span> <span class="o">+</span> <span class="n">offset1</span>
+        <span class="p">(</span><span class="n">curvature2</span><span class="p">,</span> <span class="n">overlap_position2</span><span class="p">)</span> <span class="o">=</span> <span class="n">calculate_curvature</span><span class="p">(</span><span class="n">list_metric2</span><span class="p">)</span>
+        <span class="n">overlap_position2</span> <span class="o">=</span> <span class="n">overlap_position2</span> <span class="o">+</span> <span class="n">offset2</span>
+        <span class="k">if</span> <span class="n">curvature1</span> <span class="o">&gt;</span> <span class="n">curvature2</span><span class="p">:</span>
+            <span class="n">side</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">overlap_position</span> <span class="o">=</span> <span class="n">overlap_position1</span>
+            <span class="n">overlap</span> <span class="o">=</span> <span class="n">ncol1</span> <span class="o">-</span> <span class="n">overlap_position</span> <span class="o">+</span> <span class="n">win_width</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">side</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">overlap_position</span> <span class="o">=</span> <span class="n">overlap_position2</span>
+            <span class="n">overlap</span> <span class="o">=</span> <span class="n">overlap_position</span> <span class="o">+</span> <span class="n">win_width</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">overlap_position</span></div>
+
+
+<div class="viewcode-block" id="find_overlap_multiple"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_overlap_multiple">[docs]</a><span class="k">def</span> <span class="nf">find_overlap_multiple</span><span class="p">(</span><span class="n">list_mat</span><span class="p">,</span> <span class="n">win_width</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">denoise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                          <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">use_overlap</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Find the overlap-areas and overlap-sides of a list of images where the</span>
+<span class="sd">    overlap side referring to the previous image.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    list_mat : list of array_like</span>
+<span class="sd">        List of 2D array. Projection image or sinogram image.</span>
+<span class="sd">    win_width : int</span>
+<span class="sd">        Width of the searching window.</span>
+<span class="sd">    side : {None, 0, 1}, optional</span>
+<span class="sd">        Only there options: None, 0, or 1. &quot;None&quot; corresponding to fully</span>
+<span class="sd">        automated determination. &quot;0&quot; corresponding to the left side. &quot;1&quot;</span>
+<span class="sd">        corresponding to the right side.</span>
+<span class="sd">    denoise : bool, optional</span>
+<span class="sd">        Apply the Gaussian filter if True.</span>
+<span class="sd">    norm : bool, optional</span>
+<span class="sd">        Apply the normalization if True.</span>
+<span class="sd">    use_overlap : bool, optional</span>
+<span class="sd">        Use the combination of images in the overlap area for calculating</span>
+<span class="sd">        correlation coefficients if True.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list_overlap : list of tuple of floats</span>
+<span class="sd">        List of [overlap, side, overlap_position].</span>
+<span class="sd">        overlap : Width of the overlap area between two images.</span>
+<span class="sd">        side : Overlap side between two images.</span>
+<span class="sd">        overlap_position : Position of the window in the first</span>
+<span class="sd">        image giving the best correlation metric.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">list_overlap</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">num_mat</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_mat</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">num_mat</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_mat</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">find_overlap</span><span class="p">(</span><span class="n">list_mat</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">list_mat</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">win_width</span><span class="p">,</span>
+                                   <span class="n">side</span><span class="p">,</span> <span class="n">denoise</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">use_overlap</span><span class="p">)</span>
+            <span class="n">list_overlap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Need at least 2 images to work!!!&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">list_overlap</span></div>
+
+
+<div class="viewcode-block" id="find_center_360"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_center_360">[docs]</a><span class="k">def</span> <span class="nf">find_center_360</span><span class="p">(</span><span class="n">sino_360</span><span class="p">,</span> <span class="n">win_width</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">denoise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">use_overlap</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Find the center-of-rotation (COR) in a 360-degree scan with offset COR use</span>
+<span class="sd">    the method presented in Ref. [1]_.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sino_360 : array_like</span>
+<span class="sd">        2D array. 360-degree sinogram.</span>
+<span class="sd">    win_width : int</span>
+<span class="sd">        Window width used for finding the overlap area.</span>
+<span class="sd">    side : {None, 0, 1}, optional</span>
+<span class="sd">        Overlap size. Only there options: None, 0, or 1. &quot;None&quot; corresponding</span>
+<span class="sd">        to fully automated determination. &quot;0&quot; corresponding to the left side.</span>
+<span class="sd">        &quot;1&quot; corresponding to the right side.</span>
+<span class="sd">    denoise : bool, optional</span>
+<span class="sd">        Apply the Gaussian filter if True.</span>
+<span class="sd">    norm : bool, optional</span>
+<span class="sd">        Apply the normalization if True.</span>
+<span class="sd">    use_overlap : bool, optional</span>
+<span class="sd">        Use the combination of images in the overlap area for calculating</span>
+<span class="sd">        correlation coefficients if True.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    cor : float</span>
+<span class="sd">        Center-of-rotation.</span>
+<span class="sd">    overlap : float</span>
+<span class="sd">        Width of the overlap area between two halves of the sinogram.</span>
+<span class="sd">    side : int</span>
+<span class="sd">        Overlap side between two halves of the sinogram.</span>
+<span class="sd">    overlap_position : float</span>
+<span class="sd">        Position of the window in the first image giving the best</span>
+<span class="sd">        correlation metric.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] https://doi.org/10.1364/OE.418448</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">)</span> <span class="o">=</span> <span class="n">sino_360</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">nrow_180</span> <span class="o">=</span> <span class="n">nrow</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">sino_top</span> <span class="o">=</span> <span class="n">sino_360</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">nrow_180</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">sino_bot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fliplr</span><span class="p">(</span><span class="n">sino_360</span><span class="p">[</span><span class="o">-</span><span class="n">nrow_180</span><span class="p">:,</span> <span class="p">:])</span>
+    <span class="p">(</span><span class="n">overlap</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">overlap_position</span><span class="p">)</span> <span class="o">=</span> <span class="n">find_overlap</span><span class="p">(</span>
+        <span class="n">sino_top</span><span class="p">,</span> <span class="n">sino_bot</span><span class="p">,</span> <span class="n">win_width</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">denoise</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">use_overlap</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">side</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">cor</span> <span class="o">=</span> <span class="n">overlap</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">-</span> <span class="mf">1.0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">cor</span> <span class="o">=</span> <span class="n">ncol</span> <span class="o">-</span> <span class="n">overlap</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">-</span> <span class="mf">1.0</span>
+    <span class="k">return</span> <span class="n">cor</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">overlap_position</span></div>
+
+
+<div class="viewcode-block" id="complex_gradient"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.complex_gradient">[docs]</a><span class="k">def</span> <span class="nf">complex_gradient</span><span class="p">(</span><span class="n">mat</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return complex gradient of a 2D array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mat1a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">mat2a</span> <span class="o">=</span> <span class="n">mat1a</span> <span class="o">-</span> <span class="n">mat</span>
+    <span class="n">mat2a</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">mat2a</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">mat1b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">mat2b</span> <span class="o">=</span> <span class="n">mat1b</span> <span class="o">-</span> <span class="n">mat</span>
+    <span class="n">mat2b</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">mat2b</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">mat2</span> <span class="o">=</span> <span class="n">mat2a</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">mat2b</span>
+    <span class="k">return</span> <span class="n">mat2</span></div>
+
+
+<div class="viewcode-block" id="find_shift_based_phase_correlation"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_shift_based_phase_correlation">[docs]</a><span class="k">def</span> <span class="nf">find_shift_based_phase_correlation</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">gradient</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Find relative translation in x and y direction between images with</span>
+<span class="sd">    haft-pixel accuracy (Ref. [1]_).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mat1 : array_like</span>
+<span class="sd">        2D array. Projection image or sinogram image.</span>
+<span class="sd">    mat2 : array_like</span>
+<span class="sd">        2D array. Projection image or sinogram image.</span>
+<span class="sd">    gradient : bool, optional</span>
+<span class="sd">        Use the complex gradient of the input image for calculation.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ty : float</span>
+<span class="sd">        Translation in y-direction.</span>
+<span class="sd">    tx : float</span>
+<span class="sd">        Translation in x-direction.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] https://doi.org/10.1049/el:20030666</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">gradient</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">mat1</span> <span class="o">=</span> <span class="n">complex_gradient</span><span class="p">(</span><span class="n">mat1</span><span class="p">)</span>
+        <span class="n">mat2</span> <span class="o">=</span> <span class="n">complex_gradient</span><span class="p">(</span><span class="n">mat2</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">)</span> <span class="o">=</span> <span class="n">mat1</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">mat_tmp1</span> <span class="o">=</span> <span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">mat1</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">conjugate</span><span class="p">(</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">mat2</span><span class="p">))</span>
+    <span class="n">mat_tmp2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mat_tmp1</span><span class="p">)</span>
+    <span class="n">mat_tmp2</span><span class="p">[</span><span class="n">mat_tmp2</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">mat3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft2</span><span class="p">(</span><span class="n">mat_tmp1</span> <span class="o">/</span> <span class="n">mat_tmp2</span><span class="p">))</span>
+    <span class="p">(</span><span class="n">ty</span><span class="p">,</span> <span class="n">tx</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">mat3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span> <span class="n">mat3</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">list_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">tx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tx</span><span class="p">,</span> <span class="n">tx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">list_vx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">mat3</span><span class="p">[</span><span class="n">ty</span><span class="p">,</span> <span class="n">tx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">mat3</span><span class="p">[</span><span class="n">ty</span><span class="p">,</span> <span class="n">tx</span><span class="p">],</span> <span class="n">mat3</span><span class="p">[</span><span class="n">ty</span><span class="p">,</span> <span class="p">(</span><span class="n">tx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">ncol</span><span class="p">]])</span>
+    <span class="n">list_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">ty</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ty</span><span class="p">,</span> <span class="n">ty</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">list_vy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">mat3</span><span class="p">[</span><span class="n">ty</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tx</span><span class="p">],</span> <span class="n">mat3</span><span class="p">[</span><span class="n">ty</span><span class="p">,</span> <span class="n">tx</span><span class="p">],</span> <span class="n">mat3</span><span class="p">[(</span><span class="n">ty</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">nrow</span><span class="p">,</span> <span class="n">tx</span><span class="p">]])</span>
+    <span class="p">(</span><span class="n">afact_x</span><span class="p">,</span> <span class="n">bfact_x</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">list_x</span><span class="p">,</span> <span class="n">list_vx</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">afact_y</span><span class="p">,</span> <span class="n">bfact_y</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">list_y</span><span class="p">,</span> <span class="n">list_vy</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">afact_x</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">num</span> <span class="o">=</span> <span class="o">-</span> <span class="n">bfact_x</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">afact_x</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&gt;=</span> <span class="n">tx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">num</span> <span class="o">&lt;=</span> <span class="n">tx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">tx</span> <span class="o">=</span> <span class="n">num</span>
+    <span class="k">if</span> <span class="n">afact_y</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">num</span> <span class="o">=</span> <span class="o">-</span> <span class="n">bfact_y</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">afact_y</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&gt;=</span> <span class="n">ty</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">num</span> <span class="o">&lt;=</span> <span class="n">ty</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">ty</span> <span class="o">=</span> <span class="n">num</span>
+    <span class="n">xcenter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="n">ncol</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ycenter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="n">nrow</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ty</span> <span class="o">&gt;</span> <span class="n">ycenter</span><span class="p">:</span>
+        <span class="n">ty</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">nrow</span> <span class="o">-</span> <span class="n">ty</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">tx</span> <span class="o">&gt;</span> <span class="n">xcenter</span><span class="p">:</span>
+        <span class="n">tx</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">ncol</span> <span class="o">-</span> <span class="n">tx</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ty</span><span class="p">,</span> <span class="n">tx</span></div>
+
+
+<div class="viewcode-block" id="find_center_based_phase_correlation"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_center_based_phase_correlation">[docs]</a><span class="k">def</span> <span class="nf">find_center_based_phase_correlation</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">flip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">gradient</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Find the center-of-rotation (COR) using projection images at 0-degree</span>
+<span class="sd">    and 180-degree.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mat1 : array_like</span>
+<span class="sd">        2D array. Projection image at 0-degree.</span>
+<span class="sd">    mat2 : array_like</span>
+<span class="sd">        2D array. Projection image at 180-degree.</span>
+<span class="sd">    flip : bool, optional</span>
+<span class="sd">        Flip the 180-degree projection in the left-right direction if True.</span>
+<span class="sd">    gradient : bool, optional</span>
+<span class="sd">        Use the complex gradient of the input image for calculation.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    cor : float</span>
+<span class="sd">        Center-of-rotation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ncol</span> <span class="o">=</span> <span class="n">mat1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">flip</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">mat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fliplr</span><span class="p">(</span><span class="n">mat2</span><span class="p">)</span>
+    <span class="n">tx</span> <span class="o">=</span> <span class="n">find_shift_based_phase_correlation</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">gradient</span><span class="o">=</span><span class="n">gradient</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">cor</span> <span class="o">=</span> <span class="p">(</span><span class="n">ncol</span> <span class="o">-</span> <span class="mf">1.0</span> <span class="o">+</span> <span class="n">tx</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span>
+    <span class="k">return</span> <span class="n">cor</span></div>
+
+
+<div class="viewcode-block" id="find_center_projection"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_center_projection">[docs]</a><span class="k">def</span> <span class="nf">find_center_projection</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">flip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">chunk_height</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                           <span class="n">start_row</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">denoise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                           <span class="n">use_overlap</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Find the center-of-rotation (COR) using projection images at 0-degree</span>
+<span class="sd">    and 180-degree based on a method in Ref. [1]_.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mat1 : array_like</span>
+<span class="sd">        2D array. Projection image at 0-degree.</span>
+<span class="sd">    mat2 : array_like</span>
+<span class="sd">        2D array. Projection image at 180-degree.</span>
+<span class="sd">    flip : bool, optional</span>
+<span class="sd">        Flip the 180-degree projection in the left-right direction if True.</span>
+<span class="sd">    chunk_height : int or float, optional</span>
+<span class="sd">        Height of the sub-area of projection images. If a float is given, it</span>
+<span class="sd">        must be in the range of [0.0, 1.0].</span>
+<span class="sd">    start_row : int, optional</span>
+<span class="sd">        Starting row used to extract the sub-area.</span>
+<span class="sd">    denoise : bool, optional</span>
+<span class="sd">        Apply the Gaussian filter if True.</span>
+<span class="sd">    norm : bool, optional</span>
+<span class="sd">        Apply the normalization if True.</span>
+<span class="sd">    use_overlap : bool, optional</span>
+<span class="sd">        Use the combination of images in the overlap area for calculating</span>
+<span class="sd">        correlation coefficients if True.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    cor : float</span>
+<span class="sd">        Center-of-rotation.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] https://doi.org/10.1364/OE.418448</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">)</span> <span class="o">=</span> <span class="n">mat1</span><span class="o">.</span><span class="n">shape</span>
+    <span class="k">if</span> <span class="n">flip</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">mat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fliplr</span><span class="p">(</span><span class="n">mat2</span><span class="p">)</span>
+    <span class="n">win_width</span> <span class="o">=</span> <span class="n">ncol</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="n">chunk_height</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">chunk_height</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">nrow</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">chunk_height</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="k">if</span> <span class="mf">0.0</span> <span class="o">&lt;</span> <span class="n">chunk_height</span> <span class="o">&lt;=</span> <span class="mf">1.0</span><span class="p">:</span>
+            <span class="n">chunk_height</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">chunk_height</span> <span class="o">*</span> <span class="n">nrow</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">chunk_height</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">nrow</span><span class="p">)</span>
+    <span class="n">chunk_height</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">chunk_height</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">start_row</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">nrow</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">chunk_height</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="k">elif</span> <span class="n">start_row</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">nrow</span> <span class="o">+</span> <span class="n">start_row</span> <span class="o">-</span> <span class="n">chunk_height</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">start_row</span> <span class="o">-</span> <span class="n">chunk_height</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">stop</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">chunk_height</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">-</span> <span class="n">chunk_height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">stop</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">stop</span><span class="p">,</span> <span class="n">chunk_height</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">mat1_roi</span> <span class="o">=</span> <span class="n">mat1</span><span class="p">[</span><span class="n">start</span><span class="p">:</span> <span class="n">stop</span><span class="p">]</span>
+    <span class="n">mat2_roi</span> <span class="o">=</span> <span class="n">mat2</span><span class="p">[</span><span class="n">start</span><span class="p">:</span> <span class="n">stop</span><span class="p">]</span>
+    <span class="p">(</span><span class="n">overlap</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">find_overlap</span><span class="p">(</span><span class="n">mat1_roi</span><span class="p">,</span> <span class="n">mat2_roi</span><span class="p">,</span> <span class="n">win_width</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                      <span class="n">denoise</span><span class="o">=</span><span class="n">denoise</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span>
+                                      <span class="n">use_overlap</span><span class="o">=</span><span class="n">use_overlap</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">side</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">cor</span> <span class="o">=</span> <span class="n">overlap</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">-</span> <span class="mf">1.0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">cor</span> <span class="o">=</span> <span class="n">ncol</span> <span class="o">-</span> <span class="n">overlap</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">-</span> <span class="mf">1.0</span>
+    <span class="k">return</span> <span class="n">cor</span></div>
+
+
+<div class="viewcode-block" id="calculate_reconstructable_height"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.calculate_reconstructable_height">[docs]</a><span class="k">def</span> <span class="nf">calculate_reconstructable_height</span><span class="p">(</span><span class="n">y_start</span><span class="p">,</span> <span class="n">y_stop</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">scan_type</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate reconstructable height in a helical scan.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    y_start : float</span>
+<span class="sd">        Y-position of the stage at the beginning of the scan.</span>
+<span class="sd">    y_stop : float</span>
+<span class="sd">        Y-position of the stage at the end of the scan.</span>
+<span class="sd">    pitch : float</span>
+<span class="sd">        The distance which the y-stage is translated in one full rotation.</span>
+<span class="sd">    scan_type : {&quot;180&quot;, &quot;360&quot;}</span>
+<span class="sd">        One of two options: &quot;180&quot; for generating a 180-degree sinogram or</span>
+<span class="sd">        &quot;360&quot; for generating a 360-degree sinogram.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    y_s : float</span>
+<span class="sd">        Starting point of the reconstructable height.</span>
+<span class="sd">    y_e : float</span>
+<span class="sd">        End point of the reconstructable height.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">scan_type</span> <span class="o">==</span> <span class="s2">&quot;180&quot;</span> <span class="ow">or</span> <span class="n">scan_type</span> <span class="o">==</span> <span class="s2">&quot;360&quot;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;!!! Please one of two options: &#39;180&#39; or &#39;360&#39;!!!&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">scan_type</span> <span class="o">==</span> <span class="s2">&quot;360&quot;</span><span class="p">:</span>
+        <span class="n">y_s</span> <span class="o">=</span> <span class="n">y_start</span> <span class="o">+</span> <span class="n">pitch</span>
+        <span class="n">y_e</span> <span class="o">=</span> <span class="n">y_stop</span> <span class="o">-</span> <span class="n">pitch</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">y_s</span> <span class="o">=</span> <span class="n">y_start</span> <span class="o">+</span> <span class="n">pitch</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="n">y_e</span> <span class="o">=</span> <span class="n">y_stop</span> <span class="o">-</span> <span class="n">pitch</span> <span class="o">/</span> <span class="mf">2.0</span>
+    <span class="k">return</span> <span class="n">y_s</span><span class="p">,</span> <span class="n">y_e</span></div>
+
+
+<div class="viewcode-block" id="calculate_maximum_index"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.calculate_maximum_index">[docs]</a><span class="k">def</span> <span class="nf">calculate_maximum_index</span><span class="p">(</span><span class="n">y_start</span><span class="p">,</span> <span class="n">y_stop</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">pixel_size</span><span class="p">,</span> <span class="n">scan_type</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the maximum index of a reconstructable slice in a helical scan.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    y_start : float</span>
+<span class="sd">        Y-position of the stage at the beginning of the scan.</span>
+<span class="sd">    y_stop : float</span>
+<span class="sd">        Y-position of the stage at the end of the scan.</span>
+<span class="sd">    pitch : float</span>
+<span class="sd">        The distance which the y-stage is translated in one full rotation.</span>
+<span class="sd">    pixel_size : float</span>
+<span class="sd">        Pixel size. The unit must be the same as y-position.</span>
+<span class="sd">    scan_type : {&quot;180&quot;, &quot;360&quot;}</span>
+<span class="sd">        One of two options: &quot;180&quot; for generating a 180-degree sinogram or</span>
+<span class="sd">        &quot;360&quot; for generating a 360-degree sinogram.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    int</span>
+<span class="sd">        Maximum index of reconstructable slices.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">scan_type</span> <span class="o">==</span> <span class="s2">&quot;180&quot;</span> <span class="ow">or</span> <span class="n">scan_type</span> <span class="o">==</span> <span class="s2">&quot;360&quot;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;!!! Please one of two options: &#39;180&#39; or &#39;360&#39;!!!&quot;</span><span class="p">)</span>
+    <span class="n">y_s</span><span class="p">,</span> <span class="n">y_e</span> <span class="o">=</span> <span class="n">calculate_reconstructable_height</span><span class="p">(</span><span class="n">y_start</span><span class="p">,</span> <span class="n">y_stop</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span>
+                                                <span class="n">scan_type</span><span class="p">)</span>
+    <span class="n">max_index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(((</span><span class="n">y_e</span> <span class="o">-</span> <span class="n">y_s</span><span class="p">)</span> <span class="o">/</span> <span class="n">pixel_size</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">max_index</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Nghia T. Vo.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
