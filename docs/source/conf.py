@@ -10,9 +10,9 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+sys.path.insert(0, os.path.abspath('../..'))
 
 
 # -- Project information -----------------------------------------------------
@@ -31,10 +31,19 @@ release = '1.1.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-   'sphinx.ext.autodoc',
-   'sphinx.ext.napoleon',
-   'sphinx.ext.intersphinx',
-   'sphinx.ext.viewcode',
+    'nbsphinx',
+    'sphinx.ext.autodoc',
+    'sphinx.ext.mathjax',
+    'sphinx.ext.todo',
+    'sphinx.ext.autosummary',
+    'sphinx.ext.napoleon',
+    'sphinxcontrib.bibtex',
+    'sphinx.ext.viewcode',
+]
+
+bibtex_bibfiles = [
+    'toc/bibtex/ref.bib',
+    'toc/bibtex/cite.bib'
 ]
 
 napoleon_google_docstring = True
@@ -82,15 +91,16 @@ html_favicon = 'favicon.ico'
 # so a file named "default.css" will overwrite the builtin "default.css".
 #html_static_path = ['_static']
 
-# autodoc_mock_imports = [
-#    'numpy',
-#    'scipy',
-#    'pywt',
-#    'pillow',
-#    'PIL',
-#    'h5py',
-#    'numba'
-# ]
+autodoc_mock_imports = [
+    'PIL',
+    'h5py',
+    'pywt',
+    'joblib',
+    'numba',
+    'numpy',
+    'scipy'
+]
+autodoc_member_order = 'bysource'
 
 numfig = True
 numfig_secnum_depth = 2

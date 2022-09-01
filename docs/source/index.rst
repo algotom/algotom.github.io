@@ -23,6 +23,6 @@ Table of Contents
    toc/section4
    toc/section5
    toc/section6
-   toc/section7
-   toc/section8
+   toc/api
+   toc/credits
 

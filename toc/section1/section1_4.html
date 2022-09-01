@@ -16,7 +16,9 @@
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -66,8 +68,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../section4.html">4. Demonstrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section5.html">5. Technical notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section6.html">6. Update notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../section7.html">7. API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../section8.html">8. Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">7. API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../credits.html">8. Credits</a></li>
 </ul>
 
         </div>
@@ -95,7 +97,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="basic-workflow-for-processing-tomographic-data">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="basic-workflow-for-processing-tomographic-data">
 <h1><span class="section-number">1.4. </span>Basic workflow for processing tomographic data<a class="headerlink" href="#basic-workflow-for-processing-tomographic-data" title="Permalink to this heading"></a></h1>
 <div class="section" id="read-write-data">
 <h2><span class="section-number">1.4.1. </span>Read/write data<a class="headerlink" href="#read-write-data" title="Permalink to this heading"></a></h2>

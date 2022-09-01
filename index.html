@@ -16,6 +16,7 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -44,8 +45,8 @@
 <li class="toctree-l1"><a class="reference internal" href="toc/section4.html">4. Demonstrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="toc/section5.html">5. Technical notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="toc/section6.html">6. Update notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="toc/section7.html">7. API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="toc/section8.html">8. Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toc/api.html">7. API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toc/credits.html">8. Credits</a></li>
 </ul>
 
         </div>
@@ -72,7 +73,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="figure align-right" style="width: 35%">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="figure align-right" style="width: 35%">
 <img alt="_images/logo.jpg" src="_images/logo.jpg" />
 </div>
 <div class="section" id="data-processing-algorithms-for-tomography">
@@ -141,8 +166,43 @@ technical notes, and applications.</p>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="toc/section5.html">5. Technical notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="toc/section6.html">6. Update notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="toc/section7.html">7. API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="toc/section8.html">8. Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toc/api.html">7. API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="toc/api.html#input-output">7.1. Input-output</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.io.converter.html">7.1.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.io.converter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html">7.1.2. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.io.loadersaver</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="toc/api.html#pre-processing">7.2. Pre-processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.prep.calculation.html">7.2.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.calculation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.prep.conversion.html">7.2.2. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.conversion</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.prep.correction.html">7.2.3. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.correction</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.prep.filtering.html">7.2.4. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.filtering</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.prep.removal.html">7.2.5. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.removal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.prep.phase.html">7.2.6. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.phase</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="toc/api.html#reconstruction">7.3. Reconstruction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.rec.reconstruction.html">7.3.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.rec.reconstruction</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="toc/api.html#post-processing">7.4. Post-processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.post.postprocessing.html">7.4.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.post.postprocessing</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="toc/api.html#utility">7.5. Utility</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.util.calibration.html">7.5.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.calibration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.util.simulation.html">7.5.2. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.simulation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.util.utility.html">7.5.3. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.utility</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.util.correlation.html">7.5.4. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.correlation</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="toc/credits.html">8. Credits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="toc/credits.html#citations">8.1. Citations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toc/credits.html#references">8.2. References</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
