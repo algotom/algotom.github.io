@@ -1,37 +1,79 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>7.5.4. algotom.util.correlation &mdash; Algotom&#39;s documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../../_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="8. Credits" href="../credits.html" />
-    <link rel="prev" title="7.5.3. algotom.util.utility" href="algotom.util.utility.html" /> 
+  <title>7.5.4. algotom.util.correlation &mdash; Algotom&#39;s documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Algotom&#39;s documentation" href="../../index.html"/>
+        <link rel="up" title="7. API Reference" href="../api.html"/>
+        <link rel="next" title="8. Credits" href="../credits.html"/>
+        <link rel="prev" title="7.5.3. algotom.util.utility" href="algotom.util.utility.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
-<body class="wy-body-for-nav"> 
+<body class="wy-body-for-nav" role="document">
+
+   
   <div class="wy-grid-for-nav">
+
+    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
+          
+
+          
             <a href="../../index.html" class="icon icon-home"> Algotom
+          
+
+          
           </a>
+
+          
+            
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -39,8 +81,15 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../section1.html">1. Basic tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section2.html">2. Features and capabilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section3.html">3. Installation</a></li>
@@ -64,57 +113,71 @@
 <li class="toctree-l1"><a class="reference internal" href="../credits.html">8. Credits</a></li>
 </ul>
 
+            
+          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Algotom</a>
+        
       </nav>
 
+
+      
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../api.html"><span class="section-number">7. </span>API Reference</a> &raquo;</li>
+        
       <li><span class="section-number">7.5.4. </span><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.correlation</span></code></li>
+    
+    
       <li class="wy-breadcrumbs-aside">
+        
+            
             <a href="../../_sources/toc/api/algotom.util.correlation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-             
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="module-algotom.util.correlation">
-<span id="algotom-util-correlation"></span><h1><span class="section-number">7.5.4. </span><a class="reference internal" href="#module-algotom.util.correlation" title="algotom.util.correlation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.correlation</span></code></a><a class="headerlink" href="#module-algotom.util.correlation" title="Permalink to this heading"></a></h1>
+            
+  <section id="module-algotom.util.correlation">
+<span id="algotom-util-correlation"></span><h1><span class="section-number">7.5.4. </span><a class="reference internal" href="#module-algotom.util.correlation" title="algotom.util.correlation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.correlation</span></code></a><a class="headerlink" href="#module-algotom.util.correlation" title="Permalink to this heading">¶</a></h1>
 <p>Module of correlation-based methods for finding shifts between images or
 stacks of images. The methods are designed to be flexible to:</p>
 <blockquote>
@@ -154,7 +217,7 @@ stacks of images. The methods are designed to be flexible to:</p>
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.correlation.normalize_image">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.correlation.</span></span><span class="sig-name descname"><span class="pre">normalize_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/correlation.html#normalize_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.correlation.normalize_image" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.correlation.</span></span><span class="sig-name descname"><span class="pre">normalize_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/correlation.html#normalize_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.correlation.normalize_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Normalize an image.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -168,7 +231,7 @@ stacks of images. The methods are designed to be flexible to:</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.correlation.generate_correlation_map">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.correlation.</span></span><span class="sig-name descname"><span class="pre">generate_correlation_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(16,</span> <span class="pre">16)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/correlation.html#generate_correlation_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.correlation.generate_correlation_map" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.correlation.</span></span><span class="sig-name descname"><span class="pre">generate_correlation_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(16,</span> <span class="pre">16)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/correlation.html#generate_correlation_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.correlation.generate_correlation_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate the correlation map (Pearson coefficients) between two images by
 shifting the second image over the reference image.</p>
 <dl class="field-list simple">
@@ -190,7 +253,7 @@ reference image.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.correlation.locate_peak">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.correlation.</span></span><span class="sig-name descname"><span class="pre">locate_peak</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_pixel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_peak</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/correlation.html#locate_peak"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.correlation.locate_peak" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.correlation.</span></span><span class="sig-name descname"><span class="pre">locate_peak</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_pixel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_peak</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/correlation.html#locate_peak"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.correlation.locate_peak" title="Permalink to this definition">¶</a></dt>
 <dd><p>Locate the position of the maximum value of a 2d-array with sub-pixel
 accuracy.</p>
 <dl class="field-list simple">
@@ -223,7 +286,7 @@ sub-pixel searching.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.correlation.find_shift_based_correlation_map">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.correlation.</span></span><span class="sig-name descname"><span class="pre">find_shift_based_correlation_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_pixel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(16,</span> <span class="pre">16)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/correlation.html#find_shift_based_correlation_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.correlation.find_shift_based_correlation_map" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.correlation.</span></span><span class="sig-name descname"><span class="pre">find_shift_based_correlation_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_pixel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(16,</span> <span class="pre">16)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/correlation.html#find_shift_based_correlation_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.correlation.find_shift_based_correlation_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the relative translations of the second image against the first image
 using the correlation map generated by sliding the 2nd image over the 1st
 one. If the inputs are 3d-arrays, the size of the first axis must be the
@@ -267,7 +330,7 @@ middle of the reference image.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.correlation.find_local_shifts">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.correlation.</span></span><span class="sig-name descname"><span class="pre">find_local_shifts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(16,</span> <span class="pre">16)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm_global</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/correlation.html#find_local_shifts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.correlation.find_local_shifts" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.correlation.</span></span><span class="sig-name descname"><span class="pre">find_local_shifts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(16,</span> <span class="pre">16)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm_global</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/correlation.html#find_local_shifts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.correlation.find_local_shifts" title="Permalink to this definition">¶</a></dt>
 <dd><p>To find local shifts (in y and x direction) between two images by selecting
 a small area/volume of the second image and sliding over a slightly larger
 area/volume of the reference image.</p>
@@ -311,7 +374,7 @@ sub-pixel location. Adjustable if using the polynomial method.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.correlation.find_global_shift_based_local_shifts">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.correlation.</span></span><span class="sig-name descname"><span class="pre">find_global_shift_based_local_shifts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_ij</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_pixel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/correlation.html#find_global_shift_based_local_shifts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.correlation.find_global_shift_based_local_shifts" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.correlation.</span></span><span class="sig-name descname"><span class="pre">find_global_shift_based_local_shifts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_ij</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_pixel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/correlation.html#find_global_shift_based_local_shifts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.correlation.find_global_shift_based_local_shifts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find global shift between two images based on finding local shifts.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -365,32 +428,73 @@ sub-pixel searching.</p></li>
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="algotom.util.utility.html" class="btn btn-neutral float-left" title="7.5.3. algotom.util.utility" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../credits.html" class="btn btn-neutral float-right" title="8. Credits" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../credits.html" class="btn btn-neutral float-right" title="8. Credits" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="algotom.util.utility.html" class="btn btn-neutral" title="7.5.3. algotom.util.utility" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, Nghia T. Vo.</p>
-  </div>
+    <p>
+        &copy; Copyright 2021, Nghia T. Vo.
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
+
     </section>
+
   </div>
-  <script>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

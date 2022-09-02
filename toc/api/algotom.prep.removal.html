@@ -1,37 +1,79 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>7.2.5. algotom.prep.removal &mdash; Algotom&#39;s documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../../_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="7.2.6. algotom.prep.phase" href="algotom.prep.phase.html" />
-    <link rel="prev" title="7.2.4. algotom.prep.filtering" href="algotom.prep.filtering.html" /> 
+  <title>7.2.5. algotom.prep.removal &mdash; Algotom&#39;s documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Algotom&#39;s documentation" href="../../index.html"/>
+        <link rel="up" title="7. API Reference" href="../api.html"/>
+        <link rel="next" title="7.2.6. algotom.prep.phase" href="algotom.prep.phase.html"/>
+        <link rel="prev" title="7.2.4. algotom.prep.filtering" href="algotom.prep.filtering.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
-<body class="wy-body-for-nav"> 
+<body class="wy-body-for-nav" role="document">
+
+   
   <div class="wy-grid-for-nav">
+
+    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
+          
+
+          
             <a href="../../index.html" class="icon icon-home"> Algotom
+          
+
+          
           </a>
+
+          
+            
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -39,8 +81,15 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../section1.html">1. Basic tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section2.html">2. Features and capabilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section3.html">3. Installation</a></li>
@@ -66,57 +115,71 @@
 <li class="toctree-l1"><a class="reference internal" href="../credits.html">8. Credits</a></li>
 </ul>
 
+            
+          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Algotom</a>
+        
       </nav>
 
+
+      
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../api.html"><span class="section-number">7. </span>API Reference</a> &raquo;</li>
+        
       <li><span class="section-number">7.2.5. </span><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.removal</span></code></li>
+    
+    
       <li class="wy-breadcrumbs-aside">
+        
+            
             <a href="../../_sources/toc/api/algotom.prep.removal.rst.txt" rel="nofollow"> View page source</a>
+          
+        
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-             
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="module-algotom.prep.removal">
-<span id="algotom-prep-removal"></span><h1><span class="section-number">7.2.5. </span><a class="reference internal" href="#module-algotom.prep.removal" title="algotom.prep.removal"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.removal</span></code></a><a class="headerlink" href="#module-algotom.prep.removal" title="Permalink to this heading"></a></h1>
+            
+  <section id="module-algotom.prep.removal">
+<span id="algotom-prep-removal"></span><h1><span class="section-number">7.2.5. </span><a class="reference internal" href="#module-algotom.prep.removal" title="algotom.prep.removal"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.removal</span></code></a><a class="headerlink" href="#module-algotom.prep.removal" title="Permalink to this heading">¶</a></h1>
 <dl class="simple">
 <dt>Module of removal methods in the preprocessing stage:</dt><dd><ul class="simple">
 <li><p>Many methods for removing stripe artifact in a sinogram (&lt;-&gt; ring artifact
@@ -191,7 +254,7 @@ in a reconstructed image).</p></li>
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.removal.remove_stripe_based_sorting">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_stripe_based_sorting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">21</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_stripe_based_sorting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_stripe_based_sorting" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_stripe_based_sorting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">21</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_stripe_based_sorting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_stripe_based_sorting" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove stripe artifacts in a sinogram using the sorting technique,
 algorithm 3 in Ref. <a href="#id39"><span class="problematic" id="id1">[1]_</span></a>. Angular direction is along the axis 0.</p>
 <dl class="field-list simple">
@@ -218,7 +281,7 @@ E.g. options={“method”: “gaussian_filter”, “para1”: (1,21))}</p></li
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.removal.remove_stripe_based_filtering">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_stripe_based_filtering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">21</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_stripe_based_filtering"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_stripe_based_filtering" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_stripe_based_filtering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">21</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_stripe_based_filtering"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_stripe_based_filtering" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove stripe artifacts in a sinogram using the filtering technique,
 algorithm 2 in Ref. <a href="#id40"><span class="problematic" id="id3">[1]_</span></a>. Angular direction is along the axis 0.</p>
 <dl class="field-list simple">
@@ -248,7 +311,7 @@ E.g. options={“method”: “gaussian_filter”, “para1”: (1,21))}.</p></l
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.removal.remove_stripe_based_fitting">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_stripe_based_fitting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_chunk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_stripe_based_fitting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_stripe_based_fitting" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_stripe_based_fitting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_chunk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_stripe_based_fitting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_stripe_based_fitting" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove stripe artifacts in a sinogram using the fitting technique,
 algorithm 1 in Ref. <a href="#id41"><span class="problematic" id="id5">[1]_</span></a>. Angular direction is along the axis 0.</p>
 <dl class="field-list simple">
@@ -277,7 +340,7 @@ E.g. options={“method”: “gaussian_filter”, “para1”: (1,21))}.</p></l
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.removal.remove_large_stripe">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_large_stripe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">51</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_large_stripe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_large_stripe" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_large_stripe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">51</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_large_stripe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_large_stripe" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove large stripe artifacts in a sinogram, algorithm 5 in Ref. <a href="#id42"><span class="problematic" id="id7">[1]_</span></a>.
 Angular direction is along the axis 0.</p>
 <dl class="field-list simple">
@@ -307,7 +370,7 @@ E.g. options={“method”: “gaussian_filter”, “para1”: (1,21))}.</p></l
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.removal.remove_dead_stripe">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_dead_stripe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">51</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_strength</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_dead_stripe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_dead_stripe" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_dead_stripe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">51</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_strength</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_dead_stripe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_dead_stripe" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove unresponsive or fluctuating stripe artifacts in a sinogram,
 algorithm 6 in Ref. <a href="#id43"><span class="problematic" id="id9">[1]_</span></a>. Angular direction is along the axis 0.</p>
 <dl class="field-list simple">
@@ -334,7 +397,7 @@ algorithm 6 in Ref. <a href="#id43"><span class="problematic" id="id9">[1]_</spa
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.removal.remove_all_stripe">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_all_stripe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">la_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">51</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sm_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">21</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_all_stripe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_all_stripe" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_all_stripe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">la_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">51</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sm_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">21</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_all_stripe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_all_stripe" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove all types of stripe artifacts in a sinogram by combining algorithm
 6, 5, 4, and 3 in Ref. <a href="#id44"><span class="problematic" id="id11">[1]_</span></a>. Angular direction is along the axis 0.</p>
 <dl class="field-list simple">
@@ -365,7 +428,7 @@ E.g. options={“method”: “gaussian_filter”, “para1”: (1,21))}</p></li
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.removal.remove_stripe_based_2d_filtering_sorting">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_stripe_based_2d_filtering_sorting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">21</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_stripe_based_2d_filtering_sorting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_stripe_based_2d_filtering_sorting" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_stripe_based_2d_filtering_sorting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">21</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_stripe_based_2d_filtering_sorting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_stripe_based_2d_filtering_sorting" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove stripes using a 2D low-pass filter and the sorting-based technique,
 algorithm in section 3.3.4 in Ref. <a href="#id45"><span class="problematic" id="id13">[1]_</span></a>.
 Angular direction is along the axis 0.</p>
@@ -392,7 +455,7 @@ Angular direction is along the axis 0.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.removal.remove_stripe_based_normalization">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_stripe_based_normalization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_chunk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_stripe_based_normalization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_stripe_based_normalization" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_stripe_based_normalization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_chunk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_stripe_based_normalization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_stripe_based_normalization" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove stripes using the method in Ref. <a href="#id46"><span class="problematic" id="id15">[1]_</span></a>.
 Angular direction is along the axis 0.</p>
 <dl class="field-list simple">
@@ -424,7 +487,7 @@ tutorial.html</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.removal.remove_stripe_based_regularization">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_stripe_based_regularization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0005</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_chunk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_stripe_based_regularization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_stripe_based_regularization" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_stripe_based_regularization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0005</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_chunk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_stripe_based_regularization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_stripe_based_regularization" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove stripes using the method in Ref. <a href="#id48"><span class="problematic" id="id19">[1]_</span></a>.
 Angular direction is along the axis 0.</p>
 <dl class="field-list simple">
@@ -454,7 +517,7 @@ Angular direction is along the axis 0.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.removal.remove_stripe_based_fft">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_stripe_based_fft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_stripe_based_fft"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_stripe_based_fft" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_stripe_based_fft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_stripe_based_fft"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_stripe_based_fft" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove stripes using the method in Ref. <a href="#id50"><span class="problematic" id="id23">[1]_</span></a>.
 Angular direction is along the axis 0.</p>
 <dl class="field-list simple">
@@ -484,7 +547,7 @@ Angular direction is along the axis 0.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.removal.remove_stripe_based_wavelet_fft">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_stripe_based_wavelet_fft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelet_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'db9'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gaussian'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_stripe_based_wavelet_fft"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_stripe_based_wavelet_fft" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_stripe_based_wavelet_fft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelet_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'db9'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gaussian'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_stripe_based_wavelet_fft"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_stripe_based_wavelet_fft" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove stripes using the method in Ref. <a href="#id52"><span class="problematic" id="id27">[1]_</span></a>.
 Angular direction is along the axis 0.</p>
 <dl class="field-list simple">
@@ -515,7 +578,7 @@ Angular direction is along the axis 0.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.removal.remove_stripe_based_interpolation">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_stripe_based_interpolation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">51</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_stripe_based_interpolation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_stripe_based_interpolation" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_stripe_based_interpolation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">51</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_stripe_based_interpolation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_stripe_based_interpolation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Combination of algorithm 4, 5, and 6 in Ref. <a href="#id54"><span class="problematic" id="id31">[1]_</span></a>.
 Angular direction is along the axis 0.</p>
 <dl class="field-list simple">
@@ -546,7 +609,7 @@ E.g. options={“method”: “gaussian_filter”, “para1”: (1,21))}</p></li
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.removal.check_zinger_size">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">check_zinger_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#check_zinger_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.check_zinger_size" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">check_zinger_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#check_zinger_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.check_zinger_size" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if the size of a zinger is smaller than a given size.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -563,7 +626,7 @@ E.g. options={“method”: “gaussian_filter”, “para1”: (1,21))}</p></li
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.removal.select_zinger">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">select_zinger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#select_zinger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.select_zinger" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">select_zinger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#select_zinger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.select_zinger" title="Permalink to this definition">¶</a></dt>
 <dd><p>Select zingers smaller than a certain size.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -580,7 +643,7 @@ E.g. options={“method”: “gaussian_filter”, “para1”: (1,21))}</p></li
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.removal.remove_zinger">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_zinger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_zinger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_zinger" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_zinger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_zinger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_zinger" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove zinger using the method in Ref. <a href="#id55"><span class="problematic" id="id33">[1]_</span></a>, working on a projection image
 or sinogram image.</p>
 <dl class="field-list simple">
@@ -606,7 +669,7 @@ Recommended range [0.05, 0.1].</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.removal.generate_blob_mask">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">generate_blob_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#generate_blob_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.generate_blob_mask" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">generate_blob_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#generate_blob_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.generate_blob_mask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a binary mask of blobs from a flat-field image (Ref. <a href="#id56"><span class="problematic" id="id35">[1]_</span></a>).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -630,7 +693,7 @@ Recommended range [0.05, 0.1].</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.removal.remove_blob_1d">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_blob_1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sino_1d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_1d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_blob_1d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_blob_1d" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_blob_1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sino_1d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_1d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_blob_1d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_blob_1d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove blobs in one row of a sinogram, e.g. for a helical scan as shown in
 Ref. <a href="#id57"><span class="problematic" id="id37">[1]_</span></a>.</p>
 <dl class="field-list simple">
@@ -657,7 +720,7 @@ a sinogram generated from a helical-scan data [1].</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.removal.remove_blob">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_blob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_blob"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_blob" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_blob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_blob"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_blob" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove blobs in an image.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -677,32 +740,73 @@ a sinogram generated from a helical-scan data [1].</p>
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="algotom.prep.filtering.html" class="btn btn-neutral float-left" title="7.2.4. algotom.prep.filtering" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="algotom.prep.phase.html" class="btn btn-neutral float-right" title="7.2.6. algotom.prep.phase" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="algotom.prep.phase.html" class="btn btn-neutral float-right" title="7.2.6. algotom.prep.phase" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="algotom.prep.filtering.html" class="btn btn-neutral" title="7.2.4. algotom.prep.filtering" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, Nghia T. Vo.</p>
-  </div>
+    <p>
+        &copy; Copyright 2021, Nghia T. Vo.
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
+
     </section>
+
   </div>
-  <script>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

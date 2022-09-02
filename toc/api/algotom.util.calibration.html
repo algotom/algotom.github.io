@@ -1,37 +1,79 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>7.5.1. algotom.util.calibration &mdash; Algotom&#39;s documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../../_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="7.5.2. algotom.util.simulation" href="algotom.util.simulation.html" />
-    <link rel="prev" title="7.4.1. algotom.post.postprocessing" href="algotom.post.postprocessing.html" /> 
+  <title>7.5.1. algotom.util.calibration &mdash; Algotom&#39;s documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Algotom&#39;s documentation" href="../../index.html"/>
+        <link rel="up" title="7. API Reference" href="../api.html"/>
+        <link rel="next" title="7.5.2. algotom.util.simulation" href="algotom.util.simulation.html"/>
+        <link rel="prev" title="7.4.1. algotom.post.postprocessing" href="algotom.post.postprocessing.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
-<body class="wy-body-for-nav"> 
+<body class="wy-body-for-nav" role="document">
+
+   
   <div class="wy-grid-for-nav">
+
+    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
+          
+
+          
             <a href="../../index.html" class="icon icon-home"> Algotom
+          
+
+          
           </a>
+
+          
+            
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -39,8 +81,15 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../section1.html">1. Basic tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section2.html">2. Features and capabilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section3.html">3. Installation</a></li>
@@ -64,57 +113,71 @@
 <li class="toctree-l1"><a class="reference internal" href="../credits.html">8. Credits</a></li>
 </ul>
 
+            
+          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Algotom</a>
+        
       </nav>
 
+
+      
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../api.html"><span class="section-number">7. </span>API Reference</a> &raquo;</li>
+        
       <li><span class="section-number">7.5.1. </span><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.calibration</span></code></li>
+    
+    
       <li class="wy-breadcrumbs-aside">
+        
+            
             <a href="../../_sources/toc/api/algotom.util.calibration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-             
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="module-algotom.util.calibration">
-<span id="algotom-util-calibration"></span><h1><span class="section-number">7.5.1. </span><a class="reference internal" href="#module-algotom.util.calibration" title="algotom.util.calibration"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.calibration</span></code></a><a class="headerlink" href="#module-algotom.util.calibration" title="Permalink to this heading"></a></h1>
+            
+  <section id="module-algotom.util.calibration">
+<span id="algotom-util-calibration"></span><h1><span class="section-number">7.5.1. </span><a class="reference internal" href="#module-algotom.util.calibration" title="algotom.util.calibration"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.calibration</span></code></a><a class="headerlink" href="#module-algotom.util.calibration" title="Permalink to this heading">¶</a></h1>
 <dl class="simple">
 <dt>Module of calibration methods:</dt><dd><ul class="simple">
 <li><p>Correcting the non-uniform background of an image.</p></li>
@@ -162,7 +225,7 @@ two images. Useful for determining pixel-size in helical scans.</p></li>
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.normalize_background">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">normalize_background</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">51</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#normalize_background"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.normalize_background" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">normalize_background</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">51</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#normalize_background"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.normalize_background" title="Permalink to this definition">¶</a></dt>
 <dd><p>Correct a non-uniform background of an image using the median filter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -179,7 +242,7 @@ two images. Useful for determining pixel-size in helical scans.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.normalize_background_based_fft">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">normalize_background_based_fft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#normalize_background_based_fft"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.normalize_background_based_fft" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">normalize_background_based_fft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#normalize_background_based_fft"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.normalize_background_based_fft" title="Permalink to this definition">¶</a></dt>
 <dd><p>Correct a non-uniform background of an image using a Fourier Gaussian
 filter.</p>
 <dl class="field-list simple">
@@ -201,7 +264,7 @@ list is at:
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.invert_dot_contrast">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">invert_dot_contrast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#invert_dot_contrast"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.invert_dot_contrast" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">invert_dot_contrast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#invert_dot_contrast"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.invert_dot_contrast" title="Permalink to this definition">¶</a></dt>
 <dd><p>Invert the contrast of a 2D binary array to make sure that a dot is white.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -215,7 +278,7 @@ list is at:
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.calculate_threshold">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">calculate_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bgr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bright'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#calculate_threshold"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.calculate_threshold" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">calculate_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bgr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bright'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#calculate_threshold"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.calculate_threshold" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate threshold value based on Algorithm 4 in Ref. <a href="#id9"><span class="problematic" id="id1">[1]_</span></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -238,7 +301,7 @@ list is at:
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.binarize_image">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">binarize_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bgr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bright'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#binarize_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.binarize_image" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">binarize_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bgr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bright'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#binarize_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.binarize_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Binarize an image.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -266,7 +329,7 @@ Algorithm 4 in Ref. <a href="#id10"><span class="problematic" id="id3">[1]_</spa
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.get_dot_size">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">get_dot_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_opt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'max'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#get_dot_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.get_dot_size" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">get_dot_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_opt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'max'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#get_dot_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.get_dot_size" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get size of binary dots given the option.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -283,7 +346,7 @@ Algorithm 4 in Ref. <a href="#id10"><span class="problematic" id="id3">[1]_</spa
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.check_dot_size">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">check_dot_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#check_dot_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.check_dot_size" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">check_dot_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#check_dot_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.check_dot_size" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if the size of a dot is in a range.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -301,7 +364,7 @@ Algorithm 4 in Ref. <a href="#id10"><span class="problematic" id="id3">[1]_</spa
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.select_dot_based_size">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">select_dot_based_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dot_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#select_dot_based_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.select_dot_based_size" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">select_dot_based_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dot_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#select_dot_based_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.select_dot_based_size" title="Permalink to this definition">¶</a></dt>
 <dd><p>Select dots having a certain size.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -320,7 +383,7 @@ Algorithm 4 in Ref. <a href="#id10"><span class="problematic" id="id3">[1]_</spa
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.calculate_distance">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">calculate_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_opt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'max'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bgr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bright'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#calculate_distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.calculate_distance" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">calculate_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_opt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'max'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bgr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bright'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#calculate_distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.calculate_distance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the distance between two point-like objects segmented from
 two images. Useful for measuring pixel-size in helical scans (Ref. <a href="#id11"><span class="problematic" id="id5">[1]_</span></a>).</p>
 <dl class="field-list simple">
@@ -354,32 +417,73 @@ Algorithm 4 in Ref. <a class="footnote-reference brackets" href="#id8" id="id6">
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="algotom.post.postprocessing.html" class="btn btn-neutral float-left" title="7.4.1. algotom.post.postprocessing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="algotom.util.simulation.html" class="btn btn-neutral float-right" title="7.5.2. algotom.util.simulation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="algotom.util.simulation.html" class="btn btn-neutral float-right" title="7.5.2. algotom.util.simulation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="algotom.post.postprocessing.html" class="btn btn-neutral" title="7.4.1. algotom.post.postprocessing" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, Nghia T. Vo.</p>
-  </div>
+    <p>
+        &copy; Copyright 2021, Nghia T. Vo.
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
+
     </section>
+
   </div>
-  <script>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

@@ -1,37 +1,79 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>7.5.2. algotom.util.simulation &mdash; Algotom&#39;s documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../../_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="7.5.3. algotom.util.utility" href="algotom.util.utility.html" />
-    <link rel="prev" title="7.5.1. algotom.util.calibration" href="algotom.util.calibration.html" /> 
+  <title>7.5.2. algotom.util.simulation &mdash; Algotom&#39;s documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Algotom&#39;s documentation" href="../../index.html"/>
+        <link rel="up" title="7. API Reference" href="../api.html"/>
+        <link rel="next" title="7.5.3. algotom.util.utility" href="algotom.util.utility.html"/>
+        <link rel="prev" title="7.5.1. algotom.util.calibration" href="algotom.util.calibration.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
-<body class="wy-body-for-nav"> 
+<body class="wy-body-for-nav" role="document">
+
+   
   <div class="wy-grid-for-nav">
+
+    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
+          
+
+          
             <a href="../../index.html" class="icon icon-home"> Algotom
+          
+
+          
           </a>
+
+          
+            
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -39,8 +81,15 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../section1.html">1. Basic tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section2.html">2. Features and capabilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section3.html">3. Installation</a></li>
@@ -64,57 +113,71 @@
 <li class="toctree-l1"><a class="reference internal" href="../credits.html">8. Credits</a></li>
 </ul>
 
+            
+          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Algotom</a>
+        
       </nav>
 
+
+      
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../api.html"><span class="section-number">7. </span>API Reference</a> &raquo;</li>
+        
       <li><span class="section-number">7.5.2. </span><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.simulation</span></code></li>
+    
+    
       <li class="wy-breadcrumbs-aside">
+        
+            
             <a href="../../_sources/toc/api/algotom.util.simulation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-             
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="module-algotom.util.simulation">
-<span id="algotom-util-simulation"></span><h1><span class="section-number">7.5.2. </span><a class="reference internal" href="#module-algotom.util.simulation" title="algotom.util.simulation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.simulation</span></code></a><a class="headerlink" href="#module-algotom.util.simulation" title="Permalink to this heading"></a></h1>
+            
+  <section id="module-algotom.util.simulation">
+<span id="algotom-util-simulation"></span><h1><span class="section-number">7.5.2. </span><a class="reference internal" href="#module-algotom.util.simulation" title="algotom.util.simulation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.simulation</span></code></a><a class="headerlink" href="#module-algotom.util.simulation" title="Permalink to this heading">¶</a></h1>
 <dl class="simple">
 <dt>Module of simulation methods:</dt><dd><ul class="simple">
 <li><p>Methods for designing a customized 2D phantom.</p></li>
@@ -165,7 +228,7 @@ slice theorem.</p></li>
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.simulation.make_elliptic_mask">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.simulation.</span></span><span class="sig-name descname"><span class="pre">make_elliptic_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/simulation.html#make_elliptic_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.simulation.make_elliptic_mask" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.simulation.</span></span><span class="sig-name descname"><span class="pre">make_elliptic_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/simulation.html#make_elliptic_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.simulation.make_elliptic_mask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create an elliptic mask.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -184,7 +247,7 @@ slice theorem.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.simulation.make_rectangular_mask">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.simulation.</span></span><span class="sig-name descname"><span class="pre">make_rectangular_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/simulation.html#make_rectangular_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.simulation.make_rectangular_mask" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.simulation.</span></span><span class="sig-name descname"><span class="pre">make_rectangular_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/simulation.html#make_rectangular_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.simulation.make_rectangular_mask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a rectangular mask.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -203,7 +266,7 @@ slice theorem.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.simulation.make_triangular_mask">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.simulation.</span></span><span class="sig-name descname"><span class="pre">make_triangular_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/simulation.html#make_triangular_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.simulation.make_triangular_mask" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.simulation.</span></span><span class="sig-name descname"><span class="pre">make_triangular_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/simulation.html#make_triangular_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.simulation.make_triangular_mask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create an isosceles triangle mask.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -222,7 +285,7 @@ slice theorem.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.simulation.make_line_target">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.simulation.</span></span><span class="sig-name descname"><span class="pre">make_line_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/simulation.html#make_line_target"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.simulation.make_line_target" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.simulation.</span></span><span class="sig-name descname"><span class="pre">make_line_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/simulation.html#make_line_target"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.simulation.make_line_target" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create line patterns for testing the resolution of a reconstructed image.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -236,7 +299,7 @@ slice theorem.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.simulation.make_face_phantom">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.simulation.</span></span><span class="sig-name descname"><span class="pre">make_face_phantom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/simulation.html#make_face_phantom"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.simulation.make_face_phantom" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.simulation.</span></span><span class="sig-name descname"><span class="pre">make_face_phantom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/simulation.html#make_face_phantom"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.simulation.make_face_phantom" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a face phantom for testing reconstruction methods.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -250,7 +313,7 @@ slice theorem.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.simulation.make_sinogram">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.simulation.</span></span><span class="sig-name descname"><span class="pre">make_sinogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'edge'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/simulation.html#make_sinogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.simulation.make_sinogram" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.simulation.</span></span><span class="sig-name descname"><span class="pre">make_sinogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'edge'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/simulation.html#make_sinogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.simulation.make_sinogram" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a sinogram (series of 1D projections) from a 2D image based on the
 Fourier slice theorem (Ref. <a href="#id5"><span class="problematic" id="id1">[1]_</span></a>).</p>
 <dl class="field-list simple">
@@ -274,7 +337,7 @@ Fourier slice theorem (Ref. <a href="#id5"><span class="problematic" id="id1">[1
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.simulation.add_noise">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.simulation.</span></span><span class="sig-name descname"><span class="pre">add_noise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/simulation.html#add_noise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.simulation.add_noise" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.simulation.</span></span><span class="sig-name descname"><span class="pre">add_noise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/simulation.html#add_noise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.simulation.add_noise" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add Gaussian noise to an image.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -291,7 +354,7 @@ Fourier slice theorem (Ref. <a href="#id5"><span class="problematic" id="id1">[1
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.simulation.add_stripe_artifact">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.simulation.</span></span><span class="sig-name descname"><span class="pre">add_stripe_artifact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strength_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stripe_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'partial'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/simulation.html#add_stripe_artifact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.simulation.add_stripe_artifact" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.simulation.</span></span><span class="sig-name descname"><span class="pre">add_stripe_artifact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strength_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stripe_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'partial'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/simulation.html#add_stripe_artifact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.simulation.add_stripe_artifact" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add stripe artifacts to a sinogram.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -318,7 +381,7 @@ Fourier slice theorem (Ref. <a href="#id5"><span class="problematic" id="id1">[1
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.simulation.convert_to_Xray_image">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.simulation.</span></span><span class="sig-name descname"><span class="pre">convert_to_Xray_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/simulation.html#convert_to_Xray_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.simulation.convert_to_Xray_image" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.simulation.</span></span><span class="sig-name descname"><span class="pre">convert_to_Xray_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/simulation.html#convert_to_Xray_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.simulation.convert_to_Xray_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a simulated sinogram to an equivalent X-ray image.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -336,7 +399,7 @@ of [0.0, 1.0].</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.simulation.add_background_fluctuation">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.simulation.</span></span><span class="sig-name descname"><span class="pre">add_background_fluctuation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strength_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/simulation.html#add_background_fluctuation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.simulation.add_background_fluctuation" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.simulation.</span></span><span class="sig-name descname"><span class="pre">add_background_fluctuation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strength_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/simulation.html#add_background_fluctuation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.simulation.add_background_fluctuation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fluctuate the background of a sinogram image using a Gaussian profile beam.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -357,32 +420,73 @@ of [0.0, 1.0].</p></li>
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="algotom.util.calibration.html" class="btn btn-neutral float-left" title="7.5.1. algotom.util.calibration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="algotom.util.utility.html" class="btn btn-neutral float-right" title="7.5.3. algotom.util.utility" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="algotom.util.utility.html" class="btn btn-neutral float-right" title="7.5.3. algotom.util.utility" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="algotom.util.calibration.html" class="btn btn-neutral" title="7.5.1. algotom.util.calibration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, Nghia T. Vo.</p>
-  </div>
+    <p>
+        &copy; Copyright 2021, Nghia T. Vo.
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
+
     </section>
+
   </div>
-  <script>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>
