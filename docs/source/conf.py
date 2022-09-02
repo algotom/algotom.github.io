@@ -12,6 +12,7 @@
 #
 import os
 import sys
+import sphinx_theme
 sys.path.insert(0, os.path.abspath('../..'))
 
 
@@ -78,11 +79,13 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-#html_theme = "sizzle"
-html_theme = 'sphinx_rtd_theme'
 
-#html_theme = 'sphinx_book_theme'
-#html_theme = 'piccolo_theme'
+# html_theme = 'sphinx_rtd_theme'
+
+
+html_theme = 'stanford_theme'
+html_theme_path = [sphinx_theme.get_html_theme_path('stanford-theme')]
+
 html_title = "Algotom's documentation"
 html_favicon = 'favicon.ico'
 

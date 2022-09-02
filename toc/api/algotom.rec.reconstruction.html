@@ -1,36 +1,79 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>7.3.1. algotom.rec.reconstruction &mdash; Algotom&#39;s documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../../_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="7.4.1. algotom.post.postprocessing" href="algotom.post.postprocessing.html" />
-    <link rel="prev" title="7.2.6. algotom.prep.phase" href="algotom.prep.phase.html" /> 
+  <title>7.3.1. algotom.rec.reconstruction &mdash; Algotom&#39;s documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Algotom&#39;s documentation" href="../../index.html"/>
+        <link rel="up" title="7. API Reference" href="../api.html"/>
+        <link rel="next" title="7.4.1. algotom.post.postprocessing" href="algotom.post.postprocessing.html"/>
+        <link rel="prev" title="7.2.6. algotom.prep.phase" href="algotom.prep.phase.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
-<body class="wy-body-for-nav"> 
+<body class="wy-body-for-nav" role="document">
+
+   
   <div class="wy-grid-for-nav">
+
+    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
+          
+
+          
             <a href="../../index.html" class="icon icon-home"> Algotom
+          
+
+          
           </a>
+
+          
+            
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -38,8 +81,15 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../section1.html">1. Basic tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section2.html">2. Features and capabilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section3.html">3. Installation</a></li>
@@ -60,57 +110,71 @@
 <li class="toctree-l1"><a class="reference internal" href="../credits.html">8. Credits</a></li>
 </ul>
 
+            
+          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Algotom</a>
+        
       </nav>
 
+
+      
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../api.html"><span class="section-number">7. </span>API Reference</a> &raquo;</li>
+        
       <li><span class="section-number">7.3.1. </span><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.rec.reconstruction</span></code></li>
+    
+    
       <li class="wy-breadcrumbs-aside">
+        
+            
             <a href="../../_sources/toc/api/algotom.rec.reconstruction.rst.txt" rel="nofollow"> View page source</a>
+          
+        
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-             
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<div class="section" id="module-algotom.rec.reconstruction">
-<span id="algotom-rec-reconstruction"></span><h1><span class="section-number">7.3.1. </span><a class="reference internal" href="#module-algotom.rec.reconstruction" title="algotom.rec.reconstruction"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.rec.reconstruction</span></code></a><a class="headerlink" href="#module-algotom.rec.reconstruction" title="Permalink to this heading"></a></h1>
+            
+  <section id="module-algotom.rec.reconstruction">
+<span id="algotom-rec-reconstruction"></span><h1><span class="section-number">7.3.1. </span><a class="reference internal" href="#module-algotom.rec.reconstruction" title="algotom.rec.reconstruction"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.rec.reconstruction</span></code></a><a class="headerlink" href="#module-algotom.rec.reconstruction" title="Permalink to this heading">¶</a></h1>
 <dl class="simple">
 <dt>Module of FFT-based reconstruction methods in the reconstruction stage:</dt><dd><ul class="simple">
 <li><p>Filtered back-projection (FBP) method for GPU (using numba and cuda) and CPU.</p></li>
@@ -161,7 +225,7 @@
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.rec.reconstruction.make_smoothing_window">
-<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">make_smoothing_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#make_smoothing_window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.make_smoothing_window" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">make_smoothing_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#make_smoothing_window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.make_smoothing_window" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make a 1d smoothing window.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -179,7 +243,7 @@ Window function used for filtering.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.rec.reconstruction.make_2d_ramp_window">
-<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">make_2d_ramp_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#make_2d_ramp_window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.make_2d_ramp_window" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">make_2d_ramp_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#make_2d_ramp_window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.make_2d_ramp_window" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make the 2d ramp window (in the Fourier space) by repeating the 1d ramp
 window with the option of adding a smoothing window.</p>
 <dl class="field-list simple">
@@ -199,7 +263,7 @@ Name of a smoothing window used.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.rec.reconstruction.apply_ramp_filter">
-<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">apply_ramp_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ramp_win</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'edge'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#apply_ramp_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.apply_ramp_filter" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">apply_ramp_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ramp_win</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'edge'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#apply_ramp_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.apply_ramp_filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply the ramp filter to a sinogram with the option of adding a smoothing
 filter.</p>
 <dl class="field-list simple">
@@ -222,7 +286,7 @@ width if None is given.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.rec.reconstruction.back_projection_gpu">
-<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">back_projection_gpu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sino_height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sino_width</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#algotom.rec.reconstruction.back_projection_gpu" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">back_projection_gpu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sino_height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sino_width</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#algotom.rec.reconstruction.back_projection_gpu" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implement the back-projection algorithm using GPU.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -244,7 +308,7 @@ width if None is given.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.rec.reconstruction.back_projection_cpu">
-<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">back_projection_cpu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#algotom.rec.reconstruction.back_projection_cpu" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">back_projection_cpu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#algotom.rec.reconstruction.back_projection_cpu" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implement the back-projection algorithm using CPU.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -263,7 +327,7 @@ width if None is given.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.rec.reconstruction.fbp_reconstruction">
-<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">fbp_reconstruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ramp_win</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hann'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'edge'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#fbp_reconstruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.fbp_reconstruction" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">fbp_reconstruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ramp_win</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hann'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'edge'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#fbp_reconstruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.fbp_reconstruction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply the FBP (filtered back-projection) reconstruction method to a
 sinogram image.</p>
 <dl class="field-list simple">
@@ -291,7 +355,7 @@ width if None is given.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.rec.reconstruction.generate_mapping_coordinate">
-<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">generate_mapping_coordinate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width_sino</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height_sino</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width_rec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height_rec</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#generate_mapping_coordinate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.generate_mapping_coordinate" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">generate_mapping_coordinate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width_sino</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height_sino</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width_rec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height_rec</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#generate_mapping_coordinate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.generate_mapping_coordinate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate coordinates in the sinogram space from coordinates in the
 reconstruction space (in the Fourier domain). They are used for the
 DFI (direct Fourier inversion) reconstruction method.</p>
@@ -316,7 +380,7 @@ DFI (direct Fourier inversion) reconstruction method.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.rec.reconstruction.dfi_reconstruction">
-<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">dfi_reconstruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hann'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'edge'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#dfi_reconstruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.dfi_reconstruction" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">dfi_reconstruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hann'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'edge'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#dfi_reconstruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.dfi_reconstruction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply the DFI (direct Fourier inversion) reconstruction method to a
 sinogram image (Ref. <a class="footnote-reference brackets" href="#id13" id="id9">1</a>). The method is a practical and direct
 implementation of the Fourier slice theorem (Ref. <a class="footnote-reference brackets" href="#id14" id="id10">2</a>).</p>
@@ -352,7 +416,7 @@ Apply a smoothing filter.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.rec.reconstruction.gridrec_reconstruction">
-<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">gridrec_reconstruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'shepp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#gridrec_reconstruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.gridrec_reconstruction" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">gridrec_reconstruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'shepp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#gridrec_reconstruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.gridrec_reconstruction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wrapper of the gridrec method implemented in the tomopy package:
 <a class="reference external" href="https://tomopy.readthedocs.io/en/latest/api/tomopy.recon.algorithm.html">https://tomopy.readthedocs.io/en/latest/api/tomopy.recon.algorithm.html</a>
 Users must install Tomopy before using this function.</p>
@@ -377,7 +441,7 @@ Users must install Tomopy before using this function.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.rec.reconstruction.astra_reconstruction">
-<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">astra_reconstruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'FBP_CUDA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hann'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#astra_reconstruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.astra_reconstruction" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">astra_reconstruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'FBP_CUDA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hann'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#astra_reconstruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.astra_reconstruction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wrapper of reconstruction methods implemented in the astra toolbox package.
 <a class="reference external" href="https://www.astra-toolbox.com/docs/algs/index.html">https://www.astra-toolbox.com/docs/algs/index.html</a>
 Users must install Astra Toolbox before using this function.</p>
@@ -403,37 +467,78 @@ Users must install Astra Toolbox before using this function.</p>
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="algotom.prep.phase.html" class="btn btn-neutral float-left" title="7.2.6. algotom.prep.phase" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="algotom.post.postprocessing.html" class="btn btn-neutral float-right" title="7.4.1. algotom.post.postprocessing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="algotom.post.postprocessing.html" class="btn btn-neutral float-right" title="7.4.1. algotom.post.postprocessing" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="algotom.prep.phase.html" class="btn btn-neutral" title="7.2.6. algotom.prep.phase" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, Nghia T. Vo.</p>
-  </div>
+    <p>
+        &copy; Copyright 2021, Nghia T. Vo.
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
+
     </section>
+
   </div>
-  <script>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>
