@@ -1,79 +1,37 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>1.3. Basic components of an X-ray tomography system &mdash; Algotom&#39;s documentation</title>
-  
-
-  
-  
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-
-  
-
-  
-  
-    
-
-  
-
-  
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="Algotom&#39;s documentation" href="../../index.html"/>
-        <link rel="up" title="1. Basic tutorials" href="../section1.html"/>
-        <link rel="next" title="1.4. Basic workflow for processing tomographic data" href="section1_4.html"/>
-        <link rel="prev" title="1.2. Common data format at synchrotron facilities" href="section1_2.html"/> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.4. Basic workflow for processing tomographic data" href="section1_4.html" />
+    <link rel="prev" title="1.2. Common data format at synchrotron facilities" href="section1_2.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
-
-          
+        <div class="wy-side-nav-search" >
             <a href="../../index.html" class="icon icon-home"> Algotom
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -81,15 +39,8 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-                <ul class="current">
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../section1.html">1. Basic tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="section1_1.html">1.1. Python for tomography scientists as beginners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="section1_2.html">1.2. Common data format at synchrotron facilities</a></li>
@@ -117,73 +68,59 @@
 <li class="toctree-l1"><a class="reference internal" href="../credits.html">8. Credits</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Algotom</a>
-        
       </nav>
 
-
-      
       <div class="wy-nav-content">
         <div class="rst-content">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
-        
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../section1.html"><span class="section-number">1. </span>Basic tutorials</a> &raquo;</li>
-        
       <li><span class="section-number">1.3. </span>Basic components of an X-ray tomography system</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../../_sources/toc/section1/section1_3.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <section id="basic-components-of-an-x-ray-tomography-system">
-<h1><span class="section-number">1.3. </span>Basic components of an X-ray tomography system<a class="headerlink" href="#basic-components-of-an-x-ray-tomography-system" title="Permalink to this heading">¶</a></h1>
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="basic-components-of-an-x-ray-tomography-system">
+<h1><span class="section-number">1.3. </span>Basic components of an X-ray tomography system<a class="headerlink" href="#basic-components-of-an-x-ray-tomography-system" title="Permalink to this heading"></a></h1>
 <section id="how-tomography-works">
-<h2><span class="section-number">1.3.1. </span>How tomography works<a class="headerlink" href="#how-tomography-works" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">1.3.1. </span>How tomography works<a class="headerlink" href="#how-tomography-works" title="Permalink to this heading"></a></h2>
 <a class="reference internal image-reference" href="../../_images/fig_1_3_0.png"><img alt="../../_images/fig_1_3_0.png" class="align-center" src="../../_images/fig_1_3_0.png" style="width: 100%;" /></a>
 <p>As demonstrated above, tomography is an imaging technique by which the
 internal 3D structure of a      sample can be reconstructed from 2D projections
@@ -198,20 +135,20 @@ all slices creates the 3D image of the sample.</p>
 <figure class="align-center" id="fig-1-3-1" style="width: 97%">
 <img alt="../../_images/fig_1_3_1.png" src="../../_images/fig_1_3_1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.3.1 </span><span class="caption-text">Steps for reconstructing a slice in parallel-beam tomography.</span><a class="headerlink" href="#fig-1-3-1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1.3.1 </span><span class="caption-text">Steps for reconstructing a slice in parallel-beam tomography.</span><a class="headerlink" href="#fig-1-3-1" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </section>
 <section id="id1">
-<h2><span class="section-number">1.3.2. </span>Basic components of an X-ray tomography system<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">1.3.2. </span>Basic components of an X-ray tomography system<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <figure class="align-center" id="fig-1-3-2" style="width: 97%">
 <img alt="../../_images/fig_1_3_2.png" src="../../_images/fig_1_3_2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.3.2 </span><span class="caption-text">Basic components of an X-ray tomography system and problems associated with them.</span><a class="headerlink" href="#fig-1-3-2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1.3.2 </span><span class="caption-text">Basic components of an X-ray tomography system and problems associated with them.</span><a class="headerlink" href="#fig-1-3-2" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <section id="x-ray-source">
-<h3><span class="section-number">1.3.2.1. </span>X-ray source<a class="headerlink" href="#x-ray-source" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">1.3.2.1. </span>X-ray source<a class="headerlink" href="#x-ray-source" title="Permalink to this heading"></a></h3>
 <blockquote>
 <div><p>An ideal X-ray source for tomography experiments is monochromatic, stable,
 non-coherent, energy-tunable, high flux, and generates parallel beams. This
@@ -232,7 +169,7 @@ at the interfaces between different materials of samples as can be seen in
 <figure class="align-center" id="fig-1-3-3" style="width: 97%">
 <img alt="../../_images/fig_1_3_3.png" src="../../_images/fig_1_3_3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.3.3 </span><span class="caption-text">Coherent source causes the edge-enhanced effect in a projection-image.</span><a class="headerlink" href="#fig-1-3-3" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1.3.3 </span><span class="caption-text">Coherent source causes the edge-enhanced effect in a projection-image.</span><a class="headerlink" href="#fig-1-3-3" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>The edge-enhanced effect is useful for applications where the interfaces
@@ -245,7 +182,7 @@ performance of post-processing methods such as image segmentation or image resca
 <img alt="../../_images/fig_1_3_4.png" src="../../_images/fig_1_3_4.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.3.4 </span><span class="caption-text">Impacts of the edge-enhanced effect to a reconstructed image: streak
-artifacts (arrowed), negative attenuation coefficients (circled).</span><a class="headerlink" href="#fig-1-3-4" title="Permalink to this image">¶</a></p>
+artifacts (arrowed), negative attenuation coefficients (circled).</span><a class="headerlink" href="#fig-1-3-4" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>Other problems often seen at synchrotron-based sources come from
@@ -256,13 +193,13 @@ of flat-field correction in tomography which results in artifacts.</p>
 <img alt="../../_images/fig_1_3_5.jpg" src="../../_images/fig_1_3_5.jpg" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.3.5 </span><span class="caption-text">Impacts of a monochromator to the intensity profile of a source. (a) Flat-field image.
-(b) Sample image. (c) Flat-field-corrected image</span><a class="headerlink" href="#fig-1-3-5" title="Permalink to this image">¶</a></p>
+(b) Sample image. (c) Flat-field-corrected image</span><a class="headerlink" href="#fig-1-3-5" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
 </section>
 <section id="stage">
-<h3><span class="section-number">1.3.2.2. </span>Stage<a class="headerlink" href="#stage" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">1.3.2.2. </span>Stage<a class="headerlink" href="#stage" title="Permalink to this heading"></a></h3>
 <blockquote>
 <div><p>In a micro-scale system, a major problem caused by the same-stage is the
 positioning repeatability of the rotation axis. For collecting tomographic
@@ -276,7 +213,7 @@ multiple-datasets but can’t     use the same value of COR across.</p>
 <figure class="align-center" id="fig-1-3-6" style="width: 75%">
 <img alt="../../_images/fig_1_3_6.png" src="../../_images/fig_1_3_6.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.3.6 </span><span class="caption-text">Center of rotation was changed between two scans</span><a class="headerlink" href="#fig-1-3-6" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1.3.6 </span><span class="caption-text">Center of rotation was changed between two scans</span><a class="headerlink" href="#fig-1-3-6" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>In a nano-scale system, the main problem is the positioning accuracy of the
@@ -286,13 +223,13 @@ To process such data, we have to apply image alignment/registration methods.</p>
 <img alt="../../_images/fig_1_3_7.png" src="../../_images/fig_1_3_7.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.3.7 </span><span class="caption-text">Shift between <a class="reference external" href="https://doi.org/10.1186/s12645-021-00081-z">two projections</a>
-acquired by a nanoprobe X-ray fluorescence imaging system.</span><a class="headerlink" href="#fig-1-3-7" title="Permalink to this image">¶</a></p>
+acquired by a nanoprobe X-ray fluorescence imaging system.</span><a class="headerlink" href="#fig-1-3-7" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
 </section>
 <section id="sample">
-<h3><span class="section-number">1.3.2.3. </span>Sample<a class="headerlink" href="#sample" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">1.3.2.3. </span>Sample<a class="headerlink" href="#sample" title="Permalink to this heading"></a></h3>
 <blockquote>
 <div><p>Samples can impact to the quality of reconstructed images as demonstrated in
 a few examples as follows</p>
@@ -304,7 +241,7 @@ These impacts can result in different types of artifacts as shown in <a class="r
 <img alt="../../_images/fig_1_3_8.png" src="../../_images/fig_1_3_8.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.3.8 </span><span class="caption-text">Artifacts caused by a flat sample. (a) Projection at 0-degree. (b) Projection
-at 90-degree. (c) Reconstructed image with partial <a class="reference external" href="https://sarepy.readthedocs.io/toc/section1.html">ring artifacts</a> (yellow arrow) and cupping artifacts (red arrow).</span><a class="headerlink" href="#fig-1-3-8" title="Permalink to this image">¶</a></p>
+at 90-degree. (c) Reconstructed image with partial <a class="reference external" href="https://sarepy.readthedocs.io/toc/section1.html">ring artifacts</a> (yellow arrow) and cupping artifacts (red arrow).</span><a class="headerlink" href="#fig-1-3-8" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>For crystalline samples, they can block X-rays at certain angles causing partially
@@ -314,7 +251,7 @@ as shown in <a class="reference internal" href="#fig-1-3-9"><span class="std std
 <img alt="../../_images/fig_1_3_9.png" src="../../_images/fig_1_3_9.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.3.9 </span><span class="caption-text">Artifacts caused by a crystalline sample. (a) Sinogram. (b) Zoom-in at the
-bottom-left area of (a). (c) Reconstructed image using the SART method.</span><a class="headerlink" href="#fig-1-3-9" title="Permalink to this image">¶</a></p>
+bottom-left area of (a). (c) Reconstructed image using the SART method.</span><a class="headerlink" href="#fig-1-3-9" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>Scanning biological samples using hard X-rays can result in low-contrast images (<a class="reference internal" href="#fig-1-3-10"><span class="std std-numref">Fig. 1.3.10</span></a>).
@@ -322,13 +259,13 @@ which affects the performance of post-processing methods such as segmentation or
 <figure class="align-center" id="fig-1-3-10" style="width: 50%">
 <img alt="../../_images/fig_1_3_10.jpg" src="../../_images/fig_1_3_10.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.3.10 </span><span class="caption-text">Reconstructed image of a <a class="reference external" href="https://doi.org/10.1038/srep43399">trabecular bone sample</a> using a 53keV X-ray source.</span><a class="headerlink" href="#fig-1-3-10" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1.3.10 </span><span class="caption-text">Reconstructed image of a <a class="reference external" href="https://doi.org/10.1038/srep43399">trabecular bone sample</a> using a 53keV X-ray source.</span><a class="headerlink" href="#fig-1-3-10" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
 </section>
 <section id="detector">
-<h3><span class="section-number">1.3.2.4. </span>Detector<a class="headerlink" href="#detector" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">1.3.2.4. </span>Detector<a class="headerlink" href="#detector" title="Permalink to this heading"></a></h3>
 <blockquote>
 <div><p>Technical problems or limitations of a detecting system can cause various types of artifacts.
 The irregular response caused by defects in its hardware components, such as a scintillator or CCD chip,
@@ -338,7 +275,7 @@ shown in <a class="reference internal" href="#fig-1-3-11"><span class="std std-n
 <img alt="../../_images/fig_1_3_11.jpg" src="../../_images/fig_1_3_11.jpg" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.3.11 </span><span class="caption-text">Ring artifacts caused by defects of a scintillator of a detecting system. (a)
-Visible defects (white blobs) on a flat field image. (b) Ring artifacts caused by these defects.</span><a class="headerlink" href="#fig-1-3-11" title="Permalink to this image">¶</a></p>
+Visible defects (white blobs) on a flat field image. (b) Ring artifacts caused by these defects.</span><a class="headerlink" href="#fig-1-3-11" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>The <a class="reference external" href="https://doi.org/10.1117/12.2530324">scattering of scintillation photons</a> in a
@@ -350,7 +287,7 @@ the system and cause cupping artifacts in reconstructed images (<a class="refere
 <p><span class="caption-number">Fig. 1.3.12 </span><span class="caption-text">Cupping artifacts caused by the scattering of scintillation photons. (a) Flat-field
 image with a half field of view completely blocked using 0.05 s of exposure time. (b) Same
 as (a) using 0.5 s of exposure time. (c) Projection image of a strong absorber. (d)
-Reconstructed image. (e) Line profile along the red line in (d).</span><a class="headerlink" href="#fig-1-3-12" title="Permalink to this image">¶</a></p>
+Reconstructed image. (e) Line profile along the red line in (d).</span><a class="headerlink" href="#fig-1-3-12" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>Another common component of a detecting system is a lens which can has
@@ -361,7 +298,7 @@ artifacts only appear at some areas (<a class="reference internal" href="#fig-1-
 <img alt="../../_images/fig_1_3_13.jpg" src="../../_images/fig_1_3_13.jpg" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.3.13 </span><span class="caption-text">Artifacts caused the lens-distortion problem. (a) Distorted image of a
-grid pattern. (b) Artifacts in a reconstructed image.</span><a class="headerlink" href="#fig-1-3-13" title="Permalink to this image">¶</a></p>
+grid pattern. (b) Artifacts in a reconstructed image.</span><a class="headerlink" href="#fig-1-3-13" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>Most of cameras are 16-bit, 14-bit, 12-bit, or 8-bit types. The number of bit dictates
@@ -375,13 +312,13 @@ have to accept the underexposed areas which can give raise to cupping artifacts 
 <img alt="../../_images/fig_1_3_14.jpg" src="../../_images/fig_1_3_14.jpg" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.3.14 </span><span class="caption-text">Problems due to the limited dynamic range of a camera. (a) Underexposed
-area. (b) Overexposed area.</span><a class="headerlink" href="#fig-1-3-14" title="Permalink to this image">¶</a></p>
+area. (b) Overexposed area.</span><a class="headerlink" href="#fig-1-3-14" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
 </section>
 <section id="computing-resources">
-<h3><span class="section-number">1.3.2.5. </span>Computing resources<a class="headerlink" href="#computing-resources" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">1.3.2.5. </span>Computing resources<a class="headerlink" href="#computing-resources" title="Permalink to this heading"></a></h3>
 <blockquote>
 <div><p>Available computing resources such as GPU, multicore CPU, RAM, or storage system can
 dictate the choice of algorithms used for processing tomographic data. <a class="reference internal" href="#fig-1-3-15"><span class="std std-numref">Fig. 1.3.15</span></a>
@@ -394,7 +331,7 @@ the SIRT method.</p>
 <figure class="align-center" id="fig-1-3-15" style="width: 98%">
 <img alt="../../_images/fig_1_3_15.jpg" src="../../_images/fig_1_3_15.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.3.15 </span><span class="caption-text">Comparison of two reconstruction methods. (a) FBP. (b) SIRT.</span><a class="headerlink" href="#fig-1-3-15" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1.3.15 </span><span class="caption-text">Comparison of two reconstruction methods. (a) FBP. (b) SIRT.</span><a class="headerlink" href="#fig-1-3-15" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -405,73 +342,32 @@ the SIRT method.</p>
 
            </div>
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="section1_4.html" class="btn btn-neutral float-right" title="1.4. Basic workflow for processing tomographic data" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="section1_2.html" class="btn btn-neutral" title="1.2. Common data format at synchrotron facilities" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="section1_2.html" class="btn btn-neutral float-left" title="1.2. Common data format at synchrotron facilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="section1_4.html" class="btn btn-neutral float-right" title="1.4. Basic workflow for processing tomographic data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2021, Nghia T. Vo.
-
-    </p>
+    <p>&#169; Copyright 2021, Nghia T. Vo.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'1.1.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/documentation_options.js"></script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
-
-  
-  
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

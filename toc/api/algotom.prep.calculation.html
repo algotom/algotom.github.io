@@ -1,79 +1,37 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>7.2.1. algotom.prep.calculation &mdash; Algotom&#39;s documentation</title>
-  
-
-  
-  
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-
-  
-
-  
-  
-    
-
-  
-
-  
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="Algotom&#39;s documentation" href="../../index.html"/>
-        <link rel="up" title="7. API Reference" href="../api.html"/>
-        <link rel="next" title="7.2.2. algotom.prep.conversion" href="algotom.prep.conversion.html"/>
-        <link rel="prev" title="7.1.2. algotom.io.loadersaver" href="algotom.io.loadersaver.html"/> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7.2.2. algotom.prep.conversion" href="algotom.prep.conversion.html" />
+    <link rel="prev" title="7.1.2. algotom.io.loadersaver" href="algotom.io.loadersaver.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
-
-          
+        <div class="wy-side-nav-search" >
             <a href="../../index.html" class="icon icon-home"> Algotom
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -81,15 +39,8 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-                <ul class="current">
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../section1.html">1. Basic tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section2.html">2. Features and capabilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section3.html">3. Installation</a></li>
@@ -115,71 +66,57 @@
 <li class="toctree-l1"><a class="reference internal" href="../credits.html">8. Credits</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Algotom</a>
-        
       </nav>
 
-
-      
       <div class="wy-nav-content">
         <div class="rst-content">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
-        
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../api.html"><span class="section-number">7. </span>API Reference</a> &raquo;</li>
-        
       <li><span class="section-number">7.2.1. </span><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.calculation</span></code></li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../../_sources/toc/api/algotom.prep.calculation.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <section id="module-algotom.prep.calculation">
-<span id="algotom-prep-calculation"></span><h1><span class="section-number">7.2.1. </span><a class="reference internal" href="#module-algotom.prep.calculation" title="algotom.prep.calculation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.calculation</span></code></a><a class="headerlink" href="#module-algotom.prep.calculation" title="Permalink to this heading">¶</a></h1>
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="module-algotom.prep.calculation">
+<span id="algotom-prep-calculation"></span><h1><span class="section-number">7.2.1. </span><a class="reference internal" href="#module-algotom.prep.calculation" title="algotom.prep.calculation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.calculation</span></code></a><a class="headerlink" href="#module-algotom.prep.calculation" title="Permalink to this heading"></a></h1>
 <dl class="simple">
 <dt>Module of calculation methods in the preprocessing stage:</dt><dd><ul class="simple">
 <li><p>Calculating the center-of-rotation (COR) in a 180-degree scan using a
@@ -260,7 +197,7 @@ phase-correlation technique.</p></li>
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.calculation.make_inverse_double_wedge_mask">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">make_inverse_double_wedge_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#make_inverse_double_wedge_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.make_inverse_double_wedge_mask" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">make_inverse_double_wedge_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#make_inverse_double_wedge_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.make_inverse_double_wedge_mask" title="Permalink to this definition"></a></dt>
 <dd><p>Generate a double-wedge binary mask using Eq. (3) in Ref. <a href="#id13"><span class="problematic" id="id1">[1]_</span></a>.
 Values outside the double-wedge region correspond to 1.0.</p>
 <dl class="field-list simple">
@@ -285,7 +222,7 @@ Values outside the double-wedge region correspond to 1.0.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.calculation.calculate_center_metric">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">calculate_center_metric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sino_180</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sino_flip</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sino_comp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#calculate_center_metric"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.calculate_center_metric" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">calculate_center_metric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sino_180</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sino_flip</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sino_comp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#calculate_center_metric"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.calculate_center_metric" title="Permalink to this definition"></a></dt>
 <dd><p>Calculate a metric of an estimated center-of-rotation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -305,7 +242,7 @@ Values outside the double-wedge region correspond to 1.0.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.calculation.coarse_search_cor">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">coarse_search_cor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sino_180</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#coarse_search_cor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.coarse_search_cor" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">coarse_search_cor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sino_180</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#coarse_search_cor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.coarse_search_cor" title="Permalink to this definition"></a></dt>
 <dd><p>Find the center-of-rotation (COR) using integer shifting.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -326,7 +263,7 @@ Values outside the double-wedge region correspond to 1.0.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.calculation.fine_search_cor">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">fine_search_cor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sino_180</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#fine_search_cor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.fine_search_cor" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">fine_search_cor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sino_180</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#fine_search_cor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.fine_search_cor" title="Permalink to this definition"></a></dt>
 <dd><p>Find the center-of-rotation (COR) using sub-pixel shifting.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -348,7 +285,7 @@ Values outside the double-wedge region correspond to 1.0.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.calculation.downsample_cor">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">downsample_cor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dsp_fact0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dsp_fact1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#downsample_cor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.downsample_cor" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">downsample_cor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dsp_fact0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dsp_fact1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#downsample_cor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.downsample_cor" title="Permalink to this definition"></a></dt>
 <dd><p>Downsample an image by averaging.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -366,7 +303,7 @@ Values outside the double-wedge region correspond to 1.0.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.calculation.find_center_vo">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">find_center_vo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sino_180</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dsp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#find_center_vo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.find_center_vo" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">find_center_vo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sino_180</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dsp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#find_center_vo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.find_center_vo" title="Permalink to this definition"></a></dt>
 <dd><p>Find the center-of-rotation using the method described in Ref. <a href="#id14"><span class="problematic" id="id3">[1]_</span></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -397,7 +334,7 @@ Values outside the double-wedge region correspond to 1.0.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.calculation.calculate_curvature">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">calculate_curvature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_metric</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#calculate_curvature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.calculate_curvature" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">calculate_curvature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_metric</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#calculate_curvature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.calculate_curvature" title="Permalink to this definition"></a></dt>
 <dd><p>Calculate the curvature of a fitted curve going through the minimum
 value of a metric list.</p>
 <dl class="field-list simple">
@@ -416,7 +353,7 @@ value of a metric list.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.calculation.correlation_metric">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">correlation_metric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#correlation_metric"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.correlation_metric" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">correlation_metric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#correlation_metric"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.correlation_metric" title="Permalink to this definition"></a></dt>
 <dd><p>Calculate the correlation metric. Smaller metric corresponds to better
 correlation.</p>
 <dl class="field-list simple">
@@ -434,7 +371,7 @@ correlation.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.calculation.search_overlap">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">search_overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_overlap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#search_overlap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.search_overlap" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">search_overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_overlap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#search_overlap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.search_overlap" title="Permalink to this definition"></a></dt>
 <dd><p>Calculate the correlation metrics between a rectangular region, defined
 by the window width, on the utmost left/right side of image 2 and the
 same size region in image 1 where the region is slided across image 1.</p>
@@ -466,7 +403,7 @@ corresponds to the center of the window.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.calculation.find_overlap">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">find_overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_overlap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#find_overlap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.find_overlap" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">find_overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_overlap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#find_overlap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.find_overlap" title="Permalink to this definition"></a></dt>
 <dd><p>Find the overlap area and overlap side between two images (Ref. <a href="#id15"><span class="problematic" id="id5">[1]_</span></a>) where
 the overlap side referring to the first image.</p>
 <dl class="field-list simple">
@@ -504,7 +441,7 @@ correlation metric.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.calculation.find_overlap_multiple">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">find_overlap_multiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_overlap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#find_overlap_multiple"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.find_overlap_multiple" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">find_overlap_multiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_overlap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#find_overlap_multiple"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.find_overlap_multiple" title="Permalink to this definition"></a></dt>
 <dd><p>Find the overlap-areas and overlap-sides of a list of images where the
 overlap side referring to the previous image.</p>
 <dl class="field-list simple">
@@ -533,7 +470,7 @@ image giving the best correlation metric.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.calculation.find_center_360">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">find_center_360</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sino_360</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_overlap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#find_center_360"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.find_center_360" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">find_center_360</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sino_360</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_overlap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#find_center_360"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.find_center_360" title="Permalink to this definition"></a></dt>
 <dd><p>Find the center-of-rotation (COR) in a 360-degree scan with offset COR use
 the method presented in Ref. <a href="#id16"><span class="problematic" id="id7">[1]_</span></a>.</p>
 <dl class="field-list simple">
@@ -571,13 +508,13 @@ correlation metric.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.calculation.complex_gradient">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">complex_gradient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#complex_gradient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.complex_gradient" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">complex_gradient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#complex_gradient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.complex_gradient" title="Permalink to this definition"></a></dt>
 <dd><p>Return complex gradient of a 2D array.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.calculation.find_shift_based_phase_correlation">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">find_shift_based_phase_correlation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#find_shift_based_phase_correlation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.find_shift_based_phase_correlation" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">find_shift_based_phase_correlation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#find_shift_based_phase_correlation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.find_shift_based_phase_correlation" title="Permalink to this definition"></a></dt>
 <dd><p>Find relative translation in x and y direction between images with
 haft-pixel accuracy (Ref. <a href="#id17"><span class="problematic" id="id9">[1]_</span></a>).</p>
 <dl class="field-list simple">
@@ -606,7 +543,7 @@ haft-pixel accuracy (Ref. <a href="#id17"><span class="problematic" id="id9">[1]
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.calculation.find_center_based_phase_correlation">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">find_center_based_phase_correlation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#find_center_based_phase_correlation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.find_center_based_phase_correlation" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">find_center_based_phase_correlation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#find_center_based_phase_correlation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.find_center_based_phase_correlation" title="Permalink to this definition"></a></dt>
 <dd><p>Find the center-of-rotation (COR) using projection images at 0-degree
 and 180-degree.</p>
 <dl class="field-list simple">
@@ -626,7 +563,7 @@ and 180-degree.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.calculation.find_center_projection">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">find_center_projection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_row</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_overlap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#find_center_projection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.find_center_projection" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">find_center_projection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_row</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_overlap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#find_center_projection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.find_center_projection" title="Permalink to this definition"></a></dt>
 <dd><p>Find the center-of-rotation (COR) using projection images at 0-degree
 and 180-degree based on a method in Ref. <a href="#id18"><span class="problematic" id="id11">[1]_</span></a>.</p>
 <dl class="field-list simple">
@@ -658,7 +595,7 @@ correlation coefficients if True.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.calculation.calculate_reconstructable_height">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">calculate_reconstructable_height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_stop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scan_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#calculate_reconstructable_height"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.calculate_reconstructable_height" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">calculate_reconstructable_height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_stop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scan_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#calculate_reconstructable_height"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.calculate_reconstructable_height" title="Permalink to this definition"></a></dt>
 <dd><p>Calculate reconstructable height in a helical scan.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -682,7 +619,7 @@ correlation coefficients if True.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.calculation.calculate_maximum_index">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">calculate_maximum_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_stop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scan_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#calculate_maximum_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.calculate_maximum_index" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">calculate_maximum_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_stop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scan_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#calculate_maximum_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.calculate_maximum_index" title="Permalink to this definition"></a></dt>
 <dd><p>Calculate the maximum index of a reconstructable slice in a helical scan.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -706,73 +643,32 @@ correlation coefficients if True.</p></li>
 
            </div>
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="algotom.prep.conversion.html" class="btn btn-neutral float-right" title="7.2.2. algotom.prep.conversion" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="algotom.io.loadersaver.html" class="btn btn-neutral" title="7.1.2. algotom.io.loadersaver" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="algotom.io.loadersaver.html" class="btn btn-neutral float-left" title="7.1.2. algotom.io.loadersaver" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="algotom.prep.conversion.html" class="btn btn-neutral float-right" title="7.2.2. algotom.prep.conversion" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2021, Nghia T. Vo.
-
-    </p>
+    <p>&#169; Copyright 2021, Nghia T. Vo.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'1.1.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/documentation_options.js"></script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
-
-  
-  
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>
