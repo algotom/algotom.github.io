@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd7108d9-b1b3-4aba-9605-7e4d6e864f32" name="Changes" comment="Update">
-      <change beforePath="$PROJECT_DIR$/.buildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/.buildinfo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/source/toc/highlights.rst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.doctrees/environment.pickle" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.doctrees/index.doctree" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.doctrees/toc/api.doctree" beforeDir="false" />
@@ -126,92 +126,30 @@
       <change beforePath="$PROJECT_DIR$/_static/_sphinx_javascript_frameworks_compat.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_static/basic.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_static/css/badge_only.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/css/copied_wy_variables.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/css/fonts/Roboto-Slab-Bold.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/css/fonts/Roboto-Slab-Bold.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/css/fonts/Roboto-Slab-Regular.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/css/fonts/Roboto-Slab-Regular.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/css/fonts/fontawesome-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/css/fonts/fontawesome-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/css/fonts/fontawesome-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/css/fonts/fontawesome-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/css/fonts/fontawesome-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/css/fonts/lato-bold-italic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/css/fonts/lato-bold-italic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/css/fonts/lato-bold.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/css/fonts/lato-bold.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/css/fonts/lato-normal-italic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/css/fonts/lato-normal-italic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/css/fonts/lato-normal.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/css/fonts/lato-normal.woff2" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_static/css/theme.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_static/doctools.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_static/documentation_options.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_static/favicon.ico" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_static/file.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/fonts.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/fonts/Inconsolata-Bold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/fonts/Inconsolata-Regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/fonts/Lato-Bold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/fonts/Lato-Regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/fonts/RobotoSlab-Bold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/fonts/RobotoSlab-Regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/fonts/UbuntuMono-Bold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/fonts/UbuntuMono-BoldItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/fonts/UbuntuMono-Italic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/fonts/UbuntuMono-Regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/fonts/fontawesome-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/fonts/fontawesome-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/fonts/fontawesome-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/fonts/fontawesome-webfont.woff" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_static/jquery-3.6.0.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_static/jquery.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/js/badge_only.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/js/html5shiv-printshiv.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/js/html5shiv.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/js/modernizr.min.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_static/js/theme.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_static/language_data.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_static/minus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/nature.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_static/plus.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_static/pygments.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_static/searchtools.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_static/underscore-1.13.1.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_static/underscore.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_static/zerovm.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/source/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/conf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/source/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/index.rst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/genindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/genindex.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/objects.inv" beforeDir="false" afterPath="$PROJECT_DIR$/objects.inv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/py-modindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/py-modindex.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/api.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/api/algotom.io.converter.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.io.converter.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/api/algotom.io.loadersaver.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.io.loadersaver.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/api/algotom.post.postprocessing.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.post.postprocessing.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/api/algotom.prep.calculation.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.prep.calculation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/api/algotom.prep.conversion.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.prep.conversion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/api/algotom.prep.correction.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.prep.correction.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/api/algotom.prep.filtering.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.prep.filtering.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/api/algotom.prep.phase.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.prep.phase.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/api/algotom.prep.removal.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.prep.removal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/api/algotom.rec.reconstruction.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.rec.reconstruction.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/api/algotom.util.calibration.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.util.calibration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/api/algotom.util.correlation.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.util.correlation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/api/algotom.util.simulation.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.util.simulation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/api/algotom.util.utility.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.util.utility.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/credits.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/credits.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/searchindex.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/toc/section1.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section1.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/toc/section1/section1_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section1/section1_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/section1/section1_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section1/section1_2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/section1/section1_3.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section1/section1_3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/section1/section1_4.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section1/section1_4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/section2.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/section3.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/section4.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/section4/section4_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section4/section4_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/section5.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section5.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/section6.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section6.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,17 +163,27 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2EE6Hjxpv2DGwxTovEGY3NKRGRJ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/nvo/PycharmProjects/algotom.github.io/docs/source/toc",
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nvo\PycharmProjects\algotom.github.io\docs\source\toc" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -259,6 +207,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Update" />
     <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>

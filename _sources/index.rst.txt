@@ -27,4 +27,5 @@ Table of Contents
    toc/section6
    toc/api
    toc/credits
+   toc/highlights
 
