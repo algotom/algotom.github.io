@@ -97,6 +97,8 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">4.2. Exploring raw data and making use of the input-output module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#nxs-hdf-files">4.2.1. Nxs/hdf files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tiff-files">4.2.2. Tiff files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mrc-files">4.2.3. Mrc files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-file-formats">4.2.4. Other file formats</a></li>
 </ul>
 </li>
 </ul>
@@ -321,6 +323,46 @@ dark-field images. This can be done in different ways</p>
 </pre></div>
 </div>
 </div></blockquote>
+</div>
+<div class="section" id="mrc-files">
+<h2><span class="section-number">4.2.3. </span>Mrc files<a class="headerlink" href="#mrc-files" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference external" href="https://www.ccpem.ac.uk/mrc_format/mrc_format.php">Mrc format</a> is a standard format in electron tomography.
+To load this data, users need to install the <a class="reference external" href="https://pypi.org/project/mrcfile/">Mrcfile library</a></p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">conda install -c conda-forge mrcfile</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>and check the <a class="reference external" href="https://mrcfile.readthedocs.io/en/stable/">documentation page</a> to know how to extract
+data and metadata from this format. For large files, we use memory-mapped mode to read only part
+of data needed as shown below.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mrcfile</span>
+<span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
+
+<span class="n">mrc</span> <span class="o">=</span> <span class="n">mrcfile</span><span class="o">.</span><span class="n">mmap</span><span class="p">(</span><span class="s2">&quot;E:/etomo/tomo.mrc&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r+&#39;</span><span class="p">)</span>
+<span class="n">output_base</span> <span class="o">=</span> <span class="s2">&quot;E:/output&quot;</span>
+<span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">mrc</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;0000&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="s2">&quot;/img_&quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span> <span class="o">+</span> <span class="s2">&quot;.tif&quot;</span><span class="p">,</span> <span class="n">mrc</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Methods in Algotom assume that the rotation axis of a tomographic data is parallel to the columns of
+an image. Users may need to rotate images loaded from a mrc file because the rotation axis is often
+parallel to image-rows instead.</p>
+</div>
+<div class="section" id="other-file-formats">
+<h2><span class="section-number">4.2.4. </span>Other file formats<a class="headerlink" href="#other-file-formats" title="Permalink to this heading">¶</a></h2>
+<p>For other file formats such as xrm, txrm, fits, … users can use the <a class="reference external" href="https://github.com/data-exchange/dxchange">DXchange library</a>
+to load data</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">conda install -c conda-forge dxchange</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>and refer <a class="reference external" href="http://dxchange.readthedocs.io/">the documentation page</a> for more details.</p>
 </div>
 </div>
 
