@@ -1,0 +1,399 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.2. Exploring raw data and making use of the input-output module &mdash; Algotom&#39;s documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Algotom&#39;s documentation" href="../../index.html"/>
+        <link rel="up" title="4. Demonstrations" href="../section4.html"/>
+        <link rel="next" title="5. Technical notes" href="../section5.html"/>
+        <link rel="prev" title="4.1. Setting up a Python workspace" href="section4_1.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Algotom
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../section1.html">1. Basic tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section2.html">2. Features and capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section3.html">3. Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../section4.html">4. Demonstrations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="section4_1.html">4.1. Setting up a Python workspace</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.2. Exploring raw data and making use of the input-output module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nxs-hdf-files">4.2.1. Nxs/hdf files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tiff-files">4.2.2. Tiff files</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../section5.html">5. Technical notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section6.html">6. Update notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">7. API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../credits.html">8. Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../highlights.html">9. Highlights</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Algotom</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../section4.html"><span class="section-number">4. </span>Demonstrations</a> &raquo;</li>
+        
+      <li><span class="section-number">4.2. </span>Exploring raw data and making use of the input-output module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/toc/section4/section4_2.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="exploring-raw-data-and-making-use-of-the-input-output-module">
+<h1><span class="section-number">4.2. </span>Exploring raw data and making use of the input-output module<a class="headerlink" href="#exploring-raw-data-and-making-use-of-the-input-output-module" title="Permalink to this heading">¶</a></h1>
+<p>The following sections show how to handle different types of raw data before
+they can be used for processing and reconstruction.</p>
+<div class="section" id="nxs-hdf-files">
+<h2><span class="section-number">4.2.1. </span>Nxs/hdf files<a class="headerlink" href="#nxs-hdf-files" title="Permalink to this heading">¶</a></h2>
+<p>A nxs/hdf file can contain multiple datasets and data-types. Generally speaking,
+it likes a folder with many sub-folders and files inside (i.e. hierarchical format).
+To get data from a hdf file we need to know the path to the data. For example, we
+want to know the path to projection-images of this <a class="reference external" href="https://doi.org/10.5281/zenodo.1443567">tomographic data</a>.
+The data have two files: a hdf file which contains images recorded by a detector and
+a nxs file which contains the metadata of the experiment. The hdf file was
+<a class="reference external" href="https://docs.h5py.org/en/stable/high/group.html#external-links">linked</a> to the nxs
+file at the time they were created, so we only need to work with the nxs file.</p>
+<ul>
+<li><p>Using <a class="reference external" href="https://portal.hdfgroup.org/display/support/Download+HDFView">Hdfview</a>
+(version 2.14 is easy to install) we can find the path to image data is <em>“/entry1/tomo_entry/data/data”</em>.
+To display an image in that dataset: right click on “data” -&gt; select “Open as” -&gt; select “dim1”
+for “Height”, select “dim2” for “Width” -&gt; click “OK”.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/fig_4_2_1.png" id="fig-4-2-1"><img alt="../../_images/fig_4_2_1.png" class="align-center" id="fig-4-2-1" src="../../_images/fig_4_2_1.png" style="width: 100%;" /></a>
+</div></blockquote>
+<p>A metadata we need to know is rotation angles corresponding to the acquired images. The
+path to this data is <em>“/entry1/tomo_entry/data/rotation_angle”</em>. There are three types
+of images in a tomographic dataset: images with sample (projection), images without sample
+(flat-field or white field), and images taken with a photon source off (dark-field). In the
+data used for this demonstration, there’s a metadata in <em>“/entry1/instrument/image_key/image_key”</em>
+used to indicate the type of an image: 0 &lt;-&gt; projection; 1 &lt;-&gt; flat-field;
+2 &lt;-&gt; dark-field.</p>
+<p>Different tomography facilities name above datasets differently. Some names rotation angles
+as “theta_angle”. Some record flat-field and dark-field images as separate datasets (<a class="reference internal" href="../section1/section1_4.html#fig-1-4-1"><span class="std std-numref">Fig. 1.4.1</span></a>).
+There has been an effort to unify these terms for synchrotron-based tomography community. This will be
+very userful for end-users where they can use the same codes for processing data acquired at
+different facilities.</p>
+</li>
+<li><p>Other way of exploring nxs/hdf files is to use <a class="reference external" href="https://nexpy.github.io/nexpy/">NeXpy</a>.
+Users need to install NeXpy in an activated <a class="reference internal" href="section4_1.html#section4-1"><span class="std std-ref">environment</span></a>.</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">conda install -c conda-forge nexpy</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>and run from that environment</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/fig_4_2_2.png" id="fig-4-2-2"><img alt="../../_images/fig_4_2_2.png" class="align-center" id="fig-4-2-2" src="../../_images/fig_4_2_2.png" style="width: 70%;" /></a>
+</div></blockquote>
+<p>NeXpy provides more options to explore data. Note that it can’t resolve <a class="reference external" href="https://docs.h5py.org/en/stable/high/group.html#dict-interface-and-links">links</a>
+between datasets, so users have to open both files as shown below. Another thing is that image in NeXpy
+is displayed with the origin at the bottom left. This is different to Hdfview (<a class="reference internal" href="../section1/section1_4.html#fig-1-4-2"><span class="std std-numref">Fig. 1.4.2</span></a>).</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/fig_4_2_3.png" id="fig-4-2-3"><img alt="../../_images/fig_4_2_3.png" class="align-center" id="fig-4-2-3" src="../../_images/fig_4_2_3.png" style="width: 100%;" /></a>
+</div></blockquote>
+</li>
+<li><p>Users also can use functions in the <a class="reference internal" href="../api.html#input-output"><span class="std std-ref">input-output module</span></a> of Algotom to explore data.
+For example, to display the hierarchical structure of a hdf file:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;E:/Tomo_data/68067.nxs&quot;</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">get_hdf_tree</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Output:</span>
+<span class="go">entry1</span>
+<span class="go">    │</span>
+<span class="go">    ├── before_scan</span>
+<span class="go">    │   │</span>
+<span class="go">    │   ├── cam1</span>
+<span class="go">    │   │   │</span>
+<span class="go">    │   │   ├── cam1_roll (1,)</span>
+<span class="go">    │   │   ├── cam1_x (1,)</span>
+<span class="go">    │   │   └── cam1_z (1,)</span>
+<span class="go">    │   ├── dcm1_cap_1</span>
+<span class="go">    │   │   └── dcm1_cap_1 (1,)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>To find datasets having the pattern of “data” in their paths:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">keys</span><span class="p">,</span> <span class="n">shapes</span><span class="p">,</span> <span class="n">types</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">find_hdf_key</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s2">&quot; Key: </span><span class="si">{0}</span><span class="s2"> | Shape: </span><span class="si">{1}</span><span class="s2"> | Type: </span><span class="si">{2}</span><span class="s2"> &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">shapes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">types</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Output:</span>
+<span class="go">0  Key: entry1/flyScanDetector/data | Shape: (1861, 2160, 2560) | Type: uint16</span>
+<span class="go">1  Key: entry1/instrument/flyScanDetector/data | Shape: (1861, 2160, 2560) | Type: uint16</span>
+<span class="go">2  Key: entry1/tomo_entry/data | Shape: None | Type: None</span>
+<span class="go">3  Key: entry1/tomo_entry/control/data | Shape: (1,) | Type: float64</span>
+<span class="go">4  Key: entry1/tomo_entry/data/data | Shape: (1861, 2160, 2560) | Type: uint16</span>
+<span class="go">5  Key: entry1/tomo_entry/data/rotation_angle | Shape: (1861,) | Type: float64</span>
+<span class="go">6  Key: entry1/tomo_entry/instrument/detector/data | Shape: (1861, 2160, 2560) | Type: uint16</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>After knowing the path (key) to a dataset containing images we can extract an image and save it as tif. A
+convenient feature of methods for saving data in Algotom is that if the output folder doesn’t exist
+it will be created.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image_data</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;entry1/tomo_entry/data/data&quot;</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="s2">&quot;E:/output/image_00100.tif&quot;</span><span class="p">,</span> <span class="n">image_data</span><span class="p">[</span><span class="mi">100</span><span class="p">])</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>We also can extract multiple images from a hdf file and save them to tiff using a single command</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">algotom.io.converter</span> <span class="k">as</span> <span class="nn">conv</span>
+
+<span class="c1"># Extract images with the indices of (start, stop, step) along axis 0</span>
+<span class="n">conv</span><span class="o">.</span><span class="n">extract_tif_from_hdf</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;E:/output/some_proj/&quot;</span><span class="p">,</span> <span class="s2">&quot;entry1/tomo_entry/data/data&quot;</span><span class="p">,</span>
+                          <span class="n">index</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;proj&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="tiff-files">
+<h2><span class="section-number">4.2.2. </span>Tiff files<a class="headerlink" href="#tiff-files" title="Permalink to this heading">¶</a></h2>
+<p>In some tomography systems, raw data are saved as tiff images. As shown in <a class="reference internal" href="../section2.html#section2"><span class="std std-ref">section 2</span></a>,
+processing methods for tomographic data work either on projection space or sinogram space, or on both.
+Because of that, we have to switch between spaces, i.e. slicing 3D data along different axis. This
+cannot be done efficiently if using the tiff format. In such case, users can convert tiff images to
+the hdf format first before processing them with options to add metadata.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">input_folder</span> <span class="o">=</span> <span class="s2">&quot;E:/raw_tif/&quot;</span> <span class="c1"># Folder with tiff files inside. Note that the names of the</span>
+                             <span class="c1"># tiff files must be corresponding to the increasing order of angles</span>
+<span class="n">output_file</span> <span class="o">=</span> <span class="s2">&quot;E:/convert_hdf/tomo_data.hdf&quot;</span>
+<span class="n">num_angle</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">losa</span><span class="o">.</span><span class="n">file_file</span><span class="p">(</span><span class="n">input_folder</span> <span class="o">+</span> <span class="s2">&quot;/*tif*&quot;</span><span class="p">))</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">180.0</span><span class="p">,</span> <span class="n">num_angle</span><span class="p">)</span>
+<span class="n">conv</span><span class="o">.</span><span class="n">convert_tif_to_hdf</span><span class="p">(</span><span class="n">input_folder</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="s1">&#39;entry/data&#39;</span><span class="p">,</span>
+                        <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">pattern</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                        <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;entry/angles&quot;</span><span class="p">:</span> <span class="n">angles</span><span class="p">,</span> <span class="s2">&quot;entry/energy_keV&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>In some cases, we may want to load a stack of tiff images and average them such as flat-field images or
+dark-field images. This can be done in different ways</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">input_folder</span> <span class="o">=</span> <span class="s2">&quot;E:/flat_field/&quot;</span>
+<span class="c1"># 1st way</span>
+<span class="n">flat_field</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">losa</span><span class="o">.</span><span class="n">get_tif_stack</span><span class="p">(</span><span class="n">input_folder</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># 2nd way. The method was written for speckle-tracking tomography but can be used here</span>
+<span class="n">flat_field</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">get_image_stack</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">input_folder</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="c1"># 3rd way</span>
+<span class="n">list_file</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">find_file</span><span class="p">(</span><span class="n">input_folder</span> <span class="o">+</span> <span class="s2">&quot;/*tif*&quot;</span><span class="p">)</span>
+<span class="n">flat_field</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">list_file</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../section5.html" class="btn btn-neutral float-right" title="5. Technical notes" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="section4_1.html" class="btn btn-neutral" title="4.1. Setting up a Python workspace" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Nghia T. Vo.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

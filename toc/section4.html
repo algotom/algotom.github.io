@@ -93,6 +93,7 @@
 <li class="toctree-l1"><a class="reference internal" href="section3.html">3. Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">4. Demonstrations</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="section4/section4_1.html">4.1. Setting up a Python workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="section4/section4_2.html">4.2. Exploring raw data and making use of the input-output module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="section5.html">5. Technical notes</a></li>
@@ -165,12 +166,37 @@
             
   <div class="section" id="demonstrations">
 <h1><span class="section-number">4. </span>Demonstrations<a class="headerlink" href="#demonstrations" title="Permalink to this heading">¶</a></h1>
-<p>Collection of Python scripts of how to use Algotom is at <a class="reference external" href="https://github.com/algotom/algotom/tree/master/examples">here</a>.
-Tomographic data for testing or developing methods can be downloaded from <a class="reference external" href="https://zenodo.org/search?page=1&amp;size=20&amp;q=%22tomographic%20data%22%20%26%20%22nghia%20t.%20vo%22&amp;type=dataset#">Zenodo.org</a>
-or <a class="reference external" href="https://tomobank.readthedocs.io/en/latest/">TomoBank</a>.</p>
+<p>Examples of how to use the package are under the example folder of <a class="reference external" href="https://github.com/algotom/algotom/tree/master/examples">Algotom</a>.
+They cover most of use-cases which users can adapt to process their own data. Examples
+of how to process speckle-based phase-contrast tomography is at <a class="reference external" href="https://github.com/algotom/algotom/tree/master/examples/speckle_based_tomography">here</a>.</p>
+<p>Users can use Algotom to re-process some old data collected at synchrotron facilities suffering from:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Various types of <a class="reference external" href="https://sarepy.readthedocs.io/">ring artifacts</a>.</p></li>
+<li><p>Cupping artifacts (also known as beam hardening artifacts) which are caused by using:
+FFT-based reconstruction methods without proper padding; polychromatic X-ray sources;
+or low-dynamic-range detectors to record high-dynamic-range projection-images.</p></li>
+</ul>
+</div></blockquote>
+<p>There are tools and <a class="reference external" href="https://sarepy.readthedocs.io/toc/section5.html">methods</a> users can use to customize their own algorithms:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Methods to transform images back-and-forth between the polar coordinate system and the Cartesian coordinate system.</p></li>
+<li><p>Methods to separate stripe artifacts.</p></li>
+<li><p>Methods to transform back-and-forth between reconstruction images and sinogram images.</p></li>
+</ul>
+</div></blockquote>
+<p>Tomographic data for testing or developing methods can be downloaded from <a class="reference external" href="https://zenodo.org/search?page=1&amp;size=20&amp;q=%22tomographic%20data%22%20%26%20%22nghia%20t.%20vo%22&amp;type=dataset#">Zenodo.org</a>
+or <a class="reference external" href="https://tomobank.readthedocs.io/en/latest/">TomoBank</a>. Methods can also be tested using
+simulation data as demonstrated <a class="reference external" href="https://github.com/algotom/algotom/blob/master/examples/example_08_generate_simulation_data.py">here</a>.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="section4/section4_1.html">4.1. Setting up a Python workspace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="section4/section4_2.html">4.2. Exploring raw data and making use of the input-output module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="section4/section4_2.html#nxs-hdf-files">4.2.1. Nxs/hdf files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="section4/section4_2.html#tiff-files">4.2.2. Tiff files</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
