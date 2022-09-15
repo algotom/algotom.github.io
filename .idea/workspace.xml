@@ -2,16 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd7108d9-b1b3-4aba-9605-7e4d6e864f32" name="Changes" comment="Update">
+      <change afterPath="$PROJECT_DIR$/docs/source/toc/section1/section1_5.rst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/.doctrees/environment.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.doctrees/toc/section4/section4_2.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/.doctrees/toc/section4/section4_2.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.doctrees/toc/section1.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/.doctrees/toc/section1.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sources/toc/section4/section4_2.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/_sources/toc/section4/section4_2.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/source/toc/section4/section4_2.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/toc/section4/section4_2.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_sources/toc/section1.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/_sources/toc/section1.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/source/toc/section1.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/toc/section1.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/source/toc/section4.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/toc/section4.rst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/objects.inv" beforeDir="false" afterPath="$PROJECT_DIR$/objects.inv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/searchindex.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/section4.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/section4/section4_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section4/section4_2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/section1.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section1.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,15 +38,18 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/nvo/PycharmProjects/algotom.github.io/docs/source/toc/section4",
+    "last_opened_file_path": "C:/Users/nvo/PycharmProjects/algotom.github.io/docs/source",
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\nvo\PycharmProjects\algotom.github.io\docs\source\toc\section4" />
       <recent name="C:\Users\nvo\PycharmProjects\algotom.github.io\docs\source" />
       <recent name="C:\Users\nvo\PycharmProjects\algotom.github.io\docs\source\toc" />
+      <recent name="C:\Users\nvo\PycharmProjects\algotom.github.io\docs\source\toc\section4" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nvo\PycharmProjects\algotom.github.io\docs\source" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
