@@ -291,7 +291,7 @@ write codes, and run them as shown below.</p>
 <div><a class="reference internal image-reference" href="../../_images/fig_4_1_3.png" id="fig-4-1-3"><img alt="../../_images/fig_4_1_3.png" class="align-center" id="fig-4-1-3" src="../../_images/fig_4_1_3.png" style="width: 100%;" /></a>
 </div></blockquote>
 </div></blockquote>
-<p><strong>4. Write and run codes interactively using Jupyter notebook (optional)</strong></p>
+<p><strong>4. Write and run codes interactively using Jupyter Notebook (optional)</strong></p>
 <blockquote>
 <div><p>Using Python scripts is efficient and practical for processing multiple datasets.
 However, if users want to work with data interactively to define a workflow,
@@ -303,7 +303,9 @@ a good choice.</p>
 </pre></div>
 </div>
 </div></blockquote>
-<p>Run the following command to enable the current environment in notebook</p>
+<p>Run the following command to enable the current environment in notebook
+(only need for the first time setup). Note to change the name of the environment if
+users use a different name.</p>
 <blockquote>
 <div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ipython kernel install --user --name=&quot;myspace&quot;</span>
 </pre></div>
@@ -322,6 +324,37 @@ a good choice.</p>
 <p>It will create a new tab for inputting codes</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../_images/fig_4_1_5.png" id="fig-4-1-5"><img alt="../../_images/fig_4_1_5.png" class="align-center" id="fig-4-1-5" src="../../_images/fig_4_1_5.png" style="width: 100%;" /></a>
+</div></blockquote>
+<p>Note that the working folder (drive) of the notebook is where we run the command <em>jupyter notebook</em> from.
+If users want to work at a different drive, e.g. D:, they must navigate to that drive before running the notebook.
+(FYI, Press Ctrl+C to terminate a current running notebook from the Powershell Prompt)</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd D:</span>
+<span class="go">jupyter notebook</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<p><strong>For who would like to use JupyterLab instead of Jupyter Notebook</strong></p>
+<blockquote>
+<div><p>Similar as above but for JupyterLab</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">conda install -c conda-forge jupyterlab</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Run the following command only for the first time setup. Note to change the name of the environment if
+users use a different name.</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ipython kernel install --user --name=&quot;myspace&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Then run JupyterLab by</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">jupyter lab</span>
+</pre></div>
+</div>
 </div></blockquote>
 </div></blockquote>
 </div>
