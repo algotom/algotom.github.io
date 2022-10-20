@@ -230,7 +230,7 @@
 <td><p>Find shifts between each pair of two image-stacks.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#algotom.prep.phase.find_shift_between_sample_images" title="algotom.prep.phase.find_shift_between_sample_images"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_shift_between_sample_images</span></code></a>(ref_stack, ...)</p></td>
-<td><p>Find shifts between sample-images in a stack and the first sample-image.</p></td>
+<td><p>Find shifts between sample-images in a stack against the first sample-image.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#algotom.prep.phase.align_image_stacks" title="algotom.prep.phase.align_image_stacks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">align_image_stacks</span></code></a>(ref_stack, sam_stack, ...)</p></td>
 <td><p>Align each pair of two image-stacks using provided reference-sample shifts with an option to correct the shifts between sample-images.</p></td>
@@ -238,7 +238,7 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#algotom.prep.phase.retrieve_phase_based_speckle_tracking" title="algotom.prep.phase.retrieve_phase_based_speckle_tracking"><code class="xref py py-obj docutils literal notranslate"><span class="pre">retrieve_phase_based_speckle_tracking</span></code></a>(...[, ...])</p></td>
 <td><p>Retrieve the phase image from two stacks of speckle-images and sample-images where the shift of each pixel is determined using a correlation-based technique (Ref.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#algotom.prep.phase.get_transmission_dark_field_signal" title="algotom.prep.phase.get_transmission_dark_field_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_transmission_dark_field_signal</span></code></a>(...[, ncore])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#algotom.prep.phase.get_transmission_dark_field_signal" title="algotom.prep.phase.get_transmission_dark_field_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_transmission_dark_field_signal</span></code></a>(...[, ...])</p></td>
 <td><p>Get the transmission-signal image and dark-signal image from two stacks of speckle-images and sample-images.</p></td>
 </tr>
 </tbody>
@@ -247,7 +247,7 @@
 <dt class="sig sig-object py" id="algotom.prep.phase.get_quality_map">
 <span class="sig-prename descclassname"><span class="pre">algotom.prep.phase.</span></span><span class="sig-name descname"><span class="pre">get_quality_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/phase.html#get_quality_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.phase.get_quality_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a quality map using the phase derivative variance (PDV) as
-described in Ref. <a href="#id21"><span class="problematic" id="id1">[1]_</span></a>.</p>
+described in Ref. <a href="#id24"><span class="problematic" id="id1">[1]_</span></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -272,7 +272,7 @@ Theory, Algorithms, and Software”, Wiley, New York,1998.</p>
 <dt class="sig sig-object py" id="algotom.prep.phase.get_weight_mask">
 <span class="sig-prename descclassname"><span class="pre">algotom.prep.phase.</span></span><span class="sig-name descname"><span class="pre">get_weight_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/phase.html#get_weight_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.phase.get_weight_mask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a binary weight-mask based on a provided quality map. Threshold
-value is calculated based on Algorithm 4 in Ref. <a href="#id22"><span class="problematic" id="id3">[1]_</span></a>.</p>
+value is calculated based on Algorithm 4 in Ref. <a href="#id25"><span class="problematic" id="id3">[1]_</span></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -295,7 +295,7 @@ value is calculated based on Algorithm 4 in Ref. <a href="#id22"><span class="pr
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.phase.unwrap_phase_based_cosine_transform">
 <span class="sig-prename descclassname"><span class="pre">algotom.prep.phase.</span></span><span class="sig-name descname"><span class="pre">unwrap_phase_based_cosine_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/phase.html#unwrap_phase_based_cosine_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.phase.unwrap_phase_based_cosine_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Unwrap a phase image using the cosine transform as described in Ref. <a href="#id23"><span class="problematic" id="id5">[1]_</span></a>.</p>
+<dd><p>Unwrap a phase image using the cosine transform as described in Ref. <a href="#id26"><span class="problematic" id="id5">[1]_</span></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -318,7 +318,7 @@ value is calculated based on Algorithm 4 in Ref. <a href="#id22"><span class="pr
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.phase.unwrap_phase_based_fft">
 <span class="sig-prename descclassname"><span class="pre">algotom.prep.phase.</span></span><span class="sig-name descname"><span class="pre">unwrap_phase_based_fft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_for</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_back</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/phase.html#unwrap_phase_based_fft"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.phase.unwrap_phase_based_fft" title="Permalink to this definition">¶</a></dt>
-<dd><p>Unwrap a phase image using the Fourier transform as described in Ref. <a href="#id24"><span class="problematic" id="id7">[1]_</span></a>.</p>
+<dd><p>Unwrap a phase image using the Fourier transform as described in Ref. <a href="#id27"><span class="problematic" id="id7">[1]_</span></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -344,7 +344,7 @@ no zero-values. Generated if None.</p></li>
 <dt class="sig sig-object py" id="algotom.prep.phase.unwrap_phase_iterative_fft">
 <span class="sig-prename descclassname"><span class="pre">algotom.prep.phase.</span></span><span class="sig-name descname"><span class="pre">unwrap_phase_iterative_fft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iteration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_for</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_back</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/phase.html#unwrap_phase_iterative_fft"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.phase.unwrap_phase_iterative_fft" title="Permalink to this definition">¶</a></dt>
 <dd><p>Unwrap a phase image using an iterative FFT-based method as described in
-Ref. <a href="#id25"><span class="problematic" id="id9">[1]_</span></a>.</p>
+Ref. <a href="#id28"><span class="problematic" id="id9">[1]_</span></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -372,7 +372,7 @@ no zero-values. Generated if None.</p></li>
 <dt class="sig sig-object py" id="algotom.prep.phase.reconstruct_surface_from_gradient_FC_method">
 <span class="sig-prename descclassname"><span class="pre">algotom.prep.phase.</span></span><span class="sig-name descname"><span class="pre">reconstruct_surface_from_gradient_FC_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grad_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_negative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/phase.html#reconstruct_surface_from_gradient_FC_method"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.phase.reconstruct_surface_from_gradient_FC_method" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reconstruct a surface from the gradients in x and y-direction using the
-Frankot-Chellappa method (Ref. <a href="#id26"><span class="problematic" id="id11">[1]_</span></a>). Note that the DC-component
+Frankot-Chellappa method (Ref. <a href="#id29"><span class="problematic" id="id11">[1]_</span></a>). Note that the DC-component
 (average value of an image) of the reconstructed image is unidentified
 because the DC-component of the FFT-window is zero.</p>
 <dl class="field-list simple">
@@ -401,7 +401,7 @@ for the Fourier transform. Generated if None.</p></li>
 <dt class="sig sig-object py" id="algotom.prep.phase.reconstruct_surface_from_gradient_SCS_method">
 <span class="sig-prename descclassname"><span class="pre">algotom.prep.phase.</span></span><span class="sig-name descname"><span class="pre">reconstruct_surface_from_gradient_SCS_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grad_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_negative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear_ramp'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/phase.html#reconstruct_surface_from_gradient_SCS_method"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.phase.reconstruct_surface_from_gradient_SCS_method" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reconstruct a surface from the gradients in x and y-direction using the
-Simchony-Chellappa-Shao method (Ref. <a href="#id27"><span class="problematic" id="id13">[1]_</span></a>). Note that the DC-component
+Simchony-Chellappa-Shao method (Ref. <a href="#id30"><span class="problematic" id="id13">[1]_</span></a>). Note that the DC-component
 (average value of an image) of the reconstructed image is unidentified
 because the DC-component of the FFT-window is zero.</p>
 <dl class="field-list simple">
@@ -430,12 +430,12 @@ for the Fourier transform. Generated if None.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.phase.find_shift_between_image_stacks">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.phase.</span></span><span class="sig-name descname"><span class="pre">find_shift_between_image_stacks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_stack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sam_stack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_ij</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_pixel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/phase.html#find_shift_between_image_stacks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.phase.find_shift_between_image_stacks" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.phase.</span></span><span class="sig-name descname"><span class="pre">find_shift_between_image_stacks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_stack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sam_stack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_ij</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mixed'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_pixel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/phase.html#find_shift_between_image_stacks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.phase.find_shift_between_image_stacks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find shifts between each pair of two image-stacks. Can be used to
 align reference-images and sample-images in speckle-based imaging
 technique.
 The method finds the shift between two images by finding local shifts
-between small areas of the images given by a list of middle points.</p>
+between small areas of the images given by a list of points.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -445,7 +445,7 @@ between small areas of the images given by a list of middle points.</p>
 image.</p></li>
 <li><p><strong>margin</strong> (<em>int</em>) – To define the size of the area of the reference image for searching,
 i.e. size = 2 * margin + win_size.</p></li>
-<li><p><strong>list_ij</strong> (<em>list of list of int</em>) – List of indices of points used for local search. Accept the value of
+<li><p><strong>list_ij</strong> (<em>list of lists of int</em>) – List of indices of points used for local search. Accept the value of
 [i_index, j_index] for a single point or
 [[i_index0, i_index1,…], [j_index0, j_index1,…]]
 for multiple points.</p></li>
@@ -462,18 +462,20 @@ sub-pixel searching.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>array_like</em> – List of [[x_shift0, y_shift0], [x_shift1, y_shift1],…]</p>
+<dd class="field-even"><p><em>array_like</em> – List of [[x_shift0, y_shift0], [x_shift1, y_shift1],…]. The
+shift of each image in the second stacks against each image in the
+first stack.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.phase.find_shift_between_sample_images">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.phase.</span></span><span class="sig-name descname"><span class="pre">find_shift_between_sample_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_stack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sam_stack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sr_shifts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_ij</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_pixel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/phase.html#find_shift_between_sample_images"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.phase.find_shift_between_sample_images" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find shifts between sample-images in a stack and the first sample-image.
-It is used to align sample-images of the same rotation angle from multiple
-tomographic datasets. Reference-images are used for normalization before
-finding the shifts.</p>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.phase.</span></span><span class="sig-name descname"><span class="pre">find_shift_between_sample_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_stack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sam_stack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sr_shifts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_ij</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_pixel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/phase.html#find_shift_between_sample_images"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.phase.find_shift_between_sample_images" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find shifts between sample-images in a stack against the first
+sample-image. It is used to align sample-images of the same rotation-angle
+from multiple tomographic datasets. Reference-images are used for
+normalization before finding the shifts.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -484,7 +486,7 @@ finding the shifts.</p>
 image.</p></li>
 <li><p><strong>margin</strong> (<em>int</em>) – To define the size of the area of the reference image for searching,
 i.e. size = 2 * margin + win_size.</p></li>
-<li><p><strong>list_ij</strong> (<em>list of list of int</em>) – List of indices of points used for local search. Accept the value of
+<li><p><strong>list_ij</strong> (<em>list of lists of int</em>) – List of indices of points used for local search. Accept the value of
 [i_index, j_index] for a single point or
 [[i_index0, i_index1,…], [j_index0, j_index1,…]]
 for multiple points.</p></li>
@@ -518,7 +520,8 @@ with an option to correct the shifts between sample-images.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ref_stack</strong> (<em>array_like</em>) – 3D array. Reference images.</p></li>
 <li><p><strong>sam_stack</strong> (<em>array_like</em>) – 3D array. Sample images.</p></li>
-<li><p><strong>sr_shifts</strong> (<em>array_like</em>) – List of shifts between each pair of reference-images and sample-images.</p></li>
+<li><p><strong>sr_shifts</strong> (<em>array_like</em>) – List of shifts between each pair of reference-images and sample-images.
+Each value is the shift of the second image against the first image.</p></li>
 <li><p><strong>sam_shifts</strong> (<em>array_like, optional</em>) – List of shifts between each sample-image and the first sample-image.</p></li>
 <li><p><strong>mode</strong> (<em>{‘reflect’, ‘constant’, ‘nearest’, ‘mirror’, ‘wrap’}, optional</em>) – Method to fill up empty areas caused by shifting the images.</p></li>
 </ul>
@@ -534,22 +537,57 @@ with an option to correct the shifts between sample-images.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="algotom.prep.phase.retrieve_phase_based_speckle_tracking">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.phase.</span></span><span class="sig-name descname"><span class="pre">retrieve_phase_based_speckle_tracking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_stack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sam_stack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(16,</span> <span class="pre">16)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm_global</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surf_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SCS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_negative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear_ramp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/phase.html#retrieve_phase_based_speckle_tracking"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.phase.retrieve_phase_based_speckle_tracking" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve the phase image from two stacks of speckle-images and
-sample-images where the shift of each pixel is determined using a
-correlation-based technique (Ref. [1-2]).</p>
+<dt class="sig sig-object py" id="algotom.prep.phase.get_transmission_dark_field_signal">
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.phase.</span></span><span class="sig-name descname"><span class="pre">get_transmission_dark_field_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_stack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sam_stack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_shifts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_shifts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/phase.html#get_transmission_dark_field_signal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.phase.get_transmission_dark_field_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the transmission-signal image and dark-signal image from two stacks of
+speckle-images and sample-images.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ref_stack</strong> (<em>array_like</em>) – 3D array. Reference images (speckle images).</p></li>
 <li><p><strong>sam_stack</strong> (<em>array_like</em>) – 3D array. Sample images.</p></li>
+<li><p><strong>x_shifts</strong> (<em>array_like</em>) – x-shift image.</p></li>
+<li><p><strong>y_shifts</strong> (<em>array_like</em>) – y-shift image.</p></li>
+<li><p><strong>win_size</strong> (<em>int</em>) – Window size used for calculating signals.</p></li>
+<li><p><strong>margin</strong> (<em>int or None</em>) – Margin value used for calculating signals.</p></li>
+<li><p><strong>ncore</strong> (<em>int or None</em>) – Number of cpu-cores used for computing. Automatically selected if None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>trans</strong> (<em>array_like</em>) – Transmission-signal image</p></li>
+<li><p><strong>dark</strong> (<em>array_like</em>) – Dark-signal image</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.prep.phase.retrieve_phase_based_speckle_tracking">
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.phase.</span></span><span class="sig-name descname"><span class="pre">retrieve_phase_based_speckle_tracking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_stack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sam_stack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">find_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'correl'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hamming'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dark_signal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(16,</span> <span class="pre">16)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm_global</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surf_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SCS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_negative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear_ramp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/phase.html#retrieve_phase_based_speckle_tracking"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.phase.retrieve_phase_based_speckle_tracking" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the phase image from two stacks of speckle-images and
+sample-images where the shift of each pixel is determined using a
+correlation-based technique (Ref. [1-2]) or a cost-function-based method
+(Ref. [3]). Results can be an image, a list of 3 images, or a list of 5
+images.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ref_stack</strong> (<em>array_like</em>) – 3D array. Reference images (speckle images).</p></li>
+<li><p><strong>sam_stack</strong> (<em>array_like</em>) – 3D array. Sample images.</p></li>
+<li><p><strong>find_shift</strong> (<em>{“correl”, “umpa”}</em>) – To select the back-end method for finding shifts. Using a
+correlation-based method (Ref. [1-2]) or a cost-based method
+(Ref. [3]).</p></li>
+<li><p><strong>filter_name</strong> (<a href="#id15"><span class="problematic" id="id16">*</span></a>{None, “hann”, “bartlett”, “blackman”, “hamming”,*) –           “nuttall”, “parzen”, “triang”}
+To select a smoothing filter.</p></li>
+<li><p><strong>dark_signal</strong> (<em>bool</em>) – Return both dark-signal image and transmission-signal image if True</p></li>
 <li><p><strong>dim</strong> (<em>{1, 2}</em>) – To find the shifts (in x and y) separately (1D) or together (2D).</p></li>
 <li><p><strong>win_size</strong> (<em>int</em>) – Size of local areas in the sample image for finding shifts.</p></li>
 <li><p><strong>margin</strong> (<em>int</em>) – To define the searching range of the sample images in finding the
 shifts compared to the reference images.</p></li>
 <li><p><strong>method</strong> (<em>{“diff”, “poly_fit”}</em>) – Method for finding sub-pixel shift. Two options: a differential
-method (Ref. [3]) or a polynomial method (Ref. [4]). The “poly_fit”
+method (Ref. [4]) or a polynomial method (Ref. [5]). The “poly_fit”
 option is not available if using GPU.</p></li>
 <li><p><strong>size</strong> (<em>int</em>) – Window size around the integer location of the maximum value used for
 sub-pixel location. Adjustable if using the polynomial method.</p></li>
@@ -559,8 +597,8 @@ sub-pixel location. Adjustable if using the polynomial method.</p></li>
 <li><p><strong>norm</strong> (<em>bool, optional</em>) – Normalizing the inputs if True.</p></li>
 <li><p><strong>norm_global</strong> (<em>bool, optional</em>) – Normalize by using the full size of the inputs if True.</p></li>
 <li><p><strong>chunk_size</strong> (<em>int or None</em>) – Size of each chunk extracted along the height of the image.</p></li>
-<li><p><strong>surf_method</strong> (<em>{“SCS”, “FC”}</em>) – Select method for surface reconstruction: “SCS” (Ref. [5]) or “FC”
-(Ref. [6])</p></li>
+<li><p><strong>surf_method</strong> (<em>{“SCS”, “FC”}</em>) – Select method for surface reconstruction: “SCS” (Ref. [6]) or “FC”
+(Ref. [7])</p></li>
 <li><p><strong>correct_negative</strong> (<em>bool, optional</em>) – Correct negative offset if True.</p></li>
 <li><p><strong>window</strong> (<em>list of array_like</em>) – List of three 2D-arrays. Spatial frequencies in x, y, and the window
 in the Fourier space for the surface reconstruction method. Generated
@@ -575,58 +613,39 @@ image.</p></li>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><strong>x_shifts</strong> (<em>array_like</em>) – Return if return_shift is True. Shifts in x-direction.</p></li>
-<li><p><strong>y_shifts</strong> (<em>array_like</em>) – return if return_shift is True. Shifts in y-direction.</p></li>
-<li><p><strong>phase</strong> (<em>array_like</em>) – Phase image.</p></li>
+<li><p><strong>phase</strong> (<em>array_like</em>) – Phase image. If dark_signal is False and return_shifts is False.</p></li>
+<li><p><strong>phase, trans, dark</strong> (<em>list of array_like</em>) – Phase image, transmission image, and dark-signal image. If dark_signal
+is True and return_shifts is False.</p></li>
+<li><p><strong>x_shifts, y_shifts, phase</strong> (<em>list of array_like</em>) – x-shift image and y-shift image. If dark_signal is False and
+return_shifts is True.</p></li>
+<li><p><strong>x_shifts, y_shifts, phase, trans, dark</strong> (<em>list of array_like</em>) – x-shift image, y-shift image, phase image, transmission image, and
+dark-signal image. If dark_signal is True and return_shifts is True.</p></li>
 </ul>
 </p>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="footnote brackets">
-<dt class="label" id="id15"><span class="brackets">1</span></dt>
+<dt class="label" id="id17"><span class="brackets">1</span></dt>
 <dd><p><a class="reference external" href="https://doi.org/10.1038/srep08762">https://doi.org/10.1038/srep08762</a></p>
 </dd>
-<dt class="label" id="id16"><span class="brackets">2</span></dt>
+<dt class="label" id="id18"><span class="brackets">2</span></dt>
 <dd><p><a class="reference external" href="https://doi.org/10.1103/PhysRevApplied.5.044014">https://doi.org/10.1103/PhysRevApplied.5.044014</a></p>
 </dd>
-<dt class="label" id="id17"><span class="brackets">3</span></dt>
+<dt class="label" id="id19"><span class="brackets">3</span></dt>
+<dd><p><a class="reference external" href="https://doi.org/10.1103/PhysRevLett.118.203903">https://doi.org/10.1103/PhysRevLett.118.203903</a></p>
+</dd>
+<dt class="label" id="id20"><span class="brackets">4</span></dt>
 <dd><p><a class="reference external" href="https://doi.org/10.48550/arXiv.0712.4289">https://doi.org/10.48550/arXiv.0712.4289</a></p>
 </dd>
-<dt class="label" id="id18"><span class="brackets">4</span></dt>
+<dt class="label" id="id21"><span class="brackets">5</span></dt>
 <dd><p><a class="reference external" href="https://doi.org/10.1088/0957-0233/17/6/045">https://doi.org/10.1088/0957-0233/17/6/045</a></p>
 </dd>
-<dt class="label" id="id19"><span class="brackets">5</span></dt>
+<dt class="label" id="id22"><span class="brackets">6</span></dt>
 <dd><p><a class="reference external" href="https://doi.org/10.1109/34.55103">https://doi.org/10.1109/34.55103</a></p>
 </dd>
-<dt class="label" id="id20"><span class="brackets">6</span></dt>
+<dt class="label" id="id23"><span class="brackets">7</span></dt>
 <dd><p><a class="reference external" href="https://doi.org/10.1109/34.3909">https://doi.org/10.1109/34.3909</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="algotom.prep.phase.get_transmission_dark_field_signal">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.phase.</span></span><span class="sig-name descname"><span class="pre">get_transmission_dark_field_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_stack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sam_stack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_shifts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_shifts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/phase.html#get_transmission_dark_field_signal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.phase.get_transmission_dark_field_signal" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the transmission-signal image and dark-signal image from two stacks of
-speckle-images and sample-images.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ref_stack</strong> (<em>array_like</em>) – 3D array. Reference images (speckle images).</p></li>
-<li><p><strong>sam_stack</strong> (<em>array_like</em>) – 3D array. Sample images.</p></li>
-<li><p><strong>x_shifts</strong> (<em>array_like</em>) – x-shift image.</p></li>
-<li><p><strong>y_shifts</strong> (<em>array_like</em>) – y-shift image.</p></li>
-<li><p><strong>win_size</strong> (<em>int</em>) – Window size used for calculating signals.</p></li>
-<li><p><strong>ncore</strong> (<em>int or None</em>) – Number of cpu-cores used for computing. Automatically selected if None.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><strong>trans</strong> (<em>array_like</em>) – Transmission-signal image</p></li>
-<li><p><strong>dark</strong> (<em>array_like</em>) – Dark-signal image</p></li>
-</ul>
-</p>
 </dd>
 </dl>
 </dd></dl>

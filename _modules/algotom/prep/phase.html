@@ -638,15 +638,15 @@
 
 
 <div class="viewcode-block" id="find_shift_between_image_stacks"><a class="viewcode-back" href="../../../toc/api/algotom.prep.phase.html#algotom.prep.phase.find_shift_between_image_stacks">[docs]</a><span class="k">def</span> <span class="nf">find_shift_between_image_stacks</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">,</span> <span class="n">sam_stack</span><span class="p">,</span> <span class="n">win_size</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span>
-                                    <span class="n">list_ij</span><span class="p">,</span> <span class="n">global_value</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                    <span class="n">list_ij</span><span class="p">,</span> <span class="n">global_value</span><span class="o">=</span><span class="s2">&quot;mixed&quot;</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                                     <span class="n">block</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">sub_pixel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;diff&quot;</span><span class="p">,</span>
-                                    <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+                                    <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find shifts between each pair of two image-stacks. Can be used to</span>
 <span class="sd">    align reference-images and sample-images in speckle-based imaging</span>
 <span class="sd">    technique.</span>
 <span class="sd">    The method finds the shift between two images by finding local shifts</span>
-<span class="sd">    between small areas of the images given by a list of middle points.</span>
+<span class="sd">    between small areas of the images given by a list of points.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -660,7 +660,7 @@
 <span class="sd">    margin : int</span>
 <span class="sd">        To define the size of the area of the reference image for searching,</span>
 <span class="sd">        i.e. size = 2 * margin + win_size.</span>
-<span class="sd">    list_ij : list of list of int</span>
+<span class="sd">    list_ij : list of lists of int</span>
 <span class="sd">        List of indices of points used for local search. Accept the value of</span>
 <span class="sd">        [i_index, j_index] for a single point or</span>
 <span class="sd">        [[i_index0, i_index1,...], [j_index0, j_index1,...]]</span>
@@ -679,7 +679,7 @@
 <span class="sd">    size : int</span>
 <span class="sd">        Window size around the integer location of the maximum value used for</span>
 <span class="sd">        sub-pixel searching.</span>
-<span class="sd">    ncore: int or None</span>
+<span class="sd">    ncore : int or None</span>
 <span class="sd">        Number of cpu-cores used for computing. Automatically selected if None.</span>
 <span class="sd">    norm : bool, optional</span>
 <span class="sd">        Normalize the input images if True.</span>
@@ -687,7 +687,9 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    array_like</span>
-<span class="sd">        List of [[x_shift0, y_shift0], [x_shift1, y_shift1],...]</span>
+<span class="sd">        List of [[x_shift0, y_shift0], [x_shift1, y_shift1],...]. The</span>
+<span class="sd">        shift of each image in the second stacks against each image in the</span>
+<span class="sd">        first stack.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">ref_stack</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">sam_stack</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Data shape must be the same !!!&quot;</span><span class="p">)</span>
@@ -713,12 +715,12 @@
                                      <span class="n">margin</span><span class="p">,</span> <span class="n">list_ij</span><span class="p">,</span> <span class="n">global_value</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">,</span>
                                      <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">sub_pixel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                                      <span class="n">method</span><span class="o">=</span><span class="s2">&quot;diff&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                                     <span class="n">norm</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+                                     <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Find shifts between sample-images in a stack and the first sample-image.</span>
-<span class="sd">    It is used to align sample-images of the same rotation angle from multiple</span>
-<span class="sd">    tomographic datasets. Reference-images are used for normalization before</span>
-<span class="sd">    finding the shifts.</span>
+<span class="sd">    Find shifts between sample-images in a stack against the first</span>
+<span class="sd">    sample-image. It is used to align sample-images of the same rotation-angle</span>
+<span class="sd">    from multiple tomographic datasets. Reference-images are used for</span>
+<span class="sd">    normalization before finding the shifts.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -734,7 +736,7 @@
 <span class="sd">    margin : int</span>
 <span class="sd">        To define the size of the area of the reference image for searching,</span>
 <span class="sd">        i.e. size = 2 * margin + win_size.</span>
-<span class="sd">    list_ij : list of list of int</span>
+<span class="sd">    list_ij : list of lists of int</span>
 <span class="sd">        List of indices of points used for local search. Accept the value of</span>
 <span class="sd">        [i_index, j_index] for a single point or</span>
 <span class="sd">        [[i_index0, i_index1,...], [j_index0, j_index1,...]]</span>
@@ -753,7 +755,7 @@
 <span class="sd">    size : int</span>
 <span class="sd">        Window size around the integer location of the maximum value used for</span>
 <span class="sd">        sub-pixel searching.</span>
-<span class="sd">    ncore: int or None</span>
+<span class="sd">    ncore : int or None</span>
 <span class="sd">        Number of cpu-cores used for computing. Automatically selected if None.</span>
 <span class="sd">    norm : bool, optional</span>
 <span class="sd">        Normalize the input images if True.</span>
@@ -806,6 +808,7 @@
 <span class="sd">        3D array. Sample images.</span>
 <span class="sd">    sr_shifts : array_like</span>
 <span class="sd">        List of shifts between each pair of reference-images and sample-images.</span>
+<span class="sd">        Each value is the shift of the second image against the first image.</span>
 <span class="sd">    sam_shifts : array_like, optional</span>
 <span class="sd">        List of shifts between each sample-image and the first sample-image.</span>
 <span class="sd">    mode : {&#39;reflect&#39;, &#39;constant&#39;, &#39;nearest&#39;, &#39;mirror&#39;, &#39;wrap&#39;}, optional</span>
@@ -826,138 +829,21 @@
     <span class="k">if</span> <span class="n">sam_shifts</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sam_shifts</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ref_stack</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">ref_stack</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">sam_stack</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">sam_stack</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ref_stack</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Data shape must be 3d!!!&quot;</span><span class="p">)</span>
     <span class="n">num_image</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">num_image</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">sam_stack</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">sam_stack</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                                 <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">sr_shifts</span><span class="p">)),</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_image</span><span class="p">):</span>
-            <span class="n">mat1</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">sam_stack</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">sr_shifts</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">sam_shifts</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">mat1</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">sam_shifts</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span>
-                <span class="n">ref1</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">sam_shifts</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
-                                       <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">ref1</span> <span class="o">=</span> <span class="n">ref_stack</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-            <span class="n">sam_stack</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">mat1</span>
-            <span class="n">ref_stack</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ref1</span>
-    <span class="k">return</span> <span class="n">ref_stack</span><span class="p">,</span> <span class="n">sam_stack</span></div>
-
-
-<div class="viewcode-block" id="retrieve_phase_based_speckle_tracking"><a class="viewcode-back" href="../../../toc/api/algotom.prep.phase.html#algotom.prep.phase.retrieve_phase_based_speckle_tracking">[docs]</a><span class="k">def</span> <span class="nf">retrieve_phase_based_speckle_tracking</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">,</span> <span class="n">sam_stack</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                                          <span class="n">win_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;diff&quot;</span><span class="p">,</span>
-                                          <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>
-                                          <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                                          <span class="n">norm_global</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                                          <span class="n">surf_method</span><span class="o">=</span><span class="s2">&quot;SCS&quot;</span><span class="p">,</span>
-                                          <span class="n">correct_negative</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                                          <span class="n">pad</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pad_mode</span><span class="o">=</span><span class="s2">&quot;linear_ramp&quot;</span><span class="p">,</span>
-                                          <span class="n">return_shift</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Retrieve the phase image from two stacks of speckle-images and</span>
-<span class="sd">    sample-images where the shift of each pixel is determined using a</span>
-<span class="sd">    correlation-based technique (Ref. [1-2]).</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    ref_stack : array_like</span>
-<span class="sd">        3D array. Reference images (speckle images).</span>
-<span class="sd">    sam_stack : array_like</span>
-<span class="sd">        3D array. Sample images.</span>
-<span class="sd">    dim : {1, 2}</span>
-<span class="sd">        To find the shifts (in x and y) separately (1D) or together (2D).</span>
-<span class="sd">    win_size : int</span>
-<span class="sd">        Size of local areas in the sample image for finding shifts.</span>
-<span class="sd">    margin : int</span>
-<span class="sd">        To define the searching range of the sample images in finding the</span>
-<span class="sd">        shifts compared to the reference images.</span>
-<span class="sd">    method : {&quot;diff&quot;, &quot;poly_fit&quot;}</span>
-<span class="sd">        Method for finding sub-pixel shift. Two options: a differential</span>
-<span class="sd">        method (Ref. [3]) or a polynomial method (Ref. [4]). The &quot;poly_fit&quot;</span>
-<span class="sd">        option is not available if using GPU.</span>
-<span class="sd">    size : int</span>
-<span class="sd">        Window size around the integer location of the maximum value used for</span>
-<span class="sd">        sub-pixel location. Adjustable if using the polynomial method.</span>
-<span class="sd">    gpu : {False, True, &quot;hybrid&quot;}</span>
-<span class="sd">        Use GPU for computing if True or in &quot;hybrid&quot; mode.</span>
-<span class="sd">    block : tuple of two integer-values, optional</span>
-<span class="sd">        Size of a GPU block. E.g. (8, 8), (16, 16), (32, 32), ...</span>
-<span class="sd">    ncore: int or None</span>
-<span class="sd">        Number of cpu-cores used for computing. Automatically selected if None.</span>
-<span class="sd">    norm : bool, optional</span>
-<span class="sd">        Normalizing the inputs if True.</span>
-<span class="sd">    norm_global : bool, optional</span>
-<span class="sd">        Normalize by using the full size of the inputs if True.</span>
-<span class="sd">    chunk_size : int or None</span>
-<span class="sd">        Size of each chunk extracted along the height of the image.</span>
-<span class="sd">    surf_method : {&quot;SCS&quot;, &quot;FC&quot;}</span>
-<span class="sd">        Select method for surface reconstruction: &quot;SCS&quot; (Ref. [5]) or &quot;FC&quot;</span>
-<span class="sd">        (Ref. [6])</span>
-<span class="sd">    correct_negative : bool, optional</span>
-<span class="sd">        Correct negative offset if True.</span>
-<span class="sd">    window : list of array_like</span>
-<span class="sd">        List of three 2D-arrays. Spatial frequencies in x, y, and the window</span>
-<span class="sd">        in the Fourier space for the surface reconstruction method. Generated</span>
-<span class="sd">        if None.</span>
-<span class="sd">    pad : int</span>
-<span class="sd">        Padding-width used for the &quot;SCS&quot; method.</span>
-<span class="sd">    pad_mode : str</span>
-<span class="sd">        Padding-method used for the &quot;SCS&quot; method. Full list can be found at</span>
-<span class="sd">        numpy.pad documentation.</span>
-<span class="sd">    return_shift : bool, optional</span>
-<span class="sd">        Return a list of 3 arrays: x-shifts, y-shifts, and phase image if True.</span>
-<span class="sd">        The shifts can be used to determine transmission-signal and dark-signal</span>
-<span class="sd">        image.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    x_shifts : array_like</span>
-<span class="sd">        Return if return_shift is True. Shifts in x-direction.</span>
-<span class="sd">    y_shifts : array_like</span>
-<span class="sd">        return if return_shift is True. Shifts in y-direction.</span>
-<span class="sd">    phase : array_like</span>
-<span class="sd">        Phase image.</span>
-
-<span class="sd">    References</span>
-<span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1038/srep08762</span>
-<span class="sd">    .. [2] https://doi.org/10.1103/PhysRevApplied.5.044014</span>
-<span class="sd">    .. [3] https://doi.org/10.48550/arXiv.0712.4289</span>
-<span class="sd">    .. [4] https://doi.org/10.1088/0957-0233/17/6/045</span>
-<span class="sd">    .. [5] https://doi.org/10.1109/34.55103</span>
-<span class="sd">    .. [6] https://doi.org/10.1109/34.3909</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">win_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">win_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="n">margin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">margin</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="p">(</span><span class="n">x_shifts</span><span class="p">,</span> <span class="n">y_shifts</span><span class="p">)</span> <span class="o">=</span> <span class="n">corl</span><span class="o">.</span><span class="n">find_local_shifts</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">,</span> <span class="n">sam_stack</span><span class="p">,</span>
-                                                  <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">win_size</span><span class="o">=</span><span class="n">win_size</span><span class="p">,</span>
-                                                  <span class="n">margin</span><span class="o">=</span><span class="n">margin</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
-                                                  <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="n">gpu</span><span class="p">,</span>
-                                                  <span class="n">block</span><span class="o">=</span><span class="n">block</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span>
-                                                  <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span>
-                                                  <span class="n">norm_global</span><span class="o">=</span><span class="n">norm_global</span><span class="p">,</span>
-                                                  <span class="n">chunk_size</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">)</span>
-    <span class="n">edge</span> <span class="o">=</span> <span class="n">margin</span> <span class="o">+</span> <span class="mi">2</span>
-    <span class="n">x_shifts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">x_shifts</span><span class="p">[</span><span class="n">edge</span><span class="p">:</span><span class="o">-</span><span class="n">edge</span><span class="p">,</span> <span class="n">edge</span><span class="p">:</span><span class="o">-</span><span class="n">edge</span><span class="p">],</span> <span class="n">edge</span><span class="p">,</span>
-                      <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;reflect&quot;</span><span class="p">)</span>
-    <span class="n">y_shifts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">y_shifts</span><span class="p">[</span><span class="n">edge</span><span class="p">:</span><span class="o">-</span><span class="n">edge</span><span class="p">,</span> <span class="n">edge</span><span class="p">:</span><span class="o">-</span><span class="n">edge</span><span class="p">],</span> <span class="n">edge</span><span class="p">,</span>
-                      <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;reflect&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">surf_method</span> <span class="o">==</span> <span class="s2">&quot;SCS&quot;</span><span class="p">:</span>
-        <span class="n">f_alias</span> <span class="o">=</span> <span class="n">reconstruct_surface_from_gradient_SCS_method</span>
-        <span class="n">phase</span> <span class="o">=</span> <span class="n">f_alias</span><span class="p">(</span><span class="n">x_shifts</span><span class="p">,</span> <span class="n">y_shifts</span><span class="p">,</span> <span class="n">correct_negative</span><span class="o">=</span><span class="n">correct_negative</span><span class="p">,</span>
-                        <span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">pad_mode</span><span class="o">=</span><span class="n">pad_mode</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">f_alias</span> <span class="o">=</span> <span class="n">reconstruct_surface_from_gradient_FC_method</span>
-        <span class="n">phase</span> <span class="o">=</span> <span class="n">f_alias</span><span class="p">(</span><span class="n">x_shifts</span><span class="p">,</span> <span class="n">y_shifts</span><span class="p">,</span> <span class="n">correct_negative</span><span class="o">=</span><span class="n">correct_negative</span><span class="p">,</span>
-                        <span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">return_shift</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">x_shifts</span><span class="p">,</span> <span class="n">y_shifts</span><span class="p">,</span> <span class="n">phase</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">phase</span></div>
+    <span class="n">ref_stack1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">)</span>
+    <span class="n">sam_stack1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">sam_stack</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_image</span><span class="p">):</span>
+        <span class="n">ref1</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">sr_shifts</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">sam_shifts</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mat1</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">sam_stack</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">sam_shifts</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span>
+            <span class="n">ref1</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">ref1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">sam_shifts</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">mat1</span> <span class="o">=</span> <span class="n">sam_stack</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">sam_stack1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">mat1</span>
+        <span class="n">ref_stack1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ref1</span>
+    <span class="k">return</span> <span class="n">ref_stack1</span><span class="p">,</span> <span class="n">sam_stack1</span></div>
 
 
 <span class="nd">@jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -974,9 +860,8 @@
         <span class="n">trans</span> <span class="o">=</span> <span class="n">num2</span> <span class="o">/</span> <span class="n">num1</span>
         <span class="n">num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">num</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
-            <span class="n">dark</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">trans</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">sam_stack</span><span class="p">)</span> <span class="o">/</span> <span class="n">num</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">dark</span> <span class="o">=</span> <span class="mf">1.0</span>
+            <span class="n">num3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">sam_stack</span><span class="p">)</span>
+            <span class="n">dark</span> <span class="o">=</span> <span class="p">(</span><span class="n">num1</span> <span class="o">/</span> <span class="n">num2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">num3</span> <span class="o">/</span> <span class="n">num</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">trans</span><span class="p">,</span> <span class="n">dark</span>
 
 
@@ -987,7 +872,6 @@
 <span class="sd">    Supplementary method for determining transmission-signal image and</span>
 <span class="sd">    dark-signal image.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">win_size</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">win_size</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="n">radi</span> <span class="o">=</span> <span class="n">win_size</span> <span class="o">//</span> <span class="mi">2</span>
     <span class="n">start</span> <span class="o">=</span> <span class="n">radi</span> <span class="o">+</span> <span class="n">margin</span>
     <span class="n">radi1</span> <span class="o">=</span> <span class="n">radi</span> <span class="o">+</span> <span class="mi">1</span>
@@ -999,28 +883,39 @@
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ref_stack</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop_row</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop_col</span><span class="p">):</span>
-                <span class="n">i1</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">y_shifts</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
-                <span class="n">j1</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">x_shifts</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
+                <span class="n">i1</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">y_shifts</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]))</span>
+                <span class="n">j1</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">x_shifts</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]))</span>
                 <span class="n">mat1</span> <span class="o">=</span> <span class="n">ref_stack</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">radi1</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">j</span> <span class="o">+</span> <span class="n">radi1</span><span class="p">]</span>
                 <span class="n">mat2</span> <span class="o">=</span> <span class="n">sam_stack</span><span class="p">[</span><span class="n">i1</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">i1</span> <span class="o">+</span> <span class="n">radi1</span><span class="p">,</span> <span class="n">j1</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">j1</span> <span class="o">+</span> <span class="n">radi1</span><span class="p">]</span>
                 <span class="p">(</span><span class="n">val1</span><span class="p">,</span> <span class="n">val2</span><span class="p">)</span> <span class="o">=</span> <span class="n">f_alias</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">)</span>
                 <span class="n">i2</span><span class="p">,</span> <span class="n">j2</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">start</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="n">start</span>
                 <span class="n">trans</span><span class="p">[</span><span class="n">i2</span><span class="p">,</span> <span class="n">j2</span><span class="p">],</span> <span class="n">dark</span><span class="p">[</span><span class="n">i2</span><span class="p">,</span> <span class="n">j2</span><span class="p">]</span> <span class="o">=</span> <span class="n">val1</span><span class="p">,</span> <span class="n">val2</span>
     <span class="k">else</span><span class="p">:</span>
+        <span class="n">num_image</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop_row</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop_col</span><span class="p">):</span>
-                <span class="n">i1</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">y_shifts</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
-                <span class="n">j1</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">x_shifts</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
-                <span class="n">mat1</span> <span class="o">=</span> <span class="n">ref_stack</span><span class="p">[:,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">radi1</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">j</span> <span class="o">+</span> <span class="n">radi1</span><span class="p">]</span>
-                <span class="n">mat2</span> <span class="o">=</span> <span class="n">sam_stack</span><span class="p">[:,</span> <span class="n">i1</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">i1</span> <span class="o">+</span> <span class="n">radi1</span><span class="p">,</span> <span class="n">j1</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">j1</span> <span class="o">+</span> <span class="n">radi1</span><span class="p">]</span>
-                <span class="p">(</span><span class="n">val1</span><span class="p">,</span> <span class="n">val2</span><span class="p">)</span> <span class="o">=</span> <span class="n">f_alias</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">)</span>
+                <span class="n">i1</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">y_shifts</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]))</span>
+                <span class="n">j1</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">x_shifts</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]))</span>
+                <span class="n">list1</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">list2</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_image</span><span class="p">):</span>
+                    <span class="n">mat1</span> <span class="o">=</span> <span class="n">ref_stack</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">radi1</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">j</span> <span class="o">+</span> <span class="n">radi1</span><span class="p">]</span>
+                    <span class="n">mat2</span> <span class="o">=</span> <span class="n">sam_stack</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">i1</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">i1</span> <span class="o">+</span> <span class="n">radi1</span><span class="p">,</span>
+                           <span class="n">j1</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">j1</span> <span class="o">+</span> <span class="n">radi1</span><span class="p">]</span>
+                    <span class="p">(</span><span class="n">val1</span><span class="p">,</span> <span class="n">val2</span><span class="p">)</span> <span class="o">=</span> <span class="n">f_alias</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">)</span>
+                    <span class="n">list1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val1</span><span class="p">)</span>
+                    <span class="n">list2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val2</span><span class="p">)</span>
+                <span class="n">val1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">list1</span><span class="p">))</span>
+                <span class="n">val2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">list2</span><span class="p">))</span>
                 <span class="n">i2</span><span class="p">,</span> <span class="n">j2</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">start</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="n">start</span>
-                <span class="n">trans</span><span class="p">[</span><span class="n">i2</span><span class="p">,</span> <span class="n">j2</span><span class="p">],</span> <span class="n">dark</span><span class="p">[</span><span class="n">i2</span><span class="p">,</span> <span class="n">j2</span><span class="p">]</span> <span class="o">=</span> <span class="n">val1</span><span class="p">,</span> <span class="n">val2</span>
+                <span class="n">trans</span><span class="p">[</span><span class="n">i2</span><span class="p">,</span> <span class="n">j2</span><span class="p">]</span> <span class="o">=</span> <span class="n">val1</span>
+                <span class="n">dark</span><span class="p">[</span><span class="n">i2</span><span class="p">,</span> <span class="n">j2</span><span class="p">]</span> <span class="o">=</span> <span class="n">val2</span>
     <span class="k">return</span> <span class="n">trans</span><span class="p">,</span> <span class="n">dark</span>
 
 
 <div class="viewcode-block" id="get_transmission_dark_field_signal"><a class="viewcode-back" href="../../../toc/api/algotom.prep.phase.html#algotom.prep.phase.get_transmission_dark_field_signal">[docs]</a><span class="k">def</span> <span class="nf">get_transmission_dark_field_signal</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">,</span> <span class="n">sam_stack</span><span class="p">,</span> <span class="n">x_shifts</span><span class="p">,</span>
-                                       <span class="n">y_shifts</span><span class="p">,</span> <span class="n">win_size</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+                                       <span class="n">y_shifts</span><span class="p">,</span> <span class="n">win_size</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                       <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the transmission-signal image and dark-signal image from two stacks of</span>
 <span class="sd">    speckle-images and sample-images.</span>
@@ -1037,7 +932,9 @@
 <span class="sd">        y-shift image.</span>
 <span class="sd">    win_size : int</span>
 <span class="sd">        Window size used for calculating signals.</span>
-<span class="sd">    ncore: int or None</span>
+<span class="sd">    margin : int or None</span>
+<span class="sd">        Margin value used for calculating signals.</span>
+<span class="sd">    ncore : int or None</span>
 <span class="sd">        Number of cpu-cores used for computing. Automatically selected if None.</span>
 
 <span class="sd">    Returns</span>
@@ -1052,16 +949,21 @@
     <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">ref_stack</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
     <span class="n">win_size</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">win_size</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="n">radi</span> <span class="o">=</span> <span class="n">win_size</span> <span class="o">//</span> <span class="mi">2</span>
-    <span class="n">margin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x_shifts</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y_shifts</span><span class="p">))))</span>
+    <span class="k">if</span> <span class="n">margin</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">margin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x_shifts</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y_shifts</span><span class="p">))))</span>
     <span class="n">pad</span> <span class="o">=</span> <span class="n">radi</span> <span class="o">+</span> <span class="n">margin</span>
+    <span class="n">als_size</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pad</span>
+    <span class="k">if</span> <span class="n">width</span> <span class="o">&lt;=</span> <span class="n">als_size</span> <span class="ow">or</span> <span class="n">height</span> <span class="o">&lt;=</span> <span class="n">als_size</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Shapes of the inputs </span><span class="si">{0}</span><span class="s2"> are smaller than the &quot;</span>
+                         <span class="s2">&quot;requested size (win_size + 2*margin) = &quot;</span>
+                         <span class="s2">&quot;</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">),</span> <span class="n">als_size</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">ncore</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ncore</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">mp</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">chunk_size</span> <span class="o">=</span> <span class="p">(</span><span class="n">height</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pad</span><span class="p">)</span> <span class="o">//</span> <span class="n">ncore</span>
     <span class="n">f_alias</span> <span class="o">=</span> <span class="n">_get_transmission_dark_field_signal</span>
     <span class="k">if</span> <span class="n">ncore</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">chunk_size</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
         <span class="n">trans</span><span class="p">,</span> <span class="n">dark</span> <span class="o">=</span> <span class="n">f_alias</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">,</span> <span class="n">sam_stack</span><span class="p">,</span> <span class="n">x_shifts</span><span class="p">,</span> <span class="n">y_shifts</span><span class="p">,</span>
-                              <span class="n">win_size</span><span class="p">,</span>
-                              <span class="n">margin</span><span class="p">)</span>
+                              <span class="n">win_size</span><span class="p">,</span> <span class="n">margin</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">trans</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">height</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pad</span><span class="p">,</span> <span class="n">width</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pad</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
         <span class="n">dark</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">trans</span><span class="p">)</span>
@@ -1083,6 +985,160 @@
     <span class="n">trans</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">trans</span><span class="p">,</span> <span class="n">pad</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;edge&quot;</span><span class="p">)</span>
     <span class="n">dark</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">dark</span><span class="p">,</span> <span class="n">pad</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;edge&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">trans</span><span class="p">,</span> <span class="n">dark</span></div>
+
+
+<div class="viewcode-block" id="retrieve_phase_based_speckle_tracking"><a class="viewcode-back" href="../../../toc/api/algotom.prep.phase.html#algotom.prep.phase.retrieve_phase_based_speckle_tracking">[docs]</a><span class="k">def</span> <span class="nf">retrieve_phase_based_speckle_tracking</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">,</span> <span class="n">sam_stack</span><span class="p">,</span>
+                                          <span class="n">find_shift</span><span class="o">=</span><span class="s2">&quot;correl&quot;</span><span class="p">,</span>
+                                          <span class="n">filter_name</span><span class="o">=</span><span class="s2">&quot;hamming&quot;</span><span class="p">,</span>
+                                          <span class="n">dark_signal</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">win_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+                                          <span class="n">margin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;diff&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                                          <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>
+                                          <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                          <span class="n">norm_global</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                          <span class="n">surf_method</span><span class="o">=</span><span class="s2">&quot;SCS&quot;</span><span class="p">,</span>
+                                          <span class="n">correct_negative</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                          <span class="n">pad</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">pad_mode</span><span class="o">=</span><span class="s2">&quot;linear_ramp&quot;</span><span class="p">,</span>
+                                          <span class="n">return_shift</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve the phase image from two stacks of speckle-images and</span>
+<span class="sd">    sample-images where the shift of each pixel is determined using a</span>
+<span class="sd">    correlation-based technique (Ref. [1-2]) or a cost-function-based method</span>
+<span class="sd">    (Ref. [3]). Results can be an image, a list of 3 images, or a list of 5</span>
+<span class="sd">    images.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ref_stack : array_like</span>
+<span class="sd">        3D array. Reference images (speckle images).</span>
+<span class="sd">    sam_stack : array_like</span>
+<span class="sd">        3D array. Sample images.</span>
+<span class="sd">    find_shift : {&quot;correl&quot;, &quot;umpa&quot;}</span>
+<span class="sd">        To select the back-end method for finding shifts. Using a</span>
+<span class="sd">        correlation-based method (Ref. [1-2]) or a cost-based method</span>
+<span class="sd">        (Ref. [3]).</span>
+<span class="sd">    filter_name : {None, &quot;hann&quot;, &quot;bartlett&quot;, &quot;blackman&quot;, &quot;hamming&quot;,\\</span>
+<span class="sd">                  &quot;nuttall&quot;, &quot;parzen&quot;, &quot;triang&quot;}</span>
+<span class="sd">        To select a smoothing filter.</span>
+<span class="sd">    dark_signal : bool</span>
+<span class="sd">        Return both dark-signal image and transmission-signal image if True</span>
+<span class="sd">    dim : {1, 2}</span>
+<span class="sd">        To find the shifts (in x and y) separately (1D) or together (2D).</span>
+<span class="sd">    win_size : int</span>
+<span class="sd">        Size of local areas in the sample image for finding shifts.</span>
+<span class="sd">    margin : int</span>
+<span class="sd">        To define the searching range of the sample images in finding the</span>
+<span class="sd">        shifts compared to the reference images.</span>
+<span class="sd">    method : {&quot;diff&quot;, &quot;poly_fit&quot;}</span>
+<span class="sd">        Method for finding sub-pixel shift. Two options: a differential</span>
+<span class="sd">        method (Ref. [4]) or a polynomial method (Ref. [5]). The &quot;poly_fit&quot;</span>
+<span class="sd">        option is not available if using GPU.</span>
+<span class="sd">    size : int</span>
+<span class="sd">        Window size around the integer location of the maximum value used for</span>
+<span class="sd">        sub-pixel location. Adjustable if using the polynomial method.</span>
+<span class="sd">    gpu : {False, True, &quot;hybrid&quot;}</span>
+<span class="sd">        Use GPU for computing if True or in &quot;hybrid&quot; mode.</span>
+<span class="sd">    block : tuple of two integer-values, optional</span>
+<span class="sd">        Size of a GPU block. E.g. (8, 8), (16, 16), (32, 32), ...</span>
+<span class="sd">    ncore : int or None</span>
+<span class="sd">        Number of cpu-cores used for computing. Automatically selected if None.</span>
+<span class="sd">    norm : bool, optional</span>
+<span class="sd">        Normalizing the inputs if True.</span>
+<span class="sd">    norm_global : bool, optional</span>
+<span class="sd">        Normalize by using the full size of the inputs if True.</span>
+<span class="sd">    chunk_size : int or None</span>
+<span class="sd">        Size of each chunk extracted along the height of the image.</span>
+<span class="sd">    surf_method : {&quot;SCS&quot;, &quot;FC&quot;}</span>
+<span class="sd">        Select method for surface reconstruction: &quot;SCS&quot; (Ref. [6]) or &quot;FC&quot;</span>
+<span class="sd">        (Ref. [7])</span>
+<span class="sd">    correct_negative : bool, optional</span>
+<span class="sd">        Correct negative offset if True.</span>
+<span class="sd">    window : list of array_like</span>
+<span class="sd">        List of three 2D-arrays. Spatial frequencies in x, y, and the window</span>
+<span class="sd">        in the Fourier space for the surface reconstruction method. Generated</span>
+<span class="sd">        if None.</span>
+<span class="sd">    pad : int</span>
+<span class="sd">        Padding-width used for the &quot;SCS&quot; method.</span>
+<span class="sd">    pad_mode : str</span>
+<span class="sd">        Padding-method used for the &quot;SCS&quot; method. Full list can be found at</span>
+<span class="sd">        numpy.pad documentation.</span>
+<span class="sd">    return_shift : bool, optional</span>
+<span class="sd">        Return a list of 3 arrays: x-shifts, y-shifts, and phase image if True.</span>
+<span class="sd">        The shifts can be used to determine transmission-signal and dark-signal</span>
+<span class="sd">        image.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    phase : array_like</span>
+<span class="sd">        Phase image. If dark_signal is False and return_shifts is False.</span>
+<span class="sd">    phase, trans, dark : list of array_like</span>
+<span class="sd">        Phase image, transmission image, and dark-signal image. If dark_signal</span>
+<span class="sd">        is True and return_shifts is False.</span>
+<span class="sd">    x_shifts, y_shifts, phase: list of array_like</span>
+<span class="sd">        x-shift image and y-shift image. If dark_signal is False and</span>
+<span class="sd">        return_shifts is True.</span>
+<span class="sd">    x_shifts, y_shifts, phase, trans, dark : list of array_like</span>
+<span class="sd">        x-shift image, y-shift image, phase image, transmission image, and</span>
+<span class="sd">        dark-signal image. If dark_signal is True and return_shifts is True.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] https://doi.org/10.1038/srep08762</span>
+<span class="sd">    .. [2] https://doi.org/10.1103/PhysRevApplied.5.044014</span>
+<span class="sd">    .. [3] https://doi.org/10.1103/PhysRevLett.118.203903</span>
+<span class="sd">    .. [4] https://doi.org/10.48550/arXiv.0712.4289</span>
+<span class="sd">    .. [5] https://doi.org/10.1088/0957-0233/17/6/045</span>
+<span class="sd">    .. [6] https://doi.org/10.1109/34.55103</span>
+<span class="sd">    .. [7] https://doi.org/10.1109/34.3909</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">win_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">win_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">margin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">margin</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">find_shift</span> <span class="o">==</span> <span class="s2">&quot;umpa&quot;</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">corl</span><span class="o">.</span><span class="n">find_local_shifts_umpa</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">,</span> <span class="n">sam_stack</span><span class="p">,</span>
+                                              <span class="n">win_size</span><span class="o">=</span><span class="n">win_size</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="n">margin</span><span class="p">,</span>
+                                              <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span>
+                                              <span class="n">gpu</span><span class="o">=</span><span class="n">gpu</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="n">block</span><span class="p">,</span>
+                                              <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span>
+                                              <span class="n">chunk_size</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">,</span>
+                                              <span class="n">filter_name</span><span class="o">=</span><span class="n">filter_name</span><span class="p">,</span>
+                                              <span class="n">dark_signal</span><span class="o">=</span><span class="n">dark_signal</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dark_signal</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">x_shifts</span><span class="p">,</span> <span class="n">y_shifts</span><span class="p">,</span> <span class="n">trans</span><span class="p">,</span> <span class="n">dark</span><span class="p">)</span> <span class="o">=</span> <span class="n">results</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">x_shifts</span><span class="p">,</span> <span class="n">y_shifts</span><span class="p">)</span> <span class="o">=</span> <span class="n">results</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">corl</span><span class="o">.</span><span class="n">find_local_shifts</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">,</span> <span class="n">sam_stack</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span>
+                                         <span class="n">win_size</span><span class="o">=</span><span class="n">win_size</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="n">margin</span><span class="p">,</span>
+                                         <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="n">gpu</span><span class="p">,</span>
+                                         <span class="n">block</span><span class="o">=</span><span class="n">block</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span>
+                                         <span class="n">norm_global</span><span class="o">=</span><span class="n">norm_global</span><span class="p">,</span>
+                                         <span class="n">chunk_size</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">x_shifts</span><span class="p">,</span> <span class="n">y_shifts</span><span class="p">)</span> <span class="o">=</span> <span class="n">results</span>
+        <span class="k">if</span> <span class="n">dark_signal</span><span class="p">:</span>
+            <span class="n">f_alias</span> <span class="o">=</span> <span class="n">get_transmission_dark_field_signal</span>
+            <span class="n">trans</span><span class="p">,</span> <span class="n">dark</span> <span class="o">=</span> <span class="n">f_alias</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">,</span> <span class="n">sam_stack</span><span class="p">,</span> <span class="n">x_shifts</span><span class="p">,</span> <span class="n">y_shifts</span><span class="p">,</span>
+                                  <span class="n">win_size</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">)</span>
+    <span class="n">edge</span> <span class="o">=</span> <span class="n">margin</span> <span class="o">+</span> <span class="mi">2</span>
+    <span class="n">x_shifts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">x_shifts</span><span class="p">[</span><span class="n">edge</span><span class="p">:</span><span class="o">-</span><span class="n">edge</span><span class="p">,</span> <span class="n">edge</span><span class="p">:</span><span class="o">-</span><span class="n">edge</span><span class="p">],</span> <span class="n">edge</span><span class="p">,</span>
+                      <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;reflect&quot;</span><span class="p">)</span>
+    <span class="n">y_shifts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">y_shifts</span><span class="p">[</span><span class="n">edge</span><span class="p">:</span><span class="o">-</span><span class="n">edge</span><span class="p">,</span> <span class="n">edge</span><span class="p">:</span><span class="o">-</span><span class="n">edge</span><span class="p">],</span> <span class="n">edge</span><span class="p">,</span>
+                      <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;reflect&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">surf_method</span> <span class="o">==</span> <span class="s2">&quot;SCS&quot;</span><span class="p">:</span>
+        <span class="n">f_alias</span> <span class="o">=</span> <span class="n">reconstruct_surface_from_gradient_SCS_method</span>
+        <span class="n">phase</span> <span class="o">=</span> <span class="n">f_alias</span><span class="p">(</span><span class="n">x_shifts</span><span class="p">,</span> <span class="n">y_shifts</span><span class="p">,</span> <span class="n">correct_negative</span><span class="o">=</span><span class="n">correct_negative</span><span class="p">,</span>
+                        <span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">pad_mode</span><span class="o">=</span><span class="n">pad_mode</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">f_alias</span> <span class="o">=</span> <span class="n">reconstruct_surface_from_gradient_FC_method</span>
+        <span class="n">phase</span> <span class="o">=</span> <span class="n">f_alias</span><span class="p">(</span><span class="n">x_shifts</span><span class="p">,</span> <span class="n">y_shifts</span><span class="p">,</span> <span class="n">correct_negative</span><span class="o">=</span><span class="n">correct_negative</span><span class="p">,</span>
+                        <span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">return_shift</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="n">dark_signal</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x_shifts</span><span class="p">,</span> <span class="n">y_shifts</span><span class="p">,</span> <span class="n">phase</span>
+    <span class="k">elif</span> <span class="n">return_shift</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="n">dark_signal</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">phase</span><span class="p">,</span> <span class="n">trans</span><span class="p">,</span> <span class="n">dark</span>
+    <span class="k">elif</span> <span class="n">return_shift</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="n">dark_signal</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x_shifts</span><span class="p">,</span> <span class="n">y_shifts</span><span class="p">,</span> <span class="n">phase</span><span class="p">,</span> <span class="n">trans</span><span class="p">,</span> <span class="n">dark</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">phase</span></div>
 </pre></div>
 
            </div>

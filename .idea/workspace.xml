@@ -2,21 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd7108d9-b1b3-4aba-9605-7e4d6e864f32" name="Changes" comment="Update">
-      <change beforePath="$PROJECT_DIR$/.doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/.doctrees/environment.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.doctrees/toc/section4.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/.doctrees/toc/section4.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.doctrees/toc/section4/section4_1.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/.doctrees/toc/section4/section4_1.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.doctrees/toc/section6.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/.doctrees/toc/section6.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sources/toc/section4.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/_sources/toc/section4.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sources/toc/section4/section4_1.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/_sources/toc/section4/section4_1.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sources/toc/section6.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/_sources/toc/section6.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/source/toc/section4.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/toc/section4.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/source/toc/section4/section4_1.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/toc/section4/section4_1.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algotom/prep/phase.py" beforeDir="false" afterPath="$PROJECT_DIR$/algotom/prep/phase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algotom/util/correlation.py" beforeDir="false" afterPath="$PROJECT_DIR$/algotom/util/correlation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/source/toc/api/algotom.util.correlation.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/toc/api/algotom.util.correlation.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/source/toc/bibtex/ref.bib" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/toc/bibtex/ref.bib" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/source/toc/section6.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/toc/section6.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/searchindex.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/section4.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/section4/section4_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section4/section4_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toc/section6.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section6.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +41,7 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\nvo\PycharmProjects\algotom.github.io\docs\source" />
+      <recent name="C:\Users\nvo\PycharmProjects\algotom.github.io" />
       <recent name="C:\Users\nvo\PycharmProjects\algotom.github.io\docs\source\toc" />
       <recent name="C:\Users\nvo\PycharmProjects\algotom.github.io\docs\source\toc\section4" />
     </key>
@@ -65,6 +58,14 @@
       <option name="presentableId" value="Default" />
       <updated>1662150323306</updated>
     </task>
+    <task id="LOCAL-00001" summary="Update">
+      <created>1664486202625</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1664486202625</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
