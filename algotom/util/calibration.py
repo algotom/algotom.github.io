@@ -22,10 +22,11 @@
 
 """
 Module of calibration methods:
-    - Correcting the non-uniform background of an image.
-    - Binarizing an image.
-    - Calculating the distance between two point-like objects segmented from
-      two images. Useful for determining pixel-size in helical scans.
+
+    -   Correcting the non-uniform background of an image.
+    -   Binarizing an image.
+    -   Calculating the distance between two point-like objects segmented from
+        two images. Useful for determining pixel-size in helical scans.
 """
 
 import numpy as np
@@ -86,13 +87,13 @@ def normalize_background_based_fft(mat, sigma=5, pad=None, mode="reflect"):
     (height, width) = mat.shape
     if height <= width:
         ratio = 1.0 * height / width
-        sigmax = int(np.ceil(sigma / ratio))
-        sigmay = sigma
+        sigma_x = int(np.ceil(sigma / ratio))
+        sigma_y = sigma
     else:
         ratio = 1.0 * width / height
-        sigmay = int(np.ceil(sigma / ratio))
-        sigmax = sigma
-    mat_bck = util.apply_gaussian_filter(mat, sigmax, sigmay,
+        sigma_y = int(np.ceil(sigma / ratio))
+        sigma_x = sigma
+    mat_bck = util.apply_gaussian_filter(mat, sigma_x, sigma_y,
                                          pad=pad, mode=mode)
     mean_val = np.mean(mat_bck)
     try:
@@ -127,7 +128,7 @@ def invert_dot_contrast(mat):
 
 def calculate_threshold(mat, bgr="bright"):
     """
-    Calculate threshold value based on Algorithm 4 in Ref. [1]_.
+    Calculate threshold value based on Algorithm 4 in Ref. [1].
 
     Parameters
     ----------
@@ -143,7 +144,7 @@ def calculate_threshold(mat, bgr="bright"):
 
     References
     ----------
-    .. [1] https://doi.org/10.1364/OE.26.028396
+    [1] : https://doi.org/10.1364/OE.26.028396
     """
     size = max(mat.shape)
     list1 = np.sort(np.ndarray.flatten(mat))
@@ -167,7 +168,7 @@ def binarize_image(mat, threshold=None, bgr="bright", norm=False, denoise=True,
         2D array.
     threshold : float, optional
         Threshold value for binarization. Automatically calculated using
-        Algorithm 4 in Ref. [1]_ if None.
+        Algorithm 4 in Ref. [1] if None.
     bgr : {"bright", "dark"}
         To indicate the brightness of the background against image features.
     norm : bool, optional
@@ -184,7 +185,7 @@ def binarize_image(mat, threshold=None, bgr="bright", norm=False, denoise=True,
 
     References
     ----------
-    .. [1] https://doi.org/10.1364/OE.26.028396
+    [1] : https://doi.org/10.1364/OE.26.028396
     """
     if denoise is True:
         mat = ndi.median_filter(np.abs(mat), (3, 3))
@@ -292,11 +293,11 @@ def select_dot_based_size(mat, dot_size, ratio=0.01):
     return mat1
 
 
-def calculate_distance(mat1, mat2, size_opt="max", threshold=None, bgr='bright',
-                       norm=False, denoise=True, invert=True):
+def calculate_distance(mat1, mat2, size_opt="max", threshold=None,
+                       bgr='bright', norm=False, denoise=True, invert=True):
     """
     Calculate the distance between two point-like objects segmented from
-    two images. Useful for measuring pixel-size in helical scans (Ref. [1]_).
+    two images. Useful for measuring pixel-size in helical scans (Ref. [1]).
 
     Parameters
     ----------
@@ -308,7 +309,7 @@ def calculate_distance(mat1, mat2, size_opt="max", threshold=None, bgr='bright',
         Options to select binary objects based on their size.
     threshold : float, optional
         Threshold value for binarization. Automatically calculated using
-        Algorithm 4 in Ref. [2]_ if None.
+        Algorithm 4 in Ref. [2] if None.
     bgr : {"bright", "dark"}
         To indicate the brightness of the background against image features.
     norm : bool, optional
@@ -320,8 +321,8 @@ def calculate_distance(mat1, mat2, size_opt="max", threshold=None, bgr='bright',
 
     References
     ----------
-    .. [1] https://doi.org/10.1364/OE.418448
-    .. [2] https://doi.org/10.1364/OE.26.028396
+    [1] : https://doi.org/10.1364/OE.418448
+    [2] : https://doi.org/10.1364/OE.26.028396
     """
     mat_bin1 = binarize_image(mat1, threshold=threshold, bgr=bgr, norm=norm,
                               denoise=denoise, invert=invert)

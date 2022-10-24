@@ -178,15 +178,15 @@
             
   <div class="section" id="module-algotom.util.simulation">
 <span id="algotom-util-simulation"></span><h1><span class="section-number">7.5.2. </span><a class="reference internal" href="#module-algotom.util.simulation" title="algotom.util.simulation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.simulation</span></code></a><a class="headerlink" href="#module-algotom.util.simulation" title="Permalink to this heading">¶</a></h1>
-<dl class="simple">
-<dt>Module of simulation methods:</dt><dd><ul class="simple">
+<p>Module of simulation methods:</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>Methods for designing a customized 2D phantom.</p></li>
 <li><p>Method for calculating a sinogram of a phantom based on the Fourier
 slice theorem.</p></li>
 <li><p>Methods for adding artifacts to a simulated sinogram.</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 <p class="rubric"><strong>Functions:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <colgroup>
@@ -315,7 +315,7 @@ slice theorem.</p></li>
 <dt class="sig sig-object py" id="algotom.util.simulation.make_sinogram">
 <span class="sig-prename descclassname"><span class="pre">algotom.util.simulation.</span></span><span class="sig-name descname"><span class="pre">make_sinogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'edge'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/simulation.html#make_sinogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.simulation.make_sinogram" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a sinogram (series of 1D projections) from a 2D image based on the
-Fourier slice theorem (Ref. <a href="#id5"><span class="problematic" id="id1">[1]_</span></a>).</p>
+Fourier slice theorem (Ref. [1]).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -328,11 +328,7 @@ Fourier slice theorem (Ref. <a href="#id5"><span class="problematic" id="id1">[1
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1071/PH560198">https://doi.org/10.1071/PH560198</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1071/PH560198">https://doi.org/10.1071/PH560198</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -364,7 +360,7 @@ Fourier slice theorem (Ref. <a href="#id5"><span class="problematic" id="id1">[1
 <li><p><strong>position</strong> (<em>int</em>) – Position of the stripe.</p></li>
 <li><p><strong>strength_ratio</strong> (<em>float</em>) – To define the strength of the artifact. The value is in the range of
 [0.0, 1.0].</p></li>
-<li><p><strong>stripe_type</strong> (<em>{“partial”, “full”, “dead”, “fluctuating”}</em>) – Type of stripe as classified in Ref. <a href="#id6"><span class="problematic" id="id3">[1]_</span></a>.</p></li>
+<li><p><strong>stripe_type</strong> (<em>{“partial”, “full”, “dead”, “fluctuating”}</em>) – Type of stripe as classified in Ref. [1].</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -372,11 +368,7 @@ Fourier slice theorem (Ref. <a href="#id5"><span class="problematic" id="id1">[1
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id4"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.26.028396">https://doi.org/10.1364/OE.26.028396</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1364/OE.26.028396">https://doi.org/10.1364/OE.26.028396</a></p>
 </dd></dl>
 
 <dl class="py function">

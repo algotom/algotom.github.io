@@ -178,7 +178,7 @@
 <span class="c1"># ============================================================================</span>
 <span class="c1"># Author: Nghia T. Vo</span>
 <span class="c1"># E-mail:</span>
-<span class="c1"># Description: Python implementations of correlation-related methods.</span>
+<span class="c1"># Description: Python module of correlation-related methods.</span>
 <span class="c1"># Publication date: 20th June 2022</span>
 <span class="c1"># Contributors:</span>
 <span class="c1"># ============================================================================</span>
@@ -186,10 +186,11 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Module of correlation-based methods for finding shifts between images or</span>
 <span class="sd">stacks of images. The methods are designed to be flexible to:</span>
-<span class="sd">    - Run on multicore CPU or GPU.</span>
-<span class="sd">    - Use small/large RAM or small/large GPU memory.</span>
-<span class="sd">    - Work with small/large size of data.</span>
-<span class="sd">    - Find shifts locally or globally.</span>
+
+<span class="sd">    -   Run on multicore CPU or GPU.</span>
+<span class="sd">    -   Use small/large RAM or small/large GPU memory.</span>
+<span class="sd">    -   Work with small/large size of data.</span>
+<span class="sd">    -   Find shifts locally or globally.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">math</span>
@@ -728,7 +729,7 @@
 <span class="sd">        2D array.</span>
 <span class="sd">    method : {&quot;diff&quot;, &quot;poly_fit&quot;}</span>
 <span class="sd">        Method for finding sub-pixel shift. Two options: a differential</span>
-<span class="sd">        method (Ref. [1]_) or a polynomial method (Ref. [2]_).</span>
+<span class="sd">        method (Ref. [1]) or a polynomial method (Ref. [2]).</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -737,8 +738,8 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.48550/arXiv.0712.4289</span>
-<span class="sd">    .. [2] https://doi.org/10.1088/0957-0233/17/6/045</span>
+<span class="sd">    [1] : https://doi.org/10.48550/arXiv.0712.4289</span>
+<span class="sd">    [2] : https://doi.org/10.1088/0957-0233/17/6/045</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span>
     <span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -809,7 +810,7 @@
 <span class="sd">        Enable sub-pixel location.</span>
 <span class="sd">    method : {&quot;diff&quot;, &quot;poly_fit&quot;}</span>
 <span class="sd">        Method for finding sub-pixel shift. Two options: a differential</span>
-<span class="sd">        method (Ref. [1]_) or a polynomial method (Ref. [2]_).</span>
+<span class="sd">        method (Ref. [1]) or a polynomial method (Ref. [2]).</span>
 <span class="sd">    dim : {1, 2}</span>
 <span class="sd">        Searching dimension for sub-pixel location.</span>
 <span class="sd">    size : int</span>
@@ -825,8 +826,8 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.48550/arXiv.0712.4289</span>
-<span class="sd">    .. [2] https://doi.org/10.1088/0957-0233/17/6/045</span>
+<span class="sd">    [1] : https://doi.org/10.48550/arXiv.0712.4289</span>
+<span class="sd">    [2] : https://doi.org/10.1088/0957-0233/17/6/045</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span>
     <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;diff&quot;</span> <span class="k">else</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">size</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
@@ -896,7 +897,7 @@
 <span class="sd">        Enable sub-pixel location.</span>
 <span class="sd">    method : {&quot;diff&quot;, &quot;poly_fit&quot;}</span>
 <span class="sd">        Method for finding sub-pixel shift. Two options: a differential</span>
-<span class="sd">        method (Ref. [1]_) or a polynomial method (Ref. [2]_).</span>
+<span class="sd">        method (Ref. [1]) or a polynomial method (Ref. [2]).</span>
 <span class="sd">    dim : {1, 2}</span>
 <span class="sd">        Searching dimension for sub-pixel location.</span>
 <span class="sd">    size : int</span>
@@ -915,8 +916,8 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.48550/arXiv.0712.4289</span>
-<span class="sd">    .. [2] https://doi.org/10.1088/0957-0233/17/6/045</span>
+<span class="sd">    [1] : https://doi.org/10.48550/arXiv.0712.4289</span>
+<span class="sd">    [2] : https://doi.org/10.1088/0957-0233/17/6/045</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="p">(</span><span class="n">height0</span><span class="p">,</span> <span class="n">width0</span><span class="p">)</span> <span class="o">=</span> <span class="n">ref_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
     <span class="p">(</span><span class="n">height1</span><span class="p">,</span> <span class="n">width1</span><span class="p">)</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
@@ -1007,8 +1008,8 @@
 <span class="sd">    sub_pixel : bool, optional</span>
 <span class="sd">        Enable sub-pixel location.</span>
 <span class="sd">    method : {&quot;diff&quot;, &quot;poly_fit&quot;}</span>
-<span class="sd">        Method for finding 1d sub-pixel position. Two options: a difference-</span>
-<span class="sd">        based method or a polynomial method.</span>
+<span class="sd">        Method for finding 1d sub-pixel position. Two options: a</span>
+<span class="sd">        differential method or a polynomial method.</span>
 <span class="sd">    size : int</span>
 <span class="sd">        Window size around the integer location of the maximum value used for</span>
 <span class="sd">        sub-pixel searching.</span>
@@ -1260,7 +1261,7 @@
 <span class="sd">        Enable sub-pixel location.</span>
 <span class="sd">    method : {&quot;diff&quot;, &quot;poly_fit&quot;}</span>
 <span class="sd">        Method for finding sub-pixel shift. Two options: a differential</span>
-<span class="sd">        method (Ref. [1]_) or a polynomial method (Ref. [2]_).</span>
+<span class="sd">        method (Ref. [1]) or a polynomial method (Ref. [2]).</span>
 <span class="sd">    size : int</span>
 <span class="sd">        Window size around the integer location of the maximum value used for</span>
 <span class="sd">        sub-pixel searching.</span>
@@ -1281,8 +1282,8 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.48550/arXiv.0712.4289</span>
-<span class="sd">    .. [2] https://doi.org/10.1088/0957-0233/17/6/045</span>
+<span class="sd">    [1] : https://doi.org/10.48550/arXiv.0712.4289</span>
+<span class="sd">    [2] : https://doi.org/10.1088/0957-0233/17/6/045</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">ref_mat</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Data shape must be the same !!!&quot;</span><span class="p">)</span>
@@ -1357,7 +1358,7 @@
 <span class="sd">        Enable sub-pixel location.</span>
 <span class="sd">    method : {&quot;diff&quot;, &quot;poly_fit&quot;}</span>
 <span class="sd">        Method for finding sub-pixel shift. Two options: a differential</span>
-<span class="sd">        method (Ref. [1]_) or a polynomial method (Ref. [2]_).</span>
+<span class="sd">        method (Ref. [1]) or a polynomial method (Ref. [2]).</span>
 <span class="sd">    size : int</span>
 <span class="sd">        Window size around the integer location of the maximum value used for</span>
 <span class="sd">        sub-pixel searching.</span>
@@ -1383,8 +1384,8 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.48550/arXiv.0712.4289</span>
-<span class="sd">    .. [2] https://doi.org/10.1088/0957-0233/17/6/045</span>
+<span class="sd">    [1] : https://doi.org/10.48550/arXiv.0712.4289</span>
+<span class="sd">    [2] : https://doi.org/10.1088/0957-0233/17/6/045</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">ref_mat</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Data shape must be the same !!!&quot;</span><span class="p">)</span>
@@ -1959,7 +1960,7 @@
 <span class="k">def</span> <span class="nf">__locate_2d_peak_kernel</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    GPU-kernel function to locate the position of the maximum value of a</span>
-<span class="sd">    2d-array with sub-pixel accuracy (Ref. [1]_).</span>
+<span class="sd">    2d-array with sub-pixel accuracy (Ref. [1]).</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1977,7 +1978,7 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.48550/arXiv.0712.4289</span>
+<span class="sd">    [1] : https://doi.org/10.48550/arXiv.0712.4289</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span>
     <span class="n">height1</span> <span class="o">=</span> <span class="n">height</span> <span class="o">-</span> <span class="mi">1</span>
@@ -2046,7 +2047,7 @@
         <span class="n">j</span> <span class="o">=</span> <span class="n">x_index</span> <span class="o">+</span> <span class="n">radi_ref</span>
         <span class="n">i</span> <span class="o">=</span> <span class="n">y_index</span> <span class="o">+</span> <span class="n">radi_ref</span>
         <span class="n">ref_mat1</span> <span class="o">=</span> <span class="n">ref_mat</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">radi_ref</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">radi_ref</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
-                   <span class="n">j</span> <span class="o">-</span> <span class="n">radi_ref</span><span class="p">:</span> <span class="n">j</span> <span class="o">+</span> <span class="n">radi_ref</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+                           <span class="n">j</span> <span class="o">-</span> <span class="n">radi_ref</span><span class="p">:</span> <span class="n">j</span> <span class="o">+</span> <span class="n">radi_ref</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
         <span class="n">mat1</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">radi</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span> <span class="n">j</span> <span class="o">+</span> <span class="n">radi</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
         <span class="n">coef_mat1</span> <span class="o">=</span> <span class="n">coef_4d</span><span class="p">[</span><span class="n">y_index</span><span class="p">,</span> <span class="n">x_index</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
         <span class="n">coef_mat1</span> <span class="o">=</span> <span class="n">__gen_2d_corr_map_2d_input</span><span class="p">(</span><span class="n">ref_mat1</span><span class="p">,</span> <span class="n">mat1</span><span class="p">,</span> <span class="n">coef_mat1</span><span class="p">)</span>
@@ -2235,7 +2236,7 @@
         <span class="n">j</span> <span class="o">=</span> <span class="n">x_index</span> <span class="o">+</span> <span class="n">radi_ref</span>
         <span class="n">i</span> <span class="o">=</span> <span class="n">y_index</span> <span class="o">+</span> <span class="n">radi_ref</span>
         <span class="n">ref_mat1</span> <span class="o">=</span> <span class="n">ref_mat</span><span class="p">[:,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">radi_ref</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">radi_ref</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
-                   <span class="n">j</span> <span class="o">-</span> <span class="n">radi_ref</span><span class="p">:</span> <span class="n">j</span> <span class="o">+</span> <span class="n">radi_ref</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+                           <span class="n">j</span> <span class="o">-</span> <span class="n">radi_ref</span><span class="p">:</span> <span class="n">j</span> <span class="o">+</span> <span class="n">radi_ref</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
         <span class="n">mat1</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[:,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">radi</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span> <span class="n">j</span> <span class="o">+</span> <span class="n">radi</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
         <span class="n">coef_mat1</span> <span class="o">=</span> <span class="n">coef_4d</span><span class="p">[</span><span class="n">y_index</span><span class="p">,</span> <span class="n">x_index</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
         <span class="n">coef_mat1</span> <span class="o">=</span> <span class="n">__gen_2d_corr_map_3d_input</span><span class="p">(</span><span class="n">ref_mat1</span><span class="p">,</span> <span class="n">mat1</span><span class="p">,</span> <span class="n">coef_mat1</span><span class="p">)</span>
@@ -2280,9 +2281,10 @@
 <span class="sd">    -------</span>
 <span class="sd">    list of two 2d-arrays</span>
 <span class="sd">        x-shift array and y-shift array, corresponding to the pixel-locations</span>
-<span class="sd">        in the 2nd image where the starting location is at (margin + win_size/2,</span>
-<span class="sd">        margin + win_size/2). Using the pad option to make it easier to find</span>
-<span class="sd">        which value corresponding to which pixel-location.</span>
+<span class="sd">        in the 2nd image where the starting location is at</span>
+<span class="sd">        (margin + win_size/2, margin + win_size/2). Using the pad option to</span>
+<span class="sd">        make it easier to find which value corresponding to</span>
+<span class="sd">        which pixel-location.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">ref_mat</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Data shape must be the same !!!&quot;</span><span class="p">)</span>
@@ -2428,7 +2430,7 @@
         <span class="n">j</span> <span class="o">=</span> <span class="n">x_index</span> <span class="o">+</span> <span class="n">radi_ref</span>
         <span class="n">i</span> <span class="o">=</span> <span class="n">y_index</span> <span class="o">+</span> <span class="n">radi_ref</span>
         <span class="n">ref_mat1</span> <span class="o">=</span> <span class="n">ref_mat</span><span class="p">[:,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">radi_ref</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">radi_ref</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
-                   <span class="n">j</span> <span class="o">-</span> <span class="n">radi_ref</span><span class="p">:</span> <span class="n">j</span> <span class="o">+</span> <span class="n">radi_ref</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+                           <span class="n">j</span> <span class="o">-</span> <span class="n">radi_ref</span><span class="p">:</span> <span class="n">j</span> <span class="o">+</span> <span class="n">radi_ref</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
         <span class="n">mat1</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[:,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">radi</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span> <span class="n">j</span> <span class="o">+</span> <span class="n">radi</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
         <span class="n">coef_mat1</span> <span class="o">=</span> <span class="n">coef_4d</span><span class="p">[</span><span class="n">y_index</span><span class="p">,</span> <span class="n">x_index</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
         <span class="n">coef_mat1</span> <span class="o">=</span> <span class="n">__gen_2d_corr_map_3d_input</span><span class="p">(</span><span class="n">ref_mat1</span><span class="p">,</span> <span class="n">mat1</span><span class="p">,</span> <span class="n">coef_mat1</span><span class="p">)</span>
@@ -2464,7 +2466,7 @@
 <span class="sd">        sliding i.e. size = 2 * margin + win_size</span>
 <span class="sd">    method : {&quot;diff&quot;, &quot;poly_fit&quot;}</span>
 <span class="sd">        Method for finding sub-pixel shift. Two options: a differential</span>
-<span class="sd">        method (Ref. [1]_) or a polynomial method (Ref. [2]_).</span>
+<span class="sd">        method (Ref. [1]) or a polynomial method (Ref. [2]).</span>
 <span class="sd">    size : int</span>
 <span class="sd">        Window size around the integer location of the maximum value used for</span>
 <span class="sd">        sub-pixel searching.</span>
@@ -2481,14 +2483,15 @@
 <span class="sd">    -------</span>
 <span class="sd">    list of two 2d-arrays</span>
 <span class="sd">        x-shift array and y-shift array, corresponding to the pixel-locations</span>
-<span class="sd">        in the 2nd image where the starting location is at (margin + win_size/2,</span>
-<span class="sd">        margin + win_size/2). Using the pad option to make it easier to find</span>
-<span class="sd">        which value corresponding to which pixel-location.</span>
+<span class="sd">        in the 2nd image where the starting location is at</span>
+<span class="sd">        (margin + win_size/2, margin + win_size/2). Using the pad option to</span>
+<span class="sd">        make it easier to find which value corresponding to</span>
+<span class="sd">        which pixel-location.</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.48550/arXiv.0712.4289</span>
-<span class="sd">    .. [2] https://doi.org/10.1088/0957-0233/17/6/045</span>
+<span class="sd">    [1] : https://doi.org/10.48550/arXiv.0712.4289</span>
+<span class="sd">    [2] : https://doi.org/10.1088/0957-0233/17/6/045</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">ref_mat</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Data shape must be the same !!!&quot;</span><span class="p">)</span>
@@ -2560,7 +2563,7 @@
 <span class="sd">        sliding, i.e. size = 2 * margin + win_size</span>
 <span class="sd">    method : {&quot;diff&quot;, &quot;poly_fit&quot;}</span>
 <span class="sd">        Method for finding sub-pixel shift. Two options: a differential</span>
-<span class="sd">        method (Ref. [1]_) or a polynomial method (Ref. [2]_).</span>
+<span class="sd">        method (Ref. [1]) or a polynomial method (Ref. [2]).</span>
 <span class="sd">    size : int</span>
 <span class="sd">        Window size around the integer location of the maximum value used for</span>
 <span class="sd">        sub-pixel searching.</span>
@@ -2583,8 +2586,8 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.48550/arXiv.0712.4289</span>
-<span class="sd">    .. [2] https://doi.org/10.1088/0957-0233/17/6/045</span>
+<span class="sd">    [1] : https://doi.org/10.48550/arXiv.0712.4289</span>
+<span class="sd">    [2] : https://doi.org/10.1088/0957-0233/17/6/045</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">ref_mat</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Data shape must be the same !!!&quot;</span><span class="p">)</span>
@@ -2644,7 +2647,7 @@
 <span class="sd">        To define the sliding range of the second image.</span>
 <span class="sd">    method : {&quot;diff&quot;, &quot;poly_fit&quot;}</span>
 <span class="sd">        Method for finding sub-pixel shift. Two options: a differential</span>
-<span class="sd">        method (Ref. [1]_) or a polynomial method (Ref. [2]_). The &quot;poly_fit&quot;</span>
+<span class="sd">        method (Ref. [1]) or a polynomial method (Ref. [2]). The &quot;poly_fit&quot;</span>
 <span class="sd">        option is not available if using GPU.</span>
 <span class="sd">    size : int</span>
 <span class="sd">        Window size around the integer location of the maximum value used for</span>
@@ -2670,8 +2673,8 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.48550/arXiv.0712.4289</span>
-<span class="sd">    .. [2] https://doi.org/10.1088/0957-0233/17/6/045</span>
+<span class="sd">    [1] : https://doi.org/10.48550/arXiv.0712.4289</span>
+<span class="sd">    [2] : https://doi.org/10.1088/0957-0233/17/6/045</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">gpu</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
@@ -2825,7 +2828,7 @@
 <span class="sd">        Enable sub-pixel location.</span>
 <span class="sd">    method : {&quot;diff&quot;, &quot;poly_fit&quot;}</span>
 <span class="sd">        Method for finding 1d sub-pixel position. Two options: a differential</span>
-<span class="sd">        method (Ref. [1]_) or a polynomial method (Ref. [2]_).</span>
+<span class="sd">        method (Ref. [1]) or a polynomial method (Ref. [2]).</span>
 <span class="sd">    size : int, optional</span>
 <span class="sd">        Window size around the integer location of the maximum value used for</span>
 <span class="sd">        sub-pixel searching.</span>
@@ -2845,8 +2848,8 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.48550/arXiv.0712.4289</span>
-<span class="sd">    .. [2] https://doi.org/10.1088/0957-0233/17/6/045</span>
+<span class="sd">    [1] : https://doi.org/10.48550/arXiv.0712.4289</span>
+<span class="sd">    [2] : https://doi.org/10.1088/0957-0233/17/6/045</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">ref_mat</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Data shape must be the same !!!&quot;</span><span class="p">)</span>
@@ -2888,9 +2891,9 @@
         <span class="n">shifts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">ncore</span><span class="p">)(</span>
             <span class="n">delayed</span><span class="p">(</span><span class="n">f_alias</span><span class="p">)(</span>
                 <span class="n">ref_mat</span><span class="p">[</span><span class="n">list_i</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">start</span><span class="p">:</span><span class="n">list_i</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">start1</span><span class="p">,</span>
-                <span class="n">list_j</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">start</span><span class="p">:</span><span class="n">list_j</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">start1</span><span class="p">],</span>
+                        <span class="n">list_j</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">start</span><span class="p">:</span><span class="n">list_j</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">start1</span><span class="p">],</span>
                 <span class="n">mat</span><span class="p">[</span><span class="n">list_i</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">list_i</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">radi1</span><span class="p">,</span>
-                <span class="n">list_j</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">list_j</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">radi1</span><span class="p">],</span>
+                    <span class="n">list_j</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">list_j</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">radi1</span><span class="p">],</span>
                 <span class="n">margin</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sub_pixel</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_point</span><span class="p">)))</span>
     <span class="n">x_shifts</span><span class="p">,</span> <span class="n">y_shifts</span> <span class="o">=</span> <span class="n">shifts</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">shifts</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
@@ -2957,7 +2960,7 @@
         <span class="n">i</span> <span class="o">=</span> <span class="n">list_i</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
         <span class="n">j</span> <span class="o">=</span> <span class="n">list_j</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
         <span class="n">ref_mat1</span> <span class="o">=</span> <span class="n">ref_mat</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">radi_ref</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">radi_ref</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
-                   <span class="n">j</span> <span class="o">-</span> <span class="n">radi_ref</span><span class="p">:</span> <span class="n">j</span> <span class="o">+</span> <span class="n">radi_ref</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+                           <span class="n">j</span> <span class="o">-</span> <span class="n">radi_ref</span><span class="p">:</span> <span class="n">j</span> <span class="o">+</span> <span class="n">radi_ref</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
         <span class="n">mat1</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">radi</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span> <span class="n">j</span> <span class="o">+</span> <span class="n">radi</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
         <span class="n">coef_mat1</span> <span class="o">=</span> <span class="n">list_2d_coef</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
         <span class="n">coef_mat1</span> <span class="o">=</span> <span class="n">__gen_2d_corr_map_2d_input</span><span class="p">(</span><span class="n">ref_mat1</span><span class="p">,</span> <span class="n">mat1</span><span class="p">,</span> <span class="n">coef_mat1</span><span class="p">)</span>
@@ -3109,7 +3112,7 @@
 <span class="sd">        Enable sub-pixel location.</span>
 <span class="sd">    method : {&quot;diff&quot;, &quot;poly_fit&quot;}</span>
 <span class="sd">        Method for finding sub-pixel shift. Two options: a differential</span>
-<span class="sd">        method (Ref. [1]_) or a polynomial method (Ref. [2]_). The &quot;poly_fit&quot;</span>
+<span class="sd">        method (Ref. [1]) or a polynomial method (Ref. [2]). The &quot;poly_fit&quot;</span>
 <span class="sd">        option is not available if using GPU.</span>
 <span class="sd">    size : int, optional</span>
 <span class="sd">        Window size around the integer location of the maximum value used for</span>
@@ -3130,8 +3133,8 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.48550/arXiv.0712.4289</span>
-<span class="sd">    .. [2] https://doi.org/10.1088/0957-0233/17/6/045</span>
+<span class="sd">    [1] : https://doi.org/10.48550/arXiv.0712.4289</span>
+<span class="sd">    [2] : https://doi.org/10.1088/0957-0233/17/6/045</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">gpu</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
@@ -3207,8 +3210,8 @@
                 <span class="n">L1</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">L3</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">margin</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">margin1</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="n">margin</span><span class="p">:</span><span class="n">j</span> <span class="o">+</span> <span class="n">margin1</span><span class="p">],</span>
                 <span class="n">L2</span><span class="p">,</span> <span class="n">L4</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span>
                 <span class="n">L6</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">margin</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">margin1</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="n">margin</span><span class="p">:</span><span class="n">j</span> <span class="o">+</span> <span class="n">margin1</span><span class="p">],</span>
-                <span class="n">dark_signal</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span> \
-                                   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop_row</span><span class="p">)</span> \
+                <span class="n">dark_signal</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+                                   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop_row</span><span class="p">)</span>
                                    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop_col</span><span class="p">)))</span>
         <span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">results</span><span class="p">),</span>
                              <span class="p">(</span><span class="n">stop_row</span> <span class="o">-</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop_col</span> <span class="o">-</span> <span class="n">start</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
@@ -3220,8 +3223,8 @@
                 <span class="n">ref_mat</span><span class="p">[:,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">start</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">start1</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="n">start</span><span class="p">:</span><span class="n">j</span> <span class="o">+</span> <span class="n">start1</span><span class="p">],</span>
                 <span class="n">mat</span><span class="p">[:,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">radi1</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">j</span> <span class="o">+</span> <span class="n">radi1</span><span class="p">],</span> <span class="n">window</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span>
                 <span class="n">L1</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">L3</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">margin</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">margin1</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="n">margin</span><span class="p">:</span><span class="n">j</span> <span class="o">+</span> <span class="n">margin1</span><span class="p">],</span>
-                <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">dark_signal</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span> \
-                                   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop_row</span><span class="p">)</span> \
+                <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">dark_signal</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+                                   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop_row</span><span class="p">)</span>
                                    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop_col</span><span class="p">)))</span>
         <span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">results</span><span class="p">),</span>
                              <span class="p">(</span><span class="n">stop_row</span> <span class="o">-</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop_col</span> <span class="o">-</span> <span class="n">start</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
@@ -3311,7 +3314,7 @@
         <span class="n">j</span> <span class="o">=</span> <span class="n">x_index</span> <span class="o">+</span> <span class="n">radi_ref</span>
         <span class="n">i</span> <span class="o">=</span> <span class="n">y_index</span> <span class="o">+</span> <span class="n">radi_ref</span>
         <span class="n">ref_mat1</span> <span class="o">=</span> <span class="n">ref_mat</span><span class="p">[:,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">radi_ref</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">radi_ref1</span><span class="p">,</span>
-                   <span class="n">j</span> <span class="o">-</span> <span class="n">radi_ref</span><span class="p">:</span> <span class="n">j</span> <span class="o">+</span> <span class="n">radi_ref1</span><span class="p">]</span>
+                           <span class="n">j</span> <span class="o">-</span> <span class="n">radi_ref</span><span class="p">:</span> <span class="n">j</span> <span class="o">+</span> <span class="n">radi_ref1</span><span class="p">]</span>
         <span class="n">mat1</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[:,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">radi1</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span> <span class="n">j</span> <span class="o">+</span> <span class="n">radi1</span><span class="p">]</span>
         <span class="n">A</span> <span class="o">=</span> <span class="n">A0</span><span class="p">[</span><span class="n">y_index</span><span class="p">,</span> <span class="n">x_index</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
         <span class="n">V</span> <span class="o">=</span> <span class="n">V0</span><span class="p">[</span><span class="n">y_index</span><span class="p">,</span> <span class="n">x_index</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
@@ -3408,7 +3411,7 @@
 <span class="sd">    To find local shifts (in x and y direction) of each pixel between</span>
 <span class="sd">    two 3d-images by selecting a small volume of the second image and sliding</span>
 <span class="sd">    over a slightly larger volume of the reference image. The cost function</span>
-<span class="sd">    uses the formula in Ref. [1]_, known as UMPA.</span>
+<span class="sd">    uses the formula in Ref. [1], known as UMPA.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -3423,7 +3426,7 @@
 <span class="sd">        To define the sliding range of the second image.</span>
 <span class="sd">    method : {&quot;diff&quot;, &quot;poly_fit&quot;}</span>
 <span class="sd">        Method for finding sub-pixel shift. Two options: a differential</span>
-<span class="sd">        method (Ref. [2]_) or a polynomial method (Ref. [3]_). The &quot;poly_fit&quot;</span>
+<span class="sd">        method (Ref. [2]) or a polynomial method (Ref. [3]). The &quot;poly_fit&quot;</span>
 <span class="sd">        option is not available if using GPU.</span>
 <span class="sd">    size : int</span>
 <span class="sd">        Window size around the integer location of the maximum value used for</span>
@@ -3437,7 +3440,7 @@
 <span class="sd">    chunk_size : int or None</span>
 <span class="sd">        Size of each chunk extracted along the height of the image. Use to</span>
 <span class="sd">        avoid the out of memory problem.</span>
-<span class="sd">    filter_name : {None, &quot;hann&quot;, &quot;bartlett&quot;, &quot;blackman&quot;, &quot;hamming&quot;,\\</span>
+<span class="sd">    filter_name : {None, &quot;hann&quot;, &quot;bartlett&quot;, &quot;blackman&quot;, &quot;hamming&quot;,\</span>
 <span class="sd">                  &quot;nuttall&quot;, &quot;parzen&quot;, &quot;triang&quot;}</span>
 <span class="sd">        To select a smoothing filter.</span>
 <span class="sd">    dark_signal : bool</span>
@@ -3452,8 +3455,8 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1103/PhysRevLett.118.203903</span>
-<span class="sd">    .. [2] https://doi.org/10.48550/arXiv.0712.4289</span>
+<span class="sd">    [1] : https://doi.org/10.1103/PhysRevLett.118.203903</span>
+<span class="sd">    [2] : https://doi.org/10.48550/arXiv.0712.4289</span>
 <span class="sd">    .. [3] https://doi.org/10.1088/0957-0233/17/6/045</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">gpu</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>

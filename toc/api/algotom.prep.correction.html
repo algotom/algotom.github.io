@@ -180,8 +180,9 @@
             
   <div class="section" id="module-algotom.prep.correction">
 <span id="algotom-prep-correction"></span><h1><span class="section-number">7.2.3. </span><a class="reference internal" href="#module-algotom.prep.correction" title="algotom.prep.correction"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.correction</span></code></a><a class="headerlink" href="#module-algotom.prep.correction" title="Permalink to this heading">¶</a></h1>
-<dl class="simple">
-<dt>Module of correction methods in the preprocessing stage:</dt><dd><ul class="simple">
+<p>Module of correction methods in the preprocessing stage:</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>Flat-field correction.</p></li>
 <li><p>Distortion correction.</p></li>
 <li><p>MTF deconvolution.</p></li>
@@ -189,8 +190,7 @@
 <li><p>Tilted 1D intensity-profile generation.</p></li>
 <li><p>Beam hardening correction.</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 <p class="rubric"><strong>Functions:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <colgroup>
@@ -199,7 +199,7 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#algotom.prep.correction.flat_field_correction" title="algotom.prep.correction.flat_field_correction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flat_field_correction</span></code></a>(proj, flat, dark[, ...])</p></td>
-<td><p>Do flat-field correction with options to remove zinger arifacts and/or stripe artifacts.</p></td>
+<td><p>Perform flat-field correction with options to remove zinger artifacts and/or stripe artifacts.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#algotom.prep.correction.unwarp_projection" title="algotom.prep.correction.unwarp_projection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unwarp_projection</span></code></a>(proj, xcenter, ycenter, ...)</p></td>
 <td><p>Apply distortion correction to a projection image using the polynomial backward model (Ref.</p></td>
@@ -211,7 +211,7 @@
 <td><p>Unwarp chunk of sinograms [:, start_index: stop_index, :] of a 3D tomographic dataset or a hdf/nxs object.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#algotom.prep.correction.mtf_deconvolution" title="algotom.prep.correction.mtf_deconvolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mtf_deconvolution</span></code></a>(mat, window, pad)</p></td>
-<td><p>Deconvolve an projection image using division in the Fourier domain.</p></td>
+<td><p>Deconvolve a projection-image using division in the Fourier domain.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#algotom.prep.correction.generate_tilted_sinogram" title="algotom.prep.correction.generate_tilted_sinogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_tilted_sinogram</span></code></a>(data, index, angle, ...)</p></td>
 <td><p>Generate a tilted sinogram of a 3D tomographic dataset or a hdf/nxs object.</p></td>
@@ -236,24 +236,20 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.correction.flat_field_correction">
 <span class="sig-prename descclassname"><span class="pre">algotom.prep.correction.</span></span><span class="sig-name descname"><span class="pre">flat_field_correction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_dark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/correction.html#flat_field_correction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.correction.flat_field_correction" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do flat-field correction with options to remove zinger arifacts and/or
-stripe artifacts.</p>
-<dl class="field-list">
+<dd><p>Perform flat-field correction with options to remove zinger artifacts
+and/or stripe artifacts.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul>
+<dd class="field-odd"><ul class="simple">
 <li><p><strong>proj</strong> (<em>array_like</em>) – 3D or 2D array. Projection images or a sinogram image.</p></li>
 <li><p><strong>flat</strong> (<em>array_like</em>) – 2D or 1D array. Flat-field image or a single row of it.</p></li>
 <li><p><strong>dark</strong> (<em>array_like</em>) – 2D or 1D array. Dark-field image or a single row of it.</p></li>
 <li><p><strong>ratio</strong> (<em>float</em>) – Ratio between exposure time used for recording projections
 and exposure time used for recording flat field.</p></li>
-<li><p><strong>use_dark</strong> (<em>bool</em>) – Subtracting dark field if True. May no need in some cases.</p></li>
+<li><p><strong>use_dark</strong> (<em>bool</em>) – Subtracting dark field if True.</p></li>
 <li><p><strong>options</strong> (<em>dict, optional</em>) – Apply a zinger removal method and/or ring removal methods.
 E.g option1={“method”: “dezinger”, “para1”: 0.001, “para2”: 1},
-option2={“method”: “remove_stripe_based_sorting”,</p>
-<blockquote>
-<div><p>“para1”: 15, “para2”: 1}</p>
-</div></blockquote>
-</li>
+option2={“method”: “remove_stripe_based_sorting”,                “para1”: 15, “para2”: 1}</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -266,7 +262,7 @@ option2={“method”: “remove_stripe_based_sorting”,</p>
 <dt class="sig sig-object py" id="algotom.prep.correction.unwarp_projection">
 <span class="sig-prename descclassname"><span class="pre">algotom.prep.correction.</span></span><span class="sig-name descname"><span class="pre">unwarp_projection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xcenter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ycenter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_fact</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/correction.html#unwarp_projection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.correction.unwarp_projection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply distortion correction to a projection image using the polynomial
-backward model (Ref. <a href="#id5"><span class="problematic" id="id1">[1]_</span></a>).</p>
+backward model (Ref. [1]).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -281,11 +277,7 @@ backward model (Ref. <a href="#id5"><span class="problematic" id="id1">[1]_</spa
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.23.032859">https://doi.org/10.1364/OE.23.032859</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1364/OE.23.032859">https://doi.org/10.1364/OE.23.032859</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -338,8 +330,8 @@ of a 3D tomographic dataset or a hdf/nxs object.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.correction.mtf_deconvolution">
 <span class="sig-prename descclassname"><span class="pre">algotom.prep.correction.</span></span><span class="sig-name descname"><span class="pre">mtf_deconvolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/correction.html#mtf_deconvolution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.correction.mtf_deconvolution" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deconvolve an projection image using division in the Fourier domain.
-Window can be determined using the approach in Ref. <a href="#id6"><span class="problematic" id="id3">[1]_</span></a>.</p>
+<dd><p>Deconvolve a projection-image using division in the Fourier domain.
+Window can be determined using the approach in Ref. [1].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -353,11 +345,7 @@ Window can be determined using the approach in Ref. <a href="#id6"><span class="
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id4"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1117/12.2530324">https://doi.org/10.1117/12.2530324</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1117/12.2530324">https://doi.org/10.1117/12.2530324</a></p>
 </dd></dl>
 
 <dl class="py function">

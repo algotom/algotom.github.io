@@ -184,32 +184,33 @@
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Module of utility methods:</span>
-<span class="sd">    - Methods for parallel computing, geometric transformation, masking.</span>
-<span class="sd">    - Methods for customizing stripe/ring removal methods</span>
-<span class="sd">        + sort_forward</span>
-<span class="sd">        + sort_backward</span>
-<span class="sd">        + separate_frequency_component</span>
-<span class="sd">        + generate_fitted_image</span>
-<span class="sd">        + detect_stripe</span>
-<span class="sd">        + calculate_regularization_coefficient</span>
-<span class="sd">        + make_2d_butterworth_window</span>
-<span class="sd">        + make_2d_damping_window</span>
-<span class="sd">        + apply_wavelet_decomposition</span>
-<span class="sd">        + apply_wavelet_reconstruction</span>
-<span class="sd">        + apply_filter_to_wavelet_component</span>
-<span class="sd">        + interpolate_inside_stripe</span>
-<span class="sd">        + transform_slice_forward</span>
-<span class="sd">        + transform_slice_backward</span>
-<span class="sd">    - Customized smoothing filters:</span>
-<span class="sd">        + apply_gaussian_filter (in the Fourier space)</span>
-<span class="sd">        + apply_regularization_filter</span>
-<span class="sd">    - Methods for grid scans:</span>
-<span class="sd">        + detect_sample</span>
-<span class="sd">        + fix_non_sample_areas</span>
-<span class="sd">        + locate_slice</span>
-<span class="sd">        + locate_slice_chunk</span>
-<span class="sd">    - Methods for speckle-based tomography</span>
-<span class="sd">        + generate_spiral_positions</span>
+
+<span class="sd">    -   Methods for parallel computing, geometric transformation, masking.</span>
+<span class="sd">    -   Methods for customizing stripe/ring removal methods</span>
+<span class="sd">            +   sort_forward</span>
+<span class="sd">            +   sort_backward</span>
+<span class="sd">            +   separate_frequency_component</span>
+<span class="sd">            +   generate_fitted_image</span>
+<span class="sd">            +   detect_stripe</span>
+<span class="sd">            +   calculate_regularization_coefficient</span>
+<span class="sd">            +   make_2d_butterworth_window</span>
+<span class="sd">            +   make_2d_damping_window</span>
+<span class="sd">            +   apply_wavelet_decomposition</span>
+<span class="sd">            +   apply_wavelet_reconstruction</span>
+<span class="sd">            +   apply_filter_to_wavelet_component</span>
+<span class="sd">            +   interpolate_inside_stripe</span>
+<span class="sd">            +   transform_slice_forward</span>
+<span class="sd">            +   transform_slice_backward</span>
+<span class="sd">    -   Customized smoothing filters:</span>
+<span class="sd">            +   apply_gaussian_filter (in the Fourier space)</span>
+<span class="sd">            +   apply_regularization_filter</span>
+<span class="sd">    -   Methods for grid scans:</span>
+<span class="sd">            +   detect_sample</span>
+<span class="sd">            +   fix_non_sample_areas</span>
+<span class="sd">            +   locate_slice</span>
+<span class="sd">            +   locate_slice_chunk</span>
+<span class="sd">    -   Methods for speckle-based tomography</span>
+<span class="sd">            +   generate_spiral_positions</span>
 <span class="sd"> &quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -329,7 +330,7 @@
 
 <div class="viewcode-block" id="sort_forward"><a class="viewcode-back" href="../../../toc/api/algotom.util.utility.html#algotom.util.utility.sort_forward">[docs]</a><span class="k">def</span> <span class="nf">sort_forward</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Sort grayscales of an image along an axis.</span>
+<span class="sd">    Sort gray-scales of an image along an axis.</span>
 <span class="sd">    e.g. axis=0 is to sort along each column.</span>
 
 <span class="sd">    Parameters</span>
@@ -364,8 +365,8 @@
 
 <div class="viewcode-block" id="sort_backward"><a class="viewcode-back" href="../../../toc/api/algotom.util.utility.html#algotom.util.utility.sort_backward">[docs]</a><span class="k">def</span> <span class="nf">sort_backward</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">mat_index</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Sort grayscales of an image using an index array provided.</span>
-<span class="sd">    e.g axis=0 is to sort each column.</span>
+<span class="sd">    Sort gray-scales of an image using an index array provided.</span>
+<span class="sd">    e.g. axis=0 is to sort each column.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -397,7 +398,7 @@
                                  <span class="n">window</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;gaussian&quot;</span><span class="p">,</span> <span class="s2">&quot;sigma&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Separate low and high frequency components of an image along an axis.</span>
-<span class="sd">    e.g axis=0 is to apply the separation to each column.</span>
+<span class="sd">    e.g. axis=0 is to apply the separation to each column.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -407,7 +408,7 @@
 <span class="sd">        Axis along which to apply the filter.</span>
 <span class="sd">    window : array_like or dict</span>
 <span class="sd">        1D array or a dictionary which given the name of a window in</span>
-<span class="sd">        the scipy.signal.window list and its parameters (without window-length).</span>
+<span class="sd">        the scipy.window list and its parameters (without window-length).</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -480,14 +481,14 @@
 
 <div class="viewcode-block" id="detect_stripe"><a class="viewcode-back" href="../../../toc/api/algotom.util.utility.html#algotom.util.utility.detect_stripe">[docs]</a><span class="k">def</span> <span class="nf">detect_stripe</span><span class="p">(</span><span class="n">list_data</span><span class="p">,</span> <span class="n">snr</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Locate stripe positions using Algorithm 4 in Ref. [1]_</span>
+<span class="sd">    Locate stripe positions using Algorithm 4 in Ref. [1]</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    list_data : array_like</span>
 <span class="sd">        1D array. Normalized data.</span>
 <span class="sd">    snr : float</span>
-<span class="sd">        Ratio (&gt;1.0) used to detect stripe locations. Greater is less sensitive.</span>
+<span class="sd">        Ratio (&gt;1.0) for stripe detection. Greater is less sensitive.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -496,14 +497,14 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1364/OE.26.028396</span>
+<span class="sd">    [1] : https://doi.org/10.1364/OE.26.028396</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">npoint</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_data</span><span class="p">)</span>
     <span class="n">list_sort</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">list_data</span><span class="p">)</span>
     <span class="n">x_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">npoint</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
     <span class="n">ndrop</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="mf">0.25</span> <span class="o">*</span> <span class="n">npoint</span><span class="p">)</span>
     <span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x_list</span><span class="p">[</span><span class="n">ndrop</span><span class="p">:</span><span class="o">-</span><span class="n">ndrop</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span>
-                                    <span class="n">list_sort</span><span class="p">[</span><span class="n">ndrop</span><span class="p">:</span><span class="o">-</span><span class="n">ndrop</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+                                    <span class="n">list_sort</span><span class="p">[</span><span class="n">ndrop</span><span class="p">:</span><span class="o">-</span><span class="n">ndrop</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)[:</span><span class="mi">2</span><span class="p">]</span>
     <span class="n">y_end</span> <span class="o">=</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">noise_level</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y_end</span> <span class="o">-</span> <span class="n">intercept</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">noise_level</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
@@ -525,7 +526,7 @@
 <div class="viewcode-block" id="calculate_regularization_coefficient"><a class="viewcode-back" href="../../../toc/api/algotom.util.utility.html#algotom.util.utility.calculate_regularization_coefficient">[docs]</a><span class="k">def</span> <span class="nf">calculate_regularization_coefficient</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate coefficients used for the regularization-based method.</span>
-<span class="sd">    Eq. (7) in Ref. [1]_.</span>
+<span class="sd">    Eq. (7) in Ref. [1].</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -541,7 +542,7 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1016/j.aml.2010.08.022</span>
+<span class="sd">    [1] : https://doi.org/10.1016/j.aml.2010.08.022</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">tau</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arcsinh</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
     <span class="n">ilist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
@@ -721,8 +722,8 @@
 <span class="sd">    level : int, list of int, or None</span>
 <span class="sd">        Decomposition level to be applied the filter.</span>
 <span class="sd">    order : {0, 1, 2}</span>
-<span class="sd">        Specify which component in a tuple, (cH_level_n, cV_level_n, cD_level_n)</span>
-<span class="sd">        to be filtered.</span>
+<span class="sd">        Specify which component in a tuple,</span>
+<span class="sd">        (cH_level_n, cV_level_n, cD_level_n), to be filtered.</span>
 <span class="sd">    method : str</span>
 <span class="sd">        Name of the filter in the namespace.</span>
 <span class="sd">    para : list or tuple</span>
@@ -926,7 +927,7 @@
     <span class="k">return</span> <span class="n">mapping</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">r_mat</span><span class="p">,</span> <span class="n">theta_mat</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="make_2d_gaussian_window"><a class="viewcode-back" href="../../../toc/api/algotom.util.utility.html#algotom.util.utility.make_2d_gaussian_window">[docs]</a><span class="k">def</span> <span class="nf">make_2d_gaussian_window</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">sigmax</span><span class="p">,</span> <span class="n">sigmay</span><span class="p">):</span>
+<div class="viewcode-block" id="make_2d_gaussian_window"><a class="viewcode-back" href="../../../toc/api/algotom.util.utility.html#algotom.util.utility.make_2d_gaussian_window">[docs]</a><span class="k">def</span> <span class="nf">make_2d_gaussian_window</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">sigma_x</span><span class="p">,</span> <span class="n">sigma_y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create a 2D Gaussian window.</span>
 
@@ -936,9 +937,9 @@
 <span class="sd">        Height of the image.</span>
 <span class="sd">    width : int</span>
 <span class="sd">        Width of the image.</span>
-<span class="sd">    sigmax : int</span>
+<span class="sd">    sigma_x : int</span>
 <span class="sd">        Sigma in the x-direction.</span>
-<span class="sd">    sigmay : int</span>
+<span class="sd">    sigma_y : int</span>
 <span class="sd">        Sigma in the y-direction.</span>
 
 <span class="sd">    Returns</span>
@@ -949,11 +950,12 @@
     <span class="n">xcenter</span> <span class="o">=</span> <span class="p">(</span><span class="n">width</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
     <span class="n">ycenter</span> <span class="o">=</span> <span class="p">(</span><span class="n">height</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
     <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ogrid</span><span class="p">[</span><span class="o">-</span><span class="n">ycenter</span><span class="p">:</span><span class="n">height</span> <span class="o">-</span> <span class="n">ycenter</span><span class="p">,</span> <span class="o">-</span><span class="n">xcenter</span><span class="p">:</span><span class="n">width</span> <span class="o">-</span> <span class="n">xcenter</span><span class="p">]</span>
-    <span class="n">window</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigmax</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigmay</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)))</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span>
+        <span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_y</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)))</span>
     <span class="k">return</span> <span class="n">window</span></div>
 
 
-<div class="viewcode-block" id="apply_gaussian_filter"><a class="viewcode-back" href="../../../toc/api/algotom.util.utility.html#algotom.util.utility.apply_gaussian_filter">[docs]</a><span class="k">def</span> <span class="nf">apply_gaussian_filter</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">sigmax</span><span class="p">,</span> <span class="n">sigmay</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="apply_gaussian_filter"><a class="viewcode-back" href="../../../toc/api/algotom.util.utility.html#algotom.util.utility.apply_gaussian_filter">[docs]</a><span class="k">def</span> <span class="nf">apply_gaussian_filter</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">sigma_x</span><span class="p">,</span> <span class="n">sigma_y</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Filtering an image in the Fourier domain using a 2D Gaussian window.</span>
 <span class="sd">    Smaller is stronger.</span>
@@ -962,9 +964,9 @@
 <span class="sd">    ----------</span>
 <span class="sd">    mat : array_like</span>
 <span class="sd">        2D array.</span>
-<span class="sd">    sigmax : int</span>
+<span class="sd">    sigma_x : int</span>
 <span class="sd">        Sigma in the x-direction.</span>
-<span class="sd">    sigmay : int</span>
+<span class="sd">    sigma_y : int</span>
 <span class="sd">        Sigma in the y-direction.</span>
 <span class="sd">    pad : int or None</span>
 <span class="sd">        Padding for the Fourier transform.</span>
@@ -993,7 +995,7 @@
     <span class="n">mat_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">pad</span><span class="p">,</span> <span class="n">pad</span><span class="p">)),</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode1</span><span class="p">)</span>
     <span class="n">mat_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">mat_pad</span><span class="p">,</span> <span class="p">((</span><span class="n">pad</span><span class="p">,</span> <span class="n">pad</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode2</span><span class="p">)</span>
     <span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">)</span> <span class="o">=</span> <span class="n">mat_pad</span><span class="o">.</span><span class="n">shape</span>
-    <span class="n">window</span> <span class="o">=</span> <span class="n">make_2d_gaussian_window</span><span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">,</span> <span class="n">sigmax</span><span class="p">,</span> <span class="n">sigmay</span><span class="p">)</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="n">make_2d_gaussian_window</span><span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">,</span> <span class="n">sigma_x</span><span class="p">,</span> <span class="n">sigma_y</span><span class="p">)</span>
     <span class="n">listx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ncol</span><span class="p">)</span>
     <span class="n">listy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nrow</span><span class="p">)</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">listx</span><span class="p">,</span> <span class="n">listy</span><span class="p">)</span>
@@ -1019,7 +1021,7 @@
 
 <div class="viewcode-block" id="apply_regularization_filter"><a class="viewcode-back" href="../../../toc/api/algotom.util.utility.html#algotom.util.utility.apply_regularization_filter">[docs]</a><span class="k">def</span> <span class="nf">apply_regularization_filter</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Apply a regularization filter using the method in Ref. [1]_.</span>
+<span class="sd">    Apply a regularization filter using the method in Ref. [1].</span>
 <span class="sd">    Note that it&#39;s computationally costly.</span>
 
 <span class="sd">    Parameters</span>
@@ -1040,7 +1042,7 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1016/j.aml.2010.08.022</span>
+<span class="sd">    [1] : https://doi.org/10.1016/j.aml.2010.08.022</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">ncore</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ncore</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">mp</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
@@ -1093,7 +1095,7 @@
 <div class="viewcode-block" id="detect_sample"><a class="viewcode-back" href="../../../toc/api/algotom.util.utility.html#algotom.util.utility.detect_sample">[docs]</a><span class="k">def</span> <span class="nf">detect_sample</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">sino_type</span><span class="o">=</span><span class="s2">&quot;180&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    To check if there is a sample in a sinogram using the &quot;double-wedge&quot;</span>
-<span class="sd">    property of the Fourier transform of the sinogram (Ref. [1]_).</span>
+<span class="sd">    property of the Fourier transform of the sinogram (Ref. [1]).</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1109,7 +1111,7 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1364/OE.418448</span>
+<span class="sd">    [1] : https://doi.org/10.1364/OE.418448</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">check</span> <span class="o">=</span> <span class="kc">True</span>
@@ -1154,7 +1156,7 @@
 <span class="sd">    -------</span>
 <span class="sd">    metadata : array_like</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="p">(</span><span class="n">g_nrow</span><span class="p">,</span> <span class="n">g_ncol</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">overlap_metadata</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">g_nrow</span><span class="p">,</span> <span class="n">g_ncol</span> <span class="o">=</span> <span class="n">overlap_metadata</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
     <span class="n">metadata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">overlap_metadata</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">g_nrow</span><span class="p">):</span>
         <span class="n">i1</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
@@ -1236,9 +1238,9 @@
 <span class="sd">    -------</span>
 <span class="sd">    list of int and float</span>
 <span class="sd">        If the slice is not in the overlapping area between two grid-rows, the</span>
-<span class="sd">        result is a list of [grid_row_index, slice_index, weight_factor]. If the</span>
-<span class="sd">        slice is in the overlapping area between two grid-rows, the result is a</span>
-<span class="sd">        list of [[grid_row_index_0, slice_index_0, weight_factor_0],</span>
+<span class="sd">        result is a list of [grid_row_index, slice_index, weight_factor]. If</span>
+<span class="sd">        the slice is in the overlapping area between two grid-rows, the result</span>
+<span class="sd">        is a list of [[grid_row_index_0, slice_index_0, weight_factor_0],</span>
 <span class="sd">        [grid_row_index_1, slice_index_1, weight_factor_1]]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">g_nrow</span> <span class="o">=</span> <span class="n">overlap_metadata</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>

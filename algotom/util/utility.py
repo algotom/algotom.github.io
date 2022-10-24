@@ -22,32 +22,33 @@
 
 """
 Module of utility methods:
-    - Methods for parallel computing, geometric transformation, masking.
-    - Methods for customizing stripe/ring removal methods
-        + sort_forward
-        + sort_backward
-        + separate_frequency_component
-        + generate_fitted_image
-        + detect_stripe
-        + calculate_regularization_coefficient
-        + make_2d_butterworth_window
-        + make_2d_damping_window
-        + apply_wavelet_decomposition
-        + apply_wavelet_reconstruction
-        + apply_filter_to_wavelet_component
-        + interpolate_inside_stripe
-        + transform_slice_forward
-        + transform_slice_backward
-    - Customized smoothing filters:
-        + apply_gaussian_filter (in the Fourier space)
-        + apply_regularization_filter
-    - Methods for grid scans:
-        + detect_sample
-        + fix_non_sample_areas
-        + locate_slice
-        + locate_slice_chunk
-    - Methods for speckle-based tomography
-        + generate_spiral_positions
+
+    -   Methods for parallel computing, geometric transformation, masking.
+    -   Methods for customizing stripe/ring removal methods
+            +   sort_forward
+            +   sort_backward
+            +   separate_frequency_component
+            +   generate_fitted_image
+            +   detect_stripe
+            +   calculate_regularization_coefficient
+            +   make_2d_butterworth_window
+            +   make_2d_damping_window
+            +   apply_wavelet_decomposition
+            +   apply_wavelet_reconstruction
+            +   apply_filter_to_wavelet_component
+            +   interpolate_inside_stripe
+            +   transform_slice_forward
+            +   transform_slice_backward
+    -   Customized smoothing filters:
+            +   apply_gaussian_filter (in the Fourier space)
+            +   apply_regularization_filter
+    -   Methods for grid scans:
+            +   detect_sample
+            +   fix_non_sample_areas
+            +   locate_slice
+            +   locate_slice_chunk
+    -   Methods for speckle-based tomography
+            +   generate_spiral_positions
  """
 
 import sys
@@ -167,7 +168,7 @@ def make_circle_mask(width, ratio):
 
 def sort_forward(mat, axis=0):
     """
-    Sort grayscales of an image along an axis.
+    Sort gray-scales of an image along an axis.
     e.g. axis=0 is to sort along each column.
 
     Parameters
@@ -202,8 +203,8 @@ def sort_forward(mat, axis=0):
 
 def sort_backward(mat, mat_index, axis=0):
     """
-    Sort grayscales of an image using an index array provided.
-    e.g axis=0 is to sort each column.
+    Sort gray-scales of an image using an index array provided.
+    e.g. axis=0 is to sort each column.
 
     Parameters
     ----------
@@ -235,7 +236,7 @@ def separate_frequency_component(mat, axis=0,
                                  window={"name": "gaussian", "sigma": 5}):
     """
     Separate low and high frequency components of an image along an axis.
-    e.g axis=0 is to apply the separation to each column.
+    e.g. axis=0 is to apply the separation to each column.
 
     Parameters
     ----------
@@ -245,7 +246,7 @@ def separate_frequency_component(mat, axis=0,
         Axis along which to apply the filter.
     window : array_like or dict
         1D array or a dictionary which given the name of a window in
-        the scipy.signal.window list and its parameters (without window-length).
+        the scipy.window list and its parameters (without window-length).
 
     Returns
     -------
@@ -318,14 +319,14 @@ def generate_fitted_image(mat, order, axis=0, num_chunk=1):
 
 def detect_stripe(list_data, snr):
     """
-    Locate stripe positions using Algorithm 4 in Ref. [1]_
+    Locate stripe positions using Algorithm 4 in Ref. [1]
 
     Parameters
     ----------
     list_data : array_like
         1D array. Normalized data.
     snr : float
-        Ratio (>1.0) used to detect stripe locations. Greater is less sensitive.
+        Ratio (>1.0) for stripe detection. Greater is less sensitive.
 
     Returns
     -------
@@ -334,14 +335,14 @@ def detect_stripe(list_data, snr):
 
     References
     ----------
-    .. [1] https://doi.org/10.1364/OE.26.028396
+    [1] : https://doi.org/10.1364/OE.26.028396
     """
     npoint = len(list_data)
     list_sort = np.sort(list_data)
     x_list = np.arange(0, npoint, 1.0)
     ndrop = np.int16(0.25 * npoint)
     (slope, intercept) = np.polyfit(x_list[ndrop:-ndrop - 1],
-                                    list_sort[ndrop:-ndrop - 1], 1)
+                                    list_sort[ndrop:-ndrop - 1], 1)[:2]
     y_end = intercept + slope * x_list[-1]
     noise_level = np.abs(y_end - intercept)
     if noise_level == 0.0:
@@ -363,7 +364,7 @@ def detect_stripe(list_data, snr):
 def calculate_regularization_coefficient(width, alpha):
     """
     Calculate coefficients used for the regularization-based method.
-    Eq. (7) in Ref. [1]_.
+    Eq. (7) in Ref. [1].
 
     Parameters
     ----------
@@ -379,7 +380,7 @@ def calculate_regularization_coefficient(width, alpha):
 
     References
     ----------
-    .. [1] https://doi.org/10.1016/j.aml.2010.08.022
+    [1] : https://doi.org/10.1016/j.aml.2010.08.022
     """
     tau = 2.0 * np.arcsinh(np.sqrt(alpha) * 0.5)
     ilist = np.arange(0, width)
@@ -559,8 +560,8 @@ def apply_filter_to_wavelet_component(data, level=None, order=1,
     level : int, list of int, or None
         Decomposition level to be applied the filter.
     order : {0, 1, 2}
-        Specify which component in a tuple, (cH_level_n, cV_level_n, cD_level_n)
-        to be filtered.
+        Specify which component in a tuple,
+        (cH_level_n, cV_level_n, cD_level_n), to be filtered.
     method : str
         Name of the filter in the namespace.
     para : list or tuple
@@ -764,7 +765,7 @@ def transform_slice_backward(mat, coord_mat=None):
     return mapping(mat, r_mat, theta_mat)
 
 
-def make_2d_gaussian_window(height, width, sigmax, sigmay):
+def make_2d_gaussian_window(height, width, sigma_x, sigma_y):
     """
     Create a 2D Gaussian window.
 
@@ -774,9 +775,9 @@ def make_2d_gaussian_window(height, width, sigmax, sigmay):
         Height of the image.
     width : int
         Width of the image.
-    sigmax : int
+    sigma_x : int
         Sigma in the x-direction.
-    sigmay : int
+    sigma_y : int
         Sigma in the y-direction.
 
     Returns
@@ -787,11 +788,12 @@ def make_2d_gaussian_window(height, width, sigmax, sigmay):
     xcenter = (width - 1.0) / 2.0
     ycenter = (height - 1.0) / 2.0
     y, x = np.ogrid[-ycenter:height - ycenter, -xcenter:width - xcenter]
-    window = np.exp(-(x ** 2 / (2 * sigmax ** 2) + y ** 2 / (2 * sigmay ** 2)))
+    window = np.exp(
+        -(x ** 2 / (2 * sigma_x ** 2) + y ** 2 / (2 * sigma_y ** 2)))
     return window
 
 
-def apply_gaussian_filter(mat, sigmax, sigmay, pad=None, mode=None):
+def apply_gaussian_filter(mat, sigma_x, sigma_y, pad=None, mode=None):
     """
     Filtering an image in the Fourier domain using a 2D Gaussian window.
     Smaller is stronger.
@@ -800,9 +802,9 @@ def apply_gaussian_filter(mat, sigmax, sigmay, pad=None, mode=None):
     ----------
     mat : array_like
         2D array.
-    sigmax : int
+    sigma_x : int
         Sigma in the x-direction.
-    sigmay : int
+    sigma_y : int
         Sigma in the y-direction.
     pad : int or None
         Padding for the Fourier transform.
@@ -831,7 +833,7 @@ def apply_gaussian_filter(mat, sigmax, sigmay, pad=None, mode=None):
     mat_pad = np.pad(mat, ((0, 0), (pad, pad)), mode=mode1)
     mat_pad = np.pad(mat_pad, ((pad, pad), (0, 0)), mode=mode2)
     (nrow, ncol) = mat_pad.shape
-    window = make_2d_gaussian_window(nrow, ncol, sigmax, sigmay)
+    window = make_2d_gaussian_window(nrow, ncol, sigma_x, sigma_y)
     listx = np.arange(0, ncol)
     listy = np.arange(0, nrow)
     x, y = np.meshgrid(listx, listy)
@@ -857,7 +859,7 @@ def apply_1d_regularizer(list_data, sijmat):
 
 def apply_regularization_filter(mat, alpha, axis=1, ncore=None):
     """
-    Apply a regularization filter using the method in Ref. [1]_.
+    Apply a regularization filter using the method in Ref. [1].
     Note that it's computationally costly.
 
     Parameters
@@ -878,7 +880,7 @@ def apply_regularization_filter(mat, alpha, axis=1, ncore=None):
 
     References
     ----------
-    .. [1] https://doi.org/10.1016/j.aml.2010.08.022
+    [1] : https://doi.org/10.1016/j.aml.2010.08.022
     """
     if ncore is None:
         ncore = np.clip(mp.cpu_count() - 1, 1, None)
@@ -931,7 +933,7 @@ def transform_1d_window_to_2d(win_1d):
 def detect_sample(sinogram, sino_type="180"):
     """
     To check if there is a sample in a sinogram using the "double-wedge"
-    property of the Fourier transform of the sinogram (Ref. [1]_).
+    property of the Fourier transform of the sinogram (Ref. [1]).
 
     Parameters
     ----------
@@ -947,7 +949,7 @@ def detect_sample(sinogram, sino_type="180"):
 
     References
     ----------
-    .. [1] https://doi.org/10.1364/OE.418448
+    [1] : https://doi.org/10.1364/OE.418448
 
     """
     check = True
@@ -992,7 +994,7 @@ def fix_non_sample_areas(overlap_metadata):
     -------
     metadata : array_like
     """
-    (g_nrow, g_ncol, _) = overlap_metadata.shape
+    g_nrow, g_ncol = overlap_metadata.shape[:2]
     metadata = np.copy(overlap_metadata)
     for i in np.arange(g_nrow):
         i1 = i - 1
@@ -1074,9 +1076,9 @@ def locate_slice(slice_idx, height, overlap_metadata):
     -------
     list of int and float
         If the slice is not in the overlapping area between two grid-rows, the
-        result is a list of [grid_row_index, slice_index, weight_factor]. If the
-        slice is in the overlapping area between two grid-rows, the result is a
-        list of [[grid_row_index_0, slice_index_0, weight_factor_0],
+        result is a list of [grid_row_index, slice_index, weight_factor]. If
+        the slice is in the overlapping area between two grid-rows, the result
+        is a list of [[grid_row_index_0, slice_index_0, weight_factor_0],
         [grid_row_index_1, slice_index_1, weight_factor_1]]
     """
     g_nrow = overlap_metadata.shape[0] + 1

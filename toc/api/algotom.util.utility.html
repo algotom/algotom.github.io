@@ -178,8 +178,9 @@
             
   <div class="section" id="module-algotom.util.utility">
 <span id="algotom-util-utility"></span><h1><span class="section-number">7.5.3. </span><a class="reference internal" href="#module-algotom.util.utility" title="algotom.util.utility"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.utility</span></code></a><a class="headerlink" href="#module-algotom.util.utility" title="Permalink to this heading">¶</a></h1>
-<dl class="simple">
-<dt>Module of utility methods:</dt><dd><ul class="simple">
+<p>Module of utility methods:</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>Methods for parallel computing, geometric transformation, masking.</p></li>
 <li><dl class="simple">
 <dt>Methods for customizing stripe/ring removal methods</dt><dd><ul>
@@ -227,8 +228,7 @@
 </dl>
 </li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 <p class="rubric"><strong>Functions:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <colgroup>
@@ -246,10 +246,10 @@
 <td><p>Create a circle mask.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#algotom.util.utility.sort_forward" title="algotom.util.utility.sort_forward"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sort_forward</span></code></a>(mat[, axis])</p></td>
-<td><p>Sort grayscales of an image along an axis.</p></td>
+<td><p>Sort gray-scales of an image along an axis.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#algotom.util.utility.sort_backward" title="algotom.util.utility.sort_backward"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sort_backward</span></code></a>(mat, mat_index[, axis])</p></td>
-<td><p>Sort grayscales of an image using an index array provided.</p></td>
+<td><p>Sort gray-scales of an image using an index array provided.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#algotom.util.utility.separate_frequency_component" title="algotom.util.utility.separate_frequency_component"><code class="xref py py-obj docutils literal notranslate"><span class="pre">separate_frequency_component</span></code></a>(mat[, axis, window])</p></td>
 <td><p>Separate low and high frequency components of an image along an axis.</p></td>
@@ -299,7 +299,7 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#algotom.util.utility.make_2d_gaussian_window" title="algotom.util.utility.make_2d_gaussian_window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_2d_gaussian_window</span></code></a>(height, width, ...)</p></td>
 <td><p>Create a 2D Gaussian window.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#algotom.util.utility.apply_gaussian_filter" title="algotom.util.utility.apply_gaussian_filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_gaussian_filter</span></code></a>(mat, sigmax, sigmay[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#algotom.util.utility.apply_gaussian_filter" title="algotom.util.utility.apply_gaussian_filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_gaussian_filter</span></code></a>(mat, sigma_x, sigma_y)</p></td>
 <td><p>Filtering an image in the Fourier domain using a 2D Gaussian window.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#algotom.util.utility.apply_1d_regularizer" title="algotom.util.utility.apply_1d_regularizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_1d_regularizer</span></code></a>(list_data, sijmat)</p></td>
@@ -391,7 +391,7 @@ its boundaries. Default is ‘reflect’.</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.sort_forward">
 <span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">sort_forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#sort_forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.sort_forward" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sort grayscales of an image along an axis.
+<dd><p>Sort gray-scales of an image along an axis.
 e.g. axis=0 is to sort along each column.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -413,8 +413,8 @@ e.g. axis=0 is to sort along each column.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.sort_backward">
 <span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">sort_backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#sort_backward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.sort_backward" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sort grayscales of an image using an index array provided.
-e.g axis=0 is to sort each column.</p>
+<dd><p>Sort gray-scales of an image using an index array provided.
+e.g. axis=0 is to sort each column.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -433,14 +433,14 @@ e.g axis=0 is to sort each column.</p>
 <dt class="sig sig-object py" id="algotom.util.utility.separate_frequency_component">
 <span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">separate_frequency_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'name':</span> <span class="pre">'gaussian',</span> <span class="pre">'sigma':</span> <span class="pre">5}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#separate_frequency_component"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.separate_frequency_component" title="Permalink to this definition">¶</a></dt>
 <dd><p>Separate low and high frequency components of an image along an axis.
-e.g axis=0 is to apply the separation to each column.</p>
+e.g. axis=0 is to apply the separation to each column.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
 <li><p><strong>axis</strong> (<em>int</em>) – Axis along which to apply the filter.</p></li>
 <li><p><strong>window</strong> (<em>array_like or dict</em>) – 1D array or a dictionary which given the name of a window in
-the scipy.signal.window list and its parameters (without window-length).</p></li>
+the scipy.window list and its parameters (without window-length).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -476,12 +476,12 @@ e.g. axis=0 is to apply the fitting to each column.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.detect_stripe">
 <span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">detect_stripe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#detect_stripe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.detect_stripe" title="Permalink to this definition">¶</a></dt>
-<dd><p>Locate stripe positions using Algorithm 4 in Ref. <a href="#id9"><span class="problematic" id="id1">[1]_</span></a></p>
+<dd><p>Locate stripe positions using Algorithm 4 in Ref. [1]</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>list_data</strong> (<em>array_like</em>) – 1D array. Normalized data.</p></li>
-<li><p><strong>snr</strong> (<em>float</em>) – Ratio (&gt;1.0) used to detect stripe locations. Greater is less sensitive.</p></li>
+<li><p><strong>snr</strong> (<em>float</em>) – Ratio (&gt;1.0) for stripe detection. Greater is less sensitive.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -489,18 +489,14 @@ e.g. axis=0 is to apply the fitting to each column.</p>
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.26.028396">https://doi.org/10.1364/OE.26.028396</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1364/OE.26.028396">https://doi.org/10.1364/OE.26.028396</a></p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.calculate_regularization_coefficient">
 <span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">calculate_regularization_coefficient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#calculate_regularization_coefficient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.calculate_regularization_coefficient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate coefficients used for the regularization-based method.
-Eq. (7) in Ref. <a href="#id10"><span class="problematic" id="id3">[1]_</span></a>.</p>
+Eq. (7) in Ref. [1].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -513,11 +509,7 @@ Eq. (7) in Ref. <a href="#id10"><span class="problematic" id="id3">[1]_</span></
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id4"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1016/j.aml.2010.08.022">https://doi.org/10.1016/j.aml.2010.08.022</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1016/j.aml.2010.08.022">https://doi.org/10.1016/j.aml.2010.08.022</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -620,8 +612,8 @@ To check if the provided level is in the right format.</p>
 2D-arrays. i.e [mat_n, (cH_level_n, cV_level_n, cD_level_n), …,
 (cH_level_1, cV_level_1, cD_level_1)].</p></li>
 <li><p><strong>level</strong> (<em>int, list of int, or None</em>) – Decomposition level to be applied the filter.</p></li>
-<li><p><strong>order</strong> (<em>{0, 1, 2}</em>) – Specify which component in a tuple, (cH_level_n, cV_level_n, cD_level_n)
-to be filtered.</p></li>
+<li><p><strong>order</strong> (<em>{0, 1, 2}</em>) – Specify which component in a tuple,
+(cH_level_n, cV_level_n, cD_level_n), to be filtered.</p></li>
 <li><p><strong>method</strong> (<em>str</em>) – Name of the filter in the namespace.</p></li>
 <li><p><strong>para</strong> (<em>list or tuple</em>) – Parameters of the filter.</p></li>
 </ul>
@@ -738,15 +730,15 @@ generated if None.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.make_2d_gaussian_window">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">make_2d_gaussian_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigmay</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#make_2d_gaussian_window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.make_2d_gaussian_window" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">make_2d_gaussian_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#make_2d_gaussian_window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.make_2d_gaussian_window" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a 2D Gaussian window.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>height</strong> (<em>int</em>) – Height of the image.</p></li>
 <li><p><strong>width</strong> (<em>int</em>) – Width of the image.</p></li>
-<li><p><strong>sigmax</strong> (<em>int</em>) – Sigma in the x-direction.</p></li>
-<li><p><strong>sigmay</strong> (<em>int</em>) – Sigma in the y-direction.</p></li>
+<li><p><strong>sigma_x</strong> (<em>int</em>) – Sigma in the x-direction.</p></li>
+<li><p><strong>sigma_y</strong> (<em>int</em>) – Sigma in the y-direction.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -757,15 +749,15 @@ generated if None.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.apply_gaussian_filter">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">apply_gaussian_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigmay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#apply_gaussian_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.apply_gaussian_filter" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">apply_gaussian_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#apply_gaussian_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.apply_gaussian_filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filtering an image in the Fourier domain using a 2D Gaussian window.
 Smaller is stronger.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
-<li><p><strong>sigmax</strong> (<em>int</em>) – Sigma in the x-direction.</p></li>
-<li><p><strong>sigmay</strong> (<em>int</em>) – Sigma in the y-direction.</p></li>
+<li><p><strong>sigma_x</strong> (<em>int</em>) – Sigma in the x-direction.</p></li>
+<li><p><strong>sigma_y</strong> (<em>int</em>) – Sigma in the y-direction.</p></li>
 <li><p><strong>pad</strong> (<em>int or None</em>) – Padding for the Fourier transform.</p></li>
 <li><p><strong>mode</strong> (<em>str, list of str, or tuple of str</em>) – Padding method. One of options : ‘reflect’, ‘edge’, ‘constant’. Full
 list is at:
@@ -788,7 +780,7 @@ To apply a regularizer to an 1D-array.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.apply_regularization_filter">
 <span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">apply_regularization_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#apply_regularization_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.apply_regularization_filter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply a regularization filter using the method in Ref. <a href="#id11"><span class="problematic" id="id5">[1]_</span></a>.
+<dd><p>Apply a regularization filter using the method in Ref. [1].
 Note that it’s computationally costly.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -804,11 +796,7 @@ Note that it’s computationally costly.</p>
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id6"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1016/j.aml.2010.08.022">https://doi.org/10.1016/j.aml.2010.08.022</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1016/j.aml.2010.08.022">https://doi.org/10.1016/j.aml.2010.08.022</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -830,7 +818,7 @@ Useful for designing a Fourier filter.</p>
 <dt class="sig sig-object py" id="algotom.util.utility.detect_sample">
 <span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">detect_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sino_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'180'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#detect_sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.detect_sample" title="Permalink to this definition">¶</a></dt>
 <dd><p>To check if there is a sample in a sinogram using the “double-wedge”
-property of the Fourier transform of the sinogram (Ref. <a href="#id12"><span class="problematic" id="id7">[1]_</span></a>).</p>
+property of the Fourier transform of the sinogram (Ref. [1]).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -843,11 +831,7 @@ property of the Fourier transform of the sinogram (Ref. <a href="#id12"><span cl
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id8"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -883,9 +867,9 @@ row-direction.</p></li>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><em>list of int and float</em> – If the slice is not in the overlapping area between two grid-rows, the
-result is a list of [grid_row_index, slice_index, weight_factor]. If the
-slice is in the overlapping area between two grid-rows, the result is a
-list of [[grid_row_index_0, slice_index_0, weight_factor_0],
+result is a list of [grid_row_index, slice_index, weight_factor]. If
+the slice is in the overlapping area between two grid-rows, the result
+is a list of [[grid_row_index_0, slice_index_0, weight_factor_0],
 [grid_row_index_1, slice_index_1, weight_factor_1]]</p>
 </dd>
 </dl>

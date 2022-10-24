@@ -175,15 +175,16 @@
             
   <div class="section" id="module-algotom.rec.reconstruction">
 <span id="algotom-rec-reconstruction"></span><h1><span class="section-number">7.3.1. </span><a class="reference internal" href="#module-algotom.rec.reconstruction" title="algotom.rec.reconstruction"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.rec.reconstruction</span></code></a><a class="headerlink" href="#module-algotom.rec.reconstruction" title="Permalink to this heading">¶</a></h1>
-<dl class="simple">
-<dt>Module of FFT-based reconstruction methods in the reconstruction stage:</dt><dd><ul class="simple">
-<li><p>Filtered back-projection (FBP) method for GPU (using numba and cuda) and CPU.</p></li>
+<p>Module of FFT-based reconstruction methods in the reconstruction stage:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Filtered back-projection (FBP) method for GPU (using numba and cuda)
+and CPU.</p></li>
 <li><p>Direct Fourier inversion (DFI) method.</p></li>
-<li><p>Wrapper for Astra Toolbox reconstruction (optional)</p></li>
-<li><p>Wrapper for Tomopy-gridrec reconstruction (optional)</p></li>
+<li><p>Wrapper for Astra-Toolbox reconstruction methods (optional)</p></li>
+<li><p>Wrapper for Tomopy-gridrec reconstruction method (optional)</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 <p class="rubric"><strong>Functions:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <colgroup>
@@ -230,8 +231,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filter_name</strong> (<a href="#id1"><span class="problematic" id="id2">*</span></a>{“hann”, “bartlett”, “blackman”, “hamming”, “nuttall”,*) –            “parzen”, “triang”}
-Window function used for filtering.</p></li>
+<li><p><strong>filter_name</strong> (<em>{“hann”, “bartlett”, “blackman”, “hamming”, “nuttall”,                   “parzen”, “triang”}</em>) – Window function used for filtering.</p></li>
 <li><p><strong>width</strong> (<em>int</em>) – Width of the window.</p></li>
 </ul>
 </dd>
@@ -251,8 +251,7 @@ window with the option of adding a smoothing window.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>height</strong> (<em>int</em>) – Height of the window.</p></li>
 <li><p><strong>width</strong> (<em>int</em>) – Width of the window.</p></li>
-<li><p><strong>filter_name</strong> (<a href="#id3"><span class="problematic" id="id4">*</span></a>{None, “hann”, “bartlett”, “blackman”, “hamming”, “nuttall”,*) –          “parzen”, “triang”}
-Name of a smoothing window used.</p></li>
+<li><p><strong>filter_name</strong> (<em>{None, “hann”, “bartlett”, “blackman”, “hamming”,                  “nuttall”, “parzen”, “triang”}</em>) – Name of a smoothing window used.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -269,10 +268,9 @@ filter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>sinogram</strong> (<em>array_like</em>) – 2D rray. Sinogram image.</p></li>
+<li><p><strong>sinogram</strong> (<em>array_like</em>) – 2D array. Sinogram image.</p></li>
 <li><p><strong>ramp_win</strong> (<em>complex ndarray or None</em>) – Ramp window in the Fourier space.</p></li>
-<li><p><strong>filter_name</strong> (<a href="#id5"><span class="problematic" id="id6">*</span></a>{None, “hann”, “bartlett”, “blackman”, “hamming”, “nuttall”,*) –          “parzen”, “triang”}
-Name of a smoothing window used.</p></li>
+<li><p><strong>filter_name</strong> (<em>{None, “hann”, “bartlett”, “blackman”, “hamming”,                  “nuttall”, “parzen”, “triang”}</em>) – Name of a smoothing window used.</p></li>
 <li><p><strong>pad</strong> (<em>int or None</em>) – To apply padding before the FFT. The value is set to 10% of the image
 width if None is given.</p></li>
 <li><p><strong>pad_mode</strong> (<em>str</em>) – Padding method. Full list can be found at numpy.pad documentation.</p></li>
@@ -337,9 +335,8 @@ sinogram image.</p>
 <li><p><strong>center</strong> (<em>float</em>) – Center of rotation.</p></li>
 <li><p><strong>angles</strong> (<em>array_like, optional</em>) – 1D array. List of angles (in radian) corresponding to the sinogram.</p></li>
 <li><p><strong>ratio</strong> (<em>float, optional</em>) – To apply a circle mask to the reconstructed image.</p></li>
-<li><p><strong>ramp_win</strong> (<em>complex ndarray, optional</em>) – Ramp window in the Fourier space. It will be generated if None is given.</p></li>
-<li><p><strong>filter_name</strong> (<a href="#id7"><span class="problematic" id="id8">*</span></a>{None, “hann”, “bartlett”, “blackman”, “hamming”, “nuttall”,*) –           “parzen”, “triang”}
-Apply a smoothing filter.</p></li>
+<li><p><strong>ramp_win</strong> (<em>complex ndarray, optional</em>) – Ramp window in the Fourier space. Generated if None.</p></li>
+<li><p><strong>filter_name</strong> (<em>{None, “hann”, “bartlett”, “blackman”, “hamming”,                  “nuttall”, “parzen”, “triang”}</em>) – Apply a smoothing filter.</p></li>
 <li><p><strong>pad</strong> (<em>int, optional</em>) – To apply padding before the FFT. The value is set to 10% of the image
 width if None is given.</p></li>
 <li><p><strong>pad_mode</strong> (<em>str, optional</em>) – Padding method. Full list can be found at numpy.pad documentation.</p></li>
@@ -382,8 +379,8 @@ DFI (direct Fourier inversion) reconstruction method.</p>
 <dt class="sig sig-object py" id="algotom.rec.reconstruction.dfi_reconstruction">
 <span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">dfi_reconstruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hann'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'edge'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#dfi_reconstruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.dfi_reconstruction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply the DFI (direct Fourier inversion) reconstruction method to a
-sinogram image (Ref. <a class="footnote-reference brackets" href="#id13" id="id9">1</a>). The method is a practical and direct
-implementation of the Fourier slice theorem (Ref. <a class="footnote-reference brackets" href="#id14" id="id10">2</a>).</p>
+sinogram image (Ref. [1]). The method is a practical and direct
+implementation of the Fourier slice theorem (Ref. [2]).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -391,8 +388,7 @@ implementation of the Fourier slice theorem (Ref. <a class="footnote-reference b
 <li><p><strong>center</strong> (<em>float</em>) – Center of rotation.</p></li>
 <li><p><strong>angles</strong> (<em>array_like</em>) – 1D array. List of angles (in radian) corresponding to the sinogram.</p></li>
 <li><p><strong>ratio</strong> (<em>float</em>) – To apply a circle mask to the reconstructed image.</p></li>
-<li><p><strong>filter_name</strong> (<a href="#id11"><span class="problematic" id="id12">*</span></a>{None, “hann”, “bartlett”, “blackman”, “hamming”, “nuttall”,*) –           “parzen”, “triang”}
-Apply a smoothing filter.</p></li>
+<li><p><strong>filter_name</strong> (<em>{None, “hann”, “bartlett”, “blackman”, “hamming”,                  “nuttall”, “parzen”, “triang”}</em>) – Apply a smoothing filter.</p></li>
 <li><p><strong>pad_rate</strong> (<em>float</em>) – To apply padding before the FFT. The padding width equals to
 (pad_rate * image_width).</p></li>
 <li><p><strong>pad_mode</strong> (<em>str</em>) – Padding method. Full list can be found at numpy.pad documentation.</p></li>
@@ -404,14 +400,8 @@ Apply a smoothing filter.</p></li>
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id9">1</a></span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
-</dd>
-<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id10">2</a></span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1071/PH560198">https://doi.org/10.1071/PH560198</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a>
+[2] : <a class="reference external" href="https://doi.org/10.1071/PH560198">https://doi.org/10.1071/PH560198</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -431,6 +421,7 @@ Users must install Tomopy before using this function.</p>
 <a class="reference external" href="https://github.com/tomopy/tomopy/blob/master/source/tomopy/recon/algorithm.py">https://github.com/tomopy/tomopy/blob/master/source/tomopy/recon/algorithm.py</a></p></li>
 <li><p><strong>apply_log</strong> (<em>bool</em>) – Apply the logarithm function to the sinogram before reconstruction.</p></li>
 <li><p><strong>pad</strong> (<em>bool</em>) – Apply edge padding to the nearest power of 2.</p></li>
+<li><p><strong>ncore</strong> (<em>int or None</em>) – Number of cpu-cores used for computing. Automatically selected if None.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

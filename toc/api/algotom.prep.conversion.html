@@ -180,19 +180,19 @@
             
   <div class="section" id="module-algotom.prep.conversion">
 <span id="algotom-prep-conversion"></span><h1><span class="section-number">7.2.2. </span><a class="reference internal" href="#module-algotom.prep.conversion" title="algotom.prep.conversion"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.conversion</span></code></a><a class="headerlink" href="#module-algotom.prep.conversion" title="Permalink to this heading">¶</a></h1>
-<dl class="simple">
-<dt>Module of conversion methods in the preprocessing stage:</dt><dd><ul class="simple">
+<p>Module of conversion methods in the preprocessing stage:</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>Stitching images.</p></li>
 <li><p>Joining images if there is no overlapping.</p></li>
-<li><p>Converting a 360-degree sinogram with offset center-of-rotation (COR) to
-a 180-degree sinogram.</p></li>
-<li><p>Extending a 360-degree sinogram with offset COR for direct reconstruction
-instead of converting it to a 180-degree sinogram.</p></li>
+<li><p>Converting a 360-degree sinogram with offset center-of-rotation (COR)
+to a 180-degree sinogram.</p></li>
+<li><p>Extending a 360-degree sinogram with offset COR for direct
+reconstruction instead of converting it to a 180-degree sinogram.</p></li>
 <li><p>Converting a 180-degree sinogram to a 360-sinogram.</p></li>
 <li><p>Generating a sinogram from a helical data.</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 <p class="rubric"><strong>Functions:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <colgroup>
@@ -225,10 +225,10 @@ instead of converting it to a 180-degree sinogram.</p></li>
 <td><p>Extend a 360-degree sinogram (with offset center-of-rotation) for later reconstruction (Ref.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#algotom.prep.conversion.generate_sinogram_helical_scan" title="algotom.prep.conversion.generate_sinogram_helical_scan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_sinogram_helical_scan</span></code></a>(index, ...[, ...])</p></td>
-<td><p>Generate a 180-degree sinogram or a 360-degree sinogram from a helical scan dataset which is a hdf/nxs object (Ref.</p></td>
+<td><p>Generate a 180-degree/360-degree sinogram from a helical-scan dataset which is a hdf/nxs object (Ref.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#algotom.prep.conversion.generate_full_sinogram_helical_scan" title="algotom.prep.conversion.generate_full_sinogram_helical_scan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_full_sinogram_helical_scan</span></code></a>(index, ...)</p></td>
-<td><p>Generate a full sinogram from a helical scan dataset which is a hdf/nxs object (Ref.</p></td>
+<td><p>Generate a full sinogram from a helical-scan dataset which is a hdf/nxs object (Ref.</p></td>
 </tr>
 </tbody>
 </table>
@@ -359,7 +359,7 @@ side : Overlap side between two images.</p></li>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><strong>sino_stiched</strong> (<em>array_like</em>) – Converted sinogram.</p></li>
+<li><p><strong>sino_stitch</strong> (<em>array_like</em>) – Converted sinogram.</p></li>
 <li><p><strong>cor</strong> (<em>float</em>) – Updated center-of-rotation referred to the converted sinogram.</p></li>
 </ul>
 </p>
@@ -370,7 +370,7 @@ side : Overlap side between two images.</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.conversion.convert_sinogram_180_to_360">
 <span class="sig-prename descclassname"><span class="pre">algotom.prep.conversion.</span></span><span class="sig-name descname"><span class="pre">convert_sinogram_180_to_360</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sino_180</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/conversion.html#convert_sinogram_180_to_360"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.conversion.convert_sinogram_180_to_360" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert a 180-degree sinogram to a 360-degree sinogram (Ref. <a href="#id9"><span class="problematic" id="id1">[1]_</span></a>).</p>
+<dd><p>Convert a 180-degree sinogram to a 360-degree sinogram (Ref. [1]).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -383,18 +383,14 @@ side : Overlap side between two images.</p></li>
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.22.019078">https://doi.org/10.1364/OE.22.019078</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1364/OE.22.019078">https://doi.org/10.1364/OE.22.019078</a></p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.conversion.extend_sinogram">
 <span class="sig-prename descclassname"><span class="pre">algotom.prep.conversion.</span></span><span class="sig-name descname"><span class="pre">extend_sinogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sino_360</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/conversion.html#extend_sinogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.conversion.extend_sinogram" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extend a 360-degree sinogram (with offset center-of-rotation) for
-later reconstruction (Ref. <a href="#id10"><span class="problematic" id="id3">[1]_</span></a>).</p>
+later reconstruction (Ref. [1]).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -412,18 +408,14 @@ later reconstruction (Ref. <a href="#id10"><span class="problematic" id="id3">[1
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id4"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.conversion.generate_sinogram_helical_scan">
 <span class="sig-prename descclassname"><span class="pre">algotom.prep.conversion.</span></span><span class="sig-name descname"><span class="pre">generate_sinogram_helical_scan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tomo_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_proj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_stop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scan_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'180'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/conversion.html#generate_sinogram_helical_scan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.conversion.generate_sinogram_helical_scan" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate a 180-degree sinogram or a 360-degree sinogram from a helical
-scan dataset which is a hdf/nxs object (Ref. <a href="#id11"><span class="problematic" id="id5">[1]_</span></a>).</p>
+<dd><p>Generate a 180-degree/360-degree sinogram from a helical-scan dataset
+which is a hdf/nxs object (Ref. [1]).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -436,7 +428,7 @@ scan dataset which is a hdf/nxs object (Ref. <a href="#id11"><span class="proble
 <li><p><strong>pitch</strong> (<em>float</em>) – The distance which the y-stage is translated in one full rotation.</p></li>
 <li><p><strong>scan_type</strong> (<em>{“180”, “360”}</em>) – One of two options: “180” for generating a 180-degree sinogram or
 “360” for generating a 360-degree sinogram.</p></li>
-<li><p><strong>angles</strong> (<em>array_like, optional</em>) – 1D array. List of angles (degree) corresponding to acquired projections.</p></li>
+<li><p><strong>angles</strong> (<em>array_like, optional</em>) – 1D array. Angles (degree) corresponding to acquired projections.</p></li>
 <li><p><strong>flat</strong> (<em>array_like, optional</em>) – Flat-field image used for flat-field correction.</p></li>
 <li><p><strong>dark</strong> (<em>array_like, optional</em>) – Dark-field image used for flat-field correction.</p></li>
 <li><p><strong>mask</strong> (<em>array_like, optional</em>) – Used for removing streak artifacts caused by blobs in the flat-field
@@ -453,19 +445,15 @@ image.</p></li>
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id6"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.conversion.generate_full_sinogram_helical_scan">
 <span class="sig-prename descclassname"><span class="pre">algotom.prep.conversion.</span></span><span class="sig-name descname"><span class="pre">generate_full_sinogram_helical_scan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tomo_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_proj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_stop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scan_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'180'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/conversion.html#generate_full_sinogram_helical_scan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.conversion.generate_full_sinogram_helical_scan" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate a full sinogram from a helical scan dataset which is a hdf/nxs
-object (Ref. <a href="#id12"><span class="problematic" id="id7">[1]_</span></a>). Full sinogram is all 1D projection of the same slice of
-a sample staying inside the field of view.</p>
+<dd><p>Generate a full sinogram from a helical-scan dataset which is a hdf/nxs
+object (Ref. [1]). Full sinogram is all 1D projections of the same slice
+of a sample staying inside the field of view.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -477,7 +465,7 @@ a sample staying inside the field of view.</p>
 <li><p><strong>y_stop</strong> (<em>float</em>) – Y-position of the stage at the end of the scan.</p></li>
 <li><p><strong>pitch</strong> (<em>float</em>) – The distance which the y-stage is translated in one full rotation.</p></li>
 <li><p><strong>scan_type</strong> (<em>{“180”, “360”}</em>) – Data acquired is the 180-degree type or 360-degree type [1].</p></li>
-<li><p><strong>angles</strong> (<em>array_like, optional</em>) – 1D array. List of angles (degree) corresponding to acquired projections.</p></li>
+<li><p><strong>angles</strong> (<em>array_like, optional</em>) – 1D array. Angles (degree) corresponding to acquired projections.</p></li>
 <li><p><strong>flat</strong> (<em>array_like, optional</em>) – Flat-field image used for flat-field correction.</p></li>
 <li><p><strong>dark</strong> (<em>array_like, optional</em>) – Dark-field image used for flat-field correction.</p></li>
 <li><p><strong>mask</strong> (<em>array_like, optional</em>) – Used for removing streak artifacts caused by blobs in the flat-field
@@ -494,11 +482,7 @@ image.</p></li>
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id8"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
 </dd></dl>
 
 </div>

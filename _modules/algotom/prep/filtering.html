@@ -178,15 +178,16 @@
 <span class="c1"># ============================================================================</span>
 <span class="c1"># Author: Nghia T. Vo</span>
 <span class="c1"># E-mail:  </span>
-<span class="c1"># Description: Python implementations of preprocessing techniques.</span>
+<span class="c1"># Description: Python module of filtering techniques.</span>
 <span class="c1"># Contributors:</span>
 <span class="c1"># ============================================================================</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Module of filtering methods in the preprocessing stage:</span>
-<span class="sd">    - Fresnel filter (denoising or low-pass filter), a simplified version of</span>
-<span class="sd">      the well-known Paganin&#39;s filter.</span>
-<span class="sd">    - Double-wedge filter.</span>
+
+<span class="sd">    -   Fresnel filter (denoising or low-pass filter), a simplified version of</span>
+<span class="sd">        the well-known Paganin&#39;s filter.</span>
+<span class="sd">    -   Double-wedge filter.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -234,8 +235,8 @@
 <div class="viewcode-block" id="fresnel_filter"><a class="viewcode-back" href="../../../toc/api/algotom.prep.filtering.html#algotom.prep.filtering.fresnel_filter">[docs]</a><span class="k">def</span> <span class="nf">fresnel_filter</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">ratio</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">apply_log</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Apply a low-pass filter based on the Fresnel propagator to an image</span>
-<span class="sd">    (Ref. [1]_). It can be used for improving the contrast of an image.</span>
-<span class="sd">    It&#39;s simpler than the well-known Paganin&#39;s filter (Ref. [2]_).</span>
+<span class="sd">    (Ref. [1]). It can be used for improving the contrast of an image.</span>
+<span class="sd">    It&#39;s simpler than the well-known Paganin&#39;s filter (Ref. [2]).</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -260,8 +261,8 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1364/OE.418448</span>
-<span class="sd">    .. [2] https://www.researchgate.net/profile/Nghia-T-Vo/publication/351559034_Data_processing_methods_and_data_acquisition_for_samples_larger_than_the_field_of_view_in_parallel-beam_tomography_selected_replies_to_technical_questions_from_reviewers/data/609d2c69a6fdcc9aa7e697ea/Selected-replies-to-technical-questions-from-reviewers.pdf</span>
+<span class="sd">    [1] : https://doi.org/10.1364/OE.418448</span>
+<span class="sd">    [2] : https://tinyurl.com/2f8nv875</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">apply_log</span><span class="p">:</span>
         <span class="n">mat</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
@@ -288,7 +289,7 @@
 
 <div class="viewcode-block" id="make_double_wedge_mask"><a class="viewcode-back" href="../../../toc/api/algotom.prep.filtering.html#algotom.prep.filtering.make_double_wedge_mask">[docs]</a><span class="k">def</span> <span class="nf">make_double_wedge_mask</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Generate a double-wedge binary mask using Eq. (3) in Ref. [1]_.</span>
+<span class="sd">    Generate a double-wedge binary mask using Eq. (3) in Ref. [1].</span>
 <span class="sd">    Values outside the double-wedge region correspond to 0.0.</span>
 
 <span class="sd">    Parameters</span>
@@ -307,7 +308,7 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1364/OE.22.019078</span>
+<span class="sd">    [1] : https://doi.org/10.1364/OE.22.019078</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">du</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">width</span>
     <span class="n">dv</span> <span class="o">=</span> <span class="p">(</span><span class="n">height</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">height</span> <span class="o">*</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
@@ -327,7 +328,7 @@
 <div class="viewcode-block" id="double_wedge_filter"><a class="viewcode-back" href="../../../toc/api/algotom.prep.filtering.html#algotom.prep.filtering.double_wedge_filter">[docs]</a><span class="k">def</span> <span class="nf">double_wedge_filter</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sino_type</span><span class="o">=</span><span class="s2">&quot;180&quot;</span><span class="p">,</span> <span class="n">iteration</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
                         <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">250</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Apply double-wedge filter to a sinogram image (Ref. [1]_).</span>
+<span class="sd">    Apply double-wedge filter to a sinogram image (Ref. [1]).</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -353,7 +354,7 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1364/OE.418448</span>
+<span class="sd">    [1] : https://doi.org/10.1364/OE.418448</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">sino_type</span> <span class="o">==</span> <span class="s2">&quot;180&quot;</span> <span class="ow">or</span> <span class="n">sino_type</span> <span class="o">==</span> <span class="s2">&quot;360&quot;</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;!!! Use only one of two options: &#39;180&#39; or &#39;360&#39;!!!&quot;</span><span class="p">)</span>

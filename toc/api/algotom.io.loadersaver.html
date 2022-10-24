@@ -176,20 +176,20 @@
             
   <div class="section" id="module-algotom.io.loadersaver">
 <span id="algotom-io-loadersaver"></span><h1><span class="section-number">7.1.2. </span><a class="reference internal" href="#module-algotom.io.loadersaver" title="algotom.io.loadersaver"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.io.loadersaver</span></code></a><a class="headerlink" href="#module-algotom.io.loadersaver" title="Permalink to this heading">¶</a></h1>
-<dl class="simple">
-<dt>Module for I/O tasks:</dt><dd><ul class="simple">
+<p>Module for I/O tasks:</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>Load data from an image file (tif, png, jpeg) or a hdf/nxs file.</p></li>
-<li><p>Get dataset information in a hdf/nxs file.</p></li>
+<li><p>Get information from a hdf/nxs file.</p></li>
 <li><p>Search for datasets in a hdf/nxs file.</p></li>
 <li><p>Save a 2D array as a tif image or 2D, 3D array to a hdf/nxs file.</p></li>
-<li><p>Search file names, make a file/folder name.</p></li>
+<li><p>Get file names, make file/folder name.</p></li>
 <li><p>Load distortion coefficients from a txt file.</p></li>
 <li><p>Get the tree view of a hdf/nxs file.</p></li>
-<li><p>Functions for loading stacks of images from multiple datasets, e.g. to be
-used by speckle-based phase contrast tomography.</p></li>
+<li><p>Functions for loading stacks of images from multiple datasets, e.g. to
+be used by speckle-based phase contrast tomography.</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 <p class="rubric"><strong>Functions:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <colgroup>
@@ -240,13 +240,13 @@ used by speckle-based phase contrast tomography.</p></li>
 <td><p>A method for multi-position speckle-based phase-contrast tomography to get two stacks of reference images (speckle images) and sample images (at the same rotation angle from each tomographic dataset).</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#algotom.io.loadersaver.get_reference_sample_stacks" title="algotom.io.loadersaver.get_reference_sample_stacks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_reference_sample_stacks</span></code></a>(proj_idx, ...[, ...])</p></td>
-<td><p>A method for multi-position speckle-based phase-contrast tomography to get two stacks of reference images (speckle images) and sample images (at the same rotation angle from each tomographic dataset).</p></td>
+<td><p>Get two stacks of reference images (speckle images) and sample images (at the same rotation angle from each tomographic dataset).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#algotom.io.loadersaver.get_tif_stack" title="algotom.io.loadersaver.get_tif_stack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_tif_stack</span></code></a>(file_base[, idx, crop, ...])</p></td>
 <td><p>Load tif images to a stack.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#algotom.io.loadersaver.get_image_stack" title="algotom.io.loadersaver.get_image_stack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_image_stack</span></code></a>(idx, list_path[, data_key, ...])</p></td>
-<td><p>Stack images of the same index from different datasets.</p></td>
+<td><p>Stack images having the same index from multiple datasets.</p></td>
 </tr>
 </tbody>
 </table>
@@ -413,7 +413,7 @@ E.g: Output_00001, Output_00002…</p>
 <li><p><strong>key_path</strong> (<em>str</em>) – Key path to the dataset.</p></li>
 <li><p><strong>data_type</strong> (<em>str</em>) – Type of data.</p></li>
 <li><p><strong>overwrite</strong> (<em>bool</em>) – Overwrite the existing file if True.</p></li>
-<li><p><strong>options</strong> (<em>dict, optional</em>) – Add metadata. E.g. options={“entry/angles”: angles, “entry/energy”: 53}.</p></li>
+<li><p><strong>options</strong> (<em>dict, optional</em>) – Add metadata. E.g options={“entry/angles”: angles, “entry/energy”: 53}.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -514,9 +514,9 @@ crop = (crop_top, crop_bottom, crop_left, crop_right).</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.io.loadersaver.get_reference_sample_stacks">
 <span class="sig-prename descclassname"><span class="pre">algotom.io.loadersaver.</span></span><span class="sig-name descname"><span class="pre">get_reference_sample_stacks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proj_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sam_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sam_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flat_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dark_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_use</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fix_zero_div</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/io/loadersaver.html#get_reference_sample_stacks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.io.loadersaver.get_reference_sample_stacks" title="Permalink to this definition">¶</a></dt>
-<dd><p>A method for multi-position speckle-based phase-contrast tomography to get
-two stacks of reference images (speckle images) and sample images (at the
-same rotation angle from each tomographic dataset).</p>
+<dd><p>Get two stacks of reference images (speckle images) and sample images (at
+the same rotation angle from each tomographic dataset). A method for
+multi-position speckle-based phase-contrast tomography.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -569,16 +569,16 @@ crop = (crop_top, crop_bottom, crop_left, crop_right).</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.io.loadersaver.get_image_stack">
 <span class="sig-prename descclassname"><span class="pre">algotom.io.loadersaver.</span></span><span class="sig-name descname"><span class="pre">get_image_stack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flat_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dark_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_use</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fix_zero_div</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/io/loadersaver.html#get_image_stack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.io.loadersaver.get_image_stack" title="Permalink to this definition">¶</a></dt>
-<dd><p>Stack images of the same index from different datasets. For tif images,
+<dd><p>Stack images having the same index from multiple datasets. For tif images,
 if only one dataset is provided (list_path is a string, not a list),
-there’s an option, idx = None, to load the whole stack.</p>
+there is an option, idx = None, to load the whole stack.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>idx</strong> (<em>int or None</em>) – Index of an image in a dataset. Use None to load all images if only
 one dataset provided.</p></li>
 <li><p><strong>list_path</strong> (<em>list of str</em>) – List of hdf/nxs file-paths or folders of tif-images to datasets.</p></li>
-<li><p><strong>data_key</strong> (<em>str</em>) – Requested if datasets are hdf/nxs files.</p></li>
+<li><p><strong>data_key</strong> (<em>str</em>) – Requested if input is a hdf/nxs files.</p></li>
 <li><p><strong>average</strong> (<em>bool, optional</em>) – Average images in a dataset if True.</p></li>
 <li><p><strong>crop</strong> (<em>tuple of int, optional</em>) – Crop the images from the edges, i.e.
 crop = (crop_top, crop_bottom, crop_left, crop_right).</p></li>

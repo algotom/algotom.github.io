@@ -178,22 +178,23 @@
 <span class="c1"># ============================================================================</span>
 <span class="c1"># Author: Nghia T. Vo</span>
 <span class="c1"># E-mail:  </span>
-<span class="c1"># Description: Python implementations of preprocessing techniques.</span>
+<span class="c1"># Description: Python module for calculation techniques.</span>
 <span class="c1"># Contributors:</span>
 <span class="c1"># ============================================================================</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Module of calculation methods in the preprocessing stage:</span>
-<span class="sd">    - Calculating the center-of-rotation (COR) in a 180-degree scan using a</span>
-<span class="sd">      sinogram.</span>
-<span class="sd">    - Determining the overlap-side and overlap-area between images.</span>
-<span class="sd">    - Calculating the COR in a half-acquisition scan (360-degree scan with</span>
-<span class="sd">      offset COR).</span>
-<span class="sd">    - Using the similar technique as above to calculate the COR in a 180-degree</span>
-<span class="sd">      scan from two projections.</span>
-<span class="sd">    - Determining the relative translations between images using</span>
-<span class="sd">      phase-correlation technique.</span>
-<span class="sd">    - Calculating the COR in a 180-degree scan using phase-correlation technique.</span>
+
+<span class="sd">    -   Calculating the center-of-rotation (COR) in a 180-degree scan using a</span>
+<span class="sd">        sinogram.</span>
+<span class="sd">    -   Determining the overlap-side and overlap-area between images.</span>
+<span class="sd">    -   Calculating the COR in a half-acquisition scan (360-degree scan with</span>
+<span class="sd">        offset COR).</span>
+<span class="sd">    -   Using the similar technique as above to calculate the COR in a 180-degree</span>
+<span class="sd">        scan from two projections.</span>
+<span class="sd">    -   Determining the relative translations between images using</span>
+<span class="sd">        phase-correlation technique.</span>
+<span class="sd">    -   Calculating the COR using phase-correlation technique.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">warnings</span>
@@ -207,7 +208,7 @@
 
 <div class="viewcode-block" id="make_inverse_double_wedge_mask"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.make_inverse_double_wedge_mask">[docs]</a><span class="k">def</span> <span class="nf">make_inverse_double_wedge_mask</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Generate a double-wedge binary mask using Eq. (3) in Ref. [1]_.</span>
+<span class="sd">    Generate a double-wedge binary mask using Eq. (3) in Ref. [1].</span>
 <span class="sd">    Values outside the double-wedge region correspond to 1.0.</span>
 
 <span class="sd">    Parameters</span>
@@ -226,7 +227,7 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1364/OE.22.019078</span>
+<span class="sd">    [1] : https://doi.org/10.1364/OE.22.019078</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">du</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">width</span>
     <span class="n">dv</span> <span class="o">=</span> <span class="p">(</span><span class="n">height</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">height</span> <span class="o">*</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
@@ -434,7 +435,7 @@
 <div class="viewcode-block" id="find_center_vo"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_center_vo">[docs]</a><span class="k">def</span> <span class="nf">find_center_vo</span><span class="p">(</span><span class="n">sino_180</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
                    <span class="n">ratio</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">dsp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Find the center-of-rotation using the method described in Ref. [1]_.</span>
+<span class="sd">    Find the center-of-rotation using the method described in Ref. [1].</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -464,7 +465,7 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1364/OE.22.019078</span>
+<span class="sd">    [1] : https://doi.org/10.1364/OE.22.019078</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">)</span> <span class="o">=</span> <span class="n">sino_180</span><span class="o">.</span><span class="n">shape</span>
     <span class="k">if</span> <span class="n">start</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -640,7 +641,7 @@
 <div class="viewcode-block" id="find_overlap"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_overlap">[docs]</a><span class="k">def</span> <span class="nf">find_overlap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">win_width</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">denoise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">use_overlap</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Find the overlap area and overlap side between two images (Ref. [1]_) where</span>
+<span class="sd">    Find the overlap area and overlap side between two images (Ref. [1]) where</span>
 <span class="sd">    the overlap side referring to the first image.</span>
 
 <span class="sd">    Parameters</span>
@@ -675,7 +676,7 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1364/OE.418448</span>
+<span class="sd">    [1] : https://doi.org/10.1364/OE.418448</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">ncol1</span><span class="p">)</span> <span class="o">=</span> <span class="n">mat1</span><span class="o">.</span><span class="n">shape</span>
     <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">ncol2</span><span class="p">)</span> <span class="o">=</span> <span class="n">mat2</span><span class="o">.</span><span class="n">shape</span>
@@ -693,10 +694,10 @@
         <span class="n">overlap_position</span> <span class="o">=</span> <span class="n">overlap_position</span> <span class="o">+</span> <span class="n">offset</span>
         <span class="n">overlap</span> <span class="o">=</span> <span class="n">overlap_position</span> <span class="o">+</span> <span class="n">win_width</span> <span class="o">//</span> <span class="mi">2</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="p">(</span><span class="n">list_metric1</span><span class="p">,</span> <span class="n">offset1</span><span class="p">)</span> <span class="o">=</span> <span class="n">search_overlap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">win_width</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span>
-                                                 <span class="n">denoise</span><span class="p">,</span> <span class="n">use_overlap</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">list_metric2</span><span class="p">,</span> <span class="n">offset2</span><span class="p">)</span> <span class="o">=</span> <span class="n">search_overlap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">win_width</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span>
-                                                 <span class="n">denoise</span><span class="p">,</span> <span class="n">use_overlap</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">list_metric1</span><span class="p">,</span> <span class="n">offset1</span><span class="p">)</span> <span class="o">=</span> <span class="n">search_overlap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">win_width</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+                                                 <span class="n">norm</span><span class="p">,</span> <span class="n">denoise</span><span class="p">,</span> <span class="n">use_overlap</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">list_metric2</span><span class="p">,</span> <span class="n">offset2</span><span class="p">)</span> <span class="o">=</span> <span class="n">search_overlap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">win_width</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                                                 <span class="n">norm</span><span class="p">,</span> <span class="n">denoise</span><span class="p">,</span> <span class="n">use_overlap</span><span class="p">)</span>
         <span class="p">(</span><span class="n">curvature1</span><span class="p">,</span> <span class="n">overlap_position1</span><span class="p">)</span> <span class="o">=</span> <span class="n">calculate_curvature</span><span class="p">(</span><span class="n">list_metric1</span><span class="p">)</span>
         <span class="n">overlap_position1</span> <span class="o">=</span> <span class="n">overlap_position1</span> <span class="o">+</span> <span class="n">offset1</span>
         <span class="p">(</span><span class="n">curvature2</span><span class="p">,</span> <span class="n">overlap_position2</span><span class="p">)</span> <span class="o">=</span> <span class="n">calculate_curvature</span><span class="p">(</span><span class="n">list_metric2</span><span class="p">)</span>
@@ -761,7 +762,7 @@
                     <span class="n">use_overlap</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the center-of-rotation (COR) in a 360-degree scan with offset COR use</span>
-<span class="sd">    the method presented in Ref. [1]_.</span>
+<span class="sd">    the method presented in Ref. [1].</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -795,7 +796,7 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1364/OE.418448</span>
+<span class="sd">    [1] : https://doi.org/10.1364/OE.418448</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">)</span> <span class="o">=</span> <span class="n">sino_360</span><span class="o">.</span><span class="n">shape</span>
     <span class="n">nrow_180</span> <span class="o">=</span> <span class="n">nrow</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
@@ -829,7 +830,7 @@
 <div class="viewcode-block" id="find_shift_based_phase_correlation"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_shift_based_phase_correlation">[docs]</a><span class="k">def</span> <span class="nf">find_shift_based_phase_correlation</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">gradient</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find relative translation in x and y direction between images with</span>
-<span class="sd">    haft-pixel accuracy (Ref. [1]_).</span>
+<span class="sd">    haft-pixel accuracy (Ref. [1]).</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -849,7 +850,7 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1049/el:20030666</span>
+<span class="sd">    [1] : https://doi.org/10.1049/el:20030666</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">gradient</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">mat1</span> <span class="o">=</span> <span class="n">complex_gradient</span><span class="p">(</span><span class="n">mat1</span><span class="p">)</span>
@@ -919,7 +920,7 @@
                            <span class="n">use_overlap</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the center-of-rotation (COR) using projection images at 0-degree</span>
-<span class="sd">    and 180-degree based on a method in Ref. [1]_.</span>
+<span class="sd">    and 180-degree based on a method in Ref. [1].</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -949,7 +950,7 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1364/OE.418448</span>
+<span class="sd">    [1] : https://doi.org/10.1364/OE.418448</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">)</span> <span class="o">=</span> <span class="n">mat1</span><span class="o">.</span><span class="n">shape</span>
     <span class="k">if</span> <span class="n">flip</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>

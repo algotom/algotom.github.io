@@ -178,18 +178,19 @@
 <span class="c1"># ============================================================================</span>
 <span class="c1"># Author: Nghia T. Vo</span>
 <span class="c1"># E-mail:  </span>
-<span class="c1"># Description: Python implementations of preprocessing techniques.</span>
+<span class="c1"># Description: Python module of correction techniques.</span>
 <span class="c1"># Contributors:</span>
 <span class="c1"># ============================================================================</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Module of correction methods in the preprocessing stage:</span>
-<span class="sd">    - Flat-field correction.</span>
-<span class="sd">    - Distortion correction.</span>
-<span class="sd">    - MTF deconvolution.</span>
-<span class="sd">    - Tilted sinogram generation.</span>
-<span class="sd">    - Tilted 1D intensity-profile generation.</span>
-<span class="sd">    - Beam hardening correction.</span>
+
+<span class="sd">    -   Flat-field correction.</span>
+<span class="sd">    -   Distortion correction.</span>
+<span class="sd">    -   MTF deconvolution.</span>
+<span class="sd">    -   Tilted sinogram generation.</span>
+<span class="sd">    -   Tilted 1D intensity-profile generation.</span>
+<span class="sd">    -   Beam hardening correction.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -203,8 +204,8 @@
 <div class="viewcode-block" id="flat_field_correction"><a class="viewcode-back" href="../../../toc/api/algotom.prep.correction.html#algotom.prep.correction.flat_field_correction">[docs]</a><span class="k">def</span> <span class="nf">flat_field_correction</span><span class="p">(</span><span class="n">proj</span><span class="p">,</span> <span class="n">flat</span><span class="p">,</span> <span class="n">dark</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">use_dark</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                           <span class="o">**</span><span class="n">options</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Do flat-field correction with options to remove zinger arifacts and/or</span>
-<span class="sd">    stripe artifacts.</span>
+<span class="sd">    Perform flat-field correction with options to remove zinger artifacts</span>
+<span class="sd">    and/or stripe artifacts.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -218,11 +219,11 @@
 <span class="sd">        Ratio between exposure time used for recording projections</span>
 <span class="sd">        and exposure time used for recording flat field.</span>
 <span class="sd">    use_dark : bool</span>
-<span class="sd">        Subtracting dark field if True. May no need in some cases.</span>
+<span class="sd">        Subtracting dark field if True.</span>
 <span class="sd">    options : dict, optional</span>
 <span class="sd">        Apply a zinger removal method and/or ring removal methods.</span>
 <span class="sd">        E.g option1={&quot;method&quot;: &quot;dezinger&quot;, &quot;para1&quot;: 0.001, &quot;para2&quot;: 1},</span>
-<span class="sd">        option2={&quot;method&quot;: &quot;remove_stripe_based_sorting&quot;,</span>
+<span class="sd">        option2={&quot;method&quot;: &quot;remove_stripe_based_sorting&quot;,\</span>
 <span class="sd">                &quot;para1&quot;: 15, &quot;para2&quot;: 1}</span>
 
 <span class="sd">    Returns</span>
@@ -232,16 +233,16 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">flat</span> <span class="o">=</span> <span class="n">ratio</span> <span class="o">*</span> <span class="n">flat</span>
     <span class="k">if</span> <span class="n">use_dark</span><span class="p">:</span>
-        <span class="n">flatdark</span> <span class="o">=</span> <span class="n">flat</span> <span class="o">-</span> <span class="n">dark</span>
+        <span class="n">flat_dark</span> <span class="o">=</span> <span class="n">flat</span> <span class="o">-</span> <span class="n">dark</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">proj_corr</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span> <span class="o">-</span> <span class="n">dark</span><span class="p">)</span> <span class="o">/</span> <span class="n">flatdark</span>
+            <span class="n">proj_corr</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span> <span class="o">-</span> <span class="n">dark</span><span class="p">)</span> <span class="o">/</span> <span class="n">flat_dark</span>
         <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
-            <span class="n">nmean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">flatdark</span><span class="p">)</span>
+            <span class="n">nmean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">flat_dark</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">nmean</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
-                <span class="n">flatdark</span><span class="p">[</span><span class="n">flatdark</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="n">nmean</span>
+                <span class="n">flat_dark</span><span class="p">[</span><span class="n">flat_dark</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="n">nmean</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">flatdark</span><span class="p">[</span><span class="n">flatdark</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="n">proj_corr</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span> <span class="o">-</span> <span class="n">dark</span><span class="p">)</span> <span class="o">/</span> <span class="n">flatdark</span>
+                <span class="n">flat_dark</span><span class="p">[</span><span class="n">flat_dark</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">proj_corr</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span> <span class="o">-</span> <span class="n">dark</span><span class="p">)</span> <span class="o">/</span> <span class="n">flat_dark</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">proj_corr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span> <span class="o">/</span> <span class="n">flat</span>
@@ -261,12 +262,14 @@
                     <span class="n">list_para</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">1</span><span class="p">:]</span>
                     <span class="k">if</span> <span class="n">proj_corr</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
                         <span class="k">if</span> <span class="n">method</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">remo</span><span class="p">):</span>
-                            <span class="n">proj_corr</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">remo</span><span class="p">,</span> <span class="n">method</span><span class="p">)(</span><span class="n">proj_corr</span><span class="p">,</span> <span class="o">*</span><span class="n">list_para</span><span class="p">)</span>
+                            <span class="n">proj_corr</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">remo</span><span class="p">,</span> <span class="n">method</span><span class="p">)(</span><span class="n">proj_corr</span><span class="p">,</span>
+                                                              <span class="o">*</span><span class="n">list_para</span><span class="p">)</span>
                         <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">filt</span><span class="p">):</span>
-                            <span class="n">proj_corr</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">filt</span><span class="p">,</span> <span class="n">method</span><span class="p">)(</span><span class="n">proj_corr</span><span class="p">,</span> <span class="o">*</span><span class="n">list_para</span><span class="p">)</span>
+                            <span class="n">proj_corr</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">filt</span><span class="p">,</span> <span class="n">method</span><span class="p">)(</span><span class="n">proj_corr</span><span class="p">,</span>
+                                                              <span class="o">*</span><span class="n">list_para</span><span class="p">)</span>
                         <span class="k">else</span><span class="p">:</span>
-                            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t find the method: &#39;</span><span class="si">{}</span><span class="s2">&#39; in the&quot;</span>
-                                             <span class="s2">&quot; namespace&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">method</span><span class="p">))</span>
+                            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t find the method: &#39;</span><span class="si">{}</span><span class="s2">&#39; in&quot;</span>
+                                             <span class="s2">&quot; the namespace&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">method</span><span class="p">))</span>
                     <span class="k">else</span><span class="p">:</span>
                         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">proj_corr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
                             <span class="k">if</span> <span class="n">method</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">remo</span><span class="p">):</span>
@@ -276,8 +279,9 @@
                                 <span class="n">proj_corr</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">filt</span><span class="p">,</span> <span class="n">method</span><span class="p">)(</span>
                                     <span class="n">proj_corr</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="o">*</span><span class="n">list_para</span><span class="p">)</span>
                             <span class="k">else</span><span class="p">:</span>
-                                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t find the method: &#39;</span><span class="si">{}</span><span class="s2">&#39; in &quot;</span>
-                                                 <span class="s2">&quot;the namespace&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">method</span><span class="p">))</span>
+                                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t find the method: &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span>
+                                                 <span class="s2">&quot; in the namespace&quot;</span>
+                                                 <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">method</span><span class="p">))</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Incorrect option: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">opt</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">proj_corr</span></div>
@@ -286,7 +290,7 @@
 <div class="viewcode-block" id="unwarp_projection"><a class="viewcode-back" href="../../../toc/api/algotom.prep.correction.html#algotom.prep.correction.unwarp_projection">[docs]</a><span class="k">def</span> <span class="nf">unwarp_projection</span><span class="p">(</span><span class="n">proj</span><span class="p">,</span> <span class="n">xcenter</span><span class="p">,</span> <span class="n">ycenter</span><span class="p">,</span> <span class="n">list_fact</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Apply distortion correction to a projection image using the polynomial</span>
-<span class="sd">    backward model (Ref. [1]_).</span>
+<span class="sd">    backward model (Ref. [1]).</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -306,7 +310,7 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1364/OE.23.032859</span>
+<span class="sd">    [1] : https://doi.org/10.1364/OE.23.032859</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">proj</span><span class="o">.</span><span class="n">shape</span>
@@ -446,8 +450,8 @@
 
 <div class="viewcode-block" id="mtf_deconvolution"><a class="viewcode-back" href="../../../toc/api/algotom.prep.correction.html#algotom.prep.correction.mtf_deconvolution">[docs]</a><span class="k">def</span> <span class="nf">mtf_deconvolution</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">pad</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Deconvolve an projection image using division in the Fourier domain.</span>
-<span class="sd">    Window can be determined using the approach in Ref. [1]_.</span>
+<span class="sd">    Deconvolve a projection-image using division in the Fourier domain.</span>
+<span class="sd">    Window can be determined using the approach in Ref. [1].</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -465,7 +469,7 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1117/12.2530324</span>
+<span class="sd">    [1] : https://doi.org/10.1117/12.2530324</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="p">(</span><span class="n">height1</span><span class="p">,</span> <span class="n">width1</span><span class="p">)</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span>
     <span class="p">(</span><span class="n">height2</span><span class="p">,</span> <span class="n">width2</span><span class="p">)</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">shape</span>
@@ -719,8 +723,8 @@
 <span class="sd">        Corrected image.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">2.0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;!!! Input image must be normalized, i.e. gray-scales &quot;</span>
-                         <span class="s2">&quot;are in the range of [0.0, 1.0]) !!!&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input image must be normalized, i.e. gray-scales&quot;</span>
+                         <span class="s2">&quot; are in the range of [0.0, 1.0]) !!!&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mf">2.0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;!!! n must be larger than or equal to 2 !!!&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">non_linear_function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">opt</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mat</span><span class="p">])</span></div>

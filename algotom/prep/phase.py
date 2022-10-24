@@ -16,20 +16,21 @@
 # ============================================================================
 # Author: Nghia T. Vo
 # E-mail:
-# Description: Python implementations of phase-imaging-related techniques.
+# Description: Python module of phase-imaging-related techniques.
 # Contributors:
 # ============================================================================
 
 """
 Module for phase contrast imaging:
-    - Unwrap phase images.
-    - Generate a quality map, weight mask.
-    - Methods for speckle-based phase-contrast imaging.
-        + Find shifts between two stacks of images.
-        + Find shifts between sample-images.
-        + Align between two stacks of images.
-        + Retrieve phase image.
-        + Generate transmission-signal and dark-signal images.
+
+    -   Unwrap phase images.
+    -   Generate a quality map, weight mask.
+    -   Methods for speckle-based phase-contrast imaging.
+            +   Find shifts between two stacks of images.
+            +   Find shifts between sample-images.
+            +   Align between two stacks of images.
+            +   Retrieve phase image.
+            +   Generate transmission-signal and dark-signal images.
 """
 
 import multiprocessing as mp
@@ -106,7 +107,7 @@ def _make_cosine_window(height, width):
 def get_quality_map(mat, size):
     """
     Generate a quality map using the phase derivative variance (PDV) as
-    described in Ref. [1]_.
+    described in Ref. [1].
 
     Parameters
     ----------
@@ -122,7 +123,7 @@ def get_quality_map(mat, size):
 
     References
     ----------
-    .. [1] Dennis Ghiglia and Mark Pritt, "Two-dimensional Phase Unwrapping:
+    [1] : Dennis Ghiglia and Mark Pritt, "Two-dimensional Phase Unwrapping:
            Theory, Algorithms, and Software", Wiley, New York,1998.
     """
     (height, width) = mat.shape
@@ -148,7 +149,7 @@ def get_quality_map(mat, size):
 def get_weight_mask(mat, snr=1.5):
     """
     Generate a binary weight-mask based on a provided quality map. Threshold
-    value is calculated based on Algorithm 4 in Ref. [1]_.
+    value is calculated based on Algorithm 4 in Ref. [1].
 
     Parameters
     ----------
@@ -164,7 +165,7 @@ def get_weight_mask(mat, snr=1.5):
 
     References
     ----------
-    .. [1] https://doi.org/10.1364/OE.26.028396
+    [1] : https://doi.org/10.1364/OE.26.028396
     """
     size = max(mat.shape)
     list_sort = np.sort(np.ndarray.flatten(mat))
@@ -183,7 +184,7 @@ def get_weight_mask(mat, snr=1.5):
 
 def unwrap_phase_based_cosine_transform(mat, window=None):
     """
-    Unwrap a phase image using the cosine transform as described in Ref. [1]_.
+    Unwrap a phase image using the cosine transform as described in Ref. [1].
 
     Parameters
     ----------
@@ -199,7 +200,7 @@ def unwrap_phase_based_cosine_transform(mat, window=None):
 
     References
     ----------
-    .. [1] https://doi.org/10.1364/JOSAA.11.000107
+    [1] : https://doi.org/10.1364/JOSAA.11.000107
     """
     (height, width) = mat.shape
     if window is None:
@@ -218,7 +219,7 @@ def unwrap_phase_based_cosine_transform(mat, window=None):
 
 def unwrap_phase_based_fft(mat, win_for=None, win_back=None):
     """
-    Unwrap a phase image using the Fourier transform as described in Ref. [1]_.
+    Unwrap a phase image using the Fourier transform as described in Ref. [1].
 
     Parameters
     ----------
@@ -237,7 +238,7 @@ def unwrap_phase_based_fft(mat, win_for=None, win_back=None):
 
     References
     ----------
-    .. [1] https://doi.org/10.1109/36.297989
+    [1] : https://doi.org/10.1109/36.297989
     """
     height, width = mat.shape
     mat2 = _double_image(mat)
@@ -263,7 +264,7 @@ def unwrap_phase_iterative_fft(mat, iteration=4, win_for=None, win_back=None,
                                weight_map=None):
     """
     Unwrap a phase image using an iterative FFT-based method as described in
-    Ref. [1]_.
+    Ref. [1].
 
     Parameters
     ----------
@@ -286,7 +287,7 @@ def unwrap_phase_iterative_fft(mat, iteration=4, win_for=None, win_back=None,
 
     References
     ----------
-    .. [1] https://doi.org/10.1364/AO.56.007079
+    [1] : https://doi.org/10.1364/AO.56.007079
     """
     height, width = mat.shape
     if win_for is None:
@@ -329,7 +330,7 @@ def reconstruct_surface_from_gradient_FC_method(grad_x, grad_y,
                                                 window=None):
     """
     Reconstruct a surface from the gradients in x and y-direction using the
-    Frankot-Chellappa method (Ref. [1]_). Note that the DC-component
+    Frankot-Chellappa method (Ref. [1]). Note that the DC-component
     (average value of an image) of the reconstructed image is unidentified
     because the DC-component of the FFT-window is zero.
 
@@ -352,7 +353,7 @@ def reconstruct_surface_from_gradient_FC_method(grad_x, grad_y,
 
     References
     ----------
-    .. [1] https://doi.org/10.1109/34.3909
+    [1] : https://doi.org/10.1109/34.3909
     """
     height, width = grad_x.shape
     if grad_x.shape != grad_y.shape:
@@ -411,7 +412,7 @@ def reconstruct_surface_from_gradient_SCS_method(grad_x, grad_y,
                                                  pad_mode="linear_ramp"):
     """
     Reconstruct a surface from the gradients in x and y-direction using the
-    Simchony-Chellappa-Shao method (Ref. [1]_). Note that the DC-component
+    Simchony-Chellappa-Shao method (Ref. [1]). Note that the DC-component
     (average value of an image) of the reconstructed image is unidentified
     because the DC-component of the FFT-window is zero.
 
@@ -438,7 +439,7 @@ def reconstruct_surface_from_gradient_SCS_method(grad_x, grad_y,
 
     References
     ----------
-    .. [1] https://doi.org/10.1109/34.55103
+    [1] : https://doi.org/10.1109/34.55103
     """
     if grad_x.shape != grad_y.shape:
         raise ValueError("Input gradients must be the same size!!!")
@@ -739,7 +740,7 @@ def _get_transmission_dark_field_signal(ref_stack, sam_stack, x_shifts,
                 for k in range(num_image):
                     mat1 = ref_stack[k, i - radi:i + radi1, j - radi:j + radi1]
                     mat2 = sam_stack[k, i1 - radi:i1 + radi1,
-                           j1 - radi:j1 + radi1]
+                                     j1 - radi:j1 + radi1]
                     (val1, val2) = f_alias(mat1, mat2)
                     list1.append(val1)
                     list2.append(val2)
@@ -854,7 +855,7 @@ def retrieve_phase_based_speckle_tracking(ref_stack, sam_stack,
         To select the back-end method for finding shifts. Using a
         correlation-based method (Ref. [1-2]) or a cost-based method
         (Ref. [3]).
-    filter_name : {None, "hann", "bartlett", "blackman", "hamming",\\
+    filter_name : {None, "hann", "bartlett", "blackman", "hamming",\
                   "nuttall", "parzen", "triang"}
         To select a smoothing filter.
     dark_signal : bool
@@ -920,13 +921,13 @@ def retrieve_phase_based_speckle_tracking(ref_stack, sam_stack,
 
     References
     ----------
-    .. [1] https://doi.org/10.1038/srep08762
-    .. [2] https://doi.org/10.1103/PhysRevApplied.5.044014
-    .. [3] https://doi.org/10.1103/PhysRevLett.118.203903
-    .. [4] https://doi.org/10.48550/arXiv.0712.4289
-    .. [5] https://doi.org/10.1088/0957-0233/17/6/045
-    .. [6] https://doi.org/10.1109/34.55103
-    .. [7] https://doi.org/10.1109/34.3909
+    [1] : https://doi.org/10.1038/srep08762
+    [2] : https://doi.org/10.1103/PhysRevApplied.5.044014
+    [3] : https://doi.org/10.1103/PhysRevLett.118.203903
+    [4] : https://doi.org/10.48550/arXiv.0712.4289
+    [5] : https://doi.org/10.1088/0957-0233/17/6/045
+    [6] : https://doi.org/10.1109/34.55103
+    [7] : https://doi.org/10.1109/34.3909
     """
     win_size = np.clip(win_size, 1, None)
     margin = np.clip(margin, 1, None)

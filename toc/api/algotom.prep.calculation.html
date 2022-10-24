@@ -180,8 +180,9 @@
             
   <div class="section" id="module-algotom.prep.calculation">
 <span id="algotom-prep-calculation"></span><h1><span class="section-number">7.2.1. </span><a class="reference internal" href="#module-algotom.prep.calculation" title="algotom.prep.calculation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.calculation</span></code></a><a class="headerlink" href="#module-algotom.prep.calculation" title="Permalink to this heading">¶</a></h1>
-<dl class="simple">
-<dt>Module of calculation methods in the preprocessing stage:</dt><dd><ul class="simple">
+<p>Module of calculation methods in the preprocessing stage:</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>Calculating the center-of-rotation (COR) in a 180-degree scan using a
 sinogram.</p></li>
 <li><p>Determining the overlap-side and overlap-area between images.</p></li>
@@ -191,10 +192,9 @@ offset COR).</p></li>
 scan from two projections.</p></li>
 <li><p>Determining the relative translations between images using
 phase-correlation technique.</p></li>
-<li><p>Calculating the COR in a 180-degree scan using phase-correlation technique.</p></li>
+<li><p>Calculating the COR using phase-correlation technique.</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 <p class="rubric"><strong>Functions:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <colgroup>
@@ -261,7 +261,7 @@ phase-correlation technique.</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.calculation.make_inverse_double_wedge_mask">
 <span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">make_inverse_double_wedge_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#make_inverse_double_wedge_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.make_inverse_double_wedge_mask" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate a double-wedge binary mask using Eq. (3) in Ref. <a href="#id13"><span class="problematic" id="id1">[1]_</span></a>.
+<dd><p>Generate a double-wedge binary mask using Eq. (3) in Ref. [1].
 Values outside the double-wedge region correspond to 1.0.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -276,11 +276,7 @@ Values outside the double-wedge region correspond to 1.0.</p>
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.22.019078">https://doi.org/10.1364/OE.22.019078</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1364/OE.22.019078">https://doi.org/10.1364/OE.22.019078</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -367,7 +363,7 @@ Values outside the double-wedge region correspond to 1.0.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.calculation.find_center_vo">
 <span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">find_center_vo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sino_180</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dsp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#find_center_vo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.find_center_vo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find the center-of-rotation using the method described in Ref. <a href="#id14"><span class="problematic" id="id3">[1]_</span></a>.</p>
+<dd><p>Find the center-of-rotation using the method described in Ref. [1].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -388,11 +384,7 @@ Values outside the double-wedge region correspond to 1.0.</p>
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id4"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.22.019078">https://doi.org/10.1364/OE.22.019078</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1364/OE.22.019078">https://doi.org/10.1364/OE.22.019078</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -467,7 +459,7 @@ corresponds to the center of the window.</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.calculation.find_overlap">
 <span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">find_overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_overlap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#find_overlap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.find_overlap" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find the overlap area and overlap side between two images (Ref. <a href="#id15"><span class="problematic" id="id5">[1]_</span></a>) where
+<dd><p>Find the overlap area and overlap side between two images (Ref. [1]) where
 the overlap side referring to the first image.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -495,11 +487,7 @@ correlation metric.</p></li>
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id6"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -535,7 +523,7 @@ image giving the best correlation metric.</p>
 <dt class="sig sig-object py" id="algotom.prep.calculation.find_center_360">
 <span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">find_center_360</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sino_360</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_overlap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#find_center_360"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.find_center_360" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the center-of-rotation (COR) in a 360-degree scan with offset COR use
-the method presented in Ref. <a href="#id16"><span class="problematic" id="id7">[1]_</span></a>.</p>
+the method presented in Ref. [1].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -562,11 +550,7 @@ correlation metric.</p></li>
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id8"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -579,7 +563,7 @@ correlation metric.</p></li>
 <dt class="sig sig-object py" id="algotom.prep.calculation.find_shift_based_phase_correlation">
 <span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">find_shift_based_phase_correlation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#find_shift_based_phase_correlation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.find_shift_based_phase_correlation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find relative translation in x and y direction between images with
-haft-pixel accuracy (Ref. <a href="#id17"><span class="problematic" id="id9">[1]_</span></a>).</p>
+haft-pixel accuracy (Ref. [1]).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -597,11 +581,7 @@ haft-pixel accuracy (Ref. <a href="#id17"><span class="problematic" id="id9">[1]
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id10"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1049/el:20030666">https://doi.org/10.1049/el:20030666</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1049/el:20030666">https://doi.org/10.1049/el:20030666</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -628,7 +608,7 @@ and 180-degree.</p>
 <dt class="sig sig-object py" id="algotom.prep.calculation.find_center_projection">
 <span class="sig-prename descclassname"><span class="pre">algotom.prep.calculation.</span></span><span class="sig-name descname"><span class="pre">find_center_projection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_row</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_overlap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/calculation.html#find_center_projection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.calculation.find_center_projection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the center-of-rotation (COR) using projection images at 0-degree
-and 180-degree based on a method in Ref. <a href="#id18"><span class="problematic" id="id11">[1]_</span></a>.</p>
+and 180-degree based on a method in Ref. [1].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -649,11 +629,7 @@ correlation coefficients if True.</p></li>
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id12"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
 </dd></dl>
 
 <dl class="py function">

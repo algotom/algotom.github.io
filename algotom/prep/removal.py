@@ -16,16 +16,17 @@
 # ============================================================================
 # Author: Nghia T. Vo
 # E-mail:  
-# Description: Python implementations of preprocessing techniques.
+# Description: Python module of artifact removal techniques.
 # Contributors:
 # ============================================================================
 
 """
 Module of removal methods in the preprocessing stage:
-    - Many methods for removing stripe artifact in a sinogram (<-> ring artifact
-      in a reconstructed image).
-    - A zinger removal method.
-    - Blob removal methods.
+
+    -   Many methods for removing stripe artifact in a sinogram
+        (<-> ring artifact in a reconstructed image).
+    -   A zinger removal method.
+    -   Blob removal methods.
 """
 
 import numpy as np
@@ -38,7 +39,7 @@ import algotom.util.utility as util
 def remove_stripe_based_sorting(sinogram, size=21, dim=1, **options):
     """
     Remove stripe artifacts in a sinogram using the sorting technique,
-    algorithm 3 in Ref. [1]_. Angular direction is along the axis 0.
+    algorithm 3 in Ref. [1]. Angular direction is along the axis 0.
 
     Parameters
     ----------
@@ -59,7 +60,7 @@ def remove_stripe_based_sorting(sinogram, size=21, dim=1, **options):
 
     References
     ----------
-    .. [1] https://doi.org/10.1364/OE.26.028396
+    [1] : https://doi.org/10.1364/OE.26.028396
     """
     msg = "\n Please use the dictionary format: options={'method':" \
           " 'filter_name', 'para1': parameter_1, 'para2': parameter_2}"
@@ -79,13 +80,13 @@ def remove_stripe_based_sorting(sinogram, size=21, dim=1, **options):
             if method in dir(ndi):
                 try:
                     sino_sort = getattr(ndi, method)(sino_sort, *para)
-                except:
+                except AttributeError:
                     raise ValueError(msg)
             else:
                 if method in dir(util):
                     try:
                         sino_sort = getattr(util, method)(sino_sort, *para)
-                    except:
+                    except AttributeError:
                         raise ValueError(msg)
                 else:
                     raise ValueError("Can't find the method: '{}' in the"
@@ -97,7 +98,7 @@ def remove_stripe_based_filtering(sinogram, sigma=3, size=21, dim=1, sort=True,
                                   **options):
     """
     Remove stripe artifacts in a sinogram using the filtering technique,
-    algorithm 2 in Ref. [1]_. Angular direction is along the axis 0.
+    algorithm 2 in Ref. [1]. Angular direction is along the axis 0.
 
     Parameters
     ----------
@@ -123,7 +124,7 @@ def remove_stripe_based_filtering(sinogram, sigma=3, size=21, dim=1, sort=True,
 
     References
     ----------
-    .. [1] https://doi.org/10.1364/OE.26.028396
+    [1] : https://doi.org/10.1364/OE.26.028396
     """
     msg = "\n Please use the dictionary format: options={'method':" \
           " 'filter_name', 'para1': parameter_1, 'para2': parameter_2}"
@@ -147,13 +148,13 @@ def remove_stripe_based_filtering(sinogram, sigma=3, size=21, dim=1, sort=True,
                 para = tuple(opt.values())[1:]
                 try:
                     sino_smooth = getattr(ndi, method)(sino_smooth, *para)
-                except:
+                except AttributeError:
                     raise ValueError(msg)
             else:
                 if method in dir(util):
                     try:
                         sino_smooth = getattr(util, method)(sino_smooth, *para)
-                    except:
+                    except AttributeError:
                         raise ValueError(msg)
                 else:
                     raise ValueError("Can't find the method: '{}' in the"
@@ -167,7 +168,7 @@ def remove_stripe_based_fitting(sinogram, order=2, sigma=10, sort=False,
                                 num_chunk=1, **options):
     """
     Remove stripe artifacts in a sinogram using the fitting technique,
-    algorithm 1 in Ref. [1]_. Angular direction is along the axis 0.
+    algorithm 1 in Ref. [1]. Angular direction is along the axis 0.
 
     Parameters
     ----------
@@ -192,7 +193,7 @@ def remove_stripe_based_fitting(sinogram, order=2, sigma=10, sort=False,
 
     References
     ----------
-    .. [1] https://doi.org/10.1364/OE.26.028396
+    [1] : https://doi.org/10.1364/OE.26.028396
     """
     msg = "\n Please use the dictionary format: options={'method':" \
           " 'filter_name', 'para1': parameter_1, 'para2': parameter_2}"
@@ -216,13 +217,13 @@ def remove_stripe_based_fitting(sinogram, order=2, sigma=10, sort=False,
                 para = tuple(opt.values())[1:]
                 try:
                     sino_filt = getattr(ndi, method)(sino_filt, *para)
-                except:
+                except AttributeError:
                     raise ValueError(msg)
             else:
                 if method in dir(util):
                     try:
                         sino_filt = getattr(util, method)(sino_filt, *para)
-                    except:
+                    except AttributeError:
                         raise ValueError(msg)
                 else:
                     raise ValueError("Can't find the method: '{}' in the"
@@ -238,7 +239,7 @@ def remove_stripe_based_fitting(sinogram, order=2, sigma=10, sort=False,
 def remove_large_stripe(sinogram, snr=3.0, size=51, drop_ratio=0.1, norm=True,
                         **options):
     """
-    Remove large stripe artifacts in a sinogram, algorithm 5 in Ref. [1]_.
+    Remove large stripe artifacts in a sinogram, algorithm 5 in Ref. [1].
     Angular direction is along the axis 0.
 
     Parameters
@@ -246,11 +247,11 @@ def remove_large_stripe(sinogram, snr=3.0, size=51, drop_ratio=0.1, norm=True,
     sinogram : array_like
         2D array. Sinogram image
     snr : float
-        Ratio (>1.0) used to detect stripe locations. Greater is less sensitive.
+        Ratio (>1.0) for stripe detection. Greater is less sensitive.
     size : int
         Window size of the median filter.
     drop_ratio : float, optional
-        Ratio of pixels to be dropped, which is used to to reduce
+        Ratio of pixels to be dropped, which is used to reduce
         the possibility of the false detection of stripes.
     norm : bool, optional
         Apply normalization if True.
@@ -265,7 +266,7 @@ def remove_large_stripe(sinogram, snr=3.0, size=51, drop_ratio=0.1, norm=True,
 
     References
     ----------
-    .. [1] https://doi.org/10.1364/OE.26.028396
+    [1] : https://doi.org/10.1364/OE.26.028396
     """
     msg = "\n Please use the dictionary format: options={'method':" \
           " 'filter_name', 'para1': parameter_1, 'para2': parameter_2}"
@@ -287,13 +288,13 @@ def remove_large_stripe(sinogram, snr=3.0, size=51, drop_ratio=0.1, norm=True,
                 para = tuple(opt.values())[1:]
                 try:
                     sino_smooth = getattr(ndi, method)(sino_smooth, *para)
-                except:
+                except AttributeError:
                     raise ValueError(msg)
             else:
                 if method in dir(util):
                     try:
                         sino_smooth = getattr(util, method)(sino_smooth, *para)
-                    except:
+                    except AttributeError:
                         raise ValueError(msg)
                 else:
                     raise ValueError("Can't find the method: '{}' in the"
@@ -316,14 +317,14 @@ def remove_dead_stripe(sinogram, snr=3.0, size=51, residual=True,
                        smooth_strength=10):
     """
     Remove unresponsive or fluctuating stripe artifacts in a sinogram,
-    algorithm 6 in Ref. [1]_. Angular direction is along the axis 0.
+    algorithm 6 in Ref. [1]. Angular direction is along the axis 0.
 
     Parameters
     ----------
     sinogram : array_like
         2D array. Sinogram image.
     snr : float
-        Ratio (>1.0) used to detect stripe locations. Greater is less sensitive.
+        Ratio (>1.0) for stripe detection. Greater is less sensitive.
     size : int
         Window size of the median filter.
     residual : bool, optional
@@ -338,7 +339,7 @@ def remove_dead_stripe(sinogram, snr=3.0, size=51, residual=True,
 
     References
     ----------
-    .. [1] https://doi.org/10.1364/OE.26.028396
+    [1] : https://doi.org/10.1364/OE.26.028396
     """
     sinogram = np.copy(sinogram)
     (nrow, ncol) = sinogram.shape
@@ -365,18 +366,18 @@ def remove_dead_stripe(sinogram, snr=3.0, size=51, residual=True,
     return sinogram
 
 
-def remove_all_stripe(sinogram, snr=3.0, la_size=51, sm_size=21, drop_ratio=0.1,
-                      dim=1, **options):
+def remove_all_stripe(sinogram, snr=3.0, la_size=51, sm_size=21,
+                      drop_ratio=0.1, dim=1, **options):
     """
     Remove all types of stripe artifacts in a sinogram by combining algorithm
-    6, 5, 4, and 3 in Ref. [1]_. Angular direction is along the axis 0.
+    6, 5, 4, and 3 in Ref. [1]. Angular direction is along the axis 0.
 
     Parameters
     ----------
     sinogram : array_like
         2D array. Sinogram image.
     snr : float
-        Ratio (>1.0) used to detect stripe locations. Greater is less sensitive.
+        Ratio (>1.0) for stripe detection. Greater is less sensitive.
     la_size : int
         Window size of the median filter to remove large stripes.
     sm_size : int
@@ -397,7 +398,7 @@ def remove_all_stripe(sinogram, snr=3.0, la_size=51, sm_size=21, drop_ratio=0.1,
 
     References
     ----------
-    .. [1] https://doi.org/10.1364/OE.26.028396
+    [1] : https://doi.org/10.1364/OE.26.028396
     """
     sinogram = remove_dead_stripe(sinogram, snr, la_size, residual=False)
     sinogram = remove_large_stripe(sinogram, snr, la_size, drop_ratio,
@@ -410,7 +411,7 @@ def remove_stripe_based_2d_filtering_sorting(sinogram, sigma=3, size=21, dim=1,
                                              **options):
     """
     Remove stripes using a 2D low-pass filter and the sorting-based technique,
-    algorithm in section 3.3.4 in Ref. [1]_.
+    algorithm in section 3.3.4 in Ref. [1].
     Angular direction is along the axis 0.
 
     Parameters
@@ -431,7 +432,7 @@ def remove_stripe_based_2d_filtering_sorting(sinogram, sigma=3, size=21, dim=1,
 
     References
     ----------
-    .. [1] https://doi.org/10.1117/12.2530324
+    [1] : https://doi.org/10.1117/12.2530324
     """
     (nrow, ncol) = sinogram.shape
     pad = min(150, int(0.1 * min(nrow, ncol)))
@@ -444,7 +445,7 @@ def remove_stripe_based_2d_filtering_sorting(sinogram, sigma=3, size=21, dim=1,
 def remove_stripe_based_normalization(sinogram, sigma=15, num_chunk=1,
                                       sort=True, **options):
     """
-    Remove stripes using the method in Ref. [1]_.
+    Remove stripes using the method in Ref. [1].
     Angular direction is along the axis 0.
 
     Parameters
@@ -456,7 +457,7 @@ def remove_stripe_based_normalization(sinogram, sigma=15, num_chunk=1,
     num_chunk : int
         Number of chunks of rows.
     sort : bool, optional
-        Apply sorting (Ref. [2]_) if True.
+        Apply sorting (Ref. [2]) if True.
     options : dict, optional
         Use another smoothing 1D-filter rather than the Gaussian filter.
         E.g. options={"method": "median_filter", "para1": 21)}.
@@ -468,9 +469,8 @@ def remove_stripe_based_normalization(sinogram, sigma=15, num_chunk=1,
 
     References
     ----------
-    .. [1] https://www.mcs.anl.gov/research/projects/X-ray-cmt/rivers/
-           tutorial.html
-    .. [2] https://doi.org/10.1364/OE.26.028396
+    [1] : https://www.mcs.anl.gov/research/projects/X-ray-cmt/rivers/tutorial.html
+    [2] : https://doi.org/10.1364/OE.26.028396
     """
     msg = "\n Please use the dictionary format: options={'method':" \
           " 'filter_name', 'para1': parameter_1, 'para2': parameter_2}" \
@@ -497,13 +497,13 @@ def remove_stripe_based_normalization(sinogram, sigma=15, num_chunk=1,
                     para = tuple(opt.values())[1:]
                     try:
                         list_filt = getattr(ndi, method)(list_filt, *para)
-                    except:
+                    except AttributeError:
                         raise ValueError(msg)
                 else:
                     if method in dir(util):
                         try:
                             list_filt = getattr(util, method)(list_filt, *para)
-                        except:
+                        except AttributeError:
                             raise ValueError(msg)
                     else:
                         raise ValueError("Can't find the method: '{}' in the"
@@ -519,7 +519,7 @@ def remove_stripe_based_normalization(sinogram, sigma=15, num_chunk=1,
 def remove_stripe_based_regularization(sinogram, alpha=0.0005, num_chunk=1,
                                        apply_log=True, sort=True):
     """
-    Remove stripes using the method in Ref. [1]_.
+    Remove stripes using the method in Ref. [1].
     Angular direction is along the axis 0.
 
     Parameters
@@ -533,7 +533,7 @@ def remove_stripe_based_regularization(sinogram, alpha=0.0005, num_chunk=1,
     apply_log : bool
         Apply the logarithm function to the sinogram if True.
     sort : bool, optional
-        Apply sorting (Ref. [2]_) if True.
+        Apply sorting (Ref. [2]) if True.
 
     Returns
     -------
@@ -542,8 +542,8 @@ def remove_stripe_based_regularization(sinogram, alpha=0.0005, num_chunk=1,
 
     References
     ----------
-    .. [1] https://doi.org/10.1016/j.aml.2010.08.022
-    .. [2] https://doi.org/10.1364/OE.26.028396
+    [1] : https://doi.org/10.1016/j.aml.2010.08.022
+    [2] : https://doi.org/10.1364/OE.26.028396
     """
     (nrow, ncol) = sinogram.shape
     sinogram = np.copy(sinogram)
@@ -580,7 +580,7 @@ def remove_stripe_based_regularization(sinogram, alpha=0.0005, num_chunk=1,
 
 def remove_stripe_based_fft(sinogram, u=20, n=8, v=1, sort=False):
     """
-    Remove stripes using the method in Ref. [1]_.
+    Remove stripes using the method in Ref. [1].
     Angular direction is along the axis 0.
 
     Parameters
@@ -594,7 +594,7 @@ def remove_stripe_based_fft(sinogram, u=20, n=8, v=1, sort=False):
     v : int
         Number of rows (* 2) to be applied the filter.
     sort : bool, optional
-        Apply sorting (Ref. [2]_) if True.
+        Apply sorting (Ref. [2]) if True.
 
     Returns
     -------
@@ -603,8 +603,8 @@ def remove_stripe_based_fft(sinogram, u=20, n=8, v=1, sort=False):
 
     References
     ----------
-    .. [1] https://doi.org/10.1063/1.1149043
-    .. [2] https://doi.org/10.1364/OE.26.028396
+    [1] : https://doi.org/10.1063/1.1149043
+    [2] : https://doi.org/10.1364/OE.26.028396
     """
     if sort is True:
         sinogram, sino_index = util.sort_forward(sinogram, axis=0)
@@ -625,7 +625,7 @@ def remove_stripe_based_wavelet_fft(sinogram, level=5, size=1,
                                     wavelet_name="db9", window_name="gaussian",
                                     sort=False, **options):
     """
-    Remove stripes using the method in Ref. [1]_.
+    Remove stripes using the method in Ref. [1].
     Angular direction is along the axis 0.
 
     Parameters
@@ -641,7 +641,7 @@ def remove_stripe_based_wavelet_fft(sinogram, level=5, size=1,
     window_name : str
         High-pass window. Two options: "gaussian" or "butter".
     sort : bool, optional
-        Apply sorting (Ref. [2]_) if True.
+        Apply sorting (Ref. [2]) if True.
 
     Returns
     -------
@@ -650,8 +650,8 @@ def remove_stripe_based_wavelet_fft(sinogram, level=5, size=1,
 
     References
     ----------
-    .. [1] https://doi.org/10.1364/OE.17.008567
-    .. [2] https://doi.org/10.1364/OE.26.028396
+    [1] : https://doi.org/10.1364/OE.17.008567
+    [2] : https://doi.org/10.1364/OE.26.028396
     """
     msg = "\n Please use the dictionary format: options={'method':" \
           " 'filter_name', 'para1': parameter_1, 'para2': parameter_2}"
@@ -683,12 +683,12 @@ def remove_stripe_based_wavelet_fft(sinogram, level=5, size=1,
                 if method in dir(ndi):
                     try:
                         mat_smooth = getattr(ndi, method)(mat_smooth, *para)
-                    except:
+                    except AttributeError:
                         raise ValueError(msg)
                 elif method in dir(util):
                     try:
                         mat_smooth = getattr(util, method)(mat_smooth, *para)
-                    except:
+                    except AttributeError:
                         raise ValueError(msg)
                 else:
                     raise ValueError("Can't find the method: '{}' in the"
@@ -705,7 +705,7 @@ def remove_stripe_based_interpolation(sinogram, snr=3.0, size=51,
                                       drop_ratio=0.1, norm=True, kind="linear",
                                       **options):
     """
-    Combination of algorithm 4, 5, and 6 in Ref. [1]_.
+    Combination of algorithm 4, 5, and 6 in Ref. [1].
     Angular direction is along the axis 0.
 
     Parameters
@@ -713,7 +713,7 @@ def remove_stripe_based_interpolation(sinogram, snr=3.0, size=51,
     sinogram : array_like
         2D array. Sinogram image
     snr : float
-        Ratio (>1.0) used to detect stripe locations. Greater is less sensitive.
+        Ratio (>1.0) for stripe detection. Greater is less sensitive.
     size : int
         Window size of the median filter used to detect stripes.
     drop_ratio : float, optional
@@ -734,7 +734,7 @@ def remove_stripe_based_interpolation(sinogram, snr=3.0, size=51,
 
     References
     ----------
-    .. [1] https://doi.org/10.1364/OE.26.028396
+    [1] : https://doi.org/10.1364/OE.26.028396
     """
     msg = "\n Please use the dictionary format: options={'method':" \
           " 'filter_name', 'para1': parameter_1, 'para2': parameter_2}"
@@ -756,13 +756,13 @@ def remove_stripe_based_interpolation(sinogram, snr=3.0, size=51,
             if method in dir(ndi):
                 try:
                     sino_smooth = getattr(ndi, method)(sino_smooth, *para)
-                except:
+                except AttributeError:
                     raise ValueError(msg)
             else:
                 if method in dir(util):
                     try:
                         sino_smooth = getattr(util, method)(sino_smooth, *para)
-                    except:
+                    except AttributeError:
                         raise ValueError(msg)
                 else:
                     raise ValueError("Can't find the method: '{}' in the"
@@ -837,7 +837,7 @@ def select_zinger(mat, max_size):
 
 def remove_zinger(mat, threshold, size=2):
     """
-    Remove zinger using the method in Ref. [1]_, working on a projection image
+    Remove zinger using the method in Ref. [1], working on a projection image
     or sinogram image.
 
     Parameters
@@ -857,7 +857,7 @@ def remove_zinger(mat, threshold, size=2):
 
     References
     ----------
-    .. [1] https://doi.org/10.1364/OE.418448
+    [1] : https://doi.org/10.1364/OE.418448
 
     """
     step = np.clip(size, 1, None)
@@ -878,7 +878,7 @@ def remove_zinger(mat, threshold, size=2):
 
 def generate_blob_mask(flat, size, snr):
     """
-    Generate a binary mask of blobs from a flat-field image (Ref. [1]_).
+    Generate a binary mask of blobs from a flat-field image (Ref. [1]).
 
     Parameters
     ----------
@@ -896,7 +896,7 @@ def generate_blob_mask(flat, size, snr):
 
     References
     ----------
-    .. [1] https://doi.org/10.1364/OE.418448
+    [1] : https://doi.org/10.1364/OE.418448
     """
     mat = ndi.median_filter(flat, (2, 2))
     mask = np.zeros_like(mat)
@@ -915,7 +915,7 @@ def generate_blob_mask(flat, size, snr):
 def remove_blob_1d(sino_1d, mask_1d):
     """
     Remove blobs in one row of a sinogram, e.g. for a helical scan as shown in
-    Ref. [1]_.
+    Ref. [1].
 
     Parameters
     ----------
@@ -936,7 +936,7 @@ def remove_blob_1d(sino_1d, mask_1d):
 
     References
     ----------
-    .. [1] https://doi.org/10.1364/OE.418448
+    [1] : https://doi.org/10.1364/OE.418448
     """
     sino_1d = np.copy(sino_1d)
     listx = np.where(mask_1d < 1.0)[0]

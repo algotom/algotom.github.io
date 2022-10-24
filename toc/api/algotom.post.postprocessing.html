@@ -175,16 +175,16 @@
             
   <div class="section" id="module-algotom.post.postprocessing">
 <span id="algotom-post-postprocessing"></span><h1><span class="section-number">7.4.1. </span><a class="reference internal" href="#module-algotom.post.postprocessing" title="algotom.post.postprocessing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.post.postprocessing</span></code></a><a class="headerlink" href="#module-algotom.post.postprocessing" title="Permalink to this heading">¶</a></h1>
-<dl class="simple">
-<dt>Module of methods in the postprocessing stage:</dt><dd><ul class="simple">
+<p>Module of methods in the postprocessing stage:</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>Get statistical information of reconstructed images or a dataset.</p></li>
 <li><p>Downsample 2D, 3D array, or a dataset.</p></li>
 <li><p>Rescale 2D, 3D array or a dataset to 8-bit or 16-bit data-type.</p></li>
 <li><p>Removing ring artifacts in a reconstructed image by transform back and
 forth between the polar coordinates and the Cartesian coordinates.</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 <p class="rubric"><strong>Functions:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <colgroup>
@@ -192,10 +192,10 @@ forth between the polar coordinates and the Cartesian coordinates.</p></li>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.post.postprocessing.get_statical_information" title="algotom.post.postprocessing.get_statical_information"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_statical_information</span></code></a>(mat[, percentile, ...])</p></td>
-<td><p>Get statical information of an image.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.post.postprocessing.get_statistical_information" title="algotom.post.postprocessing.get_statistical_information"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_statistical_information</span></code></a>(mat[, ...])</p></td>
+<td><p>Get statistical information of an image.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#algotom.post.postprocessing.get_statical_information_dataset" title="algotom.post.postprocessing.get_statical_information_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_statical_information_dataset</span></code></a>(input_[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#algotom.post.postprocessing.get_statistical_information_dataset" title="algotom.post.postprocessing.get_statistical_information_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_statistical_information_dataset</span></code></a>(input_)</p></td>
 <td><p>Get statical information of a dataset.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#algotom.post.postprocessing.downsample" title="algotom.post.postprocessing.downsample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">downsample</span></code></a>(mat, cell_size[, method])</p></td>
@@ -219,9 +219,9 @@ forth between the polar coordinates and the Cartesian coordinates.</p></li>
 </tbody>
 </table>
 <dl class="py function">
-<dt class="sig sig-object py" id="algotom.post.postprocessing.get_statical_information">
-<span class="sig-prename descclassname"><span class="pre">algotom.post.postprocessing.</span></span><span class="sig-name descname"><span class="pre">get_statical_information</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">99)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/post/postprocessing.html#get_statical_information"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.post.postprocessing.get_statical_information" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get statical information of an image.</p>
+<dt class="sig sig-object py" id="algotom.post.postprocessing.get_statistical_information">
+<span class="sig-prename descclassname"><span class="pre">algotom.post.postprocessing.</span></span><span class="sig-name descname"><span class="pre">get_statistical_information</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">99)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/post/postprocessing.html#get_statistical_information"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.post.postprocessing.get_statistical_information" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get statistical information of an image.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -247,8 +247,8 @@ Must be between 0 and 100 inclusive.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="algotom.post.postprocessing.get_statical_information_dataset">
-<span class="sig-prename descclassname"><span class="pre">algotom.post.postprocessing.</span></span><span class="sig-name descname"><span class="pre">get_statical_information_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">99)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/post/postprocessing.html#get_statical_information_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.post.postprocessing.get_statical_information_dataset" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="algotom.post.postprocessing.get_statistical_information_dataset">
+<span class="sig-prename descclassname"><span class="pre">algotom.post.postprocessing.</span></span><span class="sig-name descname"><span class="pre">get_statistical_information_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">99)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/post/postprocessing.html#get_statistical_information_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.post.postprocessing.get_statistical_information_dataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get statical information of a dataset. This can be a folder of tif files,
 a hdf file, or a 3D array.</p>
 <dl class="field-list simple">
@@ -347,7 +347,7 @@ folder of tif files, a hdf file, or a 3D array.</p>
 <li><p><strong>nbit</strong> (<em>{8,16}</em>) – Rescaled data-type: 8-bit or 16-bit.</p></li>
 <li><p><strong>minmax</strong> (<em>tuple of float, or None</em>) – Minimum and maximum values used for rescaling. They are calculated if
 None is given.</p></li>
-<li><p><strong>skip</strong> (<em>int or None</em>) – Skipping step of reading input used for getting statistical information.</p></li>
+<li><p><strong>skip</strong> (<em>int or None</em>) – Skipping step of images used for getting statistical information.</p></li>
 <li><p><strong>key_path</strong> (<em>str, optional</em>) – Key path to the dataset if the input is the hdf file.</p></li>
 </ul>
 </dd>
@@ -369,7 +369,7 @@ transform and the fft-based method.</p>
 <li><p><strong>u</strong> (<em>int</em>) – Cutoff frequency.</p></li>
 <li><p><strong>n</strong> (<em>int</em>) – Filter order.</p></li>
 <li><p><strong>v</strong> (<em>int</em>) – Number of rows (* 2) to be applied the filter.</p></li>
-<li><p><strong>sort</strong> (<em>bool, optional</em>) – Apply sorting (Ref. <a href="#id8"><span class="problematic" id="id1">[2]_</span></a>) if True.</p></li>
+<li><p><strong>sort</strong> (<em>bool, optional</em>) – Apply sorting (Ref. [2]) if True.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -377,21 +377,15 @@ transform and the fft-based method.</p>
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1063/1.1149043">https://doi.org/10.1063/1.1149043</a></p>
-</dd>
-<dt class="label" id="id3"><span class="brackets">2</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.26.028396">https://doi.org/10.1364/OE.26.028396</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1063/1.1149043">https://doi.org/10.1063/1.1149043</a>
+[2] : <a class="reference external" href="https://doi.org/10.1364/OE.26.028396">https://doi.org/10.1364/OE.26.028396</a></p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.post.postprocessing.remove_ring_based_wavelet_fft">
 <span class="sig-prename descclassname"><span class="pre">algotom.post.postprocessing.</span></span><span class="sig-name descname"><span class="pre">remove_ring_based_wavelet_fft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelet_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'db9'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/post/postprocessing.html#remove_ring_based_wavelet_fft"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.post.postprocessing.remove_ring_based_wavelet_fft" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove ring artifacts in a reconstructed image by combining the polar
-transform and the wavelet-fft-based method (Ref. <a href="#id9"><span class="problematic" id="id4">[1]_</span></a>).</p>
+transform and the wavelet-fft-based method (Ref. [1]).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -399,7 +393,7 @@ transform and the wavelet-fft-based method (Ref. <a href="#id9"><span class="pro
 <li><p><strong>level</strong> (<em>int</em>) – Wavelet decomposition level.</p></li>
 <li><p><strong>size</strong> (<em>int</em>) – Damping parameter. Larger is stronger.</p></li>
 <li><p><strong>wavelet_name</strong> (<em>str</em>) – Name of a wavelet. Search pywavelets API for a full list.</p></li>
-<li><p><strong>sort</strong> (<em>bool, optional</em>) – Apply sorting (Ref. <a href="#id10"><span class="problematic" id="id5">[2]_</span></a>) if True.</p></li>
+<li><p><strong>sort</strong> (<em>bool, optional</em>) – Apply sorting (Ref. [2]) if True.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -407,14 +401,8 @@ transform and the wavelet-fft-based method (Ref. <a href="#id9"><span class="pro
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id6"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.17.008567">https://doi.org/10.1364/OE.17.008567</a></p>
-</dd>
-<dt class="label" id="id7"><span class="brackets">2</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.26.028396">https://doi.org/10.1364/OE.26.028396</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1364/OE.17.008567">https://doi.org/10.1364/OE.17.008567</a>
+[2] : <a class="reference external" href="https://doi.org/10.1364/OE.26.028396">https://doi.org/10.1364/OE.26.028396</a></p>
 </dd></dl>
 
 </div>

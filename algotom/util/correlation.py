@@ -16,7 +16,7 @@
 # ============================================================================
 # Author: Nghia T. Vo
 # E-mail:
-# Description: Python implementations of correlation-related methods.
+# Description: Python module of correlation-related methods.
 # Publication date: 20th June 2022
 # Contributors:
 # ============================================================================
@@ -24,10 +24,11 @@
 """
 Module of correlation-based methods for finding shifts between images or
 stacks of images. The methods are designed to be flexible to:
-    - Run on multicore CPU or GPU.
-    - Use small/large RAM or small/large GPU memory.
-    - Work with small/large size of data.
-    - Find shifts locally or globally.
+
+    -   Run on multicore CPU or GPU.
+    -   Use small/large RAM or small/large GPU memory.
+    -   Work with small/large size of data.
+    -   Find shifts locally or globally.
 """
 
 import math
@@ -566,7 +567,7 @@ def _locate_2d_peak_subpixel(mat, method="diff"):
         2D array.
     method : {"diff", "poly_fit"}
         Method for finding sub-pixel shift. Two options: a differential
-        method (Ref. [1]_) or a polynomial method (Ref. [2]_).
+        method (Ref. [1]) or a polynomial method (Ref. [2]).
 
     Returns
     -------
@@ -575,8 +576,8 @@ def _locate_2d_peak_subpixel(mat, method="diff"):
 
     References
     ----------
-    .. [1] https://doi.org/10.48550/arXiv.0712.4289
-    .. [2] https://doi.org/10.1088/0957-0233/17/6/045
+    [1] : https://doi.org/10.48550/arXiv.0712.4289
+    [2] : https://doi.org/10.1088/0957-0233/17/6/045
     """
     (height, width) = mat.shape
     (y0, x0) = np.unravel_index(np.argmax(mat, axis=None), mat.shape)
@@ -647,7 +648,7 @@ def locate_peak(mat, sub_pixel=True, method="diff", dim=2, size=3,
         Enable sub-pixel location.
     method : {"diff", "poly_fit"}
         Method for finding sub-pixel shift. Two options: a differential
-        method (Ref. [1]_) or a polynomial method (Ref. [2]_).
+        method (Ref. [1]) or a polynomial method (Ref. [2]).
     dim : {1, 2}
         Searching dimension for sub-pixel location.
     size : int
@@ -663,8 +664,8 @@ def locate_peak(mat, sub_pixel=True, method="diff", dim=2, size=3,
 
     References
     ----------
-    .. [1] https://doi.org/10.48550/arXiv.0712.4289
-    .. [2] https://doi.org/10.1088/0957-0233/17/6/045
+    [1] : https://doi.org/10.48550/arXiv.0712.4289
+    [2] : https://doi.org/10.1088/0957-0233/17/6/045
     """
     (height, width) = mat.shape
     size = 3 if method == "diff" else 2 * (size // 2) + 1
@@ -734,7 +735,7 @@ def find_shift_based_correlation_map(ref_mat, mat, margin=10, axis=None,
         Enable sub-pixel location.
     method : {"diff", "poly_fit"}
         Method for finding sub-pixel shift. Two options: a differential
-        method (Ref. [1]_) or a polynomial method (Ref. [2]_).
+        method (Ref. [1]) or a polynomial method (Ref. [2]).
     dim : {1, 2}
         Searching dimension for sub-pixel location.
     size : int
@@ -753,8 +754,8 @@ def find_shift_based_correlation_map(ref_mat, mat, margin=10, axis=None,
 
     References
     ----------
-    .. [1] https://doi.org/10.48550/arXiv.0712.4289
-    .. [2] https://doi.org/10.1088/0957-0233/17/6/045
+    [1] : https://doi.org/10.48550/arXiv.0712.4289
+    [2] : https://doi.org/10.1088/0957-0233/17/6/045
     """
     (height0, width0) = ref_mat.shape[-2:]
     (height1, width1) = mat.shape[-2:]
@@ -845,8 +846,8 @@ def _get_1d_shift_single_row_2d_input(ref_mat, mat, win_size=7, margin=10,
     sub_pixel : bool, optional
         Enable sub-pixel location.
     method : {"diff", "poly_fit"}
-        Method for finding 1d sub-pixel position. Two options: a difference-
-        based method or a polynomial method.
+        Method for finding 1d sub-pixel position. Two options: a
+        differential method or a polynomial method.
     size : int
         Window size around the integer location of the maximum value used for
         sub-pixel searching.
@@ -1098,7 +1099,7 @@ def _get_2d_shift_full_image_2d_input(ref_mat, mat, win_size=7, margin=10,
         Enable sub-pixel location.
     method : {"diff", "poly_fit"}
         Method for finding sub-pixel shift. Two options: a differential
-        method (Ref. [1]_) or a polynomial method (Ref. [2]_).
+        method (Ref. [1]) or a polynomial method (Ref. [2]).
     size : int
         Window size around the integer location of the maximum value used for
         sub-pixel searching.
@@ -1119,8 +1120,8 @@ def _get_2d_shift_full_image_2d_input(ref_mat, mat, win_size=7, margin=10,
 
     References
     ----------
-    .. [1] https://doi.org/10.48550/arXiv.0712.4289
-    .. [2] https://doi.org/10.1088/0957-0233/17/6/045
+    [1] : https://doi.org/10.48550/arXiv.0712.4289
+    [2] : https://doi.org/10.1088/0957-0233/17/6/045
     """
     if ref_mat.shape != mat.shape:
         raise ValueError("Data shape must be the same !!!")
@@ -1195,7 +1196,7 @@ def _get_2d_shift_multi_rows_3d_input(ref_mat, mat, win_size=7, margin=10,
         Enable sub-pixel location.
     method : {"diff", "poly_fit"}
         Method for finding sub-pixel shift. Two options: a differential
-        method (Ref. [1]_) or a polynomial method (Ref. [2]_).
+        method (Ref. [1]) or a polynomial method (Ref. [2]).
     size : int
         Window size around the integer location of the maximum value used for
         sub-pixel searching.
@@ -1221,8 +1222,8 @@ def _get_2d_shift_multi_rows_3d_input(ref_mat, mat, win_size=7, margin=10,
 
     References
     ----------
-    .. [1] https://doi.org/10.48550/arXiv.0712.4289
-    .. [2] https://doi.org/10.1088/0957-0233/17/6/045
+    [1] : https://doi.org/10.48550/arXiv.0712.4289
+    [2] : https://doi.org/10.1088/0957-0233/17/6/045
     """
     if ref_mat.shape != mat.shape:
         raise ValueError("Data shape must be the same !!!")
@@ -1797,7 +1798,7 @@ def __inverse_values(mat, val_max):
 def __locate_2d_peak_kernel(mat, x0, y0):
     """
     GPU-kernel function to locate the position of the maximum value of a
-    2d-array with sub-pixel accuracy (Ref. [1]_).
+    2d-array with sub-pixel accuracy (Ref. [1]).
 
     Parameters
     ----------
@@ -1815,7 +1816,7 @@ def __locate_2d_peak_kernel(mat, x0, y0):
 
     References
     ----------
-    .. [1] https://doi.org/10.48550/arXiv.0712.4289
+    [1] : https://doi.org/10.48550/arXiv.0712.4289
     """
     (height, width) = mat.shape
     height1 = height - 1
@@ -1884,7 +1885,7 @@ def _get_2d_shift_multi_rows_2d_input_kernel(shifts, ref_mat, mat, coef_4d,
         j = x_index + radi_ref
         i = y_index + radi_ref
         ref_mat1 = ref_mat[i - radi_ref:i + radi_ref + 1,
-                   j - radi_ref: j + radi_ref + 1]
+                           j - radi_ref: j + radi_ref + 1]
         mat1 = mat[i - radi:i + radi + 1, j - radi: j + radi + 1]
         coef_mat1 = coef_4d[y_index, x_index, :, :]
         coef_mat1 = __gen_2d_corr_map_2d_input(ref_mat1, mat1, coef_mat1)
@@ -2073,7 +2074,7 @@ def _get_2d_shift_multi_rows_3d_input_kernel(shifts, ref_mat, mat, coef_4d,
         j = x_index + radi_ref
         i = y_index + radi_ref
         ref_mat1 = ref_mat[:, i - radi_ref:i + radi_ref + 1,
-                   j - radi_ref: j + radi_ref + 1]
+                           j - radi_ref: j + radi_ref + 1]
         mat1 = mat[:, i - radi:i + radi + 1, j - radi: j + radi + 1]
         coef_mat1 = coef_4d[y_index, x_index, :, :]
         coef_mat1 = __gen_2d_corr_map_3d_input(ref_mat1, mat1, coef_mat1)
@@ -2118,9 +2119,10 @@ def _get_2d_shift_multi_rows_3d_input_gpu(ref_mat, mat, win_size=7, margin=10,
     -------
     list of two 2d-arrays
         x-shift array and y-shift array, corresponding to the pixel-locations
-        in the 2nd image where the starting location is at (margin + win_size/2,
-        margin + win_size/2). Using the pad option to make it easier to find
-        which value corresponding to which pixel-location.
+        in the 2nd image where the starting location is at
+        (margin + win_size/2, margin + win_size/2). Using the pad option to
+        make it easier to find which value corresponding to
+        which pixel-location.
     """
     if ref_mat.shape != mat.shape:
         raise ValueError("Data shape must be the same !!!")
@@ -2266,7 +2268,7 @@ def _generate_4d_correlation_map_3d_input_kernel(coef_4d, ref_mat, mat, height,
         j = x_index + radi_ref
         i = y_index + radi_ref
         ref_mat1 = ref_mat[:, i - radi_ref:i + radi_ref + 1,
-                   j - radi_ref: j + radi_ref + 1]
+                           j - radi_ref: j + radi_ref + 1]
         mat1 = mat[:, i - radi:i + radi + 1, j - radi: j + radi + 1]
         coef_mat1 = coef_4d[y_index, x_index, :, :]
         coef_mat1 = __gen_2d_corr_map_3d_input(ref_mat1, mat1, coef_mat1)
@@ -2302,7 +2304,7 @@ def _get_2d_shift_multi_rows_3d_input_cpu_gpu(ref_mat, mat, win_size=7,
         sliding i.e. size = 2 * margin + win_size
     method : {"diff", "poly_fit"}
         Method for finding sub-pixel shift. Two options: a differential
-        method (Ref. [1]_) or a polynomial method (Ref. [2]_).
+        method (Ref. [1]) or a polynomial method (Ref. [2]).
     size : int
         Window size around the integer location of the maximum value used for
         sub-pixel searching.
@@ -2319,14 +2321,15 @@ def _get_2d_shift_multi_rows_3d_input_cpu_gpu(ref_mat, mat, win_size=7,
     -------
     list of two 2d-arrays
         x-shift array and y-shift array, corresponding to the pixel-locations
-        in the 2nd image where the starting location is at (margin + win_size/2,
-        margin + win_size/2). Using the pad option to make it easier to find
-        which value corresponding to which pixel-location.
+        in the 2nd image where the starting location is at
+        (margin + win_size/2, margin + win_size/2). Using the pad option to
+        make it easier to find which value corresponding to
+        which pixel-location.
 
     References
     ----------
-    .. [1] https://doi.org/10.48550/arXiv.0712.4289
-    .. [2] https://doi.org/10.1088/0957-0233/17/6/045
+    [1] : https://doi.org/10.48550/arXiv.0712.4289
+    [2] : https://doi.org/10.1088/0957-0233/17/6/045
     """
     if ref_mat.shape != mat.shape:
         raise ValueError("Data shape must be the same !!!")
@@ -2398,7 +2401,7 @@ def _get_2d_shift_full_image_3d_input_cpu_gpu(ref_mat, mat, chunk_size=None,
         sliding, i.e. size = 2 * margin + win_size
     method : {"diff", "poly_fit"}
         Method for finding sub-pixel shift. Two options: a differential
-        method (Ref. [1]_) or a polynomial method (Ref. [2]_).
+        method (Ref. [1]) or a polynomial method (Ref. [2]).
     size : int
         Window size around the integer location of the maximum value used for
         sub-pixel searching.
@@ -2421,8 +2424,8 @@ def _get_2d_shift_full_image_3d_input_cpu_gpu(ref_mat, mat, chunk_size=None,
 
     References
     ----------
-    .. [1] https://doi.org/10.48550/arXiv.0712.4289
-    .. [2] https://doi.org/10.1088/0957-0233/17/6/045
+    [1] : https://doi.org/10.48550/arXiv.0712.4289
+    [2] : https://doi.org/10.1088/0957-0233/17/6/045
     """
     if ref_mat.shape != mat.shape:
         raise ValueError("Data shape must be the same !!!")
@@ -2482,7 +2485,7 @@ def find_local_shifts(ref_mat, mat, dim=1, win_size=7, margin=10,
         To define the sliding range of the second image.
     method : {"diff", "poly_fit"}
         Method for finding sub-pixel shift. Two options: a differential
-        method (Ref. [1]_) or a polynomial method (Ref. [2]_). The "poly_fit"
+        method (Ref. [1]) or a polynomial method (Ref. [2]). The "poly_fit"
         option is not available if using GPU.
     size : int
         Window size around the integer location of the maximum value used for
@@ -2508,8 +2511,8 @@ def find_local_shifts(ref_mat, mat, dim=1, win_size=7, margin=10,
 
     References
     ----------
-    .. [1] https://doi.org/10.48550/arXiv.0712.4289
-    .. [2] https://doi.org/10.1088/0957-0233/17/6/045
+    [1] : https://doi.org/10.48550/arXiv.0712.4289
+    [2] : https://doi.org/10.1088/0957-0233/17/6/045
     """
     if gpu is True:
         if cuda.is_available() is False:
@@ -2663,7 +2666,7 @@ def _find_global_shift_based_local_shifts_cpu(ref_mat, mat, win_size, margin,
         Enable sub-pixel location.
     method : {"diff", "poly_fit"}
         Method for finding 1d sub-pixel position. Two options: a differential
-        method (Ref. [1]_) or a polynomial method (Ref. [2]_).
+        method (Ref. [1]) or a polynomial method (Ref. [2]).
     size : int, optional
         Window size around the integer location of the maximum value used for
         sub-pixel searching.
@@ -2683,8 +2686,8 @@ def _find_global_shift_based_local_shifts_cpu(ref_mat, mat, win_size, margin,
 
     References
     ----------
-    .. [1] https://doi.org/10.48550/arXiv.0712.4289
-    .. [2] https://doi.org/10.1088/0957-0233/17/6/045
+    [1] : https://doi.org/10.48550/arXiv.0712.4289
+    [2] : https://doi.org/10.1088/0957-0233/17/6/045
     """
     if ref_mat.shape != mat.shape:
         raise ValueError("Data shape must be the same !!!")
@@ -2726,9 +2729,9 @@ def _find_global_shift_based_local_shifts_cpu(ref_mat, mat, win_size, margin,
         shifts = np.asarray(Parallel(n_jobs=ncore)(
             delayed(f_alias)(
                 ref_mat[list_i[k] - start:list_i[k] + start1,
-                list_j[k] - start:list_j[k] + start1],
+                        list_j[k] - start:list_j[k] + start1],
                 mat[list_i[k] - radi:list_i[k] + radi1,
-                list_j[k] - radi:list_j[k] + radi1],
+                    list_j[k] - radi:list_j[k] + radi1],
                 margin, None, sub_pixel, method, 2, size, False, None)
             for k in range(num_point)))
     x_shifts, y_shifts = shifts[:, 0], shifts[:, 1]
@@ -2795,7 +2798,7 @@ def _get_local_shifts_gpu_kernel(shifts, ref_mat, mat, list_i, list_j,
         i = list_i[idx]
         j = list_j[idx]
         ref_mat1 = ref_mat[i - radi_ref:i + radi_ref + 1,
-                   j - radi_ref: j + radi_ref + 1]
+                           j - radi_ref: j + radi_ref + 1]
         mat1 = mat[i - radi:i + radi + 1, j - radi: j + radi + 1]
         coef_mat1 = list_2d_coef[idx, :, :]
         coef_mat1 = __gen_2d_corr_map_2d_input(ref_mat1, mat1, coef_mat1)
@@ -2947,7 +2950,7 @@ def find_global_shift_based_local_shifts(ref_mat, mat, win_size, margin,
         Enable sub-pixel location.
     method : {"diff", "poly_fit"}
         Method for finding sub-pixel shift. Two options: a differential
-        method (Ref. [1]_) or a polynomial method (Ref. [2]_). The "poly_fit"
+        method (Ref. [1]) or a polynomial method (Ref. [2]). The "poly_fit"
         option is not available if using GPU.
     size : int, optional
         Window size around the integer location of the maximum value used for
@@ -2968,8 +2971,8 @@ def find_global_shift_based_local_shifts(ref_mat, mat, win_size, margin,
 
     References
     ----------
-    .. [1] https://doi.org/10.48550/arXiv.0712.4289
-    .. [2] https://doi.org/10.1088/0957-0233/17/6/045
+    [1] : https://doi.org/10.48550/arXiv.0712.4289
+    [2] : https://doi.org/10.1088/0957-0233/17/6/045
     """
 
     if gpu is True:
@@ -3045,8 +3048,8 @@ def __get_2d_shift_multi_rows_3d_input_umpa_cpu(ref_mat, mat, win_size, margin,
                 L1[i, j], L3[i - margin:i + margin1, j - margin:j + margin1],
                 L2, L4[i, j],
                 L6[i - margin:i + margin1, j - margin:j + margin1],
-                dark_signal, method=method, size=size) \
-                                   for i in range(start, stop_row) \
+                dark_signal, method=method, size=size)
+                                   for i in range(start, stop_row)
                                    for j in range(start, stop_col)))
         results = np.reshape(np.asarray(results),
                              (stop_row - start, stop_col - start, 4))
@@ -3058,8 +3061,8 @@ def __get_2d_shift_multi_rows_3d_input_umpa_cpu(ref_mat, mat, win_size, margin,
                 ref_mat[:, i - start:i + start1, j - start:j + start1],
                 mat[:, i - radi:i + radi1, j - radi:j + radi1], window, margin,
                 L1[i, j], L3[i - margin:i + margin1, j - margin:j + margin1],
-                0.0, 0.0, 0.0, dark_signal, method=method, size=size) \
-                                   for i in range(start, stop_row) \
+                0.0, 0.0, 0.0, dark_signal, method=method, size=size)
+                                   for i in range(start, stop_row)
                                    for j in range(start, stop_col)))
         results = np.reshape(np.asarray(results),
                              (stop_row - start, stop_col - start, 2))
@@ -3149,7 +3152,7 @@ def __calc_shift_umpa_gpu_kernel(shifts, trans, dark, ref_mat, mat, coef_4d,
         j = x_index + radi_ref
         i = y_index + radi_ref
         ref_mat1 = ref_mat[:, i - radi_ref:i + radi_ref1,
-                   j - radi_ref: j + radi_ref1]
+                           j - radi_ref: j + radi_ref1]
         mat1 = mat[:, i - radi:i + radi1, j - radi: j + radi1]
         A = A0[y_index, x_index, :, :]
         V = V0[y_index, x_index, :, :]
@@ -3246,7 +3249,7 @@ def find_local_shifts_umpa(ref_mat, mat, win_size=7, margin=10,
     To find local shifts (in x and y direction) of each pixel between
     two 3d-images by selecting a small volume of the second image and sliding
     over a slightly larger volume of the reference image. The cost function
-    uses the formula in Ref. [1]_, known as UMPA.
+    uses the formula in Ref. [1], known as UMPA.
 
     Parameters
     ----------
@@ -3261,7 +3264,7 @@ def find_local_shifts_umpa(ref_mat, mat, win_size=7, margin=10,
         To define the sliding range of the second image.
     method : {"diff", "poly_fit"}
         Method for finding sub-pixel shift. Two options: a differential
-        method (Ref. [2]_) or a polynomial method (Ref. [3]_). The "poly_fit"
+        method (Ref. [2]) or a polynomial method (Ref. [3]). The "poly_fit"
         option is not available if using GPU.
     size : int
         Window size around the integer location of the maximum value used for
@@ -3275,7 +3278,7 @@ def find_local_shifts_umpa(ref_mat, mat, win_size=7, margin=10,
     chunk_size : int or None
         Size of each chunk extracted along the height of the image. Use to
         avoid the out of memory problem.
-    filter_name : {None, "hann", "bartlett", "blackman", "hamming",\\
+    filter_name : {None, "hann", "bartlett", "blackman", "hamming",\
                   "nuttall", "parzen", "triang"}
         To select a smoothing filter.
     dark_signal : bool
@@ -3290,8 +3293,8 @@ def find_local_shifts_umpa(ref_mat, mat, win_size=7, margin=10,
 
     References
     ----------
-    .. [1] https://doi.org/10.1103/PhysRevLett.118.203903
-    .. [2] https://doi.org/10.48550/arXiv.0712.4289
+    [1] : https://doi.org/10.1103/PhysRevLett.118.203903
+    [2] : https://doi.org/10.48550/arXiv.0712.4289
     .. [3] https://doi.org/10.1088/0957-0233/17/6/045
     """
     if gpu is True:

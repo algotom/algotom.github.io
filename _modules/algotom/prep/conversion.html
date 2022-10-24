@@ -178,20 +178,21 @@
 <span class="c1"># ============================================================================</span>
 <span class="c1"># Author: Nghia T. Vo</span>
 <span class="c1"># E-mail:  </span>
-<span class="c1"># Description: Python implementations of preprocessing techniques.</span>
+<span class="c1"># Description: Python module of conversion techniques.</span>
 <span class="c1"># Contributors:</span>
 <span class="c1"># ============================================================================</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Module of conversion methods in the preprocessing stage:</span>
-<span class="sd">    - Stitching images.</span>
-<span class="sd">    - Joining images if there is no overlapping.</span>
-<span class="sd">    - Converting a 360-degree sinogram with offset center-of-rotation (COR) to</span>
-<span class="sd">      a 180-degree sinogram.</span>
-<span class="sd">    - Extending a 360-degree sinogram with offset COR for direct reconstruction</span>
-<span class="sd">      instead of converting it to a 180-degree sinogram.</span>
-<span class="sd">    - Converting a 180-degree sinogram to a 360-sinogram.</span>
-<span class="sd">    - Generating a sinogram from a helical data.</span>
+
+<span class="sd">    -   Stitching images.</span>
+<span class="sd">    -   Joining images if there is no overlapping.</span>
+<span class="sd">    -   Converting a 360-degree sinogram with offset center-of-rotation (COR)</span>
+<span class="sd">        to a 180-degree sinogram.</span>
+<span class="sd">    -   Extending a 360-degree sinogram with offset COR for direct</span>
+<span class="sd">        reconstruction instead of converting it to a 180-degree sinogram.</span>
+<span class="sd">    -   Converting a 180-degree sinogram to a 360-sinogram.</span>
+<span class="sd">    -   Generating a sinogram from a helical data.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -279,7 +280,8 @@
     <span class="k">if</span> <span class="n">nrow1</span> <span class="o">!=</span> <span class="n">nrow2</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Two images are not at the same height!!!&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">wei_mat1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">wei_mat2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="p">(</span><span class="n">wei_mat1</span><span class="p">,</span> <span class="n">wei_mat2</span><span class="p">)</span> <span class="o">=</span> <span class="n">make_weight_matrix</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">overlap_int</span><span class="p">,</span> <span class="n">side</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">wei_mat1</span><span class="p">,</span> <span class="n">wei_mat2</span><span class="p">)</span> <span class="o">=</span> <span class="n">make_weight_matrix</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span>
+                                                  <span class="n">overlap_int</span><span class="p">,</span> <span class="n">side</span><span class="p">)</span>
     <span class="n">total_width0</span> <span class="o">=</span> <span class="n">ncol1</span> <span class="o">+</span> <span class="n">ncol2</span> <span class="o">-</span> <span class="n">overlap_int</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">total_width</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">total_width</span> <span class="o">&lt;</span> <span class="n">total_width0</span><span class="p">):</span>
         <span class="n">total_width</span> <span class="o">=</span> <span class="n">total_width0</span>
@@ -489,7 +491,7 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    sino_stiched : array_like</span>
+<span class="sd">    sino_stitch : array_like</span>
 <span class="sd">        Converted sinogram.</span>
 <span class="sd">    cor : float</span>
 <span class="sd">        Updated center-of-rotation referred to the converted sinogram.</span>
@@ -517,7 +519,7 @@
 
 <div class="viewcode-block" id="convert_sinogram_180_to_360"><a class="viewcode-back" href="../../../toc/api/algotom.prep.conversion.html#algotom.prep.conversion.convert_sinogram_180_to_360">[docs]</a><span class="k">def</span> <span class="nf">convert_sinogram_180_to_360</span><span class="p">(</span><span class="n">sino_180</span><span class="p">,</span> <span class="n">center</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Convert a 180-degree sinogram to a 360-degree sinogram (Ref. [1]_).</span>
+<span class="sd">    Convert a 180-degree sinogram to a 360-degree sinogram (Ref. [1]).</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -533,7 +535,7 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1364/OE.22.019078</span>
+<span class="sd">    [1] : https://doi.org/10.1364/OE.22.019078</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">)</span> <span class="o">=</span> <span class="n">sino_180</span><span class="o">.</span><span class="n">shape</span>
     <span class="n">xcenter</span> <span class="o">=</span> <span class="p">(</span><span class="n">ncol</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
@@ -546,7 +548,7 @@
 <div class="viewcode-block" id="extend_sinogram"><a class="viewcode-back" href="../../../toc/api/algotom.prep.conversion.html#algotom.prep.conversion.extend_sinogram">[docs]</a><span class="k">def</span> <span class="nf">extend_sinogram</span><span class="p">(</span><span class="n">sino_360</span><span class="p">,</span> <span class="n">cor</span><span class="p">,</span> <span class="n">apply_log</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Extend a 360-degree sinogram (with offset center-of-rotation) for</span>
-<span class="sd">    later reconstruction (Ref. [1]_).</span>
+<span class="sd">    later reconstruction (Ref. [1]).</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -566,7 +568,7 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1364/OE.418448</span>
+<span class="sd">    [1] : https://doi.org/10.1364/OE.418448</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">apply_log</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">sino_360</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">sino_360</span><span class="p">)</span>
@@ -610,8 +612,8 @@
                                    <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flat</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dark</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                    <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Generate a 180-degree sinogram or a 360-degree sinogram from a helical</span>
-<span class="sd">    scan dataset which is a hdf/nxs object (Ref. [1]_).</span>
+<span class="sd">    Generate a 180-degree/360-degree sinogram from a helical-scan dataset</span>
+<span class="sd">    which is a hdf/nxs object (Ref. [1]).</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -633,7 +635,7 @@
 <span class="sd">        One of two options: &quot;180&quot; for generating a 180-degree sinogram or</span>
 <span class="sd">        &quot;360&quot; for generating a 360-degree sinogram.</span>
 <span class="sd">    angles : array_like, optional</span>
-<span class="sd">        1D array. List of angles (degree) corresponding to acquired projections.</span>
+<span class="sd">        1D array. Angles (degree) corresponding to acquired projections.</span>
 <span class="sd">    flat : array_like, optional</span>
 <span class="sd">        Flat-field image used for flat-field correction.</span>
 <span class="sd">    dark : array_like, optional</span>
@@ -653,7 +655,7 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1364/OE.418448</span>
+<span class="sd">    [1] : https://doi.org/10.1364/OE.418448</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">max_index</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">calculate_maximum_index</span><span class="p">(</span><span class="n">y_start</span><span class="p">,</span> <span class="n">y_stop</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span>
                                              <span class="n">pixel_size</span><span class="p">,</span> <span class="n">scan_type</span><span class="p">)</span>
@@ -681,7 +683,7 @@
         <span class="n">step_angle</span> <span class="o">=</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">num_proj</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">depth0</span><span class="p">)</span> <span class="o">*</span> <span class="n">step_angle</span>
     <span class="n">flat_dark</span> <span class="o">=</span> <span class="n">flat</span> <span class="o">-</span> <span class="n">dark</span>
-    <span class="n">FoV</span> <span class="o">=</span> <span class="n">pixel_size</span> <span class="o">*</span> <span class="n">height</span>
+    <span class="n">fov</span> <span class="o">=</span> <span class="n">pixel_size</span> <span class="o">*</span> <span class="n">height</span>
     <span class="n">y_step</span> <span class="o">=</span> <span class="n">pitch</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">num_proj</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">scan_type</span> <span class="o">==</span> <span class="s2">&quot;180&quot;</span><span class="p">:</span>
         <span class="n">num_proj_used</span> <span class="o">=</span> <span class="n">num_proj</span>
@@ -696,7 +698,7 @@
                 <span class="n">index</span><span class="p">,</span> <span class="n">i0</span><span class="p">,</span> <span class="n">depth0</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
     <span class="n">sinogram</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_proj_used</span><span class="p">,</span> <span class="n">width</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i0</span><span class="p">,</span> <span class="n">i0</span> <span class="o">+</span> <span class="n">num_proj_used</span><span class="p">):</span>
-        <span class="n">j0</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_e</span> <span class="o">+</span> <span class="n">FoV</span> <span class="o">-</span> <span class="n">i</span> <span class="o">*</span> <span class="n">y_step</span> <span class="o">-</span> <span class="n">y_pos</span><span class="p">)</span> <span class="o">/</span> <span class="n">pixel_size</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">j0</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_e</span> <span class="o">+</span> <span class="n">fov</span> <span class="o">-</span> <span class="n">i</span> <span class="o">*</span> <span class="n">y_step</span> <span class="o">-</span> <span class="n">y_pos</span><span class="p">)</span> <span class="o">/</span> <span class="n">pixel_size</span> <span class="o">-</span> <span class="mi">1</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">j0</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">j0</span> <span class="o">&gt;=</span> <span class="n">height</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                 <span class="s2">&quot;Requested row index </span><span class="si">{0}</span><span class="s2"> of projection </span><span class="si">{1}</span><span class="s2"> is out of the&quot;</span>
@@ -727,13 +729,14 @@
 
 
 <div class="viewcode-block" id="generate_full_sinogram_helical_scan"><a class="viewcode-back" href="../../../toc/api/algotom.prep.conversion.html#algotom.prep.conversion.generate_full_sinogram_helical_scan">[docs]</a><span class="k">def</span> <span class="nf">generate_full_sinogram_helical_scan</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">tomo_data</span><span class="p">,</span> <span class="n">num_proj</span><span class="p">,</span> <span class="n">pixel_size</span><span class="p">,</span>
-                                        <span class="n">y_start</span><span class="p">,</span> <span class="n">y_stop</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">scan_type</span><span class="o">=</span><span class="s2">&quot;180&quot;</span><span class="p">,</span>
-                                        <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flat</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dark</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                        <span class="n">y_start</span><span class="p">,</span> <span class="n">y_stop</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span>
+                                        <span class="n">scan_type</span><span class="o">=</span><span class="s2">&quot;180&quot;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                        <span class="n">flat</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dark</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                         <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Generate a full sinogram from a helical scan dataset which is a hdf/nxs</span>
-<span class="sd">    object (Ref. [1]_). Full sinogram is all 1D projection of the same slice of</span>
-<span class="sd">    a sample staying inside the field of view.</span>
+<span class="sd">    Generate a full sinogram from a helical-scan dataset which is a hdf/nxs</span>
+<span class="sd">    object (Ref. [1]). Full sinogram is all 1D projections of the same slice</span>
+<span class="sd">    of a sample staying inside the field of view.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -754,7 +757,7 @@
 <span class="sd">    scan_type : {&quot;180&quot;, &quot;360&quot;}</span>
 <span class="sd">        Data acquired is the 180-degree type or 360-degree type [1].</span>
 <span class="sd">    angles : array_like, optional</span>
-<span class="sd">        1D array. List of angles (degree) corresponding to acquired projections.</span>
+<span class="sd">        1D array. Angles (degree) corresponding to acquired projections.</span>
 <span class="sd">    flat : array_like, optional</span>
 <span class="sd">        Flat-field image used for flat-field correction.</span>
 <span class="sd">    dark : array_like, optional</span>
@@ -774,7 +777,7 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1364/OE.418448</span>
+<span class="sd">    [1] : https://doi.org/10.1364/OE.418448</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="p">(</span><span class="n">depth0</span><span class="p">,</span> <span class="n">height0</span><span class="p">,</span> <span class="n">width0</span><span class="p">)</span> <span class="o">=</span> <span class="n">tomo_data</span><span class="o">.</span><span class="n">shape</span>
     <span class="p">(</span><span class="n">crop_top</span><span class="p">,</span> <span class="n">crop_bottom</span><span class="p">,</span> <span class="n">crop_left</span><span class="p">,</span> <span class="n">crop_right</span><span class="p">)</span> <span class="o">=</span> <span class="n">crop</span>
@@ -792,7 +795,7 @@
         <span class="n">step_angle</span> <span class="o">=</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">num_proj</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">depth0</span><span class="p">)</span> <span class="o">*</span> <span class="n">step_angle</span>
     <span class="n">flat_dark</span> <span class="o">=</span> <span class="n">flat</span> <span class="o">-</span> <span class="n">dark</span>
-    <span class="n">FoV</span> <span class="o">=</span> <span class="n">pixel_size</span> <span class="o">*</span> <span class="n">height</span>
+    <span class="n">fov</span> <span class="o">=</span> <span class="n">pixel_size</span> <span class="o">*</span> <span class="n">height</span>
     <span class="n">y_step</span> <span class="o">=</span> <span class="n">pitch</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">num_proj</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">scan_type</span> <span class="o">==</span> <span class="s2">&quot;180&quot;</span><span class="p">:</span>
         <span class="n">y_e</span> <span class="o">=</span> <span class="n">y_stop</span> <span class="o">-</span> <span class="n">pitch</span> <span class="o">/</span> <span class="mf">2.0</span>
@@ -800,7 +803,7 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">y_e</span> <span class="o">=</span> <span class="n">y_stop</span> <span class="o">-</span> <span class="n">pitch</span>
         <span class="n">y_s</span> <span class="o">=</span> <span class="n">y_start</span> <span class="o">+</span> <span class="n">pitch</span>
-    <span class="n">num_proj_used</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">FoV</span> <span class="o">/</span> <span class="n">y_step</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">num_proj_used</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">fov</span> <span class="o">/</span> <span class="n">y_step</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span>
     <span class="n">y_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">pixel_size</span> <span class="o">+</span> <span class="n">y_s</span>
     <span class="n">i0</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="n">y_e</span> <span class="o">-</span> <span class="n">y_pos</span><span class="p">)</span> <span class="o">/</span> <span class="n">y_step</span><span class="p">))</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">i0</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">i0</span> <span class="o">&gt;=</span> <span class="n">depth0</span><span class="p">):</span>
@@ -815,7 +818,7 @@
                 <span class="n">index</span><span class="p">,</span> <span class="n">i0</span><span class="p">,</span> <span class="n">i0</span> <span class="o">+</span> <span class="n">num_proj_used</span><span class="p">,</span> <span class="n">depth0</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
     <span class="n">sinogram</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_proj_used</span><span class="p">,</span> <span class="n">width</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i0</span><span class="p">,</span> <span class="n">i0</span> <span class="o">+</span> <span class="n">num_proj_used</span><span class="p">):</span>
-        <span class="n">j0</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_e</span> <span class="o">+</span> <span class="n">FoV</span> <span class="o">-</span> <span class="n">i</span> <span class="o">*</span> <span class="n">y_step</span> <span class="o">-</span> <span class="n">y_pos</span><span class="p">)</span> <span class="o">/</span> <span class="n">pixel_size</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">j0</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_e</span> <span class="o">+</span> <span class="n">fov</span> <span class="o">-</span> <span class="n">i</span> <span class="o">*</span> <span class="n">y_step</span> <span class="o">-</span> <span class="n">y_pos</span><span class="p">)</span> <span class="o">/</span> <span class="n">pixel_size</span> <span class="o">-</span> <span class="mi">1</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">j0</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">j0</span> <span class="o">&gt;=</span> <span class="n">height</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                 <span class="s2">&quot;Requested row index </span><span class="si">{0}</span><span class="s2"> of projection </span><span class="si">{1}</span><span class="s2"> is out of&quot;</span>

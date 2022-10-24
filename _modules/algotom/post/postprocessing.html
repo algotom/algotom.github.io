@@ -178,17 +178,18 @@
 <span class="c1"># ============================================================================</span>
 <span class="c1"># Author: Nghia T. Vo</span>
 <span class="c1"># E-mail:  </span>
-<span class="c1"># Description: Python implementations of postprocessing techniques.</span>
+<span class="c1"># Description: Python module for postprocessing techniques.</span>
 <span class="c1"># Contributors:</span>
 <span class="c1"># ============================================================================</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Module of methods in the postprocessing stage:</span>
-<span class="sd">    - Get statistical information of reconstructed images or a dataset.</span>
-<span class="sd">    - Downsample 2D, 3D array, or a dataset.</span>
-<span class="sd">    - Rescale 2D, 3D array or a dataset to 8-bit or 16-bit data-type.</span>
-<span class="sd">    - Removing ring artifacts in a reconstructed image by transform back and</span>
-<span class="sd">      forth between the polar coordinates and the Cartesian coordinates.</span>
+
+<span class="sd">    -   Get statistical information of reconstructed images or a dataset.</span>
+<span class="sd">    -   Downsample 2D, 3D array, or a dataset.</span>
+<span class="sd">    -   Rescale 2D, 3D array or a dataset to 8-bit or 16-bit data-type.</span>
+<span class="sd">    -   Removing ring artifacts in a reconstructed image by transform back and</span>
+<span class="sd">        forth between the polar coordinates and the Cartesian coordinates.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
@@ -199,9 +200,9 @@
 <span class="kn">import</span> <span class="nn">algotom.prep.removal</span> <span class="k">as</span> <span class="nn">remo</span>
 
 
-<div class="viewcode-block" id="get_statical_information"><a class="viewcode-back" href="../../../toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.get_statical_information">[docs]</a><span class="k">def</span> <span class="nf">get_statical_information</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">),</span> <span class="n">denoise</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="get_statistical_information"><a class="viewcode-back" href="../../../toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.get_statistical_information">[docs]</a><span class="k">def</span> <span class="nf">get_statistical_information</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">),</span> <span class="n">denoise</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Get statical information of an image.</span>
+<span class="sd">    Get statistical information of an image.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -242,8 +243,8 @@
     <span class="k">return</span> <span class="n">gmin</span><span class="p">,</span> <span class="n">gmax</span><span class="p">,</span> <span class="n">min_percent</span><span class="p">,</span> <span class="n">max_percent</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">median</span><span class="p">,</span> <span class="n">variance</span></div>
 
 
-<div class="viewcode-block" id="get_statical_information_dataset"><a class="viewcode-back" href="../../../toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.get_statical_information_dataset">[docs]</a><span class="k">def</span> <span class="nf">get_statical_information_dataset</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">),</span> <span class="n">skip</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-                                     <span class="n">denoise</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="get_statistical_information_dataset"><a class="viewcode-back" href="../../../toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.get_statistical_information_dataset">[docs]</a><span class="k">def</span> <span class="nf">get_statistical_information_dataset</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">),</span> <span class="n">skip</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                                        <span class="n">denoise</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get statical information of a dataset. This can be a folder of tif files,</span>
 <span class="sd">    a hdf file, or a 3D array.</span>
@@ -289,7 +290,8 @@
             <span class="n">mat</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">list_file</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
             <span class="k">if</span> <span class="n">denoise</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
                 <span class="n">mat</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-            <span class="n">list_stat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_statical_information</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">percentile</span><span class="p">,</span> <span class="n">denoise</span><span class="p">))</span>
+            <span class="n">list_stat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_statistical_information</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">percentile</span><span class="p">,</span>
+                                                         <span class="n">denoise</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="n">file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">input_</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -307,7 +309,8 @@
             <span class="n">mat</span> <span class="o">=</span> <span class="n">input_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">denoise</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
                 <span class="n">mat</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-            <span class="n">list_stat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_statical_information</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">percentile</span><span class="p">,</span> <span class="n">denoise</span><span class="p">))</span>
+            <span class="n">list_stat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_statistical_information</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">percentile</span><span class="p">,</span>
+                                                         <span class="n">denoise</span><span class="p">))</span>
     <span class="n">list_stat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">list_stat</span><span class="p">)</span>
     <span class="n">gmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">list_stat</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
     <span class="n">gmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">list_stat</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
@@ -357,7 +360,8 @@
     <span class="k">return</span> <span class="n">mat_dsp</span></div>
 
 
-<div class="viewcode-block" id="downsample_dataset"><a class="viewcode-back" href="../../../toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.downsample_dataset">[docs]</a><span class="k">def</span> <span class="nf">downsample_dataset</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="downsample_dataset"><a class="viewcode-back" href="../../../toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.downsample_dataset">[docs]</a><span class="k">def</span> <span class="nf">downsample_dataset</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span>
+                       <span class="n">key_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Downsample a dataset. This can be a folder of tif files, a hdf file,</span>
 <span class="sd">    or a 3D array.</span>
@@ -429,7 +433,7 @@
                         <span class="n">mat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">list_file</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
                     <span class="n">mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
                     <span class="n">mat</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[:,</span> <span class="p">:</span><span class="n">height_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-                              <span class="p">:</span><span class="n">width_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+                          <span class="p">:</span><span class="n">width_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
                     <span class="n">mat</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">height_dsp</span><span class="p">,</span>
                                       <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">width_dsp</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
                     <span class="n">mat_dsp</span> <span class="o">=</span> <span class="n">dsp_method</span><span class="p">(</span>
@@ -465,8 +469,8 @@
         <span class="k">if</span> <span class="p">(</span><span class="n">depth_dsp</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">height_dsp</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">width_dsp</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">input_</span> <span class="o">=</span> <span class="n">input_</span><span class="p">[:</span><span class="n">depth_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                                <span class="p">:</span><span class="n">height_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-                                <span class="p">:</span><span class="n">width_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+                         <span class="p">:</span><span class="n">height_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                         <span class="p">:</span><span class="n">width_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
                 <span class="n">input_</span> <span class="o">=</span> <span class="n">input_</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
                     <span class="n">depth_dsp</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">height_dsp</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
                     <span class="n">width_dsp</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
@@ -490,10 +494,11 @@
                         <span class="k">break</span>
                     <span class="k">else</span><span class="p">:</span>
                         <span class="n">mat</span> <span class="o">=</span> <span class="n">input_</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                                     <span class="p">:</span><span class="n">height_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-                                     <span class="p">:</span><span class="n">width_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+                              <span class="p">:</span><span class="n">height_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                              <span class="p">:</span><span class="n">width_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
                         <span class="n">mat</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">height_dsp</span><span class="p">,</span>
-                                          <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">width_dsp</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+                                          <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">width_dsp</span><span class="p">,</span>
+                                          <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
                         <span class="n">mat_dsp</span> <span class="o">=</span> <span class="n">dsp_method</span><span class="p">(</span><span class="n">dsp_method</span><span class="p">(</span>
                             <span class="n">dsp_method</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
                         <span class="k">if</span> <span class="n">file_ext</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
@@ -558,7 +563,7 @@
 <span class="sd">        Minimum and maximum values used for rescaling. They are calculated if</span>
 <span class="sd">        None is given.</span>
 <span class="sd">    skip : int or None</span>
-<span class="sd">        Skipping step of reading input used for getting statistical information.</span>
+<span class="sd">        Skipping step of images used for getting statistical information.</span>
 <span class="sd">    key_path : str, optional</span>
 <span class="sd">        Key path to the dataset if the input is the hdf file.</span>
 
@@ -581,8 +586,8 @@
         <span class="k">if</span> <span class="n">minmax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">skip</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">skip</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mf">0.15</span> <span class="o">*</span> <span class="n">depth</span><span class="p">))</span>
-            <span class="p">(</span><span class="n">gmin</span><span class="p">,</span> <span class="n">gmax</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_statical_information_dataset</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">)[</span>
-                           <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+            <span class="p">(</span><span class="n">gmin</span><span class="p">,</span> <span class="n">gmax</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_statistical_information_dataset</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span>
+                                                               <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="p">(</span><span class="n">gmin</span><span class="p">,</span> <span class="n">gmax</span><span class="p">)</span> <span class="o">=</span> <span class="n">minmax</span>
         <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -630,8 +635,8 @@
         <span class="k">if</span> <span class="n">minmax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">skip</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">skip</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mf">0.15</span> <span class="o">*</span> <span class="n">depth</span><span class="p">))</span>
-            <span class="n">f_alias</span> <span class="o">=</span> <span class="n">get_statical_information_dataset</span>
-            <span class="p">(</span><span class="n">gmin</span><span class="p">,</span> <span class="n">gmax</span><span class="p">)</span> <span class="o">=</span> <span class="n">f_alias</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span><span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span><span class="n">key_path</span><span class="o">=</span><span class="n">key_path</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">f_alias</span> <span class="o">=</span> <span class="n">get_statistical_information_dataset</span>
+            <span class="p">(</span><span class="n">gmin</span><span class="p">,</span> <span class="n">gmax</span><span class="p">)</span> <span class="o">=</span> <span class="n">f_alias</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="n">key_path</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="p">(</span><span class="n">gmin</span><span class="p">,</span> <span class="n">gmax</span><span class="p">)</span> <span class="o">=</span> <span class="n">minmax</span>
         <span class="n">data_res</span> <span class="o">=</span> <span class="p">[]</span>
@@ -681,7 +686,7 @@
 <span class="sd">    v : int</span>
 <span class="sd">        Number of rows (* 2) to be applied the filter.</span>
 <span class="sd">    sort : bool, optional</span>
-<span class="sd">        Apply sorting (Ref. [2]_) if True.</span>
+<span class="sd">        Apply sorting (Ref. [2]) if True.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -690,8 +695,8 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1063/1.1149043</span>
-<span class="sd">    .. [2] https://doi.org/10.1364/OE.26.028396</span>
+<span class="sd">    [1] : https://doi.org/10.1063/1.1149043</span>
+<span class="sd">    [2] : https://doi.org/10.1364/OE.26.028396</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">)</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span>
     <span class="k">if</span> <span class="n">nrow</span> <span class="o">!=</span> <span class="n">ncol</span><span class="p">:</span>
@@ -710,7 +715,7 @@
                                   <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Remove ring artifacts in a reconstructed image by combining the polar</span>
-<span class="sd">    transform and the wavelet-fft-based method (Ref. [1]_).</span>
+<span class="sd">    transform and the wavelet-fft-based method (Ref. [1]).</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -723,7 +728,7 @@
 <span class="sd">    wavelet_name : str</span>
 <span class="sd">        Name of a wavelet. Search pywavelets API for a full list.</span>
 <span class="sd">    sort : bool, optional</span>
-<span class="sd">        Apply sorting (Ref. [2]_) if True.</span>
+<span class="sd">        Apply sorting (Ref. [2]) if True.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -732,8 +737,8 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] https://doi.org/10.1364/OE.17.008567</span>
-<span class="sd">    .. [2] https://doi.org/10.1364/OE.26.028396</span>
+<span class="sd">    [1] : https://doi.org/10.1364/OE.17.008567</span>
+<span class="sd">    [2] : https://doi.org/10.1364/OE.26.028396</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">)</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span>
     <span class="k">if</span> <span class="n">nrow</span> <span class="o">!=</span> <span class="n">ncol</span><span class="p">:</span>

@@ -178,15 +178,15 @@
             
   <div class="section" id="module-algotom.util.calibration">
 <span id="algotom-util-calibration"></span><h1><span class="section-number">7.5.1. </span><a class="reference internal" href="#module-algotom.util.calibration" title="algotom.util.calibration"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.calibration</span></code></a><a class="headerlink" href="#module-algotom.util.calibration" title="Permalink to this heading">¶</a></h1>
-<dl class="simple">
-<dt>Module of calibration methods:</dt><dd><ul class="simple">
+<p>Module of calibration methods:</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>Correcting the non-uniform background of an image.</p></li>
 <li><p>Binarizing an image.</p></li>
 <li><p>Calculating the distance between two point-like objects segmented from
 two images. Useful for determining pixel-size in helical scans.</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 <p class="rubric"><strong>Functions:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <colgroup>
@@ -279,7 +279,7 @@ list is at:
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.calculate_threshold">
 <span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">calculate_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bgr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bright'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#calculate_threshold"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.calculate_threshold" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate threshold value based on Algorithm 4 in Ref. <a href="#id9"><span class="problematic" id="id1">[1]_</span></a>.</p>
+<dd><p>Calculate threshold value based on Algorithm 4 in Ref. [1].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -292,11 +292,7 @@ list is at:
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.26.028396">https://doi.org/10.1364/OE.26.028396</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1364/OE.26.028396">https://doi.org/10.1364/OE.26.028396</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -308,7 +304,7 @@ list is at:
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
 <li><p><strong>threshold</strong> (<em>float, optional</em>) – Threshold value for binarization. Automatically calculated using
-Algorithm 4 in Ref. <a href="#id10"><span class="problematic" id="id3">[1]_</span></a> if None.</p></li>
+Algorithm 4 in Ref. [1] if None.</p></li>
 <li><p><strong>bgr</strong> (<em>{“bright”, “dark”}</em>) – To indicate the brightness of the background against image features.</p></li>
 <li><p><strong>norm</strong> (<em>bool, optional</em>) – Apply normalization if True.</p></li>
 <li><p><strong>denoise</strong> (<em>bool, optional</em>) – Apply denoising if True.</p></li>
@@ -320,11 +316,7 @@ Algorithm 4 in Ref. <a href="#id10"><span class="problematic" id="id3">[1]_</spa
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id4"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.26.028396">https://doi.org/10.1364/OE.26.028396</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1364/OE.26.028396">https://doi.org/10.1364/OE.26.028396</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -385,7 +377,7 @@ Algorithm 4 in Ref. <a href="#id10"><span class="problematic" id="id3">[1]_</spa
 <dt class="sig sig-object py" id="algotom.util.calibration.calculate_distance">
 <span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">calculate_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_opt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'max'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bgr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bright'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#calculate_distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.calculate_distance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the distance between two point-like objects segmented from
-two images. Useful for measuring pixel-size in helical scans (Ref. <a href="#id11"><span class="problematic" id="id5">[1]_</span></a>).</p>
+two images. Useful for measuring pixel-size in helical scans (Ref. [1]).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -393,7 +385,7 @@ two images. Useful for measuring pixel-size in helical scans (Ref. <a href="#id1
 <li><p><strong>mat2</strong> (<em>array_like</em>) – 2D array.</p></li>
 <li><p><strong>size_opt</strong> (<em>{“max”, “min”, “median”, “mean”}</em>) – Options to select binary objects based on their size.</p></li>
 <li><p><strong>threshold</strong> (<em>float, optional</em>) – Threshold value for binarization. Automatically calculated using
-Algorithm 4 in Ref. <a class="footnote-reference brackets" href="#id8" id="id6">2</a> if None.</p></li>
+Algorithm 4 in Ref. [2] if None.</p></li>
 <li><p><strong>bgr</strong> (<em>{“bright”, “dark”}</em>) – To indicate the brightness of the background against image features.</p></li>
 <li><p><strong>norm</strong> (<em>bool, optional</em>) – Apply normalization if True.</p></li>
 <li><p><strong>denoise</strong> (<em>bool, optional</em>) – Apply denoising if True.</p></li>
@@ -402,14 +394,8 @@ Algorithm 4 in Ref. <a class="footnote-reference brackets" href="#id8" id="id6">
 </dd>
 </dl>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id7"><span class="brackets">1</span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
-</dd>
-<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id6">2</a></span></dt>
-<dd><p><a class="reference external" href="https://doi.org/10.1364/OE.26.028396">https://doi.org/10.1364/OE.26.028396</a></p>
-</dd>
-</dl>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a>
+[2] : <a class="reference external" href="https://doi.org/10.1364/OE.26.028396">https://doi.org/10.1364/OE.26.028396</a></p>
 </dd></dl>
 
 </div>

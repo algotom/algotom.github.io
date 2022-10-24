@@ -23,10 +23,11 @@
 
 """
 Module of simulation methods:
-    - Methods for designing a customized 2D phantom.
-    - Method for calculating a sinogram of a phantom based on the Fourier
-      slice theorem.
-    - Methods for adding artifacts to a simulated sinogram.
+
+    -   Methods for designing a customized 2D phantom.
+    -   Method for calculating a sinogram of a phantom based on the Fourier
+        slice theorem.
+    -   Methods for adding artifacts to a simulated sinogram.
 """
 
 import numpy as np
@@ -207,7 +208,8 @@ def make_line_target(size):
             else:
                 for x_cen in np.arange(start, stop, 2 * line_wid):
                     mask += make_rectangular_mask(size, (x_cen, y_cen),
-                                                  (line_wid - 1, line_hei), 0.0)
+                                                  (line_wid - 1, line_hei),
+                                                  0.0)
                 for x_cen in np.arange(start + line_wid // 2, stop,
                                        2 * line_wid):
                     mask += make_rectangular_mask(size, (x_cen, y_cen),
@@ -235,7 +237,8 @@ def make_line_target(size):
     list1 = mask[size // 2]
     list_pos = np.where(list1 == 1.0)[0]
     circle_mask = make_elliptic_mask(size, 0.0,
-                                     list_pos[-1] - list_pos[0] + line_hei, 0.0)
+                                     list_pos[-1] - list_pos[0] + line_hei,
+                                     0.0)
     return circle_mask - mask
 
 
@@ -259,11 +262,13 @@ def make_face_phantom(size):
     ratio2 = 0.91 if size > 64 else 0.86
     face1 = make_elliptic_mask(size, 0.0, (size / 1.3, ratio1 * size), 0.0)
     face2 = -0.6 * make_elliptic_mask(size, (0.0, -0.01 * size),
-                                      (ratio2 * size / 1.3, ratio2 * size), 0.0)
+                                      (ratio2 * size / 1.3, ratio2 * size),
+                                      0.0)
     face = face1 + face2
     x_rat_eye = 0.3
     y_rat_eye = 0.4
-    eye1 = 0.6 * make_elliptic_mask(size, (-x_rat_eye * half, y_rat_eye * half),
+    eye1 = 0.6 * make_elliptic_mask(size,
+                                    (-x_rat_eye * half, y_rat_eye * half),
                                     (0.15 * size, 0.05 * size), 0.0)
     pupil1a = -0.8 * make_elliptic_mask(size,
                                         (-x_rat_eye * half, y_rat_eye * half),
@@ -277,7 +282,8 @@ def make_face_phantom(size):
                                              (0.18 * size, 0.02 * size), -5.0)
     eyebrow1b = -0.3 * make_rectangular_mask(size, (-x_rat_eye * half,
                                                     0.54 * half - 0.01 * half),
-                                             (0.18 * size, 0.015 * size), -10.0)
+                                             (0.18 * size, 0.015 * size),
+                                             -10.0)
     eyebrow1 = np.clip(eyebrow1a + eyebrow1b, -0.3, 0.0)
     eye2 = 0.6 * make_elliptic_mask(size, (x_rat_eye * half, y_rat_eye * half),
                                     (0.15 * size, 0.05 * size), 0.0)
@@ -323,7 +329,7 @@ def make_face_phantom(size):
 def make_sinogram(mat, angles, pad_rate=0.5, pad_mode="edge"):
     """
     Create a sinogram (series of 1D projections) from a 2D image based on the
-    Fourier slice theorem (Ref. [1]_).
+    Fourier slice theorem (Ref. [1]).
 
     Parameters
     ----------
@@ -339,7 +345,7 @@ def make_sinogram(mat, angles, pad_rate=0.5, pad_mode="edge"):
 
     References
     ----------
-    .. [1] https://doi.org/10.1071/PH560198
+    [1] : https://doi.org/10.1071/PH560198
     """
     (nrow0, ncol0) = mat.shape
     if nrow0 != ncol0:
@@ -411,7 +417,7 @@ def add_stripe_artifact(sinogram, size, position, strength_ratio=0.2,
         To define the strength of the artifact. The value is in the range of
         [0.0, 1.0].
     stripe_type : {"partial", "full", "dead", "fluctuating"}
-        Type of stripe as classified in Ref. [1]_.
+        Type of stripe as classified in Ref. [1].
 
     Returns
     -------
@@ -419,7 +425,7 @@ def add_stripe_artifact(sinogram, size, position, strength_ratio=0.2,
 
     References
     ----------
-    .. [1] https://doi.org/10.1364/OE.26.028396
+    [1] : https://doi.org/10.1364/OE.26.028396
     """
     sinogram = np.copy(sinogram)
     (nrow, ncol) = sinogram.shape
