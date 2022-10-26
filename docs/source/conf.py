@@ -23,7 +23,7 @@ copyright = '2021, Nghia T. Vo'
 author = 'Nghia T. Vo'
 
 # The full version, including alpha/beta/rc tags
-release = '1.1.0'
+release = ''
 
 
 # -- General configuration ---------------------------------------------------
