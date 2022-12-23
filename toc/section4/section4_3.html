@@ -1,0 +1,475 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.3. Methods and tools for removing ring artifacts &mdash; Algotom&#39;s documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Algotom&#39;s documentation" href="../../index.html"/>
+        <link rel="up" title="4. Demonstrations" href="../section4.html"/>
+        <link rel="next" title="5. Technical notes" href="../section5.html"/>
+        <link rel="prev" title="4.2. Exploring raw data and making use of the input-output module" href="section4_2.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Algotom
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../section1.html">1. Basic tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section2.html">2. Features and capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section3.html">3. Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../section4.html">4. Demonstrations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="section4_1.html">4.1. Setting up a Python workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="section4_2.html">4.2. Exploring raw data and making use of the input-output module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.3. Methods and tools for removing ring artifacts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#improvements">4.3.1. Improvements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tools-for-designing-ring-removal-methods">4.3.2. Tools for designing ring removal methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#back-and-forth-sorting">4.3.2.1. Back-and-forth sorting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#separation-of-frequency-components">4.3.2.2. Separation of frequency components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polynomial-fitting-along-an-axis">4.3.2.3. Polynomial fitting along an axis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wavelet-decomposition-and-reconstruction">4.3.2.4. Wavelet decomposition and reconstruction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stripe-interpolation">4.3.2.5. Stripe interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#transformation-between-cartesian-and-polar-coordinate-system">4.3.2.6. Transformation between Cartesian and polar coordinate system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#transformation-between-sinogram-space-and-reconstruction-space">4.3.2.7. Transformation between sinogram space and reconstruction space</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../section5.html">5. Technical notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section6.html">6. Update notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">7. API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../credits.html">8. Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../highlights.html">9. Highlights</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Algotom</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../section4.html"><span class="section-number">4. </span>Demonstrations</a> &raquo;</li>
+        
+      <li><span class="section-number">4.3. </span>Methods and tools for removing ring artifacts</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/toc/section4/section4_3.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="methods-and-tools-for-removing-ring-artifacts">
+<span id="section4-3"></span><h1><span class="section-number">4.3. </span>Methods and tools for removing ring artifacts<a class="headerlink" href="#methods-and-tools-for-removing-ring-artifacts" title="Permalink to this heading">¶</a></h1>
+<p>Algotom provides improved implementations of many methods for removing ring artifacts;
+which were published previously by the same author in <a class="reference external" href="https://sarepy.readthedocs.io/">Sarepy</a>;
+to be easier to use and customize. More than that, there are many tools for users to
+design their own removal methods.</p>
+<p>Note that ring artifacts in a reconstructed image are corresponding to stripe artifacts in
+the sinogram image or the polar-transformed image. Most of ring removal methods are actually
+strip removal methods under the surface.</p>
+<blockquote>
+<div><div class="align-center figure" id="fig-4-3-1" style="width: 70%">
+<img alt="../../_images/fig_4_3_1.jpg" src="../../_images/fig_4_3_1.jpg" />
+<p class="caption"><span class="caption-number">Fig. 4.3.1 </span><span class="caption-text">Ring removal methods working on sinogram image, known as pre-processing methods.
+(a) Sinogram before correction. (b) Sinogram after correction. (c) Reconstructed
+image from sinogram (a). (d) Reconstructed image from sinogram (b).</span><a class="headerlink" href="#fig-4-3-1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="align-center figure" id="fig-4-3-2" style="width: 70%">
+<img alt="../../_images/fig_4_3_2.jpg" src="../../_images/fig_4_3_2.jpg" />
+<p class="caption"><span class="caption-number">Fig. 4.3.2 </span><span class="caption-text">Ring removal methods working on polar-transformed image, known as post-processing methods.
+(a) Reconstructed image before correction. (b) Polar transformation of image (a). (d) Stripe
+artifacts removed from image (b). (c) Cartesian transformation of image (d).</span><a class="headerlink" href="#fig-4-3-2" title="Permalink to this image">¶</a></p>
+</div>
+</div></blockquote>
+<div class="section" id="improvements">
+<h2><span class="section-number">4.3.1. </span>Improvements<a class="headerlink" href="#improvements" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>Users can select different smoothing filters available in <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/ndimage.html">Scipy</a>
+or in <a class="reference internal" href="../api/algotom.util.utility.html#api-util-utility"><span class="std std-ref">Algotom utility module</span></a> for removing stripes by passing keyword arguments as dict type:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
+<span class="kn">import</span> <span class="nn">algotom.prep.removal</span> <span class="k">as</span> <span class="nn">rem</span>
+<span class="n">sinogram</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;D:/data/sinogram.tif&quot;</span><span class="p">)</span>
+<span class="c1"># Sorting-based methods use the median filter by default, users can select</span>
+<span class="c1"># another filter as below.</span>
+<span class="n">sinogram1</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_sorting</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;gaussian_filter&quot;</span><span class="p">,</span>
+                                                              <span class="s2">&quot;para1&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">)})</span>
+</pre></div>
+</div>
+</li>
+<li><p>The <a class="reference external" href="https://doi.org/10.1364/OE.26.028396">sorting-based technique</a>, which is simple but effective to remove
+partial stripes and avoid void-center artifacts, is an option for other ring removal methods.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">sinogram2</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_filtering</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sinogram3</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_regularization</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="tools-for-designing-ring-removal-methods">
+<h2><span class="section-number">4.3.2. </span>Tools for designing ring removal methods<a class="headerlink" href="#tools-for-designing-ring-removal-methods" title="Permalink to this heading">¶</a></h2>
+<p>The cleaning capability with least side-effect of a ring removal method relies
+on a smoothing filter or an interpolation technique which the method employs.
+Other supporting techniques for revealing stripe artifacts such as sorting,
+filtering, fitting, wavelet decomposition, polar transformation, or forward projection
+are commonly used. Algotom provides these supporting tools for users to incorporate
+with their own smoothing filters or interpolation techniques.</p>
+<div class="section" id="back-and-forth-sorting">
+<h3><span class="section-number">4.3.2.1. </span>Back-and-forth sorting<a class="headerlink" href="#back-and-forth-sorting" title="Permalink to this heading">¶</a></h3>
+<blockquote>
+<div><p>The technique (algorithm 3 in <span id="id1">[<a class="reference internal" href="../credits.html#id7" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Superior techniques for eliminating ring artifacts in x-ray micro-tomography. Opt. Express, 26(22):28396–28412, Oct 2018. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-26-22-28396, doi:10.1364/OE.26.028396.">R1</a>]</span>) couples an image with an index array
+for sorting the image backward and forward along an axis. Users can combine the
+<a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.util.utility.html#algotom.util.utility.sort_forward">sorting forward</a>
+method, a customized filter, and the <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.util.utility.html#algotom.util.utility.sort_backward">sorting backward</a>
+method as follows</p>
+<div class="align-center figure" id="fig-4-3-3" style="width: 70%">
+<img alt="../../_images/fig_4_3_3.jpg" src="../../_images/fig_4_3_3.jpg" />
+<p class="caption"><span class="caption-number">Fig. 4.3.3 </span><span class="caption-text">Demonstration of the forward sorting.</span><a class="headerlink" href="#fig-4-3-3" title="Permalink to this image">¶</a></p>
+</div>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">algotom.util.utility</span> <span class="k">as</span> <span class="nn">util</span>
+<span class="kn">import</span> <span class="nn">scipy.ndimage</span> <span class="k">as</span> <span class="nn">ndi</span>
+
+<span class="c1"># Sort forward</span>
+<span class="n">sino_sort</span><span class="p">,</span> <span class="n">mat_index</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">sort_forward</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># Use a customized smoothing filter here</span>
+<span class="n">sino_sort</span> <span class="o">=</span> <span class="n">apply_customized_filter</span><span class="p">(</span><span class="n">sino_sort</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span>
+<span class="c1"># Sort backward</span>
+<span class="n">sino_corr</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">sort_backward</span><span class="p">(</span><span class="n">sino_sort</span><span class="p">,</span> <span class="n">mat_index</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="align-center figure" id="fig-4-3-4" style="width: 70%">
+<img alt="../../_images/fig_4_3_4.jpg" src="../../_images/fig_4_3_4.jpg" />
+<p class="caption"><span class="caption-number">Fig. 4.3.4 </span><span class="caption-text">Demonstration of the backward sorting.</span><a class="headerlink" href="#fig-4-3-4" title="Permalink to this image">¶</a></p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="separation-of-frequency-components">
+<h3><span class="section-number">4.3.2.2. </span>Separation of frequency components<a class="headerlink" href="#separation-of-frequency-components" title="Permalink to this heading">¶</a></h3>
+<blockquote>
+<div><p>The <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.util.utility.html#algotom.util.utility.separate_frequency_component">technique</a>
+can help to reveal stripe artifacts by separating frequency components of each image-column using a
+1D window available in <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/signal.windows.html">Scipy</a>. Example
+of how to use the technique:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># Separate a sinogram image</span>
+<span class="n">sino_smooth</span><span class="p">,</span> <span class="n">sino_sharp</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">separate_frequency_component</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                                                            <span class="n">window</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;gaussian&quot;</span><span class="p">,</span>
+                                                                    <span class="s2">&quot;sigma&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">})</span>
+<span class="c1"># Use a customized smoothing filter here</span>
+<span class="n">sino_smooth_filtered</span> <span class="o">=</span> <span class="n">apply_customized_filter</span><span class="p">(</span><span class="n">sino_smooth</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span>
+<span class="c1"># Add back</span>
+<span class="n">sino_corr</span> <span class="o">=</span> <span class="n">sino_smooth_filtered</span> <span class="o">+</span> <span class="n">sino_sharp</span>
+</pre></div>
+</div>
+<div class="align-center figure" id="fig-4-3-5" style="width: 70%">
+<img alt="../../_images/fig_4_3_5.jpg" src="../../_images/fig_4_3_5.jpg" />
+<p class="caption"><span class="caption-number">Fig. 4.3.5 </span><span class="caption-text">Demonstration of how to separate frequency components of a sinogram along each column.</span><a class="headerlink" href="#fig-4-3-5" title="Permalink to this image">¶</a></p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="polynomial-fitting-along-an-axis">
+<h3><span class="section-number">4.3.2.3. </span>Polynomial fitting along an axis<a class="headerlink" href="#polynomial-fitting-along-an-axis" title="Permalink to this heading">¶</a></h3>
+<blockquote>
+<div><p>The <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.util.utility.html#algotom.util.utility.generate_fitted_image">technique</a>
+can help to reveal low contrast stripes easily by applying a polynomial fit along each image-column.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">sino_fit</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">generate_fitted_image</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_chunk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Use a customized smoothing filter here</span>
+<span class="n">sino_smooth</span> <span class="o">=</span> <span class="n">apply_customized_filter</span><span class="p">(</span><span class="n">sino_fit</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span>
+<span class="c1"># Get back the sinogram</span>
+<span class="n">sino_corr</span> <span class="o">=</span> <span class="p">(</span><span class="n">sinogram</span> <span class="o">/</span> <span class="n">sino_fit</span><span class="p">)</span> <span class="o">*</span> <span class="n">sino_smooth</span>
+</pre></div>
+</div>
+<div class="align-center figure" id="fig-4-3-6" style="width: 70%">
+<img alt="../../_images/fig_4_3_6.jpg" src="../../_images/fig_4_3_6.jpg" />
+<p class="caption"><span class="caption-number">Fig. 4.3.6 </span><span class="caption-text">Demonstration of how to apply a polynomial fitting along each column of a sinogram.</span><a class="headerlink" href="#fig-4-3-6" title="Permalink to this image">¶</a></p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="wavelet-decomposition-and-reconstruction">
+<h3><span class="section-number">4.3.2.4. </span>Wavelet decomposition and reconstruction<a class="headerlink" href="#wavelet-decomposition-and-reconstruction" title="Permalink to this heading">¶</a></h3>
+<blockquote>
+<div><p>Functions for <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.util.utility.html#algotom.util.utility.apply_wavelet_decomposition">wavelet decomposition</a>,
+<a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.util.utility.html#algotom.util.utility.apply_wavelet_reconstruction">wavelet reconstruction</a>,
+and applying a smoothing filter to <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.util.utility.html#algotom.util.utility.apply_filter_to_wavelet_component">specific levels</a>
+of <a class="reference external" href="https://pywavelets.readthedocs.io/en/latest/">directional image-details</a> are provided.
+The following codes decompose a sinogram to level 2. As can be seen in <a class="reference internal" href="#fig-4-3-7"><span class="std std-numref">Fig. 4.3.7</span></a>
+stripe artifacts are visible in vertical details of results. One can apply a smoothing filter
+to remove these stripes then apply a wavelet reconstruction to get the resulting sinogram.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">outputs</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">apply_wavelet_decomposition</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="s2">&quot;db9&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">[</span><span class="n">mat_2</span><span class="p">,</span> <span class="p">(</span><span class="n">cH_level_2</span><span class="p">,</span> <span class="n">cV_level_2</span><span class="p">,</span> <span class="n">cD_level_2</span><span class="p">),</span> <span class="p">(</span><span class="n">cH_level_1</span><span class="p">,</span> <span class="n">cV_level_1</span><span class="p">,</span> <span class="n">cD_level_1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">outputs</span>
+<span class="c1"># Save results of vertical details</span>
+<span class="c1"># losa.save_image(&quot;D:/output/cV_level_2.tif&quot;, cV_level_2)</span>
+<span class="c1"># losa.save_image(&quot;D:/output/cV_level_1.tif&quot;, cV_level_1)</span>
+
+<span class="c1"># Apply the gaussian filter to each level of vertical details</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">apply_filter_to_wavelet_component</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                                 <span class="n">method</span><span class="o">=</span><span class="s2">&quot;gaussian_filter&quot;</span><span class="p">,</span> <span class="n">para</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)])</span>
+<span class="c1"># Optional: remove stripes on the approximation image (mat_2 above)</span>
+<span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_sorting</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">11</span><span class="p">)</span>
+<span class="c1"># Apply the wavelet reconstruction</span>
+<span class="n">sino_corr</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">apply_wavelet_reconstruction</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="s2">&quot;db9&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="align-center figure" id="fig-4-3-7" style="width: 90%">
+<img alt="../../_images/fig_4_3_7.jpg" src="../../_images/fig_4_3_7.jpg" />
+<p class="caption"><span class="caption-number">Fig. 4.3.7 </span><span class="caption-text">Demonstration of the wavelet decomposition.</span><a class="headerlink" href="#fig-4-3-7" title="Permalink to this image">¶</a></p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="stripe-interpolation">
+<h3><span class="section-number">4.3.2.5. </span>Stripe interpolation<a class="headerlink" href="#stripe-interpolation" title="Permalink to this heading">¶</a></h3>
+<blockquote>
+<div><p>Users can design a customized stripe-detection method, then pass the result (as a 1D binary array) to the
+following <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.util.utility.html#algotom.util.utility.interpolate_inside_stripe">function</a>
+to remove stripes by interpolation.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">sino_corr</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">interpolate_inside_stripe</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">list_mask</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="transformation-between-cartesian-and-polar-coordinate-system">
+<h3><span class="section-number">4.3.2.6. </span>Transformation between Cartesian and polar coordinate system<a class="headerlink" href="#transformation-between-cartesian-and-polar-coordinate-system" title="Permalink to this heading">¶</a></h3>
+<blockquote>
+<div><p>This is a well-known technique to remove ring artifacts from a reconstructed image
+as shown in <a class="reference internal" href="#fig-4-3-2"><span class="std std-numref">Fig. 4.3.2</span></a>.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">img_rec</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;D:/data/reconstructed_image.tif&quot;</span><span class="p">)</span>
+<span class="c1"># Transform the reconstructed image into polar coordinates</span>
+<span class="n">img_polar</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">transform_slice_forward</span><span class="p">(</span><span class="n">img_rec</span><span class="p">)</span>
+
+<span class="c1"># Use a customized smoothing filter here</span>
+<span class="n">img_corr</span> <span class="o">=</span> <span class="n">apply_customized_filter</span><span class="p">(</span><span class="n">img_polar</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span>
+
+<span class="c1"># Transform the resulting image into Cartesian coordinates</span>
+<span class="n">img_carte</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">transform_slice_backward</span><span class="p">(</span><span class="n">img_corr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="transformation-between-sinogram-space-and-reconstruction-space">
+<h3><span class="section-number">4.3.2.7. </span>Transformation between sinogram space and reconstruction space<a class="headerlink" href="#transformation-between-sinogram-space-and-reconstruction-space" title="Permalink to this heading">¶</a></h3>
+<blockquote>
+<div><p>Algotom provides a <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.util.simulation.html#algotom.util.simulation.make_sinogram">re-projection method</a>
+to convert a reconstructed image to the sinogram image. As using directly the
+Fourier slice theorem it’s fast compared to ray-tracing-based methods or
+image-rotation-based methods.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">algotom.util.simulation</span> <span class="k">as</span> <span class="nn">sim</span>
+<span class="kn">import</span> <span class="nn">algotom.rec.reconstruction</span> <span class="k">as</span> <span class="nn">rec</span>
+
+<span class="n">rec_img</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;D:/data/reconstructed_image.tif&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">rec_img</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">180.0</span><span class="p">,</span> <span class="n">height</span><span class="p">))</span>
+
+<span class="c1"># Re-project the reconstructed image</span>
+<span class="n">sino_calc</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">make_sinogram</span><span class="p">(</span><span class="n">rec_img</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="n">angles</span><span class="p">)</span>
+
+<span class="c1"># Use a customized stripe-removal method</span>
+<span class="n">sino_corr</span> <span class="o">=</span> <span class="n">apply_customized_filter</span><span class="p">(</span><span class="n">sino_calc</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span>
+
+<span class="c1"># Reconstruct</span>
+<span class="n">img_rec</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">dfi_reconstruction</span><span class="p">(</span><span class="n">sino_corr</span><span class="p">,</span> <span class="p">(</span><span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">apply_log</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="align-center figure" id="fig-4-3-8" style="width: 80%">
+<img alt="../../_images/fig_4_3_8.jpg" src="../../_images/fig_4_3_8.jpg" />
+<p class="caption"><span class="caption-number">Fig. 4.3.8 </span><span class="caption-text">Demonstration of how to re-project a reconstructed image.</span><a class="headerlink" href="#fig-4-3-8" title="Permalink to this image">¶</a></p>
+</div>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../section5.html" class="btn btn-neutral float-right" title="5. Technical notes" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="section4_2.html" class="btn btn-neutral" title="4.2. Exploring raw data and making use of the input-output module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Nghia T. Vo.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

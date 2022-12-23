@@ -258,7 +258,7 @@ at Diamond Light Source are used for demonstration. Details of how data were acq
 
 .. figure:: section5_1/figs/fig_5_1_8.jpg
    :name: fig_5_1_8
-   :figwidth: 60 %
+   :figwidth: 65 %
    :align: center
    :figclass: align-center
 
@@ -290,9 +290,9 @@ A summary of computing time for retrieving a single phase-shift image using diff
 in :numref:`fig_5_1_10` where the window size is 7 and the margin is 10. As can be seen, there is a huge
 speed-up of computing time if using GPU.
 
-.. figure:: section5_1/figs/fig_5_1_10.png
+.. figure:: section5_1/figs/fig_5_1_10.jpg
    :name: fig_5_1_10
-   :figwidth: 70 %
+   :figwidth: 65 %
    :align: center
    :figclass: align-center
 

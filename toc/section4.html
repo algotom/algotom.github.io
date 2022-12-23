@@ -94,6 +94,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">4. Demonstrations</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="section4/section4_1.html">4.1. Setting up a Python workspace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="section4/section4_2.html">4.2. Exploring raw data and making use of the input-output module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="section4/section4_3.html">4.3. Methods and tools for removing ring artifacts</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="section5.html">5. Technical notes</a></li>
@@ -176,6 +177,20 @@
 <li class="toctree-l2"><a class="reference internal" href="section4/section4_2.html#other-file-formats">4.2.4. Other file formats</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="section4/section4_3.html">4.3. Methods and tools for removing ring artifacts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="section4/section4_3.html#improvements">4.3.1. Improvements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="section4/section4_3.html#tools-for-designing-ring-removal-methods">4.3.2. Tools for designing ring removal methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="section4/section4_3.html#back-and-forth-sorting">4.3.2.1. Back-and-forth sorting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section4/section4_3.html#separation-of-frequency-components">4.3.2.2. Separation of frequency components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section4/section4_3.html#polynomial-fitting-along-an-axis">4.3.2.3. Polynomial fitting along an axis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section4/section4_3.html#wavelet-decomposition-and-reconstruction">4.3.2.4. Wavelet decomposition and reconstruction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section4/section4_3.html#stripe-interpolation">4.3.2.5. Stripe interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section4/section4_3.html#transformation-between-cartesian-and-polar-coordinate-system">4.3.2.6. Transformation between Cartesian and polar coordinate system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section4/section4_3.html#transformation-between-sinogram-space-and-reconstruction-space">4.3.2.7. Transformation between sinogram space and reconstruction space</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 <p>Examples of how to use the package are under the example folder of <a class="reference external" href="https://github.com/algotom/algotom/tree/master/examples">Algotom</a>.
@@ -190,12 +205,12 @@ FFT-based reconstruction methods without proper padding; polychromatic X-ray sou
 or low-dynamic-range detectors to record high-dynamic-range projection-images.</p></li>
 </ul>
 </div></blockquote>
-<p>There are tools and <a class="reference external" href="https://sarepy.readthedocs.io/toc/section5.html">methods</a> users can use to customize their own algorithms:</p>
+<p>There are tools and <a class="reference internal" href="section4/section4_3.html#section4-3"><span class="std std-ref">methods</span></a> users can use to customize their own algorithms:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Methods to transform images back-and-forth between the polar coordinate system and the Cartesian coordinate system.</p></li>
+<li><p>Methods to transform images between the polar coordinate system and the Cartesian coordinate system.</p></li>
 <li><p>Methods to separate stripe artifacts.</p></li>
-<li><p>Methods to transform back-and-forth between reconstruction images and sinogram images.</p></li>
+<li><p>Methods to transform an image between the reconstruction space and the sinogram space.</p></li>
 </ul>
 </div></blockquote>
 <p>Tomographic data for testing or developing methods can be downloaded from <a class="reference external" href="https://zenodo.org/search?page=1&amp;size=20&amp;q=%22tomographic%20data%22%20%26%20%22nghia%20t.%20vo%22&amp;type=dataset#">Zenodo.org</a>
