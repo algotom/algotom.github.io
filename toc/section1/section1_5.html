@@ -262,10 +262,8 @@ corresponding to how the loops are defined. The following examples will make thi
 </div>
 <p>There are several options for choosing the <a class="reference external" href="https://joblib.readthedocs.io/en/latest/parallel.html#thread-based-parallelism-vs-process-based-parallelism">backend methods</a>.
 Depending on the problem and how input data are used, their performance can be significantly different. In the above
-example, each slice of data can be processed independently; i.e. no sharing data between cores; so the “threads”
-option gives the best performance.
-Note that we can’t use the above approaches for parallel reading or writing data from/to a hdf file. There is a
-<a class="reference external" href="https://docs.h5py.org/en/stable/mpi.html">different way</a> of doing these.</p>
+example, the “threads” option gives the best performance. Note that we can’t use the above approaches for
+parallel reading or writing data from/to a hdf file. There is a <a class="reference external" href="https://docs.h5py.org/en/stable/mpi.html">different way</a> of doing these.</p>
 </li>
 <li><p>Users can also refer to how Algotom uses Joblib for different use-cases as shown <a class="reference external" href="https://github.com/algotom/algotom/blob/e4241fdce435ffeed512c657b25e07d9e9a1a45f/algotom/util/utility.py#L68">here</a>,
 <a class="reference external" href="https://github.com/algotom/algotom/blob/e4241fdce435ffeed512c657b25e07d9e9a1a45f/algotom/prep/calculation.py#L176">here</a>,

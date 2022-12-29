@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bd7108d9-b1b3-4aba-9605-7e4d6e864f32" name="Changes" comment="Update">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="bd7108d9-b1b3-4aba-9605-7e4d6e864f32" name="Changes" comment="Update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,14 +26,14 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/nvo/PycharmProjects/algotom.github.io/docs/source/toc/section5/section5_1/figs",
+    "last_opened_file_path": "C:/Users/nvo/PycharmProjects/algotom.github.io/docs/source",
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\nvo\PycharmProjects\algotom.github.io\docs\source\toc\section5\section5_1\figs" />
       <recent name="C:\Users\nvo\PycharmProjects\algotom.github.io\docs\source" />
+      <recent name="C:\Users\nvo\PycharmProjects\algotom.github.io\docs\source\toc\section5\section5_1\figs" />
       <recent name="C:\Users\nvo\PycharmProjects\algotom.github.io" />
       <recent name="C:\Users\nvo\PycharmProjects\algotom.github.io\docs\source\toc" />
       <recent name="C:\Users\nvo\PycharmProjects\algotom.github.io\docs\source\toc\section4" />

@@ -188,7 +188,7 @@
 <h1><span class="section-number">1.4. </span>Basic workflow for processing tomographic data<a class="headerlink" href="#basic-workflow-for-processing-tomographic-data" title="Permalink to this heading">¶</a></h1>
 <div class="section" id="read-write-data">
 <h2><span class="section-number">1.4.1. </span>Read/write data<a class="headerlink" href="#read-write-data" title="Permalink to this heading">¶</a></h2>
-<p>The very first step is to know how to load data to workspace. Different
+<p>The first step is to know how to load data to workspace. Different
 communities use different file formats: hdf/nxs, mrc, txrm, xrm, tif, dicom,
 raw,… and they need specific Python libraries to work with. The common format
 used by synchrotron/neutron community is hdf/nxs. To load a dataset from a hdf/nxs
@@ -196,7 +196,7 @@ file we need to know the key or path to the data. This can be done using <a clas
 or Algotom’s function as shown in <a class="reference internal" href="section1_2.html#hdf-format"><span class="std std-ref">section 1.2</span></a>. For a tomographic
 hdf file, some basic metadata we need to know:</p>
 <ul class="simple">
-<li><p>Keys/paths to projections images, flat-field images, and dark-field images.</p></li>
+<li><p>Keys to projections images, flat-field images, and dark-field images.</p></li>
 <li><p>Key to rotation angles corresponding to projection images. This information may be
 not needed if the data was acquired in the ange range of [0; 180-degree].</p></li>
 <li><p>If the data is from a helical scan, extra information such as pixel size,
@@ -204,7 +204,7 @@ pitch, and translation positions is needed.</p></li>
 <li><p>Information which is used by specific data processing methods such as pixel
 size, sample-detector distance, or X-ray energy.</p></li>
 </ul>
-<p><a class="reference internal" href="#fig-1-4-1"><span class="std std-numref">Fig. 1.4.1</span></a> shows the content of a hdf file where users can find key/path
+<p><a class="reference internal" href="#fig-1-4-1"><span class="std std-numref">Fig. 1.4.1</span></a> shows the content of a hdf file where users can find key
 to datasets used for tomographic reconstruction.</p>
 <blockquote>
 <div><div class="align-center figure" id="fig-1-4-1" style="width: 100%">
@@ -225,7 +225,7 @@ to datasets used for tomographic reconstruction.</p>
 </div>
 </div></blockquote>
 <p>Another tomographic hdf/nxs file acquired at beamline I12, Diamond Light Source (DLS) where
-the file structure, keys, and paths are different to the one before. In this data,
+the file structure and keys are different to the one before. In this data,
 dark-field images and flat-field images are at the same dataset as projection images
 where there is a dataset named “image_key” used to distinguish these images.</p>
 <blockquote>
