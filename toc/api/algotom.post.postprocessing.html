@@ -103,7 +103,7 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">7.4.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.post.postprocessing</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#utility">7.5. Utility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#utilities">7.5. Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../credits.html">8. Credits</a></li>
@@ -220,7 +220,7 @@ forth between the polar coordinates and the Cartesian coordinates.</p></li>
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.post.postprocessing.get_statistical_information">
-<span class="sig-prename descclassname"><span class="pre">algotom.post.postprocessing.</span></span><span class="sig-name descname"><span class="pre">get_statistical_information</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">99)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/post/postprocessing.html#get_statistical_information"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.post.postprocessing.get_statistical_information" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.post.postprocessing.</span></span><span class="sig-name descname"><span class="pre">get_statistical_information</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">100)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/post/postprocessing.html#get_statistical_information"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.post.postprocessing.get_statistical_information" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get statistical information of an image.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -248,7 +248,7 @@ Must be between 0 and 100 inclusive.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.post.postprocessing.get_statistical_information_dataset">
-<span class="sig-prename descclassname"><span class="pre">algotom.post.postprocessing.</span></span><span class="sig-name descname"><span class="pre">get_statistical_information_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">99)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/post/postprocessing.html#get_statistical_information_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.post.postprocessing.get_statistical_information_dataset" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.post.postprocessing.</span></span><span class="sig-name descname"><span class="pre">get_statistical_information_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">100)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/post/postprocessing.html#get_statistical_information_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.post.postprocessing.get_statistical_information_dataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get statical information of a dataset. This can be a folder of tif files,
 a hdf file, or a 3D array.</p>
 <dl class="field-list simple">
@@ -259,7 +259,10 @@ a hdf file, or a 3D array.</p>
 Must be between 0 and 100 inclusive.</p></li>
 <li><p><strong>skip</strong> (<em>int</em>) – Skipping step of reading input.</p></li>
 <li><p><strong>denoise</strong> (<em>bool, optional</em>) – Enable/disable denoising before extracting statistical information.</p></li>
-<li><p><strong>key_path</strong> (<em>str, optional</em>) – Key path to the dataset if the input is the hdf file.</p></li>
+<li><p><strong>key_path</strong> (<em>str, optional</em>) – Key path to the dataset if input is a hdf file.</p></li>
+<li><p><strong>crop</strong> (<em>tuple of int, optional</em>) – Crop 3D data from the edges, i.e.
+crop = (crop_depth1, crop_depth2, crop_height1, crop_height2,
+crop_width1, crop_width2).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -297,17 +300,20 @@ Must be between 0 and 100 inclusive.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.post.postprocessing.downsample_dataset">
-<span class="sig-prename descclassname"><span class="pre">algotom.post.postprocessing.</span></span><span class="sig-name descname"><span class="pre">downsample_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/post/postprocessing.html#downsample_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.post.postprocessing.downsample_dataset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Downsample a dataset. This can be a folder of tif files, a hdf file,
+<span class="sig-prename descclassname"><span class="pre">algotom.post.postprocessing.</span></span><span class="sig-name descname"><span class="pre">downsample_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/post/postprocessing.html#downsample_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.post.postprocessing.downsample_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Downsample a dataset. Input can be a folder of tif files, a hdf file,
 or a 3D array.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>input_</strong> (<em>str, array_like</em>) – It can be a folder path to tif files, a hdf file, or 3D array.</p></li>
+<li><p><strong>input_</strong> (<em>str, array_like</em>) – It can be a folder path to tif files, a hdf file, or a 3D array.</p></li>
 <li><p><strong>output</strong> (<em>str, None</em>) – It can be a folder path, a hdf file path, or None (memory consuming).</p></li>
 <li><p><strong>cell_size</strong> (<em>int or tuple of int</em>) – Window size along axes used for grouping pixels.</p></li>
 <li><p><strong>method</strong> (<em>{“mean”, “median”, “max”, “min”}</em>) – Downsampling method.</p></li>
 <li><p><strong>key_path</strong> (<em>str, optional</em>) – Key path to the dataset if the input is the hdf file.</p></li>
+<li><p><strong>crop</strong> (<em>tuple of int, optional</em>) – Crop 3D data from the edges, i.e.
+crop = (crop_depth1, crop_depth2, crop_height1, crop_height2,
+crop_width1, crop_width2).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -336,7 +342,7 @@ or a 3D array.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.post.postprocessing.rescale_dataset">
-<span class="sig-prename descclassname"><span class="pre">algotom.post.postprocessing.</span></span><span class="sig-name descname"><span class="pre">rescale_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/post/postprocessing.html#rescale_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.post.postprocessing.rescale_dataset" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.post.postprocessing.</span></span><span class="sig-name descname"><span class="pre">rescale_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/post/postprocessing.html#rescale_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.post.postprocessing.rescale_dataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rescale a dataset to 8-bit or 16-bit data-type. The dataset can be a
 folder of tif files, a hdf file, or a 3D array.</p>
 <dl class="field-list simple">
@@ -349,6 +355,9 @@ folder of tif files, a hdf file, or a 3D array.</p>
 None is given.</p></li>
 <li><p><strong>skip</strong> (<em>int or None</em>) – Skipping step of images used for getting statistical information.</p></li>
 <li><p><strong>key_path</strong> (<em>str, optional</em>) – Key path to the dataset if the input is the hdf file.</p></li>
+<li><p><strong>crop</strong> (<em>tuple of int, optional</em>) – Crop 3D data from the edges, i.e.
+crop = (crop_depth1, crop_depth2, crop_height1, crop_height2,
+crop_width1, crop_width2).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

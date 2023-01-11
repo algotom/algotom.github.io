@@ -1,0 +1,720 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.4. Comparison of ring removal methods on challenging sinograms &mdash; Algotom&#39;s documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Algotom&#39;s documentation" href="../../index.html"/>
+        <link rel="up" title="4. Demonstrations" href="../section4.html"/>
+        <link rel="next" title="5. Technical notes" href="../section5.html"/>
+        <link rel="prev" title="4.3. Methods and tools for removing ring artifacts" href="section4_3.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Algotom
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../section1.html">1. Basic tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section2.html">2. Features and capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section3.html">3. Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../section4.html">4. Demonstrations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="section4_1.html">4.1. Setting up a Python workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="section4_2.html">4.2. Exploring raw data and making use of the input-output module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="section4_3.html">4.3. Methods and tools for removing ring artifacts</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.4. Comparison of ring removal methods on challenging sinograms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#same-sample-type-and-slice-but-different-in-shape">4.4.1. Same sample-type and slice but different in shape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#partial-ring-artifacts">4.4.2. Partial ring artifacts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#all-types-of-ring-artifacts">4.4.3. All types of ring artifacts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#having-valid-stripes-not-artifacts">4.4.4. Having valid stripes (not artifacts)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#for-cone-beam-tomography">4.4.5. For cone-beam tomography</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../section5.html">5. Technical notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section6.html">6. Update notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">7. API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../credits.html">8. Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../highlights.html">9. Highlights</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Algotom</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../section4.html"><span class="section-number">4. </span>Demonstrations</a> &raquo;</li>
+        
+      <li><span class="section-number">4.4. </span>Comparison of ring removal methods on challenging sinograms</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/toc/section4/section4_4.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="comparison-of-ring-removal-methods-on-challenging-sinograms">
+<h1><span class="section-number">4.4. </span>Comparison of ring removal methods on challenging sinograms<a class="headerlink" href="#comparison-of-ring-removal-methods-on-challenging-sinograms" title="Permalink to this heading">¶</a></h1>
+<p>Ring artifact is the most pervasive type of artifacts in tomographic imaging. Numerous approaches for removing this
+artifact have been published over the years. In <span id="id1">[<a class="reference internal" href="../credits.html#id7" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Superior techniques for eliminating ring artifacts in x-ray micro-tomography. Opt. Express, 26(22):28396–28412, Oct 2018. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-26-22-28396, doi:10.1364/OE.26.028396.">R1</a>]</span>, the author proposed many algorithms and a combination
+of them (algorithm 6, 5, 4, and 3) to remove most types of ring artifacts. This combined method,
+called <strong>algo-6543</strong> for short, is easy-to-use and very effective. It have been implemented in Python, Matlab,
+and available in several tomographic Python packages. To know more about causes of ring artifacts, types of ring
+artifacts, and details of removal algorithms out of the original paper; users can check out the documentation page
+<a class="reference external" href="https://sarepy.readthedocs.io/">here</a>. This section demonstrates the performance of the
+<a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_all_stripe">algo-6543 method</a>
+and <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_sorting">sorting-based methods</a>
+in comparison with other methods on challenging sinograms. These data are available <a class="reference external" href="https://github.com/nghia-vo/sarepy/tree/master/data">here</a>
+and free to use. They are very useful for testing ring removal methods.</p>
+<div class="section" id="same-sample-type-and-slice-but-different-in-shape">
+<h2><span class="section-number">4.4.1. </span>Same sample-type and slice but different in shape<a class="headerlink" href="#same-sample-type-and-slice-but-different-in-shape" title="Permalink to this heading">¶</a></h2>
+<p>The following images show sinograms and reconstructed images of two limestone rocks with different shapes before and
+after ring removal methods are applied.</p>
+<ul>
+<li><p>Sinograms at the same detector-row:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/img_4_4_1.jpg" id="img-4-4-1"><img alt="../../_images/img_4_4_1.jpg" class="align-center" id="img-4-4-1" src="../../_images/img_4_4_1.jpg" style="width: 100%;" /></a>
+</div></blockquote>
+</li>
+<li><p>Reconstructed images without using a ring removal method:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/img_4_4_2.jpg" id="img-4-4-2"><img alt="../../_images/img_4_4_2.jpg" class="align-center" id="img-4-4-2" src="../../_images/img_4_4_2.jpg" style="width: 100%;" /></a>
+</div></blockquote>
+</li>
+<li><p>If using <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_all_stripe">the combination of methods</a>:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
+<span class="kn">import</span> <span class="nn">algotom.prep.calculation</span> <span class="k">as</span> <span class="nn">calc</span>
+<span class="kn">import</span> <span class="nn">algotom.prep.removal</span> <span class="k">as</span> <span class="nn">rem</span>
+<span class="kn">import</span> <span class="nn">algotom.rec.reconstruction</span> <span class="k">as</span> <span class="nn">rec</span>
+
+<span class="n">input_base</span> <span class="o">=</span> <span class="s2">&quot;E:/data/&quot;</span>
+<span class="n">output_base</span> <span class="o">=</span> <span class="s2">&quot;E:/rings_removed/remove_all_stripe/&quot;</span>
+
+<span class="n">sinogram1</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">input_base</span> <span class="o">+</span> <span class="s2">&quot;/same_type_same_slice_different_shape_sample1.tif&quot;</span><span class="p">)</span>
+<span class="n">sinogram2</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">input_base</span> <span class="o">+</span> <span class="s2">&quot;/same_type_same_slice_different_shape_sample2.tif&quot;</span><span class="p">)</span>
+<span class="n">center1</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">find_center_vo</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">)</span>
+<span class="n">center2</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">find_center_vo</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">)</span>
+
+<span class="n">sinogram1</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_all_stripe</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="n">snr</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">la_size</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span> <span class="n">sm_size</span><span class="o">=</span><span class="mi">21</span><span class="p">)</span>
+<span class="n">sinogram2</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_all_stripe</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">,</span> <span class="n">snr</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">la_size</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span> <span class="n">sm_size</span><span class="o">=</span><span class="mi">21</span><span class="p">)</span>
+
+<span class="n">img_rec1</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">dfi_reconstruction</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="n">center1</span><span class="p">)</span>
+<span class="n">img_rec2</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">dfi_reconstruction</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">,</span> <span class="n">center2</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="s2">&quot;/rec_sample1.tif&quot;</span><span class="p">,</span> <span class="n">img_rec1</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="s2">&quot;/rec_sample2.tif&quot;</span><span class="p">,</span> <span class="n">img_rec2</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_4_4_3.jpg" id="img-4-4-3"><img alt="../../_images/img_4_4_3.jpg" class="align-center" id="img-4-4-3" src="../../_images/img_4_4_3.jpg" style="width: 100%;" /></a>
+</div></blockquote>
+</li>
+<li><p>If using <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_wavelet_fft">the wavelet-fft-based method</a>:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sinogram1</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_wavelet_fft</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">wavelet_name</span><span class="o">=</span><span class="s2">&quot;db10&quot;</span><span class="p">)</span>
+<span class="n">sinogram2</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_wavelet_fft</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">wavelet_name</span><span class="o">=</span><span class="s2">&quot;db10&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_4_4_4.jpg" id="img-4-4-4"><img alt="../../_images/img_4_4_4.jpg" class="align-center" id="img-4-4-4" src="../../_images/img_4_4_4.jpg" style="width: 100%;" /></a>
+</div></blockquote>
+</li>
+<li><p>If using <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_fft">the fft-based method</a>:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sinogram1</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_fft</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">sinogram2</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_fft</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_4_4_5.jpg" id="img-4-4-5"><img alt="../../_images/img_4_4_5.jpg" class="align-center" id="img-4-4-5" src="../../_images/img_4_4_5.jpg" style="width: 100%;" /></a>
+</div></blockquote>
+</li>
+<li><p>If using <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_normalization">the normalization-based method</a>:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sinogram1</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_normalization</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">sinogram2</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_normalization</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_4_4_6.jpg" id="img-4-4-6"><img alt="../../_images/img_4_4_6.jpg" class="align-center" id="img-4-4-6" src="../../_images/img_4_4_6.jpg" style="width: 100%;" /></a>
+</div></blockquote>
+</li>
+<li><p>If using <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_regularization">the regularization-based method</a>:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sinogram1</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_regularization</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.0005</span><span class="p">,</span> <span class="n">apply_log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sinogram2</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_regularization</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.0005</span><span class="p">,</span> <span class="n">apply_log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_4_4_7.jpg" id="img-4-4-7"><img alt="../../_images/img_4_4_7.jpg" class="align-center" id="img-4-4-7" src="../../_images/img_4_4_7.jpg" style="width: 100%;" /></a>
+</div></blockquote>
+<p>As demonstrated, using the algo-6543 method gives the best results with least side-effect artifacts.
+For other methods, it’s impossible to use the same parameters for different samples or slices.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="partial-ring-artifacts">
+<h2><span class="section-number">4.4.2. </span>Partial ring artifacts<a class="headerlink" href="#partial-ring-artifacts" title="Permalink to this heading">¶</a></h2>
+<p>The following images show sinograms and reconstructed images of two samples in slab shapes
+which cause partial ring artifacts.</p>
+<ul>
+<li><p>Sinograms:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/img_4_4_8.jpg" id="img-4-4-8"><img alt="../../_images/img_4_4_8.jpg" class="align-center" id="img-4-4-8" src="../../_images/img_4_4_8.jpg" style="width: 100%;" /></a>
+</div></blockquote>
+</li>
+<li><p>Reconstructed images without using a ring removal method:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/img_4_4_9.jpg" id="img-4-4-9"><img alt="../../_images/img_4_4_9.jpg" class="align-center" id="img-4-4-9" src="../../_images/img_4_4_9.jpg" style="width: 100%;" /></a>
+</div></blockquote>
+</li>
+<li><p>If using the <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_sorting">sorting-based method</a>
+(algorithm 3 in <span id="id2">[<a class="reference internal" href="../credits.html#id7" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Superior techniques for eliminating ring artifacts in x-ray micro-tomography. Opt. Express, 26(22):28396–28412, Oct 2018. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-26-22-28396, doi:10.1364/OE.26.028396.">R1</a>]</span>):</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
+<span class="kn">import</span> <span class="nn">algotom.prep.calculation</span> <span class="k">as</span> <span class="nn">calc</span>
+<span class="kn">import</span> <span class="nn">algotom.prep.removal</span> <span class="k">as</span> <span class="nn">rem</span>
+<span class="kn">import</span> <span class="nn">algotom.rec.reconstruction</span> <span class="k">as</span> <span class="nn">rec</span>
+
+<span class="n">input_base</span> <span class="o">=</span> <span class="s2">&quot;E:/data/&quot;</span>
+<span class="n">output_base</span> <span class="o">=</span> <span class="s2">&quot;E:/rings_removed/sorting_based_method/&quot;</span>
+
+<span class="n">sinogram1</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">input_base</span> <span class="o">+</span> <span class="s2">&quot;/sinogram_partial_stripe.tif&quot;</span><span class="p">)</span>
+<span class="n">sinogram2</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">input_base</span> <span class="o">+</span> <span class="s2">&quot;/large_partial_rings.tif&quot;</span><span class="p">)</span>
+<span class="n">center1</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">find_center_vo</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">)</span>
+<span class="n">center2</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">find_center_vo</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;center1 = &quot;</span><span class="p">,</span> <span class="n">center1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;center2 = &quot;</span><span class="p">,</span> <span class="n">center2</span><span class="p">)</span>
+
+<span class="n">sinogram1</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_sorting</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="mi">51</span><span class="p">)</span>
+<span class="n">sinogram2</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_sorting</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">,</span> <span class="mi">51</span><span class="p">)</span>
+
+<span class="n">img_rec1</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">dfi_reconstruction</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="n">center1</span><span class="p">)</span>
+<span class="n">img_rec2</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">dfi_reconstruction</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">,</span> <span class="n">center2</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="s2">&quot;/rec_sample1.tif&quot;</span><span class="p">,</span> <span class="n">img_rec1</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="s2">&quot;/rec_sample2.tif&quot;</span><span class="p">,</span> <span class="n">img_rec2</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_4_4_10.jpg" id="img-4-4-10"><img alt="../../_images/img_4_4_10.jpg" class="align-center" id="img-4-4-10" src="../../_images/img_4_4_10.jpg" style="width: 100%;" /></a>
+</div></blockquote>
+</li>
+<li><p>If using <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_wavelet_fft">the wavelet-fft-based method</a>:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sinogram1</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_wavelet_fft</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">wavelet_name</span><span class="o">=</span><span class="s2">&quot;db10&quot;</span><span class="p">)</span>
+<span class="n">sinogram2</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_wavelet_fft</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">wavelet_name</span><span class="o">=</span><span class="s2">&quot;db10&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_4_4_11.jpg" id="img-4-4-11"><img alt="../../_images/img_4_4_11.jpg" class="align-center" id="img-4-4-11" src="../../_images/img_4_4_11.jpg" style="width: 100%;" /></a>
+<p>As can be seen, the original wavelet-fft-based method can’t remove partial rings effectively.
+In Algotom, this method is improved by combining with the sorting method, which is the key part
+of algorithm 3 in <span id="id3">[<a class="reference internal" href="../credits.html#id7" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Superior techniques for eliminating ring artifacts in x-ray micro-tomography. Opt. Express, 26(22):28396–28412, Oct 2018. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-26-22-28396, doi:10.1364/OE.26.028396.">R1</a>]</span>. This helps to avoid void-center artifacts when strong parameters
+of the wavelet-fft-based method are used as demonstrated below</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sinogram1a</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_wavelet_fft</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span> <span class="n">wavelet_name</span><span class="o">=</span><span class="s2">&quot;db10&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sinogram1b</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_wavelet_fft</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span> <span class="n">wavelet_name</span><span class="o">=</span><span class="s2">&quot;db10&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sinogram2</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_wavelet_fft</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">wavelet_name</span><span class="o">=</span><span class="s2">&quot;db10&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_4_4_12.jpg" id="img-4-4-12"><img alt="../../_images/img_4_4_12.jpg" class="align-center" id="img-4-4-12" src="../../_images/img_4_4_12.jpg" style="width: 100%;" /></a>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p>If using <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_normalization">the normalization-based method</a>:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sinogram1</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_normalization</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">num_chunk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sinogram2</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_normalization</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span> <span class="n">num_chunk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_4_4_13.jpg" id="img-4-4-13"><img alt="../../_images/img_4_4_13.jpg" class="align-center" id="img-4-4-13" src="../../_images/img_4_4_13.jpg" style="width: 100%;" /></a>
+<p>As shown above, the normalization-based method is not suitable for removing partial rings. However
+it can be improved by dividing a sinogram into many chunks of rows and combining with the sorting
+method.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sinogram1a</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_normalization</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">num_chunk</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sinogram1b</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_normalization</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">num_chunk</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sinogram2</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_normalization</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span> <span class="n">num_chunk</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_4_4_14.jpg" id="img-4-4-14"><img alt="../../_images/img_4_4_14.jpg" class="align-center" id="img-4-4-14" src="../../_images/img_4_4_14.jpg" style="width: 100%;" /></a>
+</div></blockquote>
+</div></blockquote>
+<p>The above sub-section is to demonstrate the effectiveness of the sorting-based method in removing partial ring
+artifacts and improving other methods in avoiding void-center artifacts. Results of using the fft-based method and
+regularization-based method are not demonstrated here because their performance is similar to the wavelet-fft-based
+method and the normalization-based method.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="all-types-of-ring-artifacts">
+<h2><span class="section-number">4.4.3. </span>All types of ring artifacts<a class="headerlink" href="#all-types-of-ring-artifacts" title="Permalink to this heading">¶</a></h2>
+<p>The following images show sinograms and reconstructed images of two limestone rocks with
+different shapes having all <a class="reference external" href="https://sarepy.readthedocs.io/toc/section2.html">types of stripe/ring artifacts</a>
+in one slice.</p>
+<ul>
+<li><p>Sinograms:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/img_4_4_15.jpg" id="img-4-4-15"><img alt="../../_images/img_4_4_15.jpg" class="align-center" id="img-4-4-15" src="../../_images/img_4_4_15.jpg" style="width: 100%;" /></a>
+</div></blockquote>
+</li>
+<li><p>Reconstructed images without using a ring removal method:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/img_4_4_16.jpg" id="img-4-4-16"><img alt="../../_images/img_4_4_16.jpg" class="align-center" id="img-4-4-16" src="../../_images/img_4_4_16.jpg" style="width: 100%;" /></a>
+</div></blockquote>
+</li>
+<li><p>If using <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_all_stripe">the combination of methods</a>:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
+<span class="kn">import</span> <span class="nn">algotom.prep.calculation</span> <span class="k">as</span> <span class="nn">calc</span>
+<span class="kn">import</span> <span class="nn">algotom.prep.removal</span> <span class="k">as</span> <span class="nn">rem</span>
+<span class="kn">import</span> <span class="nn">algotom.rec.reconstruction</span> <span class="k">as</span> <span class="nn">rec</span>
+
+<span class="n">input_base</span> <span class="o">=</span> <span class="s2">&quot;E:/data/&quot;</span>
+<span class="n">output_base</span> <span class="o">=</span> <span class="s2">&quot;E:/rings_removed/remove_all_stripe/&quot;</span>
+
+<span class="n">sinogram1</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">input_base</span> <span class="o">+</span> <span class="s2">&quot;/all_stripe_types_sample1.tif&quot;</span><span class="p">)</span>
+<span class="n">sinogram2</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">input_base</span> <span class="o">+</span> <span class="s2">&quot;/all_stripe_types_sample2.tif&quot;</span><span class="p">)</span>
+
+<span class="n">center1</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">find_center_vo</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">)</span>
+<span class="n">center2</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">find_center_vo</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;center1 = &quot;</span><span class="p">,</span> <span class="n">center1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;center2 = &quot;</span><span class="p">,</span> <span class="n">center2</span><span class="p">)</span>
+
+<span class="n">sinogram1</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_all_stripe</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="n">snr</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">la_size</span><span class="o">=</span><span class="mi">81</span><span class="p">,</span> <span class="n">sm_size</span><span class="o">=</span><span class="mi">31</span><span class="p">)</span>
+<span class="n">sinogram2</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_all_stripe</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">,</span> <span class="n">snr</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">la_size</span><span class="o">=</span><span class="mi">81</span><span class="p">,</span> <span class="n">sm_size</span><span class="o">=</span><span class="mi">31</span><span class="p">)</span>
+
+<span class="n">img_rec1</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">dfi_reconstruction</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="n">center1</span><span class="p">)</span>
+<span class="n">img_rec2</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">dfi_reconstruction</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">,</span> <span class="n">center2</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="s2">&quot;/rec_sample1.tif&quot;</span><span class="p">,</span> <span class="n">img_rec1</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="s2">&quot;/rec_sample2.tif&quot;</span><span class="p">,</span> <span class="n">img_rec2</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_4_4_17.jpg" id="img-4-4-17"><img alt="../../_images/img_4_4_17.jpg" class="align-center" id="img-4-4-17" src="../../_images/img_4_4_17.jpg" style="width: 100%;" /></a>
+<p>As can be seen, there are still low-contrast ring artifacts which are difficult to detect and remove. These
+low-contrast rings are caused by the <a class="reference external" href="https://sarepy.readthedocs.io/toc/section2.html#id5">halo effect</a>
+around blob areas on a scintillator. There is <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_fitting">a strong removal method</a>
+proposed in <span id="id4">[<a class="reference internal" href="../credits.html#id7" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Superior techniques for eliminating ring artifacts in x-ray micro-tomography. Opt. Express, 26(22):28396–28412, Oct 2018. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-26-22-28396, doi:10.1364/OE.26.028396.">R1</a>]</span> and its improvement can help to deal with such ring artifacts as below.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sinogram1</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_all_stripe</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="n">snr</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">la_size</span><span class="o">=</span><span class="mi">81</span><span class="p">,</span> <span class="n">sm_size</span><span class="o">=</span><span class="mi">31</span><span class="p">)</span>
+<span class="n">sinogram2</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_all_stripe</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">,</span> <span class="n">snr</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">la_size</span><span class="o">=</span><span class="mi">81</span><span class="p">,</span> <span class="n">sm_size</span><span class="o">=</span><span class="mi">31</span><span class="p">)</span>
+<span class="n">sinogram1</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_fitting</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">num_chunk</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sinogram2</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_fitting</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">num_chunk</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_4_4_18.jpg" id="img-4-4-18"><img alt="../../_images/img_4_4_18.jpg" class="align-center" id="img-4-4-18" src="../../_images/img_4_4_18.jpg" style="width: 100%;" /></a>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p>If using <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_wavelet_fft">the wavelet-fft-based method</a>
+with the sorting-based method:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sinogram1</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_wavelet_fft</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">wavelet_name</span><span class="o">=</span><span class="s2">&quot;db10&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sinogram2</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_wavelet_fft</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">wavelet_name</span><span class="o">=</span><span class="s2">&quot;db10&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_4_4_19.jpg" id="img-4-4-19"><img alt="../../_images/img_4_4_19.jpg" class="align-center" id="img-4-4-19" src="../../_images/img_4_4_19.jpg" style="width: 100%;" /></a>
+</div></blockquote>
+</li>
+<li><p>If using <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_regularization">the regularization-based method</a>
+with the sorting-based method:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sinogram1</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_regularization</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">num_chunk</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sinogram2</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_regularization</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">num_chunk</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_4_4_20.jpg" id="img-4-4-20"><img alt="../../_images/img_4_4_20.jpg" class="align-center" id="img-4-4-20" src="../../_images/img_4_4_20.jpg" style="width: 100%;" /></a>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="having-valid-stripes-not-artifacts">
+<h2><span class="section-number">4.4.4. </span>Having valid stripes (not artifacts)<a class="headerlink" href="#having-valid-stripes-not-artifacts" title="Permalink to this heading">¶</a></h2>
+<p>For samples containing round-shape objects (tubes, spheres), they can produce sinograms having valid stripes. This
+is a problem for fft-based methods or normalization-based methods, but not for sorting-based methods.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/img_4_4_21.jpg" id="img-4-4-21"><img alt="../../_images/img_4_4_21.jpg" class="align-center" id="img-4-4-21" src="../../_images/img_4_4_21.jpg" style="width: 100%;" /></a>
+</div></blockquote>
+<ul>
+<li><p>Results of using the combined method and the sorting-based method as below. Note that the remaining ring artifacts
+are insignificant. Although visible, they have nearly the same SNR (signal-to-noise ratio) as nearby background.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
+<span class="kn">import</span> <span class="nn">algotom.prep.calculation</span> <span class="k">as</span> <span class="nn">calc</span>
+<span class="kn">import</span> <span class="nn">algotom.prep.removal</span> <span class="k">as</span> <span class="nn">rem</span>
+<span class="kn">import</span> <span class="nn">algotom.rec.reconstruction</span> <span class="k">as</span> <span class="nn">rec</span>
+
+<span class="n">input_base</span> <span class="o">=</span> <span class="s2">&quot;E:/data/&quot;</span>
+<span class="n">output_base</span> <span class="o">=</span> <span class="s2">&quot;E:/valid_stripes/rings_removed/&quot;</span>
+
+<span class="n">sinogram</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">input_base</span> <span class="o">+</span> <span class="s2">&quot;/valid_stripes.tif&quot;</span><span class="p">)</span>
+<span class="n">center</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">find_center_vo</span><span class="p">(</span><span class="n">sinogram</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;center =&quot;</span><span class="p">,</span> <span class="n">center</span><span class="p">)</span>
+
+<span class="n">sinogram1</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_all_stripe</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">snr</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">la_size</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span> <span class="n">sm_size</span><span class="o">=</span><span class="mi">21</span><span class="p">)</span>
+<span class="n">sinogram2</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_sorting</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+
+<span class="n">img_rec1</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">dfi_reconstruction</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="n">center</span><span class="p">)</span>
+<span class="n">img_rec2</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">dfi_reconstruction</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">,</span> <span class="n">center</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="s2">&quot;/rec_img1.tif&quot;</span><span class="p">,</span> <span class="n">img_rec1</span><span class="p">)</span>
+<span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="s2">&quot;/rec_img2.tif&quot;</span><span class="p">,</span> <span class="n">img_rec2</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_4_4_22.jpg" id="img-4-4-22"><img alt="../../_images/img_4_4_22.jpg" class="align-center" id="img-4-4-22" src="../../_images/img_4_4_22.jpg" style="width: 100%;" /></a>
+</div></blockquote>
+</li>
+<li><p>Results of using other methods are shown below. Although reduced strength, they still produce lots of
+side-effect artifacts for such a pretty clean sinogram.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sinogram1</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_wavelet_fft</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sinogram2</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_fft</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">sinogram3</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_normalization</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">sinogram4</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_regularization</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_4_4_23.jpg" id="img-4-4-23"><img alt="../../_images/img_4_4_23.jpg" class="align-center" id="img-4-4-23" src="../../_images/img_4_4_23.jpg" style="width: 100%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_4_4_24.jpg" id="img-4-4-24"><img alt="../../_images/img_4_4_24.jpg" class="align-center" id="img-4-4-24" src="../../_images/img_4_4_24.jpg" style="width: 100%;" /></a>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="for-cone-beam-tomography">
+<h2><span class="section-number">4.4.5. </span>For cone-beam tomography<a class="headerlink" href="#for-cone-beam-tomography" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference external" href="https://sarepy.readthedocs.io/toc/section3.html#postprocessing-methods">Post-processing ring-removal methods</a> are often
+used for cone-beam tomography because reconstruction can’t be done sinogram-by-sinogram. However, they can cause
+void-center artifacts, which may not be visible in horizontal slices but clearly visible along vertical
+slices. More than that, these methods can’t remove side effects of <a class="reference external" href="https://sarepy.readthedocs.io/toc/section2.html#id3">unresponsive-stripe artifacts</a>
+and <a class="reference external" href="https://sarepy.readthedocs.io/toc/section2.html#id4">fluctuating-stripe artifacts</a> which not only give rise to
+ring artifacts but also streak artifacts in a reconstructed image.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/img_4_4_25.jpg" id="img-4-4-25"><img alt="../../_images/img_4_4_25.jpg" class="align-center" id="img-4-4-25" src="../../_images/img_4_4_25.jpg" style="width: 95%;" /></a>
+</div></blockquote>
+<p>Certainly, we can apply pre-processing ring-removal methods along the sinogram direction. The only downside is that
+we have to store intermediate results for switching between the <a class="reference internal" href="../section2.html#processing-pipeline"><span class="std std-ref">projection space and the sinogram space</span></a>.
+It is common that commercial tomography systems output flat-field-corrected projection-images as 16-bit tif format (grayscale
+in the range of 0-65535). The following shows how to apply pre-processing methods along the sinogram direction
+step-by-step:</p>
+<blockquote>
+<div><ul>
+<li><p>First of all, we convert tiffs to hdf file-format for fast slicing 3D data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">timeit</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">algotom.io.converter</span> <span class="k">as</span> <span class="nn">conv</span>
+<span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
+
+<span class="n">input_base</span> <span class="o">=</span> <span class="s2">&quot;E:/cone_beam/rawdata/tif_projections/&quot;</span>
+<span class="n">output_file</span> <span class="o">=</span> <span class="s2">&quot;E:/tmp/projections.hdf&quot;</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+<span class="n">list_files</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">find_file</span><span class="p">(</span><span class="n">input_base</span> <span class="o">+</span> <span class="s2">&quot;/*.tif*&quot;</span><span class="p">)</span>
+<span class="n">depth</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_files</span><span class="p">)</span>
+<span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">list_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">conv</span><span class="o">.</span><span class="n">convert_tif_to_hdf</span><span class="p">(</span><span class="n">input_base</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="s1">&#39;entry/data&#39;</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done!!!. Total time cost: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+<li><p>Then load the converted data and apply pre-processing methods. Note about the change of data shape
+in each step.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">timeit</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>
+<span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">Parallel</span><span class="p">,</span> <span class="n">delayed</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
+<span class="kn">import</span> <span class="nn">algotom.prep.removal</span> <span class="k">as</span> <span class="nn">rem</span>
+<span class="kn">import</span> <span class="nn">algotom.prep.correction</span> <span class="k">as</span> <span class="nn">corr</span>
+
+<span class="n">input_file</span> <span class="o">=</span> <span class="s2">&quot;E:/tmp/projections.hdf&quot;</span>
+<span class="n">output_file</span> <span class="o">=</span> <span class="s2">&quot;E:/tmp/tmp/projections_preprocessed.hdf&quot;</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="s1">&#39;entry/data&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="c1"># Note that the shape of output data is (height, depth, width)</span>
+<span class="c1"># for faster writing to hdf file.</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">open_hdf_stream</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">width</span><span class="p">),</span> <span class="n">data_type</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+<span class="c1"># For parallel processing</span>
+<span class="n">ncore</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span>
+<span class="n">chunk_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">ncore</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">last_chunk</span> <span class="o">=</span> <span class="n">height</span> <span class="o">-</span> <span class="n">chunk_size</span> <span class="o">*</span> <span class="p">(</span><span class="n">height</span> <span class="o">//</span> <span class="n">chunk_size</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">height</span> <span class="o">-</span> <span class="n">last_chunk</span><span class="p">,</span> <span class="n">chunk_size</span><span class="p">):</span>
+    <span class="n">sinograms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">chunk_size</span><span class="p">,</span> <span class="p">:])</span>
+    <span class="c1"># Note about the change of the shape of output_tmp (which is a list of processed sinogram)</span>
+    <span class="n">output_tmp</span> <span class="o">=</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)(</span><span class="n">delayed</span><span class="p">(</span><span class="n">rem</span><span class="o">.</span><span class="n">remove_all_stripe</span><span class="p">)(</span><span class="n">sinograms</span><span class="p">[:,</span> <span class="n">j</span><span class="p">,</span> <span class="p">:],</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">chunk_size</span><span class="p">))</span>
+
+    <span class="c1"># Apply beam hardening correction if need to</span>
+    <span class="c1"># output_tmp = np.asarray(output_tmp)</span>
+    <span class="c1"># output_tmp = Parallel(n_jobs=ncore, prefer=&quot;threads&quot;)(</span>
+    <span class="c1">#     delayed(corr.beam_hardening_correction)(output_tmp[j], 40, 2.0, False) for j in range(chunk_size))</span>
+
+    <span class="n">output</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">chunk_size</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">output_tmp</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">t1</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done sinograms: </span><span class="si">{0}</span><span class="s2">-</span><span class="si">{1}</span><span class="s2">. Time </span><span class="si">{2}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">chunk_size</span><span class="p">,</span> <span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">last_chunk</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">sinograms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="n">height</span> <span class="o">-</span> <span class="n">last_chunk</span><span class="p">:</span><span class="n">height</span><span class="p">,</span> <span class="p">:])</span>
+    <span class="n">output_tmp</span> <span class="o">=</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)(</span><span class="n">delayed</span><span class="p">(</span><span class="n">rem</span><span class="o">.</span><span class="n">remove_all_stripe</span><span class="p">)(</span><span class="n">sinograms</span><span class="p">[:,</span> <span class="n">j</span><span class="p">,</span> <span class="p">:],</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">last_chunk</span><span class="p">))</span>
+
+    <span class="c1"># Apply beam hardening correction if need to</span>
+    <span class="c1"># output_tmp = np.asarray(output_tmp)</span>
+    <span class="c1"># output_tmp = Parallel(n_jobs=ncore, prefer=&quot;threads&quot;)(</span>
+    <span class="c1">#     delayed(corr.beam_hardening_correction)(output_tmp[j], 40, 2.0, False) for j in range(last_chunk))</span>
+
+    <span class="n">output</span><span class="p">[</span><span class="n">height</span> <span class="o">-</span> <span class="n">last_chunk</span><span class="p">:</span><span class="n">height</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">output_tmp</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">t1</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done sinograms: </span><span class="si">{0}</span><span class="s2">-</span><span class="si">{1}</span><span class="s2">. Time </span><span class="si">{2}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">height</span> <span class="o">-</span> <span class="n">last_chunk</span><span class="p">,</span> <span class="n">height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+
+<span class="n">t1</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done!!!. Total time cost: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+<li><p>Processed sinograms in the hdf-file then can be converted to 16-bit tiff images (i.e. to be used by cone-beam
+reconstruction software provided by tomography-system suppliers). Otherwise, <a class="reference external" href="https://github.com/cicwi/WalnutReconstructionCodes/blob/master/GroundTruthReconstruction.py">Astra Toolbox</a>
+can be used for reconstruction without the need of this conversion step.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">timeit</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>
+<span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">Parallel</span><span class="p">,</span> <span class="n">delayed</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
+
+<span class="n">input_file</span> <span class="o">=</span> <span class="s2">&quot;E:/tmp/projections_preprocessed.hdf&quot;</span>
+<span class="n">output_base</span> <span class="o">=</span> <span class="s2">&quot;E:/tmp/tif_projections/&quot;</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="s1">&#39;entry/data&#39;</span><span class="p">)</span>
+<span class="c1"># Note that the shape of data has been changed after the previous step</span>
+<span class="c1"># where sinograms are arranged along 0-axis. Now we want to save the data</span>
+<span class="c1"># as projections which are arranged along 1-axis.</span>
+<span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+<span class="c1"># For parallel writing tif-images</span>
+<span class="n">ncore</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span>
+<span class="n">chunk_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">ncore</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">depth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">last_chunk</span> <span class="o">=</span> <span class="n">depth</span> <span class="o">-</span> <span class="n">chunk_size</span> <span class="o">*</span> <span class="p">(</span><span class="n">depth</span> <span class="o">//</span> <span class="n">chunk_size</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">depth</span> <span class="o">-</span> <span class="n">last_chunk</span><span class="p">,</span> <span class="n">chunk_size</span><span class="p">):</span>
+    <span class="n">mat_stack</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">chunk_size</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">mat_stack</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">(</span><span class="n">mat_stack</span><span class="p">)</span>  <span class="c1"># Convert to 16-bit data for tif-format</span>
+    <span class="n">file_names</span> <span class="o">=</span> <span class="p">[(</span><span class="n">output_base</span> <span class="o">+</span> <span class="s2">&quot;/proj_&quot;</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&quot;0000&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">))[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span> <span class="o">+</span> <span class="s2">&quot;.tif&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">chunk_size</span><span class="p">)]</span>
+    <span class="c1"># Save files in parallel</span>
+    <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;processes&quot;</span><span class="p">)(</span><span class="n">delayed</span><span class="p">(</span><span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">)(</span><span class="n">file_names</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">mat_stack</span><span class="p">[:,</span> <span class="n">j</span><span class="p">,</span> <span class="p">:])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">chunk_size</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">last_chunk</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">mat_stack</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="n">depth</span> <span class="o">-</span> <span class="n">last_chunk</span><span class="p">:</span><span class="n">depth</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">mat_stack</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">(</span><span class="n">mat_stack</span><span class="p">)</span>  <span class="c1"># Convert to 16-bit data for tif-format</span>
+    <span class="n">file_names</span> <span class="o">=</span> <span class="p">[(</span><span class="n">output_base</span> <span class="o">+</span> <span class="s2">&quot;/proj_&quot;</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&quot;0000&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">))[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span> <span class="o">+</span> <span class="s2">&quot;.tif&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">depth</span> <span class="o">-</span> <span class="n">last_chunk</span><span class="p">,</span> <span class="n">depth</span><span class="p">)]</span>
+    <span class="c1"># Save files in parallel</span>
+    <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;processes&quot;</span><span class="p">)(</span><span class="n">delayed</span><span class="p">(</span><span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">)(</span><span class="n">file_names</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">mat_stack</span><span class="p">[:,</span> <span class="n">j</span><span class="p">,</span> <span class="p">:])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">last_chunk</span><span class="p">))</span>
+
+<span class="n">t1</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done!!!. Total time cost: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="align-center figure" id="fig-4-4-1" style="width: 100%">
+<img alt="../../_images/fig_4_4_1.png" src="../../_images/fig_4_4_1.png" />
+<p class="caption"><span class="caption-number">Fig. 4.4.1 </span><span class="caption-text">Reconstructed images, before and after applied pre-processing methods, from projection-images acquired by
+a commercial cone-beam system. Data provided by <a class="reference external" href="https://le.ac.uk/engineering/research/mechanics-of-materials/people">Dr Mohammed Azeem</a></span><a class="headerlink" href="#fig-4-4-1" title="Permalink to this image">¶</a></p>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../section5.html" class="btn btn-neutral float-right" title="5. Technical notes" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="section4_3.html" class="btn btn-neutral" title="4.3. Methods and tools for removing ring artifacts" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Nghia T. Vo.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -193,6 +193,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">h5py</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">gaussian_filter</span>
 <span class="kn">import</span> <span class="nn">algotom.util.utility</span> <span class="k">as</span> <span class="nn">util</span>
@@ -200,7 +201,97 @@
 <span class="kn">import</span> <span class="nn">algotom.prep.removal</span> <span class="k">as</span> <span class="nn">remo</span>
 
 
-<div class="viewcode-block" id="get_statistical_information"><a class="viewcode-back" href="../../../toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.get_statistical_information">[docs]</a><span class="k">def</span> <span class="nf">get_statistical_information</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">),</span> <span class="n">denoise</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">__check_input</span><span class="p">(</span><span class="n">input_</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Supplementary method: to check input type</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">in_type</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+        <span class="n">in_type</span> <span class="o">=</span> <span class="s2">&quot;numpy_array&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">input_</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                <span class="n">list_file</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">find_file</span><span class="p">(</span><span class="n">input_</span> <span class="o">+</span> <span class="s2">&quot;/*.tif*&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">list_file</span><span class="p">:</span>
+                    <span class="n">in_type</span> <span class="o">=</span> <span class="s2">&quot;tif&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="s2">&quot;No tif files in the folder: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">input_</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">file_ext</span> <span class="o">==</span> <span class="s1">&#39;.hdf&#39;</span> <span class="ow">or</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s1">&#39;.h5&#39;</span>
+                        <span class="ow">or</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s2">&quot;.nxs&quot;</span><span class="p">):</span>
+                    <span class="n">in_type</span> <span class="o">=</span> <span class="s2">&quot;hdf&quot;</span>
+    <span class="k">return</span> <span class="n">in_type</span>
+
+
+<span class="k">def</span> <span class="nf">__check_output</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Supplementary method: to check output type</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">out_type</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">output</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="n">out_type</span> <span class="o">=</span> <span class="s2">&quot;tif&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">file_ext</span> <span class="o">==</span> <span class="s1">&#39;.hdf&#39;</span> <span class="ow">or</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s1">&#39;.h5&#39;</span>
+                    <span class="ow">or</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s2">&quot;.nxs&quot;</span><span class="p">):</span>
+                <span class="n">out_type</span> <span class="o">=</span> <span class="s2">&quot;hdf&quot;</span>
+    <span class="k">return</span> <span class="n">out_type</span>
+
+
+<span class="k">def</span> <span class="nf">__get_shape</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Supplementary method: to get the shape of a 3D data which can be given as</span>
+<span class="sd">    a folder of tif files, a hdf file-path, or a 3D array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">in_type</span> <span class="o">=</span> <span class="n">__check_input</span><span class="p">(</span><span class="n">input_</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">in_type</span> <span class="o">==</span> <span class="s2">&quot;numpy_array&quot;</span><span class="p">:</span>
+        <span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">input_</span><span class="o">.</span><span class="n">shape</span>
+    <span class="k">elif</span> <span class="n">in_type</span> <span class="o">==</span> <span class="s2">&quot;tif&quot;</span><span class="p">:</span>
+        <span class="n">list_file</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">find_file</span><span class="p">(</span><span class="n">input_</span> <span class="o">+</span> <span class="s2">&quot;/*.tif*&quot;</span><span class="p">)</span>
+        <span class="n">depth</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_file</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">list_file</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">elif</span> <span class="n">in_type</span> <span class="o">==</span> <span class="s2">&quot;hdf&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">key_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Please provide the key path to the dataset!!!&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">hdf_object</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+            <span class="n">check</span> <span class="o">=</span> <span class="n">key_path</span> <span class="ow">in</span> <span class="n">hdf_object</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">check</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;!!! Wrong key !!!&quot;</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">hdf_object</span><span class="p">[</span><span class="n">key_path</span><span class="p">]</span>
+            <span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+            <span class="n">hdf_object</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input must be a folder-path to tif files, a hdf &quot;</span>
+                         <span class="s2">&quot;file-path, or a numpy array!!!&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">depth</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span>
+
+
+<span class="k">def</span> <span class="nf">__get_cropped_shape</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">crop</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Supplementary method: to get the cropped information of a 3D data which</span>
+<span class="sd">    can be given as a folder of tif files, a hdf file-path, or a 3D array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">crop</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Crop must be a tuple/list with the length of 6&quot;</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">cr_d1</span><span class="p">,</span> <span class="n">cr_d2</span><span class="p">,</span> <span class="n">cr_h1</span><span class="p">,</span> <span class="n">cr_h2</span><span class="p">,</span> <span class="n">cr_w1</span><span class="p">,</span> <span class="n">cr_w2</span><span class="p">)</span> <span class="o">=</span> <span class="n">crop</span>
+    <span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">__get_shape</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="n">key_path</span><span class="p">)</span>
+    <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">cr_d1</span><span class="p">,</span> <span class="n">depth</span> <span class="o">-</span> <span class="n">cr_d2</span>
+    <span class="n">depth1</span> <span class="o">=</span> <span class="n">d2</span> <span class="o">-</span> <span class="n">d1</span>
+    <span class="n">h1</span><span class="p">,</span> <span class="n">h2</span> <span class="o">=</span> <span class="n">cr_h1</span><span class="p">,</span> <span class="n">height</span> <span class="o">-</span> <span class="n">cr_h2</span>
+    <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span> <span class="o">=</span> <span class="n">cr_w1</span><span class="p">,</span> <span class="n">width</span> <span class="o">-</span> <span class="n">cr_w2</span>
+    <span class="n">height1</span><span class="p">,</span> <span class="n">width1</span> <span class="o">=</span> <span class="n">h2</span> <span class="o">-</span> <span class="n">h1</span><span class="p">,</span> <span class="n">w2</span> <span class="o">-</span> <span class="n">w1</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">depth1</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">height1</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">width1</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t crop the data with shape: &quot;</span>
+                         <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">depth</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">h1</span><span class="p">,</span> <span class="n">h2</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="p">(</span><span class="n">depth1</span><span class="p">,</span> <span class="n">height1</span><span class="p">,</span> <span class="n">width1</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="get_statistical_information"><a class="viewcode-back" href="../../../toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.get_statistical_information">[docs]</a><span class="k">def</span> <span class="nf">get_statistical_information</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">denoise</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get statistical information of an image.</span>
 
@@ -243,8 +334,9 @@
     <span class="k">return</span> <span class="n">gmin</span><span class="p">,</span> <span class="n">gmax</span><span class="p">,</span> <span class="n">min_percent</span><span class="p">,</span> <span class="n">max_percent</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">median</span><span class="p">,</span> <span class="n">variance</span></div>
 
 
-<div class="viewcode-block" id="get_statistical_information_dataset"><a class="viewcode-back" href="../../../toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.get_statistical_information_dataset">[docs]</a><span class="k">def</span> <span class="nf">get_statistical_information_dataset</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">),</span> <span class="n">skip</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-                                        <span class="n">denoise</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="get_statistical_information_dataset"><a class="viewcode-back" href="../../../toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.get_statistical_information_dataset">[docs]</a><span class="k">def</span> <span class="nf">get_statistical_information_dataset</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">skip</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                                        <span class="n">denoise</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                        <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get statical information of a dataset. This can be a folder of tif files,</span>
 <span class="sd">    a hdf file, or a 3D array.</span>
@@ -261,7 +353,11 @@
 <span class="sd">    denoise: bool, optional</span>
 <span class="sd">        Enable/disable denoising before extracting statistical information.</span>
 <span class="sd">    key_path : str, optional</span>
-<span class="sd">        Key path to the dataset if the input is the hdf file.</span>
+<span class="sd">        Key path to the dataset if input is a hdf file.</span>
+<span class="sd">    crop : tuple of int, optional</span>
+<span class="sd">        Crop 3D data from the edges, i.e.</span>
+<span class="sd">        crop = (crop_depth1, crop_depth2, crop_height1, crop_height2,</span>
+<span class="sd">        crop_width1, crop_width2).</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -280,44 +376,39 @@
 <span class="sd">    variance : float</span>
 <span class="sd">        The mean of the variance of the data array.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">input_</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">__get_cropped_shape</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="n">crop</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="n">key_path</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">h1</span><span class="p">,</span> <span class="n">h2</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">depth1</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">skip</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">skip</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">depth1</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">in_type</span> <span class="o">=</span> <span class="n">__check_input</span><span class="p">(</span><span class="n">input_</span><span class="p">)</span>
+    <span class="n">f_alias</span> <span class="o">=</span> <span class="n">get_statistical_information</span>
+    <span class="k">if</span> <span class="n">in_type</span> <span class="o">==</span> <span class="s2">&quot;tif&quot;</span><span class="p">:</span>
         <span class="n">list_file</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">find_file</span><span class="p">(</span><span class="n">input_</span> <span class="o">+</span> <span class="s2">&quot;/*.tif*&quot;</span><span class="p">)</span>
-        <span class="n">depth</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_file</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">depth</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No tif files in the folder: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">input_</span><span class="p">))</span>
         <span class="n">list_stat</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">skip</span><span class="p">):</span>
-            <span class="n">mat</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">list_file</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">skip</span><span class="p">):</span>
+            <span class="n">mat</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">list_file</span><span class="p">[</span><span class="n">i</span><span class="p">])[</span><span class="n">h1</span><span class="p">:</span><span class="n">h2</span><span class="p">,</span> <span class="n">w1</span><span class="p">:</span><span class="n">w2</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">denoise</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
                 <span class="n">mat</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-            <span class="n">list_stat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_statistical_information</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">percentile</span><span class="p">,</span>
-                                                         <span class="n">denoise</span><span class="p">))</span>
+            <span class="n">list_stat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f_alias</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">percentile</span><span class="p">,</span> <span class="n">denoise</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">in_type</span> <span class="o">==</span> <span class="s2">&quot;hdf&quot;</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">key_path</span><span class="p">)</span>
+        <span class="n">list_stat</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">skip</span><span class="p">):</span>
+            <span class="n">mat</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">h1</span><span class="p">:</span><span class="n">h2</span><span class="p">,</span> <span class="n">w1</span><span class="p">:</span><span class="n">w2</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">denoise</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">mat</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">list_stat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f_alias</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">percentile</span><span class="p">,</span> <span class="n">denoise</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="n">file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">input_</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">file_ext</span> <span class="o">==</span> <span class="s1">&#39;.hdf&#39;</span> <span class="ow">or</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s1">&#39;.h5&#39;</span>
-                    <span class="ow">or</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s2">&quot;.nxs&quot;</span><span class="p">):</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="s2">&quot;Can&#39;t open this type of file format </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_ext</span><span class="p">))</span>
-            <span class="k">if</span> <span class="n">key_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="s2">&quot;Please provide the key path to the dataset!!!&quot;</span><span class="p">)</span>
-            <span class="n">input_</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">key_path</span><span class="p">)</span>
-        <span class="n">depth</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_</span><span class="p">)</span>
         <span class="n">list_stat</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">skip</span><span class="p">):</span>
-            <span class="n">mat</span> <span class="o">=</span> <span class="n">input_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">skip</span><span class="p">):</span>
+            <span class="n">mat</span> <span class="o">=</span> <span class="n">input_</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">h1</span><span class="p">:</span><span class="n">h2</span><span class="p">,</span> <span class="n">w1</span><span class="p">:</span><span class="n">w2</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">denoise</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
                 <span class="n">mat</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-            <span class="n">list_stat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_statistical_information</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">percentile</span><span class="p">,</span>
-                                                         <span class="n">denoise</span><span class="p">))</span>
+            <span class="n">list_stat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f_alias</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">percentile</span><span class="p">,</span> <span class="n">denoise</span><span class="p">))</span>
     <span class="n">list_stat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">list_stat</span><span class="p">)</span>
-    <span class="n">gmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">list_stat</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
-    <span class="n">gmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">list_stat</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
-    <span class="n">min_percent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">list_stat</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])</span>
-    <span class="n">max_percent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">list_stat</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">])</span>
-    <span class="n">median</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">list_stat</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">])</span>
-    <span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">list_stat</span><span class="p">[:,</span> <span class="mi">5</span><span class="p">])</span>
+    <span class="n">gmin</span><span class="p">,</span> <span class="n">gmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">list_stat</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">list_stat</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">min_percent</span><span class="p">,</span> <span class="n">max_percent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">list_stat</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">list_stat</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">])</span>
+    <span class="n">median</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">list_stat</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">list_stat</span><span class="p">[:,</span> <span class="mi">5</span><span class="p">])</span>
     <span class="n">variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">list_stat</span><span class="p">[:,</span> <span class="mi">6</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">gmin</span><span class="p">,</span> <span class="n">gmax</span><span class="p">,</span> <span class="n">min_percent</span><span class="p">,</span> <span class="n">max_percent</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">median</span><span class="p">,</span> <span class="n">variance</span></div>
 
@@ -361,15 +452,15 @@
 
 
 <div class="viewcode-block" id="downsample_dataset"><a class="viewcode-back" href="../../../toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.downsample_dataset">[docs]</a><span class="k">def</span> <span class="nf">downsample_dataset</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span>
-                       <span class="n">key_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+                       <span class="n">key_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Downsample a dataset. This can be a folder of tif files, a hdf file,</span>
+<span class="sd">    Downsample a dataset. Input can be a folder of tif files, a hdf file,</span>
 <span class="sd">    or a 3D array.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    input_ : str, array_like</span>
-<span class="sd">        It can be a folder path to tif files, a hdf file, or 3D array.</span>
+<span class="sd">        It can be a folder path to tif files, a hdf file, or a 3D array.</span>
 <span class="sd">    output : str, None</span>
 <span class="sd">        It can be a folder path, a hdf file path, or None (memory consuming).</span>
 <span class="sd">    cell_size : int or tuple of int</span>
@@ -378,6 +469,10 @@
 <span class="sd">        Downsampling method.</span>
 <span class="sd">    key_path : str, optional</span>
 <span class="sd">        Key path to the dataset if the input is the hdf file.</span>
+<span class="sd">    crop : tuple of int, optional</span>
+<span class="sd">        Crop 3D data from the edges, i.e.</span>
+<span class="sd">        crop = (crop_depth1, crop_depth2, crop_height1, crop_height2,</span>
+<span class="sd">        crop_width1, crop_width2).</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -390,129 +485,75 @@
             <span class="n">file_base</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_base</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Folder exists!!! Please choose another path!!!&quot;</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">__get_cropped_shape</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="n">crop</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="n">key_path</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">h1</span><span class="p">,</span> <span class="n">h2</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">(</span><span class="n">depth1</span><span class="p">,</span> <span class="n">height1</span><span class="p">,</span> <span class="n">width1</span><span class="p">)</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;median&quot;</span><span class="p">:</span>
         <span class="n">dsp_method</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span>
     <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span>
-        <span class="n">dsp_method</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span>
+        <span class="n">dsp_method</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span>
     <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span>
         <span class="n">dsp_method</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">dsp_method</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cell_size</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
         <span class="n">cell_size</span> <span class="o">=</span> <span class="p">(</span><span class="n">cell_size</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">input_</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
-        <span class="n">list_file</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">find_file</span><span class="p">(</span><span class="n">input_</span> <span class="o">+</span> <span class="s2">&quot;/*.tif*&quot;</span><span class="p">)</span>
-        <span class="n">depth</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_file</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">depth</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No tif files in the folder: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">input_</span><span class="p">))</span>
-        <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">list_file</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-        <span class="n">depth_dsp</span> <span class="o">=</span> <span class="n">depth</span> <span class="o">//</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">height_dsp</span> <span class="o">=</span> <span class="n">height</span> <span class="o">//</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">width_dsp</span> <span class="o">=</span> <span class="n">width</span> <span class="o">//</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-        <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">depth_dsp</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">height_dsp</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">width_dsp</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">file_base</span><span class="p">,</span> <span class="n">file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">file_ext</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">file_ext</span> <span class="o">==</span> <span class="s1">&#39;.hdf&#39;</span> <span class="ow">or</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s1">&#39;.h5&#39;</span>
-                            <span class="ow">or</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s2">&quot;.nxs&quot;</span><span class="p">):</span>
-                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                            <span class="s2">&quot;File extension must be hdf, h5, or nxs&quot;</span><span class="p">)</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">output</span> <span class="o">=</span> <span class="n">file_base</span> <span class="o">+</span> <span class="n">file_ext</span>
-                        <span class="n">data_out</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">open_hdf_stream</span><span class="p">(</span>
-                            <span class="n">output</span><span class="p">,</span> <span class="p">(</span><span class="n">depth_dsp</span><span class="p">,</span> <span class="n">height_dsp</span><span class="p">,</span> <span class="n">width_dsp</span><span class="p">),</span>
-                            <span class="n">key_path</span><span class="o">=</span><span class="s2">&quot;downsample/data&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-            <span class="n">data_dsp</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">depth</span><span class="p">:</span>
-                    <span class="k">break</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">mat</span> <span class="o">=</span> <span class="p">[]</span>
-                    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-                        <span class="n">mat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">list_file</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
-                    <span class="n">mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
-                    <span class="n">mat</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[:,</span> <span class="p">:</span><span class="n">height_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-                          <span class="p">:</span><span class="n">width_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
-                    <span class="n">mat</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">height_dsp</span><span class="p">,</span>
-                                      <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">width_dsp</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-                    <span class="n">mat_dsp</span> <span class="o">=</span> <span class="n">dsp_method</span><span class="p">(</span>
-                        <span class="n">dsp_method</span><span class="p">(</span><span class="n">dsp_method</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-                    <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                        <span class="n">data_dsp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mat_dsp</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="k">if</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-                            <span class="n">out_name</span> <span class="o">=</span> <span class="s2">&quot;0000&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
-                            <span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span>
-                                <span class="n">output</span> <span class="o">+</span> <span class="s2">&quot;/img_&quot;</span> <span class="o">+</span> <span class="n">out_name</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span> <span class="o">+</span> <span class="s2">&quot;.tif&quot;</span><span class="p">,</span>
-                                <span class="n">mat_dsp</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-                        <span class="k">else</span><span class="p">:</span>
-                            <span class="n">data_out</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">=</span> <span class="n">mat_dsp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                        <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Incorrect cell size </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cell_size</span><span class="p">))</span>
+    <span class="n">depth_dsp</span> <span class="o">=</span> <span class="n">depth1</span> <span class="o">//</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">height_dsp</span> <span class="o">=</span> <span class="n">height1</span> <span class="o">//</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">width_dsp</span> <span class="o">=</span> <span class="n">width1</span> <span class="o">//</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">depth_dsp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">height_dsp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">width_dsp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Incorrect cell size </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cell_size</span><span class="p">))</span>
+    <span class="n">out_type</span> <span class="o">=</span> <span class="n">__check_output</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">out_type</span> <span class="o">==</span> <span class="s2">&quot;hdf&quot;</span><span class="p">:</span>
+        <span class="n">data_dsp</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">open_hdf_stream</span><span class="p">(</span>
+            <span class="n">output</span><span class="p">,</span> <span class="p">(</span><span class="n">depth_dsp</span><span class="p">,</span> <span class="n">height_dsp</span><span class="p">,</span> <span class="n">width_dsp</span><span class="p">),</span>
+            <span class="n">key_path</span><span class="o">=</span><span class="s2">&quot;entry/data&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">out_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">data_dsp</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="n">file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">input_</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">file_ext</span> <span class="o">==</span> <span class="s1">&#39;.hdf&#39;</span> <span class="ow">or</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s1">&#39;.h5&#39;</span>
-                    <span class="ow">or</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s2">&quot;.nxs&quot;</span><span class="p">):</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="s2">&quot;Can&#39;t open this type of file format </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_ext</span><span class="p">))</span>
-            <span class="k">if</span> <span class="n">key_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="s2">&quot;Please provide the key path to the dataset!!!&quot;</span><span class="p">)</span>
-            <span class="n">input_</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">key_path</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">input_</span><span class="o">.</span><span class="n">shape</span>
-        <span class="n">depth_dsp</span> <span class="o">=</span> <span class="n">depth</span> <span class="o">//</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">height_dsp</span> <span class="o">=</span> <span class="n">height</span> <span class="o">//</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">width_dsp</span> <span class="o">=</span> <span class="n">width</span> <span class="o">//</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">depth_dsp</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">height_dsp</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">width_dsp</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">input_</span> <span class="o">=</span> <span class="n">input_</span><span class="p">[:</span><span class="n">depth_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                         <span class="p">:</span><span class="n">height_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-                         <span class="p">:</span><span class="n">width_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
-                <span class="n">input_</span> <span class="o">=</span> <span class="n">input_</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
-                    <span class="n">depth_dsp</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">height_dsp</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-                    <span class="n">width_dsp</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-                <span class="n">data_dsp</span> <span class="o">=</span> <span class="n">dsp_method</span><span class="p">(</span>
-                    <span class="n">dsp_method</span><span class="p">(</span><span class="n">dsp_method</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">file_base</span><span class="p">,</span> <span class="n">file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">file_ext</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">file_ext</span> <span class="o">==</span> <span class="s1">&#39;.hdf&#39;</span> <span class="ow">or</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s1">&#39;.h5&#39;</span>
-                            <span class="ow">or</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s2">&quot;.nxs&quot;</span><span class="p">):</span>
-                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                            <span class="s2">&quot;File extension must be hdf, h5, or nxs&quot;</span><span class="p">)</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">output</span> <span class="o">=</span> <span class="n">file_base</span> <span class="o">+</span> <span class="n">file_ext</span>
-                        <span class="n">data_out</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">open_hdf_stream</span><span class="p">(</span>
-                            <span class="n">output</span><span class="p">,</span> <span class="p">(</span><span class="n">depth_dsp</span><span class="p">,</span> <span class="n">height_dsp</span><span class="p">,</span> <span class="n">width_dsp</span><span class="p">),</span>
-                            <span class="n">key_path</span><span class="o">=</span><span class="s2">&quot;downsample/data&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-                <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
-                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">depth</span><span class="p">:</span>
-                        <span class="k">break</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">mat</span> <span class="o">=</span> <span class="n">input_</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                              <span class="p">:</span><span class="n">height_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-                              <span class="p">:</span><span class="n">width_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
-                        <span class="n">mat</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">height_dsp</span><span class="p">,</span>
-                                          <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">width_dsp</span><span class="p">,</span>
-                                          <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-                        <span class="n">mat_dsp</span> <span class="o">=</span> <span class="n">dsp_method</span><span class="p">(</span><span class="n">dsp_method</span><span class="p">(</span>
-                            <span class="n">dsp_method</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-                        <span class="k">if</span> <span class="n">file_ext</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-                            <span class="n">data_out</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">=</span> <span class="n">mat_dsp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                        <span class="k">else</span><span class="p">:</span>
-                            <span class="n">out_name</span> <span class="o">=</span> <span class="s2">&quot;0000&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
-                            <span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span>
-                                <span class="n">output</span> <span class="o">+</span> <span class="s2">&quot;/img_&quot;</span> <span class="o">+</span> <span class="n">out_name</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span> <span class="o">+</span> <span class="s2">&quot;.tif&quot;</span><span class="p">,</span>
-                                <span class="n">mat_dsp</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-                        <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">data_dsp</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">in_type</span> <span class="o">=</span> <span class="n">__check_input</span><span class="p">(</span><span class="n">input_</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">in_type</span> <span class="o">==</span> <span class="s2">&quot;tif&quot;</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">find_file</span><span class="p">(</span><span class="n">input_</span> <span class="o">+</span> <span class="s2">&quot;/*.tif*&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">in_type</span> <span class="o">==</span> <span class="s2">&quot;hdf&quot;</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">key_path</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">input_</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">d1</span> <span class="o">+</span> <span class="n">depth1</span><span class="p">):</span>
+            <span class="k">break</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Incorrect cell size </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cell_size</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">data_dsp</span><span class="p">)</span></div>
+            <span class="k">if</span> <span class="n">in_type</span> <span class="o">==</span> <span class="s2">&quot;tif&quot;</span><span class="p">:</span>
+                <span class="n">mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">j</span><span class="p">])[</span><span class="n">h1</span><span class="p">:</span><span class="n">h2</span><span class="p">,</span> <span class="n">w1</span><span class="p">:</span><span class="n">w2</span><span class="p">]</span>
+                                  <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">])])</span>
+                <span class="n">mat</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[:,</span> <span class="p">:</span><span class="n">height_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                          <span class="p">:</span><span class="n">width_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+                <span class="n">mat</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">height_dsp</span><span class="p">,</span>
+                                  <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">width_dsp</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+                <span class="n">mat_dsp</span> <span class="o">=</span> <span class="n">dsp_method</span><span class="p">(</span>
+                    <span class="n">dsp_method</span><span class="p">(</span><span class="n">dsp_method</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">mat</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                           <span class="n">h1</span><span class="p">:</span><span class="n">h1</span> <span class="o">+</span> <span class="n">height_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                           <span class="n">w1</span><span class="p">:</span><span class="n">w1</span> <span class="o">+</span> <span class="n">width_dsp</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+                <span class="n">mat</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">height_dsp</span><span class="p">,</span>
+                                  <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">width_dsp</span><span class="p">,</span>
+                                  <span class="n">cell_size</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+                <span class="n">mat_dsp</span> <span class="o">=</span> <span class="n">dsp_method</span><span class="p">(</span><span class="n">dsp_method</span><span class="p">(</span>
+                    <span class="n">dsp_method</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">out_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">data_dsp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mat_dsp</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="n">out_type</span> <span class="o">==</span> <span class="s2">&quot;hdf&quot;</span><span class="p">:</span>
+                <span class="n">data_dsp</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">=</span> <span class="n">mat_dsp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">out_name</span> <span class="o">=</span> <span class="s2">&quot;0000&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+                <span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output</span> <span class="o">+</span> <span class="s2">&quot;/img_&quot;</span> <span class="o">+</span> <span class="n">out_name</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span> <span class="o">+</span> <span class="s2">&quot;.tif&quot;</span><span class="p">,</span>
+                                <span class="n">mat_dsp</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">out_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">data_dsp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">data_dsp</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data_dsp</span></div>
 
 
 <div class="viewcode-block" id="rescale"><a class="viewcode-back" href="../../../toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.rescale">[docs]</a><span class="k">def</span> <span class="nf">rescale</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">nbit</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">minmax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -546,7 +587,7 @@
 
 
 <div class="viewcode-block" id="rescale_dataset"><a class="viewcode-back" href="../../../toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.rescale_dataset">[docs]</a><span class="k">def</span> <span class="nf">rescale_dataset</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">nbit</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">minmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                    <span class="n">key_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+                    <span class="n">key_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Rescale a dataset to 8-bit or 16-bit data-type. The dataset can be a</span>
 <span class="sd">    folder of tif files, a hdf file, or a 3D array.</span>
@@ -566,6 +607,10 @@
 <span class="sd">        Skipping step of images used for getting statistical information.</span>
 <span class="sd">    key_path : str, optional</span>
 <span class="sd">        Key path to the dataset if the input is the hdf file.</span>
+<span class="sd">    crop : tuple of int, optional</span>
+<span class="sd">        Crop 3D data from the edges, i.e.</span>
+<span class="sd">        crop = (crop_depth1, crop_depth2, crop_height1, crop_height2,</span>
+<span class="sd">        crop_width1, crop_width2).</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -578,96 +623,54 @@
             <span class="n">file_base</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_base</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Folder exists!!! Please choose another path!!!&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">input_</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
-        <span class="n">list_file</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">find_file</span><span class="p">(</span><span class="n">input_</span> <span class="o">+</span> <span class="s2">&quot;/*.tif*&quot;</span><span class="p">)</span>
-        <span class="n">depth</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_file</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">depth</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No tif files in the folder: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">input_</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">minmax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">skip</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">skip</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mf">0.15</span> <span class="o">*</span> <span class="n">depth</span><span class="p">))</span>
-            <span class="p">(</span><span class="n">gmin</span><span class="p">,</span> <span class="n">gmax</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_statistical_information_dataset</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span>
-                                                               <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="p">(</span><span class="n">gmin</span><span class="p">,</span> <span class="n">gmax</span><span class="p">)</span> <span class="o">=</span> <span class="n">minmax</span>
-        <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">file_base</span><span class="p">,</span> <span class="n">file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">file_ext</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">file_ext</span> <span class="o">==</span> <span class="s1">&#39;.hdf&#39;</span> <span class="ow">or</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s1">&#39;.h5&#39;</span>
-                        <span class="ow">or</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s2">&quot;.nxs&quot;</span><span class="p">):</span>
-                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;File extension must be hdf, h5, or nxs&quot;</span><span class="p">)</span>
-                <span class="n">output</span> <span class="o">=</span> <span class="n">file_base</span> <span class="o">+</span> <span class="n">file_ext</span>
-                <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">list_file</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-                <span class="k">if</span> <span class="n">nbit</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
-                    <span class="n">data_type</span> <span class="o">=</span> <span class="s2">&quot;uint8&quot;</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">data_type</span> <span class="o">=</span> <span class="s2">&quot;uint16&quot;</span>
-                <span class="n">data_out</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">open_hdf_stream</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">),</span>
-                                                <span class="n">key_path</span><span class="o">=</span><span class="s2">&quot;rescale/data&quot;</span><span class="p">,</span>
-                                                <span class="n">data_type</span><span class="o">=</span><span class="n">data_type</span><span class="p">,</span>
-                                                <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="n">data_res</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">depth</span><span class="p">):</span>
-            <span class="n">mat</span> <span class="o">=</span> <span class="n">rescale</span><span class="p">(</span>
-                <span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">list_file</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">nbit</span><span class="o">=</span><span class="n">nbit</span><span class="p">,</span> <span class="n">minmax</span><span class="o">=</span><span class="p">(</span><span class="n">gmin</span><span class="p">,</span> <span class="n">gmax</span><span class="p">))</span>
-            <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">data_res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">file_base</span><span class="p">,</span> <span class="n">file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-                    <span class="n">out_name</span> <span class="o">=</span> <span class="s2">&quot;0000&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-                    <span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output</span> <span class="o">+</span> <span class="s2">&quot;/img_&quot;</span> <span class="o">+</span> <span class="n">out_name</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span> <span class="o">+</span> <span class="s2">&quot;.tif&quot;</span><span class="p">,</span>
-                                    <span class="n">mat</span><span class="p">)</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">data_out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">mat</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">__get_cropped_shape</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="n">crop</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="n">key_path</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">h1</span><span class="p">,</span> <span class="n">h2</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">(</span><span class="n">depth1</span><span class="p">,</span> <span class="n">height1</span><span class="p">,</span> <span class="n">width1</span><span class="p">)</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">minmax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">skip</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">skip</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mf">0.15</span> <span class="o">*</span> <span class="n">depth1</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+        <span class="p">(</span><span class="n">gmin</span><span class="p">,</span> <span class="n">gmax</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_statistical_information_dataset</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span>
+                                                           <span class="n">crop</span><span class="o">=</span><span class="n">crop</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="n">file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">input_</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">file_ext</span> <span class="o">==</span> <span class="s1">&#39;.hdf&#39;</span> <span class="ow">or</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s1">&#39;.h5&#39;</span>
-                    <span class="ow">or</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s2">&quot;.nxs&quot;</span><span class="p">):</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="s2">&quot;Can&#39;t open this type of file format </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_ext</span><span class="p">))</span>
-            <span class="k">if</span> <span class="n">key_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="s2">&quot;Please provide the key path to the dataset!!!&quot;</span><span class="p">)</span>
-            <span class="n">input_</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">key_path</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">input_</span><span class="o">.</span><span class="n">shape</span>
-        <span class="k">if</span> <span class="n">minmax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">skip</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">skip</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mf">0.15</span> <span class="o">*</span> <span class="n">depth</span><span class="p">))</span>
-            <span class="n">f_alias</span> <span class="o">=</span> <span class="n">get_statistical_information_dataset</span>
-            <span class="p">(</span><span class="n">gmin</span><span class="p">,</span> <span class="n">gmax</span><span class="p">)</span> <span class="o">=</span> <span class="n">f_alias</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="n">key_path</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="p">(</span><span class="n">gmin</span><span class="p">,</span> <span class="n">gmax</span><span class="p">)</span> <span class="o">=</span> <span class="n">minmax</span>
+        <span class="p">(</span><span class="n">gmin</span><span class="p">,</span> <span class="n">gmax</span><span class="p">)</span> <span class="o">=</span> <span class="n">minmax</span>
+    <span class="k">if</span> <span class="n">nbit</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+        <span class="n">data_type</span> <span class="o">=</span> <span class="s2">&quot;uint8&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">data_type</span> <span class="o">=</span> <span class="s2">&quot;uint16&quot;</span>
+    <span class="n">out_type</span> <span class="o">=</span> <span class="n">__check_output</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">out_type</span> <span class="o">==</span> <span class="s2">&quot;hdf&quot;</span><span class="p">:</span>
+        <span class="n">data_res</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">open_hdf_stream</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="p">(</span><span class="n">depth1</span><span class="p">,</span> <span class="n">height1</span><span class="p">,</span> <span class="n">width1</span><span class="p">),</span>
+                                        <span class="n">key_path</span><span class="o">=</span><span class="s2">&quot;entry/data&quot;</span><span class="p">,</span>
+                                        <span class="n">data_type</span><span class="o">=</span><span class="n">data_type</span><span class="p">,</span>
+                                        <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">out_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">data_res</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">file_base</span><span class="p">,</span> <span class="n">file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">file_ext</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">file_ext</span> <span class="o">==</span> <span class="s1">&#39;.hdf&#39;</span> <span class="ow">or</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s1">&#39;.h5&#39;</span>
-                        <span class="ow">or</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s2">&quot;.nxs&quot;</span><span class="p">):</span>
-                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;File extension must be hdf, h5, or nxs&quot;</span><span class="p">)</span>
-                <span class="n">output</span> <span class="o">=</span> <span class="n">file_base</span> <span class="o">+</span> <span class="n">file_ext</span>
-                <span class="k">if</span> <span class="n">nbit</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
-                    <span class="n">data_type</span> <span class="o">=</span> <span class="s2">&quot;uint8&quot;</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">data_type</span> <span class="o">=</span> <span class="s2">&quot;uint16&quot;</span>
-                <span class="n">data_out</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">open_hdf_stream</span><span class="p">(</span>
-                    <span class="n">output</span><span class="p">,</span> <span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">),</span> <span class="n">key_path</span><span class="o">=</span><span class="s2">&quot;rescale/data&quot;</span><span class="p">,</span>
-                    <span class="n">data_type</span><span class="o">=</span><span class="n">data_type</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">depth</span><span class="p">):</span>
-            <span class="n">mat</span> <span class="o">=</span> <span class="n">rescale</span><span class="p">(</span><span class="n">input_</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">nbit</span><span class="o">=</span><span class="n">nbit</span><span class="p">,</span> <span class="n">minmax</span><span class="o">=</span><span class="p">(</span><span class="n">gmin</span><span class="p">,</span> <span class="n">gmax</span><span class="p">))</span>
-            <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">data_res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">file_base</span><span class="p">,</span> <span class="n">file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">file_ext</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-                    <span class="n">data_out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">mat</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">out_name</span> <span class="o">=</span> <span class="s2">&quot;0000&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-                    <span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output</span> <span class="o">+</span> <span class="s2">&quot;/img_&quot;</span> <span class="o">+</span> <span class="n">out_name</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span> <span class="o">+</span> <span class="s2">&quot;.tif&quot;</span><span class="p">,</span>
-                                    <span class="n">mat</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">data_res</span><span class="p">)</span></div>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">data_res</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">in_type</span> <span class="o">=</span> <span class="n">__check_input</span><span class="p">(</span><span class="n">input_</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">in_type</span> <span class="o">==</span> <span class="s2">&quot;tif&quot;</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">find_file</span><span class="p">(</span><span class="n">input_</span> <span class="o">+</span> <span class="s2">&quot;/*.tif*&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">in_type</span> <span class="o">==</span> <span class="s2">&quot;hdf&quot;</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_hdf</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">key_path</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">input_</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">in_type</span> <span class="o">==</span> <span class="s2">&quot;tif&quot;</span><span class="p">:</span>
+            <span class="n">mat</span> <span class="o">=</span> <span class="n">rescale</span><span class="p">(</span><span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])[</span><span class="n">h1</span><span class="p">:</span><span class="n">h2</span><span class="p">,</span> <span class="n">w1</span><span class="p">:</span><span class="n">w2</span><span class="p">],</span>
+                          <span class="n">nbit</span><span class="o">=</span><span class="n">nbit</span><span class="p">,</span> <span class="n">minmax</span><span class="o">=</span><span class="p">(</span><span class="n">gmin</span><span class="p">,</span> <span class="n">gmax</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">mat</span> <span class="o">=</span> <span class="n">rescale</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">h1</span><span class="p">:</span><span class="n">h2</span><span class="p">,</span> <span class="n">w1</span><span class="p">:</span><span class="n">w2</span><span class="p">],</span> <span class="n">nbit</span><span class="o">=</span><span class="n">nbit</span><span class="p">,</span>
+                          <span class="n">minmax</span><span class="o">=</span><span class="p">(</span><span class="n">gmin</span><span class="p">,</span> <span class="n">gmax</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">out_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">data_res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">out_type</span> <span class="o">==</span> <span class="s2">&quot;hdf&quot;</span><span class="p">:</span>
+            <span class="n">data_res</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">d1</span><span class="p">]</span> <span class="o">=</span> <span class="n">mat</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">out_name</span> <span class="o">=</span> <span class="s2">&quot;0000&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output</span> <span class="o">+</span> <span class="s2">&quot;/img_&quot;</span> <span class="o">+</span> <span class="n">out_name</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span> <span class="o">+</span> <span class="s2">&quot;.tif&quot;</span><span class="p">,</span> <span class="n">mat</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">out_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">data_res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">data_res</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data_res</span></div>
 
 
 <div class="viewcode-block" id="remove_ring_based_fft"><a class="viewcode-back" href="../../../toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.remove_ring_based_fft">[docs]</a><span class="k">def</span> <span class="nf">remove_ring_based_fft</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
