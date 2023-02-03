@@ -1,117 +1,134 @@
 
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>5.1. Implementations of X-ray speckle-based phase-contrast tomography &mdash; Algotom&#39;s documentation</title>
-  
 
-  
-  
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5.1. Implementations of X-ray speckle-based phase-contrast tomography &#8212; Algotom&#39;s documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=0.7.0-1" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/petite-vue.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
-  
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6. Update notes" href="../section6.html" />
+    <link rel="prev" title="5. Technical notes" href="../section5.html" /> 
+  </head><body data-dark_mode_code_blocks="true">
 
-  
-
-  
-  
+<div id="top_nav">
     
 
-  
-
-  
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="Algotom&#39;s documentation" href="../../index.html"/>
-        <link rel="up" title="5. Technical notes" href="../section5.html"/>
-        <link rel="next" title="6. Update notes" href="../section6.html"/>
-        <link rel="prev" title="5. Technical notes" href="../section5.html"/> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
-</head>
-
-<body class="wy-body-for-nav" role="document">
-
-   
-  <div class="wy-grid-for-nav">
-
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
-
-          
-            <a href="../../index.html" class="icon icon-home"> Algotom
-          
-
-          
-          </a>
-
-          
+    <nav>
+        
             
-            
-          
+        
 
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+        <p id="toggle_sidebar">
+            <a href="#" title="Toggle sidebar">|||</a>
+        </p>
+        <h1><a href="../../index.html" title="Go to homepage">Algotom's documentation</a></h1>
+
+        <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
+    <template v-if="mode == 'light'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_light"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M67.48,18.073c1.913,-1.912 1.913,-5.018 0,-6.931c-1.912,-1.912 -5.018,-1.912 -6.931,0l-6.798,6.799c-1.912,1.912 -1.912,5.018 0,6.931c1.913,1.912 5.018,1.912 6.931,-0l6.798,-6.799Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.728,61.108c1.912,-1.913 1.912,-5.018 -0,-6.931c-1.913,-1.913 -5.019,-1.913 -6.931,-0l-6.799,6.798c-1.912,1.913 -1.912,5.019 0,6.931c1.913,1.913 5.019,1.913 6.931,0l6.799,-6.798Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.682,54.177c-1.913,-1.913 -5.018,-1.913 -6.931,-0c-1.912,1.913 -1.912,5.018 0,6.931l6.798,6.798c1.913,1.913 5.019,1.913 6.931,0c1.913,-1.912 1.913,-5.018 0,-6.931l-6.798,-6.798Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M4.901,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,-0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M18.929,11.142c-1.912,-1.912 -5.018,-1.912 -6.931,0c-1.912,1.913 -1.912,5.019 0,6.931l6.799,6.799c1.912,1.912 5.018,1.912 6.931,-0c1.912,-1.913 1.912,-5.019 -0,-6.931l-6.799,-6.799Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.108,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c-0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c-0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'dark'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_dark"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.901,2.196 -4.901,4.901c0,2.705 2.197,4.901 4.901,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.662,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.989,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.732,61.103c1.91,-1.91 1.91,-5.011 0,-6.921l-0.009,-0.01c-1.91,-1.91 -5.012,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.909,1.91 5.011,1.91 6.92,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.672,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.52,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l-0,-0.01c-0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.901,2.196 -4.901,4.901c0,2.704 2.197,4.9 4.901,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.73,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 -0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.098,34.623c-2.699,0 -4.891,2.192 -4.891,4.892l-0,0.019c-0,2.699 2.192,4.891 4.891,4.891c2.7,0 4.892,-2.192 4.892,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.892,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'darkest'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_darkest"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><path d="M39.315,23.791c8.684,-0 15.734,7.05 15.734,15.733c0,8.684 -7.05,15.734 -15.734,15.734c-8.683,0 -15.733,-7.05 -15.733,-15.734c-0,-8.683 7.05,-15.733 15.733,-15.733Zm0,4.737c6.069,0 10.997,4.927 10.997,10.996c-0,6.069 -4.928,10.996 -10.997,10.996c-6.068,0 -10.996,-4.927 -10.996,-10.996c0,-6.069 4.928,-10.996 10.996,-10.996Z" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.216,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.9,2.196 -4.9,4.901c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.666,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.99,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.737,61.103c1.909,-1.91 1.909,-5.011 -0,-6.921l-0.01,-0.01c-1.91,-1.91 -5.011,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.91,1.91 5.011,1.91 6.921,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.676,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.524,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l0,-0.01c0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.216,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901c-0,2.704 2.196,4.9 4.9,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.734,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.103,34.623c-2.7,0 -4.892,2.192 -4.892,4.892l-0,0.019c-0,2.699 2.192,4.891 4.892,4.891c2.699,0 4.891,-2.192 4.891,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.891,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+</a>
+
+<script>
+(function() {
+    const LOCAL_STORAGE_KEY = 'piccoloThemeMode'
+
+    var initialMode = localStorage.getItem(LOCAL_STORAGE_KEY)
+
+    if (initialMode) {
+        // Make sure the value in local storage is valid
+        if (['light', 'dark', 'darkest'].indexOf(initialMode) == -1) {
+            initialMode = 'light'
+            localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+        }
+    } else {
+        // Check if the client prefers dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            initialMode = 'dark'
+        } else {
+            initialMode = 'light'
+        }
+        localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+    }
+
+    document.documentElement.dataset.mode = initialMode
+
+    PetiteVue.createApp({
+        'mode': initialMode,
+        handleClick() {
+            let currentMode = this.mode
+
+            if (currentMode == 'light') {
+                this.mode = 'dark'
+            } else if (currentMode == 'dark') {
+                this.mode = 'darkest'
+            } else if (currentMode == 'darkest') {
+                this.mode = 'light'
+            }
+
+            document.documentElement.dataset.mode = this.mode
+            localStorage.setItem(LOCAL_STORAGE_KEY, this.mode)
+
+            console.log(this.mode)
+        }
+    }).mount('#mode_toggle')
+})()
+</script>
+            <p class="mobile_search_link">
+                <a href="../../search.html" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                    </svg>
+                </a>
+            </p>
+        
+
+        <div class="searchbox_wrapper">
+            
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+    </nav>
 </div>
 
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-                <ul class="current">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../section1.html">1. Basic tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section2.html">2. Features and capabilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section3.html">3. Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section4.html">4. Demonstrations</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../section5.html">5. Technical notes</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">5.1. Implementations of X-ray speckle-based phase-contrast tomography</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">5.1.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#data-acquisition">5.1.2. Data acquisition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#data-processing">5.1.3. Data processing</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#finding-pixel-shifts">5.1.3.1. Finding pixel shifts</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#surface-reconstruction">5.1.3.2. Surface reconstruction</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#extracting-transmission-and-dark-field-signals">5.1.3.3. Extracting transmission and dark-field signals</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tomographic-reconstruction">5.1.3.4. Tomographic reconstruction</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#implementation">5.1.4. Implementation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#design-principles">5.1.4.1. Design principles</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#building-blocks">5.1.4.2. Building blocks</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#demonstration">5.1.5. Demonstration</a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.1. Implementations of X-ray speckle-based phase-contrast tomography</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../section6.html">6. Update notes</a></li>
@@ -120,68 +137,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../highlights.html">9. Highlights</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">Algotom</a>
-        
-      </nav>
 
 
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="../section5.html"><span class="section-number">5. </span>Technical notes</a> &raquo;</li>
-        
-      <li><span class="section-number">5.1. </span>Implementations of X-ray speckle-based phase-contrast tomography</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-            
-            <a href="../../_sources/toc/section5/section5_1.rst.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
-  </ul>
-
-  
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
             
   <div class="section" id="implementations-of-x-ray-speckle-based-phase-contrast-tomography">
 <h1><span class="section-number">5.1. </span>Implementations of X-ray speckle-based phase-contrast tomography<a class="headerlink" href="#implementations-of-x-ray-speckle-based-phase-contrast-tomography" title="Permalink to this heading">¶</a></h1>
@@ -261,10 +224,12 @@ The procedure of finding the shift of each pixel is depicted in <a class="refere
 using multicore-CPU and GPU for computing is crucially needed. An approximate approach to reduce the
 computational cost is to perform 1D search <span id="id5">[<a class="reference internal" href="../credits.html#id24" title="Hongchang Wang and Kawal Sawhney. Hard x-ray omnidirectional differential phase and dark-field imaging. Proceedings of the National Academy of Sciences, 2021. doi:10.1073/pnas.2022319118.">R7</a>]</span> using middle slices in vertical and horizontal
 direction of image stacks, to find shifts in x and y-direction separately.</p>
-<div class="align-center figure" id="fig-5-1-1" style="width: 70%">
+<blockquote>
+<div><div class="align-center figure" id="fig-5-1-1" style="width: 70%">
 <img alt="../../_images/fig_5_1_1.jpg" src="../../_images/fig_5_1_1.jpg" />
 <p class="caption"><span class="caption-number">Fig. 5.1.1 </span><span class="caption-text">Demonstration of how to find the shift of each speckle-pixel.</span><a class="headerlink" href="#fig-5-1-1" title="Permalink to this image">¶</a></p>
 </div>
+</div></blockquote>
 </div>
 <div class="section" id="surface-reconstruction">
 <h3><span class="section-number">5.1.3.2. </span>Surface reconstruction<a class="headerlink" href="#surface-reconstruction" title="Permalink to this heading">¶</a></h3>
@@ -275,16 +240,18 @@ methods <span id="id6">[<a class="reference internal" href="../credits.html#id20
 cost which is critical for tomography. The disadvantage of these Fourier methods is that the DC-component (average value of an image)
 is undefined resulting in the fluctuations in background between phase-retrieved images. This effect, however,
 can be corrected (<a class="reference internal" href="#fig-5-1-3"><span class="std std-numref">Fig. 5.1.3</span></a>) by using the double-wedge filter as described in <span id="id7">[<a class="reference internal" href="../credits.html#id3" title="Nghia T. Vo, Robert C. Atwood, Michael Drakopoulos, and Thomas Connolley. Data processing methods and data acquisition for samples larger than the field of view in parallel-beam tomography. Opt. Express, 29(12):17849–17874, Jun 2021. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-29-12-17849, doi:10.1364/OE.418448.">C1</a>]</span></p>
-<div class="align-center figure" id="fig-5-1-2" style="width: 95%">
+<blockquote>
+<div><div class="align-center figure" id="fig-5-1-2" style="width: 100%">
 <img alt="../../_images/fig_5_1_2.jpg" src="../../_images/fig_5_1_2.jpg" />
 <p class="caption"><span class="caption-number">Fig. 5.1.2 </span><span class="caption-text">Phase-shift image (c) is retrieved by normal integration using two gradient
 images: (a) x-direction; (b) y-direction.</span><a class="headerlink" href="#fig-5-1-2" title="Permalink to this image">¶</a></p>
 </div>
-<div class="align-center figure" id="fig-5-1-3" style="width: 65%">
+<div class="align-center figure" id="fig-5-1-3" style="width: 90%">
 <img alt="../../_images/fig_5_1_3.jpg" src="../../_images/fig_5_1_3.jpg" />
 <p class="caption"><span class="caption-number">Fig. 5.1.3 </span><span class="caption-text">(a) Fluctuation of grayscale values in a sinogram caused by the FT-based surface-reconstruction
 method. (b) Corrected image after using the double-wedge filter.</span><a class="headerlink" href="#fig-5-1-3" title="Permalink to this image">¶</a></p>
 </div>
+</div></blockquote>
 </div>
 <div class="section" id="extracting-transmission-and-dark-field-signals">
 <h3><span class="section-number">5.1.3.3. </span>Extracting transmission and dark-field signals<a class="headerlink" href="#extracting-transmission-and-dark-field-signals" title="Permalink to this heading">¶</a></h3>
@@ -294,20 +261,24 @@ with dark-noise of a camera) can be extracted from data together with the phase-
 There are <a class="reference external" href="https://doi.org/10.3390/jimaging4050060">several ways</a> to determine dark-signal image for correlation-based methods.
 For the cost-based approach <span id="id8">[<a class="reference internal" href="../credits.html#id27" title="Marie-Christine Zdora, Pierre Thibault, Tunhe Zhou, Frieder J. Koch, Jenny Romell, Simone Sala, Arndt Last, Christoph Rau, and Irene Zanette. X-ray phase-contrast imaging and metrology through unified modulated pattern analysis. Phys. Rev. Lett., 118:203903, 2017. doi:10.1103/PhysRevLett.118.203903.">R5</a>]</span>, dark-signal image is easily to be obtained as a part of the model
 equation.</p>
-<div class="align-center figure" id="fig-5-1-4" style="width: 95%">
+<blockquote>
+<div><div class="align-center figure" id="fig-5-1-4" style="width: 100%">
 <img alt="../../_images/fig_5_1_4.jpg" src="../../_images/fig_5_1_4.jpg" />
 <p class="caption"><span class="caption-number">Fig. 5.1.4 </span><span class="caption-text">All imaging signal retrieved by the speckle-based technique can be used for tomography. (a) Phase-shift image.
 (b) Transmission image. (c) Dark-field image.</span><a class="headerlink" href="#fig-5-1-4" title="Permalink to this image">¶</a></p>
 </div>
+</div></blockquote>
 </div>
 <div class="section" id="tomographic-reconstruction">
 <h3><span class="section-number">5.1.3.4. </span>Tomographic reconstruction<a class="headerlink" href="#tomographic-reconstruction" title="Permalink to this heading">¶</a></h3>
 <p>Above processing steps are repeated for every projection then the results are used for tomographic
 reconstruction as shown in <a class="reference internal" href="#fig-5-1-5"><span class="std std-numref">Fig. 5.1.5</span></a></p>
-<div class="align-center figure" id="fig-5-1-5" style="width: 95%">
+<blockquote>
+<div><div class="align-center figure" id="fig-5-1-5" style="width: 100%">
 <img alt="../../_images/fig_5_1_5.jpg" src="../../_images/fig_5_1_5.jpg" />
 <p class="caption"><span class="caption-number">Fig. 5.1.5 </span><span class="caption-text">Demonstration of the speckle-based phase-contrast tomography</span><a class="headerlink" href="#fig-5-1-5" title="Permalink to this image">¶</a></p>
 </div>
+</div></blockquote>
 </div>
 </div>
 <div class="section" id="implementation">
@@ -362,61 +333,72 @@ the first two blocks are implemented at GPU-kernel level.</p>
 It includes many options for processing at the lower-level blocks. The chunk-size option enables the method to run on
 either small memory or large memory of RAM or GPU. Other top-layer methods listed in the previous section are
 straightforward to implement either directly or by making use of the methods in the <em>correlation</em> module.</p>
-<div class="align-center figure" id="fig-5-1-6" style="width: 50%">
+<blockquote>
+<div><div class="align-center figure" id="fig-5-1-6" style="width: 60%">
 <img alt="../../_images/fig_5_1_6.png" src="../../_images/fig_5_1_6.png" />
 <p class="caption"><span class="caption-number">Fig. 5.1.6 </span><span class="caption-text">Building blocks of the <em>correlation</em> module.</span><a class="headerlink" href="#fig-5-1-6" title="Permalink to this image">¶</a></p>
 </div>
+</div></blockquote>
 </div>
 </div>
 <div class="section" id="demonstration">
 <h2><span class="section-number">5.1.5. </span>Demonstration<a class="headerlink" href="#demonstration" title="Permalink to this heading">¶</a></h2>
-<div class="align-center figure" id="fig-5-1-7" style="width: 95%">
+<blockquote>
+<div><div class="align-center figure" id="fig-5-1-7" style="width: 95%">
 <img alt="../../_images/fig_5_1_7.jpg" src="../../_images/fig_5_1_7.jpg" />
 <p class="caption"><span class="caption-number">Fig. 5.1.7 </span><span class="caption-text">Speckle-based tomographic experiment at beamline I12.</span><a class="headerlink" href="#fig-5-1-7" title="Permalink to this image">¶</a></p>
 </div>
+</div></blockquote>
 <p>Data collected at <a class="reference external" href="https://www.diamond.ac.uk/Instruments/Imaging-and-Microscopy/I12/Techniques-at-I12.html">beamline I12</a>
 at Diamond Light Source are used for demonstration. Details of how data were acquired are as follows:</p>
-<ul class="simple">
+<ul>
 <li><p>A box of fine sand was used as a speckle generator and can achieve a visibility of 13% at 53keV X-rays with the
 detector-sample distance of 2.2m. A detector with the pixel size of 7.9 µm was used. Image-size is 2560 and 2160
 in height and width. The speckle-size is around 8 pixels. The intensity of the beam profile is very stable which
 is an important advantage of beamline I12. The sample is a <a class="reference external" href="https://doi.org/10.1016/j.epsl.2018.04.025">picrite basaltic rock</a>
 from Iceland.</p></li>
-<li><p>20 speckle positions following a spiral path with the step of 30 times of the pixel size were used for scanning.</p></li>
+<li><p>20 speckle positions following <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.util.utility.html#algotom.util.utility.generate_spiral_positions">a spiral path</a>
+with the step of 30 times of the pixel size were used for scanning.</p></li>
 <li><p>Speckle images without the sample were acquired at all positions first. Then for each speckle position a
 tomographic scan of the sample, 1801 projections, was acquired. This strategy ensures that projections at
 the same angle are not shifted between speckle positions. Due to mechanical error, the diffuser positions
 were not the same between the first scan (without the sample) and the second scan (with the sample).
 This problem can be solved by <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.phase.html#algotom.prep.phase.find_shift_between_image_stacks">image alignment</a>
-using free-space areas in each image (<a class="reference internal" href="#fig-5-1-8"><span class="std std-numref">Fig. 5.1.8</span></a>).</p></li>
-</ul>
-<div class="align-center figure" id="fig-5-1-8" style="width: 65%">
+using free-space areas in each image (<a class="reference internal" href="#fig-5-1-8"><span class="std std-numref">Fig. 5.1.8</span></a>).</p>
+<blockquote>
+<div><div class="align-center figure" id="fig-5-1-8" style="width: 75%">
 <img alt="../../_images/fig_5_1_8.jpg" src="../../_images/fig_5_1_8.jpg" />
 <p class="caption"><span class="caption-number">Fig. 5.1.8 </span><span class="caption-text">Demonstration of the impact of image alignment. (a) Small area of an image which is the result of dividing
 between speckle-image with sample and without sample. (b) Same as (a) but after image alignment.</span><a class="headerlink" href="#fig-5-1-8" title="Permalink to this image">¶</a></p>
 </div>
+</div></blockquote>
+</li>
+</ul>
 <p>The following presents how the data were processed:</p>
-<ul class="simple">
+<ul>
 <li><p>Reference-images for each position are loaded, averaged, normalized (flat-field corrected), <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.phase.html#algotom.prep.phase.align_image_stacks">aligned</a>,
 and stacked.</p></li>
 <li><p>For each angle of tomographic datasets, projections at different speckle-positions are loaded, normalized, and stacked.</p></li>
 <li><p>Phase-shift image is retrieved from two previous image-stacks (<a class="reference internal" href="#fig-5-1-9"><span class="std std-numref">Fig. 5.1.9</span></a>) using a single function.
 Full options for choosing back-end methods, surface reconstruction methods, and searching parameters are at
-the <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.phase.html#algotom.prep.phase.retrieve_phase_based_speckle_tracking">API reference page</a>.</p></li>
-</ul>
-<div class="align-center figure" id="fig-5-1-9" style="width: 95%">
+the <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.phase.html#algotom.prep.phase.retrieve_phase_based_speckle_tracking">API reference page</a>.</p>
+<div class="align-center figure" id="fig-5-1-9" style="width: 90%">
 <img alt="../../_images/fig_5_1_9.jpg" src="../../_images/fig_5_1_9.jpg" />
 <p class="caption"><span class="caption-number">Fig. 5.1.9 </span><span class="caption-text">Speckle-image stack (a). Sample-image stack (b). Phase-shift image (c) retrieved from (a) and (b).</span><a class="headerlink" href="#fig-5-1-9" title="Permalink to this image">¶</a></p>
 </div>
+</li>
+</ul>
 <p>Algotom implements three approaches: the correlation-based method using 1D <span id="id11">[<a class="reference internal" href="../credits.html#id24" title="Hongchang Wang and Kawal Sawhney. Hard x-ray omnidirectional differential phase and dark-field imaging. Proceedings of the National Academy of Sciences, 2021. doi:10.1073/pnas.2022319118.">R7</a>]</span> and 2D <span id="id12">[<a class="reference internal" href="../credits.html#id23" title="Sebastien Berujon and Eric Ziegler. X-ray multimodal tomography using speckle-vector tracking. Phys. Rev. Applied, 5:044014, 2016. doi:10.1103/PhysRevApplied.5.044014.">R6</a>]</span> search,
 and the cost-based approach <span id="id13">[<a class="reference internal" href="../credits.html#id27" title="Marie-Christine Zdora, Pierre Thibault, Tunhe Zhou, Frieder J. Koch, Jenny Romell, Simone Sala, Arndt Last, Christoph Rau, and Irene Zanette. X-ray phase-contrast imaging and metrology through unified modulated pattern analysis. Phys. Rev. Lett., 118:203903, 2017. doi:10.1103/PhysRevLett.118.203903.">R5</a>]</span>, known as the UMPA (Unified Modulated Pattern Analysis) method.
 A summary of computing time for retrieving a single phase-shift image using different options is shown
 in <a class="reference internal" href="#fig-5-1-10"><span class="std std-numref">Fig. 5.1.10</span></a> where the window size is 7 and the margin is 10. As can be seen, there is a huge
 speed-up of computing time if using GPU.</p>
-<div class="align-center figure" id="fig-5-1-10" style="width: 65%">
+<blockquote>
+<div><div class="align-center figure" id="fig-5-1-10" style="width: 75%">
 <img alt="../../_images/fig_5_1_10.jpg" src="../../_images/fig_5_1_10.jpg" />
 <p class="caption"><span class="caption-number">Fig. 5.1.10 </span><span class="caption-text">Comparison of computing time using different approaches.</span><a class="headerlink" href="#fig-5-1-10" title="Permalink to this image">¶</a></p>
 </div>
+</div></blockquote>
 <p>For tomographic reconstruction, phase retrieval is applied to all projections then the sinograms are generated
 for reconstructing slice-by-slice. This step can be manually parallelized for multiple-CPUs or multiple-GPUs to
 reduce computing time. In practice, users may want to tweak parameters and check the results before running full
@@ -432,91 +414,86 @@ better contrast than transmission-signal images (red arrows). The technique reve
 of the sample which are mineral olivine. Because the olivine is a crystal it can enhance dark signal as
 shown in <a class="reference internal" href="#fig-5-1-12"><span class="std std-numref">Fig. 5.1.12</span></a> (c,f). Making use of dark-signal images to gain deeper understanding of materials
 is a very promising application of the technique.</p>
-<div class="align-center figure" id="fig-5-1-11" style="width: 95%">
+<blockquote>
+<div><div class="align-center figure" id="fig-5-1-11" style="width: 100%">
 <img alt="../../_images/fig_5_1_11.jpg" src="../../_images/fig_5_1_11.jpg" />
 <p class="caption"><span class="caption-number">Fig. 5.1.11 </span><span class="caption-text">Horizontal slice and vertical slice of reconstructed volumes from the 3 approaches: the 1D-search method (a,d);
 the 2D-search method (b,e); and UMPA (c,f).</span><a class="headerlink" href="#fig-5-1-11" title="Permalink to this image">¶</a></p>
 </div>
-<div class="align-center figure" id="fig-5-1-12" style="width: 95%">
+<div class="align-center figure" id="fig-5-1-12" style="width: 100%">
 <img alt="../../_images/fig_5_1_12.jpg" src="../../_images/fig_5_1_12.jpg" />
 <p class="caption"><span class="caption-number">Fig. 5.1.12 </span><span class="caption-text">Horizontal slice and vertical slice of reconstructed volumes from 3 imaging modes: phase-shift image (a,d);
 transmission image (b,e); and dark-signal image (c,f).</span><a class="headerlink" href="#fig-5-1-12" title="Permalink to this image">¶</a></p>
 </div>
+</div></blockquote>
 <p>Python codes used to process data for this report are at <a class="reference external" href="https://github.com/algotom/algotom/tree/master/examples/speckle_based_tomography/i12_data">here</a>.
 Detailed references can be found in <span id="id15">[<a class="reference internal" href="../credits.html#id28" title="Nghia T. Vo, Hongchang Wang, Lingfei Hu, Tunhe Zhou, Marie-Christine Zdora, Hans Deyhle, Robert C. Atwood, and Michael Drakopoulos. Practical implementations of speckle-based phase-retrieval methods in python and gpu for tomography. In Developments in X-Ray Tomography XIV, volume 12242, 122420E. International Society for Optics and Photonics, SPIE, 2022. doi:10.1117/12.2636834.">R4</a>]</span>.</p>
 </div>
 </div>
 
 
-           </div>
+            <div class="clearer"></div>
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../section6.html" class="btn btn-neutral float-right" title="6. Update notes" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../section5.html" class="btn btn-neutral" title="5. Technical notes" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2021, Nghia T. Vo.
-
-    </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-
         </div>
       </div>
+    
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon"><</span><span>Page contents<span></a></p>
+        </div>
 
-    </section>
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">></span><span>Page contents:<span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">5.1. Implementations of X-ray speckle-based phase-contrast tomography</a><ul>
+<li><a class="reference internal" href="#introduction">5.1.1. Introduction</a></li>
+<li><a class="reference internal" href="#data-acquisition">5.1.2. Data acquisition</a></li>
+<li><a class="reference internal" href="#data-processing">5.1.3. Data processing</a><ul>
+<li><a class="reference internal" href="#finding-pixel-shifts">5.1.3.1. Finding pixel shifts</a></li>
+<li><a class="reference internal" href="#surface-reconstruction">5.1.3.2. Surface reconstruction</a></li>
+<li><a class="reference internal" href="#extracting-transmission-and-dark-field-signals">5.1.3.3. Extracting transmission and dark-field signals</a></li>
+<li><a class="reference internal" href="#tomographic-reconstruction">5.1.3.4. Tomographic reconstruction</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#implementation">5.1.4. Implementation</a><ul>
+<li><a class="reference internal" href="#design-principles">5.1.4.1. Design principles</a></li>
+<li><a class="reference internal" href="#building-blocks">5.1.4.2. Building blocks</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#demonstration">5.1.5. Demonstration</a></li>
+</ul>
+</li>
+</ul>
 
-  </div>
-  
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="../section5.html">
+                    <span class="icon"><</span><span><span class="section-number">5. </span>Technical notes</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+                    <a href="../section6.html"><span><span class="section-number">6. </span>Update notes</span><span class="icon">></span></a>
+                
+            </div>
+        </div>
+    </div>
 
 
-  
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Nghia T. Vo.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+    </div>
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/documentation_options.js"></script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
-
-  
-  
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
-      });
-  </script>
-   
-
-</body>
+<p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>
+  </body>
 </html>

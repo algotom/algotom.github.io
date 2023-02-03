@@ -234,24 +234,24 @@
     <span class="n">flat</span> <span class="o">=</span> <span class="n">ratio</span> <span class="o">*</span> <span class="n">flat</span>
     <span class="k">if</span> <span class="n">use_dark</span><span class="p">:</span>
         <span class="n">flat_dark</span> <span class="o">=</span> <span class="n">flat</span> <span class="o">-</span> <span class="n">dark</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">proj_corr</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span> <span class="o">-</span> <span class="n">dark</span><span class="p">)</span> <span class="o">/</span> <span class="n">flat_dark</span>
-        <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+        <span class="k">if</span> <span class="mf">0.0</span> <span class="ow">in</span> <span class="n">flat_dark</span><span class="p">:</span>
             <span class="n">nmean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">flat_dark</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">nmean</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
                 <span class="n">flat_dark</span><span class="p">[</span><span class="n">flat_dark</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="n">nmean</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">flat_dark</span><span class="p">[</span><span class="n">flat_dark</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
             <span class="n">proj_corr</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span> <span class="o">-</span> <span class="n">dark</span><span class="p">)</span> <span class="o">/</span> <span class="n">flat_dark</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">proj_corr</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span> <span class="o">-</span> <span class="n">dark</span><span class="p">)</span> <span class="o">/</span> <span class="n">flat_dark</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">proj_corr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span> <span class="o">/</span> <span class="n">flat</span>
-        <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+        <span class="k">if</span> <span class="mf">0.0</span> <span class="ow">in</span> <span class="n">flat</span><span class="p">:</span>
             <span class="n">nmean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">flat</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">nmean</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
                 <span class="n">flat</span><span class="p">[</span><span class="n">flat</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="n">nmean</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">flat</span><span class="p">[</span><span class="n">flat</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">proj_corr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span> <span class="o">/</span> <span class="n">flat</span>
+        <span class="k">else</span><span class="p">:</span>
             <span class="n">proj_corr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span> <span class="o">/</span> <span class="n">flat</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">options</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">opt_name</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>

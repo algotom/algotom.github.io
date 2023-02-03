@@ -214,7 +214,7 @@
 
 <span class="k">def</span> <span class="nf">_make_window</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s2">&quot;forward&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Make a window for a FFT-based filter.</span>
+<span class="sd">    Make a window for an FFT-based filter.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -592,7 +592,7 @@
 <span class="sd">    pad : int</span>
 <span class="sd">        Padding width.</span>
 <span class="sd">    pad_mode : str</span>
-<span class="sd">        Padding method. Full list can be found at numpy.pad documentation.</span>
+<span class="sd">        Padding method. Full list can be found at numpy_pad documentation.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -848,7 +848,8 @@
 
 
 <span class="nd">@jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">_calculate_transmission_dark_field_values</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">,</span> <span class="n">sam_stack</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_calculate_transmission_dark_field_values</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">,</span>
+                                              <span class="n">sam_stack</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Supplementary method for determining transmission-signal image and</span>
 <span class="sd">    dark-signal image.</span>
@@ -868,7 +869,8 @@
 
 <span class="nd">@jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_get_transmission_dark_field_signal</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">,</span> <span class="n">sam_stack</span><span class="p">,</span> <span class="n">x_shifts</span><span class="p">,</span>
-                                        <span class="n">y_shifts</span><span class="p">,</span> <span class="n">win_size</span><span class="p">,</span> <span class="n">margin</span><span class="p">):</span>
+                                        <span class="n">y_shifts</span><span class="p">,</span> <span class="n">win_size</span><span class="p">,</span>
+                                        <span class="n">margin</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Supplementary method for determining transmission-signal image and</span>
 <span class="sd">    dark-signal image.</span>
@@ -1061,7 +1063,7 @@
 <span class="sd">        Padding-width used for the &quot;SCS&quot; method.</span>
 <span class="sd">    pad_mode : str</span>
 <span class="sd">        Padding-method used for the &quot;SCS&quot; method. Full list can be found at</span>
-<span class="sd">        numpy.pad documentation.</span>
+<span class="sd">        numpy_pad documentation.</span>
 <span class="sd">    return_shift : bool, optional</span>
 <span class="sd">        Return a list of 3 arrays: x-shifts, y-shifts, and phase image if True.</span>
 <span class="sd">        The shifts can be used to determine transmission-signal and dark-signal</span>
