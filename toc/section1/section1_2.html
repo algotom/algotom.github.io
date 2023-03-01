@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>1.2. Common data format at synchrotron facilities &#8212; Algotom&#39;s documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=0.7.0-1" />
@@ -150,7 +151,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="common-data-format-at-synchrotron-facilities">
+  <section id="common-data-format-at-synchrotron-facilities">
 <h1><span class="section-number">1.2. </span>Common data format at synchrotron facilities<a class="headerlink" href="#common-data-format-at-synchrotron-facilities" title="Permalink to this heading">¶</a></h1>
 <p>Two types of data format often used at most of synchrotron facilities are
 tiff and hdf. Hdf (<a class="reference external" href="https://www.hdfgroup.org/solutions/hdf5/">Hierarchical Data Format</a>)
@@ -162,7 +163,7 @@ subsets of data to memory/disk. This capability enables to process a large size
 dataset using a normal computer. Tiff format is used because it is
 supported by most of image-related software and it can store 32-bit grayscale
 values.</p>
-<div class="section" id="hdf-format">
+<section id="hdf-format">
 <span id="id1"></span><h2><span class="section-number">1.2.1. </span>Hdf format<a class="headerlink" href="#hdf-format" title="Permalink to this heading">¶</a></h2>
 <p><strong>How to view the structure of a hdf file</strong></p>
 <blockquote>
@@ -175,16 +176,20 @@ List of other hdf-viewer software can be found in this
 hdf format known as the <a class="reference external" href="https://www.nexusformat.org/">nexus</a> format
 is commonly used at neutron, X-ray, and muon science facilities. We can use
 the same software and Python libraries to access both hdf and nxs files.</p>
-<div class="align-center figure" id="fig-1-2-1" style="width: 90%">
+<figure class="align-center" id="fig-1-2-1" style="width: 90%">
 <img alt="../../_images/fig_1_2_1.png" src="../../_images/fig_1_2_1.png" />
-<p class="caption"><span class="caption-number">Fig. 1.2.1 </span><span class="caption-text">Viewing the structure of a nxs/hdf file using the Hdfview software.</span><a class="headerlink" href="#fig-1-2-1" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 1.2.1 </span><span class="caption-text">Viewing the structure of a nxs/hdf file using the Hdfview software.</span><a class="headerlink" href="#fig-1-2-1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Another way to display a tree view of a hdf/nxs file is to use an Algotom’s
 function as shown below.</p>
-<div class="align-center figure" id="fig-1-2-2" style="width: 90%">
+<figure class="align-center" id="fig-1-2-2" style="width: 90%">
 <img alt="../../_images/fig_1_2_2.png" src="../../_images/fig_1_2_2.png" />
-<p class="caption"><span class="caption-number">Fig. 1.2.2 </span><span class="caption-text">Displaying the tree view of a nxs/hdf file using an Algotom’s function.</span><a class="headerlink" href="#fig-1-2-2" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 1.2.2 </span><span class="caption-text">Displaying the tree view of a nxs/hdf file using an Algotom’s function.</span><a class="headerlink" href="#fig-1-2-2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 </div></blockquote>
 <p><strong>How to load datasets from a hdf file</strong></p>
 <blockquote>
@@ -270,8 +275,8 @@ write/read intermediate results to/from disk as hdf files. In such cases, it
 is worth to check <a class="reference external" href="https://docs.h5py.org/en/stable/high/dataset.html?highlight=chunking#chunked-storage">tutorials</a>
 on how to optimize hdf I/O performance.</p>
 </div></blockquote>
-</div>
-<div class="section" id="tiff-format">
+</section>
+<section id="tiff-format">
 <h2><span class="section-number">1.2.2. </span>Tiff format<a class="headerlink" href="#tiff-format" title="Permalink to this heading">¶</a></h2>
 <p>This is a very popular file format and supported by most of image-related software.
 There are 8-bit, 16-bit, and 32-bit format. 8-bit format can store grayscale
@@ -282,10 +287,12 @@ Most of image viewer software can display a 8-bit or 16-bit, but not 32-bit tiff
 image. Users may see a black or white image if opening a 32-bit tiff image using
 common photo viewer software. In such cases, <a class="reference external" href="https://imagej.nih.gov/ij/download.html">Imagej</a>
 or <a class="reference external" href="https://imagej.net/software/fiji/downloads">Fiji</a> software can be used.</p>
-<div class="align-center figure" id="fig-1-2-3" style="width: 95%">
+<figure class="align-center" id="fig-1-2-3" style="width: 95%">
 <img alt="../../_images/fig_1_2_3.png" src="../../_images/fig_1_2_3.png" />
-<p class="caption"><span class="caption-number">Fig. 1.2.3 </span><span class="caption-text">Opening a 32-tiff image using Photos software (a) and Imagej software (b).</span><a class="headerlink" href="#fig-1-2-3" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 1.2.3 </span><span class="caption-text">Opening a 32-tiff image using Photos software (a) and Imagej software (b).</span><a class="headerlink" href="#fig-1-2-3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Sometimes users may want to extract a 2D slice of 3D tomographic data and
 save the result as a tiff image for checking using ImageJ or photo viewer
 software. This can be done as shown below.</p>
@@ -302,6 +309,7 @@ the converted data for reconstructing a few slices or tweaking artifact
 removal methods before performing full reconstruction.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
+<span class="kn">import</span> <span class="nn">algotom.io.converter</span> <span class="k">as</span> <span class="nn">conv</span>
 
 <span class="n">proj_path</span> <span class="o">=</span> <span class="s2">&quot;E:/Tomo_data/68067/projections/&quot;</span>
 <span class="n">flat_path</span> <span class="o">=</span> <span class="s2">&quot;E:/Tomo_data/68067/flats/&quot;</span>
@@ -329,7 +337,7 @@ removal methods before performing full reconstruction.</p>
 <span class="n">num_angle</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">losa</span><span class="o">.</span><span class="n">find_file</span><span class="p">(</span><span class="n">proj_path</span> <span class="o">+</span> <span class="s2">&quot;/*.tif*&quot;</span><span class="p">))</span>
 <span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">180.0</span><span class="p">,</span> <span class="n">num_angle</span><span class="p">)</span>
 <span class="c1"># Save tiffs as a single hdf file.</span>
-<span class="n">losa</span><span class="o">.</span><span class="n">convert_tif_to_hdf</span><span class="p">(</span><span class="n">proj_path</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="s2">&quot;entry/projection&quot;</span><span class="p">,</span>
+<span class="n">conv</span><span class="o">.</span><span class="n">convert_tif_to_hdf</span><span class="p">(</span><span class="n">proj_path</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="s2">&quot;entry/projection&quot;</span><span class="p">,</span>
                         <span class="n">option</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;entry/flat&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">flat</span><span class="p">),</span>
                                 <span class="s2">&quot;entry/dark&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">dark</span><span class="p">),</span>
                                 <span class="s2">&quot;entry/rotation_angle&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">angles</span><span class="p">)})</span>
@@ -354,8 +362,8 @@ data are rescaled to lower bits.</p>
 <span class="n">post</span><span class="o">.</span><span class="n">rescale_dataset</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">output_path</span><span class="p">,</span> <span class="n">nbit</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">minmax</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
