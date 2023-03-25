@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>7.4.1. algotom.post.postprocessing &#8212; Algotom&#39;s documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=0.7.0-1" />
@@ -159,7 +160,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-algotom.post.postprocessing">
+  <section id="module-algotom.post.postprocessing">
 <span id="algotom-post-postprocessing"></span><h1><span class="section-number">7.4.1. </span><a class="reference internal" href="#module-algotom.post.postprocessing" title="algotom.post.postprocessing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.post.postprocessing</span></code></a><a class="headerlink" href="#module-algotom.post.postprocessing" title="Permalink to this heading">¶</a></h1>
 <p>Module of methods in the postprocessing stage:</p>
 <blockquote>
@@ -167,6 +168,7 @@
 <li><p>Get statistical information of reconstructed images or a dataset.</p></li>
 <li><p>Downsample 2D, 3D array, or a dataset.</p></li>
 <li><p>Rescale 2D, 3D array or a dataset to 8-bit or 16-bit data-type.</p></li>
+<li><p>Reslice 3D array or a dataset (hdf/nxs file or tif images).</p></li>
 <li><p>Removing ring artifacts in a reconstructed image by transform back and
 forth between the polar coordinates and the Cartesian coordinates.</p></li>
 </ul>
@@ -196,10 +198,13 @@ forth between the polar coordinates and the Cartesian coordinates.</p></li>
 <tr class="row-even"><td><p><a class="reference internal" href="#algotom.post.postprocessing.rescale_dataset" title="algotom.post.postprocessing.rescale_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rescale_dataset</span></code></a>(input_, output[, nbit, ...])</p></td>
 <td><p>Rescale a dataset to 8-bit or 16-bit data-type.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.post.postprocessing.remove_ring_based_fft" title="algotom.post.postprocessing.remove_ring_based_fft"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_ring_based_fft</span></code></a>(mat[, u, n, v, sort])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.post.postprocessing.reslice_dataset" title="algotom.post.postprocessing.reslice_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reslice_dataset</span></code></a>(input_, output[, axis, ...])</p></td>
+<td><p>Reslice a 3d dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#algotom.post.postprocessing.remove_ring_based_fft" title="algotom.post.postprocessing.remove_ring_based_fft"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_ring_based_fft</span></code></a>(mat[, u, n, v, sort])</p></td>
 <td><p>Remove ring artifacts in the reconstructed image by combining the polar transform and the fft-based method.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#algotom.post.postprocessing.remove_ring_based_wavelet_fft" title="algotom.post.postprocessing.remove_ring_based_wavelet_fft"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_ring_based_wavelet_fft</span></code></a>(mat[, level, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.post.postprocessing.remove_ring_based_wavelet_fft" title="algotom.post.postprocessing.remove_ring_based_wavelet_fft"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_ring_based_wavelet_fft</span></code></a>(mat[, level, ...])</p></td>
 <td><p>Remove ring artifacts in a reconstructed image by combining the polar transform and the wavelet-fft-based method (Ref.</p></td>
 </tr>
 </tbody>
@@ -359,7 +364,7 @@ crop_width1, crop_width2).</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.post.postprocessing.reslice_dataset">
-<span class="sig-prename descclassname"><span class="pre">algotom.post.postprocessing.</span></span><span class="sig-name descname"><span class="pre">reslice_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rescaling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/post/postprocessing.html#reslice_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.post.postprocessing.reslice_dataset" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.post.postprocessing.</span></span><span class="sig-name descname"><span class="pre">reslice_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rescaling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'constant'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/post/postprocessing.html#reslice_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.post.postprocessing.reslice_dataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reslice a 3d dataset. Input can be a folder of tif files or a hdf file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -373,6 +378,8 @@ crop_width1, crop_width2).</p></li>
 <li><p><strong>minmax</strong> (<em>tuple of float, or None</em>) – Minimum and maximum values used for rescaling if True.</p></li>
 <li><p><strong>skip</strong> (<em>int or None</em>) – Skipping step of images used for getting statistical information if
 rescaling is True and input is 32-bit data.</p></li>
+<li><p><strong>rotate</strong> (<em>float</em>) – Rotate image (degree). Positive direction is counterclockwise.</p></li>
+<li><p><strong>mode</strong> (<em>{‘reflect’, ‘grid-mirror’, ‘constant’, ‘grid-constant’,            ‘nearest’, ‘mirror’, ‘grid-wrap’, ‘wrap’}</em>) – Select how the input array is extended beyond its boundaries.</p></li>
 <li><p><strong>crop</strong> (<em>tuple of int, optional</em>) – Crop 3D data from the edges, i.e.
 crop = (crop_depth1, crop_depth2, crop_height1, crop_height2,
 crop_width1, crop_width2). Cropping is done before reslicing.</p></li>
@@ -432,7 +439,7 @@ transform and the wavelet-fft-based method (Ref. [1]).</p>
 <p>[2] : <a class="reference external" href="https://doi.org/10.1364/OE.26.028396">https://doi.org/10.1364/OE.26.028396</a></p>
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -462,7 +469,7 @@ transform and the wavelet-fft-based method (Ref. [1]).</p>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo.
+        &#169; Copyright 2021, Nghia T. Vo  Diamond Light Source, UK; NSLS-II, Brookhaven National Lab, US.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
 

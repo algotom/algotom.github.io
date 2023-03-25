@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>5.1. Implementations of X-ray speckle-based phase-contrast tomography &#8212; Algotom&#39;s documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=0.7.0-1" />
@@ -146,14 +147,14 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="implementations-of-x-ray-speckle-based-phase-contrast-tomography">
+  <section id="implementations-of-x-ray-speckle-based-phase-contrast-tomography">
 <h1><span class="section-number">5.1. </span>Implementations of X-ray speckle-based phase-contrast tomography<a class="headerlink" href="#implementations-of-x-ray-speckle-based-phase-contrast-tomography" title="Permalink to this heading">¶</a></h1>
 <p>From version 1.1, methods for speckle-based phase contrast imaging have been implemented into
 Algotom. This is the result of the collaboration between the author, Nghia Vo, and his
 collaborators: Hongchang Wang, Marie-Christine Zdora, Lingfei Hu, and Tunhe Zhou; who are
 experienced with developing and using speckle-based imaging methods. This technical note
-is to summarize the work done (for more detail, see <span id="id1">[<a class="reference internal" href="../credits.html#id28" title="Nghia T. Vo, Hongchang Wang, Lingfei Hu, Tunhe Zhou, Marie-Christine Zdora, Hans Deyhle, Robert C. Atwood, and Michael Drakopoulos. Practical implementations of speckle-based phase-retrieval methods in python and gpu for tomography. In Developments in X-Ray Tomography XIV, volume 12242, 122420E. International Society for Optics and Photonics, SPIE, 2022. doi:10.1117/12.2636834.">R4</a>]</span>).</p>
-<div class="section" id="introduction">
+is to summarize the work done (for more detail, see <span id="id1">[<a class="reference internal" href="../credits.html#id28" title="Nghia T. Vo, Hongchang Wang, Lingfei Hu, Tunhe Zhou, Marie-Christine Zdora, Hans Deyhle, Robert C. Atwood, and Michael Drakopoulos. Practical implementations of speckle-based phase-retrieval methods in python and gpu for tomography. In Developments in X-Ray Tomography XIV, volume 12242, 122420E. International Society for Optics and Photonics, SPIE, 2022. doi:10.1117/12.2636834.">R10</a>]</span>).</p>
+<section id="introduction">
 <h2><span class="section-number">5.1.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>When a sample interacts with a coherent X-ray beam, it will cause reduction in the intensity
 and change in the direction of the beam. The latter effect comes from the phase shift of the
@@ -172,8 +173,8 @@ by comparing the images with and without the sample. Because the speckle-pattern
 than the pixel-size of a detector, to resolve the shift for each pixel we use a stack of speckle-images
 scanned at different positions, with and without sample, and analyze the images using a small window
 around each pixel.</p>
-</div>
-<div class="section" id="data-acquisition">
+</section>
+<section id="data-acquisition">
 <h2><span class="section-number">5.1.2. </span>Data acquisition<a class="headerlink" href="#data-acquisition" title="Permalink to this heading">¶</a></h2>
 <p>For producing a random speckle-pattern, a diffuser made of a sandpaper can be used. The purpose of
 a diffuser is to provide a reference-image used to detect local displacements caused by a sample.
@@ -193,7 +194,7 @@ the contrast of the speckle-image.</p></li>
 <li><p>The sample-detector distance should be chosen as a compromise between increasing the displacement
 effect and reducing the edge-enhancement effect caused by highly spatial-coherent sources.</p></li>
 <li><p>There are different ways of shifting a diffuser and acquiring a tomogram at each position. However, using
-a spiral path has been proven to be practical and efficient <span id="id2">[<a class="reference internal" href="../credits.html#id27" title="Marie-Christine Zdora, Pierre Thibault, Tunhe Zhou, Frieder J. Koch, Jenny Romell, Simone Sala, Arndt Last, Christoph Rau, and Irene Zanette. X-ray phase-contrast imaging and metrology through unified modulated pattern analysis. Phys. Rev. Lett., 118:203903, 2017. doi:10.1103/PhysRevLett.118.203903.">R5</a>]</span>.
+a spiral path has been proven to be practical and efficient <span id="id2">[<a class="reference internal" href="../credits.html#id27" title="Marie-Christine Zdora, Pierre Thibault, Tunhe Zhou, Frieder J. Koch, Jenny Romell, Simone Sala, Arndt Last, Christoph Rau, and Irene Zanette. X-ray phase-contrast imaging and metrology through unified modulated pattern analysis. Phys. Rev. Lett., 118:203903, 2017. doi:10.1103/PhysRevLett.118.203903.">R12</a>]</span>.
 The distance between two speckle positions should be larger than the analysis window, e.g. 5-11 pixels,
 to ensure that each speckle-pattern in the analysis window is completely different. This improves the
 robustness of methods measuring pixel shifts. Using this acquisition scheme, 20 positions of a diffuser
@@ -207,83 +208,93 @@ diffuser position. This approach may result in small displacements between the s
 to mechanical error. However, it is correctable by image alignment using a small area of empty space within
 the sample image.</p></li>
 </ul>
-</div>
-<div class="section" id="data-processing">
+</section>
+<section id="data-processing">
 <h2><span class="section-number">5.1.3. </span>Data processing<a class="headerlink" href="#data-processing" title="Permalink to this heading">¶</a></h2>
-<div class="section" id="finding-pixel-shifts">
+<section id="finding-pixel-shifts">
 <h3><span class="section-number">5.1.3.1. </span>Finding pixel shifts<a class="headerlink" href="#finding-pixel-shifts" title="Permalink to this heading">¶</a></h3>
 <p>The core idea of the technique is to find the shift of each pixel of a speckle-image caused by a sample.
 This is done by: selecting a small window (5-11 pixels) around each pixel of the sample-stack image; sliding
 this window around a slightly larger window (margin ~10 pixels) taken from the reference-stack image and
-calculating the cost function <span id="id3">[<a class="reference internal" href="../credits.html#id27" title="Marie-Christine Zdora, Pierre Thibault, Tunhe Zhou, Frieder J. Koch, Jenny Romell, Simone Sala, Arndt Last, Christoph Rau, and Irene Zanette. X-ray phase-contrast imaging and metrology through unified modulated pattern analysis. Phys. Rev. Lett., 118:203903, 2017. doi:10.1103/PhysRevLett.118.203903.">R5</a>]</span> or the correlation coefficient <span id="id4">[<a class="reference internal" href="../credits.html#id23" title="Sebastien Berujon and Eric Ziegler. X-ray multimodal tomography using speckle-vector tracking. Phys. Rev. Applied, 5:044014, 2016. doi:10.1103/PhysRevApplied.5.044014.">R6</a>]</span> between
+calculating the cost function <span id="id3">[<a class="reference internal" href="../credits.html#id27" title="Marie-Christine Zdora, Pierre Thibault, Tunhe Zhou, Frieder J. Koch, Jenny Romell, Simone Sala, Arndt Last, Christoph Rau, and Irene Zanette. X-ray phase-contrast imaging and metrology through unified modulated pattern analysis. Phys. Rev. Lett., 118:203903, 2017. doi:10.1103/PhysRevLett.118.203903.">R12</a>]</span> or the correlation coefficient <span id="id4">[<a class="reference internal" href="../credits.html#id23" title="Sebastien Berujon and Eric Ziegler. X-ray multimodal tomography using speckle-vector tracking. Phys. Rev. Applied, 5:044014, 2016. doi:10.1103/PhysRevApplied.5.044014.">R1</a>]</span> between
 two windows at each position. The resulting correlation-coefficient/cost-function map is used to locate the
 maximum/minimum point where sub-pixel accuracy can be achieved by using a differential approach or a polynomial
 fitting approach. The shift of a pixel is the distance from the maximum/minimum point to the center of the map.
 The procedure of finding the shift of each pixel is depicted in <a class="reference internal" href="#fig-5-1-1"><span class="std std-numref">Fig. 5.1.1</span></a>.</p>
 <p>Performing 2D searching for every pixel of a 2k×2k image is computationally very expensive which is why
 using multicore-CPU and GPU for computing is crucially needed. An approximate approach to reduce the
-computational cost is to perform 1D search <span id="id5">[<a class="reference internal" href="../credits.html#id24" title="Hongchang Wang and Kawal Sawhney. Hard x-ray omnidirectional differential phase and dark-field imaging. Proceedings of the National Academy of Sciences, 2021. doi:10.1073/pnas.2022319118.">R7</a>]</span> using middle slices in vertical and horizontal
+computational cost is to perform 1D search <span id="id5">[<a class="reference internal" href="../credits.html#id24" title="Hongchang Wang and Kawal Sawhney. Hard x-ray omnidirectional differential phase and dark-field imaging. Proceedings of the National Academy of Sciences, 2021. doi:10.1073/pnas.2022319118.">R11</a>]</span> using middle slices in vertical and horizontal
 direction of image stacks, to find shifts in x and y-direction separately.</p>
 <blockquote>
-<div><div class="align-center figure" id="fig-5-1-1" style="width: 70%">
+<div><figure class="align-center" id="fig-5-1-1" style="width: 70%">
 <img alt="../../_images/fig_5_1_1.jpg" src="../../_images/fig_5_1_1.jpg" />
-<p class="caption"><span class="caption-number">Fig. 5.1.1 </span><span class="caption-text">Demonstration of how to find the shift of each speckle-pixel.</span><a class="headerlink" href="#fig-5-1-1" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.1.1 </span><span class="caption-text">Demonstration of how to find the shift of each speckle-pixel.</span><a class="headerlink" href="#fig-5-1-1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 </div></blockquote>
-</div>
-<div class="section" id="surface-reconstruction">
+</section>
+<section id="surface-reconstruction">
 <h3><span class="section-number">5.1.3.2. </span>Surface reconstruction<a class="headerlink" href="#surface-reconstruction" title="Permalink to this heading">¶</a></h3>
 <p>The result of the previous step is separated into an x-shift image and a y-shift image, i.e. gradient images.
 A phase-shift image is then retrieved by applying a method of surface reconstruction, or normal integration
 (<a class="reference internal" href="#fig-5-1-2"><span class="std std-numref">Fig. 5.1.2</span></a>). There are many available options for implementing this step. However, Fourier-transform-based
-methods <span id="id6">[<a class="reference internal" href="../credits.html#id20" title="R.T. Frankot and R. Chellappa. A method for enforcing integrability in shape from shading algorithms. IEEE Transactions on Pattern Analysis and Machine Intelligence, 10(4):439-451, 1988. doi:10.1109/34.3909.">R8</a>, <a class="reference internal" href="../credits.html#id21" title="T. Simchony, R. Chellappa, and M. Shao. Direct analytical methods for solving poisson equations in computer vision problems. IEEE Transactions on Pattern Analysis and Machine Intelligence, 12(5):435-446, 1990. doi:10.1109/34.55103.">R9</a>]</span> are preferred over least-squares methods due to their low computational
+methods <span id="id6">[<a class="reference internal" href="../credits.html#id20" title="R.T. Frankot and R. Chellappa. A method for enforcing integrability in shape from shading algorithms. IEEE Transactions on Pattern Analysis and Machine Intelligence, 10(4):439-451, 1988. doi:10.1109/34.3909.">R4</a>, <a class="reference internal" href="../credits.html#id21" title="T. Simchony, R. Chellappa, and M. Shao. Direct analytical methods for solving poisson equations in computer vision problems. IEEE Transactions on Pattern Analysis and Machine Intelligence, 12(5):435-446, 1990. doi:10.1109/34.55103.">R6</a>]</span> are preferred over least-squares methods due to their low computational
 cost which is critical for tomography. The disadvantage of these Fourier methods is that the DC-component (average value of an image)
 is undefined resulting in the fluctuations in background between phase-retrieved images. This effect, however,
 can be corrected (<a class="reference internal" href="#fig-5-1-3"><span class="std std-numref">Fig. 5.1.3</span></a>) by using the double-wedge filter as described in <span id="id7">[<a class="reference internal" href="../credits.html#id3" title="Nghia T. Vo, Robert C. Atwood, Michael Drakopoulos, and Thomas Connolley. Data processing methods and data acquisition for samples larger than the field of view in parallel-beam tomography. Opt. Express, 29(12):17849–17874, Jun 2021. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-29-12-17849, doi:10.1364/OE.418448.">C1</a>]</span></p>
 <blockquote>
-<div><div class="align-center figure" id="fig-5-1-2" style="width: 100%">
+<div><figure class="align-center" id="fig-5-1-2" style="width: 100%">
 <img alt="../../_images/fig_5_1_2.jpg" src="../../_images/fig_5_1_2.jpg" />
-<p class="caption"><span class="caption-number">Fig. 5.1.2 </span><span class="caption-text">Phase-shift image (c) is retrieved by normal integration using two gradient
+<figcaption>
+<p><span class="caption-number">Fig. 5.1.2 </span><span class="caption-text">Phase-shift image (c) is retrieved by normal integration using two gradient
 images: (a) x-direction; (b) y-direction.</span><a class="headerlink" href="#fig-5-1-2" title="Permalink to this image">¶</a></p>
-</div>
-<div class="align-center figure" id="fig-5-1-3" style="width: 90%">
+</figcaption>
+</figure>
+<figure class="align-center" id="fig-5-1-3" style="width: 90%">
 <img alt="../../_images/fig_5_1_3.jpg" src="../../_images/fig_5_1_3.jpg" />
-<p class="caption"><span class="caption-number">Fig. 5.1.3 </span><span class="caption-text">(a) Fluctuation of grayscale values in a sinogram caused by the FT-based surface-reconstruction
+<figcaption>
+<p><span class="caption-number">Fig. 5.1.3 </span><span class="caption-text">(a) Fluctuation of grayscale values in a sinogram caused by the FT-based surface-reconstruction
 method. (b) Corrected image after using the double-wedge filter.</span><a class="headerlink" href="#fig-5-1-3" title="Permalink to this image">¶</a></p>
-</div>
+</figcaption>
+</figure>
 </div></blockquote>
-</div>
-<div class="section" id="extracting-transmission-and-dark-field-signals">
+</section>
+<section id="extracting-transmission-and-dark-field-signals">
 <h3><span class="section-number">5.1.3.3. </span>Extracting transmission and dark-field signals<a class="headerlink" href="#extracting-transmission-and-dark-field-signals" title="Permalink to this heading">¶</a></h3>
 <p>Another interesting capability of the speckle-based technique is that transmission image
 (absorption-contrast image) and dark-field image (small-angle scattering signal, not to be confused
 with dark-noise of a camera) can be extracted from data together with the phase-shift image (<a class="reference internal" href="#fig-5-1-4"><span class="std std-numref">Fig. 5.1.4</span></a>).
 There are <a class="reference external" href="https://doi.org/10.3390/jimaging4050060">several ways</a> to determine dark-signal image for correlation-based methods.
-For the cost-based approach <span id="id8">[<a class="reference internal" href="../credits.html#id27" title="Marie-Christine Zdora, Pierre Thibault, Tunhe Zhou, Frieder J. Koch, Jenny Romell, Simone Sala, Arndt Last, Christoph Rau, and Irene Zanette. X-ray phase-contrast imaging and metrology through unified modulated pattern analysis. Phys. Rev. Lett., 118:203903, 2017. doi:10.1103/PhysRevLett.118.203903.">R5</a>]</span>, dark-signal image is easily to be obtained as a part of the model
+For the cost-based approach <span id="id8">[<a class="reference internal" href="../credits.html#id27" title="Marie-Christine Zdora, Pierre Thibault, Tunhe Zhou, Frieder J. Koch, Jenny Romell, Simone Sala, Arndt Last, Christoph Rau, and Irene Zanette. X-ray phase-contrast imaging and metrology through unified modulated pattern analysis. Phys. Rev. Lett., 118:203903, 2017. doi:10.1103/PhysRevLett.118.203903.">R12</a>]</span>, dark-signal image is easily to be obtained as a part of the model
 equation.</p>
 <blockquote>
-<div><div class="align-center figure" id="fig-5-1-4" style="width: 100%">
+<div><figure class="align-center" id="fig-5-1-4" style="width: 100%">
 <img alt="../../_images/fig_5_1_4.jpg" src="../../_images/fig_5_1_4.jpg" />
-<p class="caption"><span class="caption-number">Fig. 5.1.4 </span><span class="caption-text">All imaging signal retrieved by the speckle-based technique can be used for tomography. (a) Phase-shift image.
+<figcaption>
+<p><span class="caption-number">Fig. 5.1.4 </span><span class="caption-text">All imaging signal retrieved by the speckle-based technique can be used for tomography. (a) Phase-shift image.
 (b) Transmission image. (c) Dark-field image.</span><a class="headerlink" href="#fig-5-1-4" title="Permalink to this image">¶</a></p>
-</div>
+</figcaption>
+</figure>
 </div></blockquote>
-</div>
-<div class="section" id="tomographic-reconstruction">
+</section>
+<section id="tomographic-reconstruction">
 <h3><span class="section-number">5.1.3.4. </span>Tomographic reconstruction<a class="headerlink" href="#tomographic-reconstruction" title="Permalink to this heading">¶</a></h3>
 <p>Above processing steps are repeated for every projection then the results are used for tomographic
 reconstruction as shown in <a class="reference internal" href="#fig-5-1-5"><span class="std std-numref">Fig. 5.1.5</span></a></p>
 <blockquote>
-<div><div class="align-center figure" id="fig-5-1-5" style="width: 100%">
+<div><figure class="align-center" id="fig-5-1-5" style="width: 100%">
 <img alt="../../_images/fig_5_1_5.jpg" src="../../_images/fig_5_1_5.jpg" />
-<p class="caption"><span class="caption-number">Fig. 5.1.5 </span><span class="caption-text">Demonstration of the speckle-based phase-contrast tomography</span><a class="headerlink" href="#fig-5-1-5" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.1.5 </span><span class="caption-text">Demonstration of the speckle-based phase-contrast tomography</span><a class="headerlink" href="#fig-5-1-5" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 </div></blockquote>
-</div>
-</div>
-<div class="section" id="implementation">
+</section>
+</section>
+<section id="implementation">
 <h2><span class="section-number">5.1.4. </span>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading">¶</a></h2>
-<div class="section" id="design-principles">
+<section id="design-principles">
 <h3><span class="section-number">5.1.4.1. </span>Design principles<a class="headerlink" href="#design-principles" title="Permalink to this heading">¶</a></h3>
 <p>Practical design-principles have been followed in the implementation:</p>
 <ul class="simple">
@@ -303,8 +314,8 @@ More importantly, this design allows users to customize methods or build data pr
 <li><p>Extracting transmission image and dark-field image.</p></li>
 <li><p>Aligning two images or two stacks of images.</p></li>
 </ul>
-</div>
-<div class="section" id="building-blocks">
+</section>
+<section id="building-blocks">
 <h3><span class="section-number">5.1.4.2. </span>Building blocks<a class="headerlink" href="#building-blocks" title="Permalink to this heading">¶</a></h3>
 <p>A dedicated module in Algotom, named <a class="reference external" href="https://github.com/algotom/algotom/blob/master/algotom/util/correlation.py">correlation</a>,
 is a collection of methods as the building blocks for the top layer methods described in the previous section.</p>
@@ -315,8 +326,8 @@ coefficient. Here, we use <a class="reference external" href="https://en.wikiped
 as it has been proven to be one of the most reliable metrics. The method includes low-level implementations for
 specific cases: 2D or 3D input, using CPU or GPU.</p>
 <p>The second block is a method to locate the maximum/minimum point of a correlation-coefficient/cost-function map
-with sub-pixel accuracy where there are two approaches selected: either a differential approach <span id="id9">[<a class="reference internal" href="../credits.html#id25" title="G. H. Fisher and B. T. Welsch. Flct: a fast, efficient method for performing local correlation tracking. 2007. URL: https://arxiv.org/abs/0712.4289, doi:10.48550/ARXIV.0712.4289.">R10</a>]</span>
-or a polynomial fitting approach <span id="id10">[<a class="reference internal" href="../credits.html#id26" title="Pan Bing, Xie Hui-min, Xu Bo-qin, and Dai Fu-long. Performance of sub-pixel registration algorithms in digital image correlation. Measurement Science and Technology, 17(6):1615–1621, may 2006. URL: https://doi.org/10.1088/0957-0233/17/6/045, doi:10.1088/0957-0233/17/6/045.">R11</a>]</span>. At low-level are implementations to handle different cases: 1D
+with sub-pixel accuracy where there are two approaches selected: either a differential approach <span id="id9">[<a class="reference internal" href="../credits.html#id25" title="G. H. Fisher and B. T. Welsch. Flct: a fast, efficient method for performing local correlation tracking. 2007. URL: https://arxiv.org/abs/0712.4289, doi:10.48550/ARXIV.0712.4289.">R3</a>]</span>
+or a polynomial fitting approach <span id="id10">[<a class="reference internal" href="../credits.html#id26" title="Pan Bing, Xie Hui-min, Xu Bo-qin, and Dai Fu-long. Performance of sub-pixel registration algorithms in digital image correlation. Measurement Science and Technology, 17(6):1615–1621, may 2006. URL: https://doi.org/10.1088/0957-0233/17/6/045, doi:10.1088/0957-0233/17/6/045.">R2</a>]</span>. At low-level are implementations to handle different cases: 1D
 or 2D input, using the differential method or fitting method.</p>
 <p>The above blocks are for finding the shift of each pixel using a small window around it. This operation is
 applied to ~ 2k × 2k pixel. In practice, input data for retrieving a phase-shift image is two stacks of images;
@@ -334,20 +345,24 @@ It includes many options for processing at the lower-level blocks. The chunk-siz
 either small memory or large memory of RAM or GPU. Other top-layer methods listed in the previous section are
 straightforward to implement either directly or by making use of the methods in the <em>correlation</em> module.</p>
 <blockquote>
-<div><div class="align-center figure" id="fig-5-1-6" style="width: 60%">
+<div><figure class="align-center" id="fig-5-1-6" style="width: 60%">
 <img alt="../../_images/fig_5_1_6.png" src="../../_images/fig_5_1_6.png" />
-<p class="caption"><span class="caption-number">Fig. 5.1.6 </span><span class="caption-text">Building blocks of the <em>correlation</em> module.</span><a class="headerlink" href="#fig-5-1-6" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.1.6 </span><span class="caption-text">Building blocks of the <em>correlation</em> module.</span><a class="headerlink" href="#fig-5-1-6" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 </div></blockquote>
-</div>
-</div>
-<div class="section" id="demonstration">
+</section>
+</section>
+<section id="demonstration">
 <h2><span class="section-number">5.1.5. </span>Demonstration<a class="headerlink" href="#demonstration" title="Permalink to this heading">¶</a></h2>
 <blockquote>
-<div><div class="align-center figure" id="fig-5-1-7" style="width: 95%">
+<div><figure class="align-center" id="fig-5-1-7" style="width: 95%">
 <img alt="../../_images/fig_5_1_7.jpg" src="../../_images/fig_5_1_7.jpg" />
-<p class="caption"><span class="caption-number">Fig. 5.1.7 </span><span class="caption-text">Speckle-based tomographic experiment at beamline I12.</span><a class="headerlink" href="#fig-5-1-7" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.1.7 </span><span class="caption-text">Speckle-based tomographic experiment at beamline I12.</span><a class="headerlink" href="#fig-5-1-7" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 </div></blockquote>
 <p>Data collected at <a class="reference external" href="https://www.diamond.ac.uk/Instruments/Imaging-and-Microscopy/I12/Techniques-at-I12.html">beamline I12</a>
 at Diamond Light Source are used for demonstration. Details of how data were acquired are as follows:</p>
@@ -366,11 +381,13 @@ were not the same between the first scan (without the sample) and the second sca
 This problem can be solved by <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.phase.html#algotom.prep.phase.find_shift_between_image_stacks">image alignment</a>
 using free-space areas in each image (<a class="reference internal" href="#fig-5-1-8"><span class="std std-numref">Fig. 5.1.8</span></a>).</p>
 <blockquote>
-<div><div class="align-center figure" id="fig-5-1-8" style="width: 75%">
+<div><figure class="align-center" id="fig-5-1-8" style="width: 75%">
 <img alt="../../_images/fig_5_1_8.jpg" src="../../_images/fig_5_1_8.jpg" />
-<p class="caption"><span class="caption-number">Fig. 5.1.8 </span><span class="caption-text">Demonstration of the impact of image alignment. (a) Small area of an image which is the result of dividing
+<figcaption>
+<p><span class="caption-number">Fig. 5.1.8 </span><span class="caption-text">Demonstration of the impact of image alignment. (a) Small area of an image which is the result of dividing
 between speckle-image with sample and without sample. (b) Same as (a) but after image alignment.</span><a class="headerlink" href="#fig-5-1-8" title="Permalink to this image">¶</a></p>
-</div>
+</figcaption>
+</figure>
 </div></blockquote>
 </li>
 </ul>
@@ -382,29 +399,33 @@ and stacked.</p></li>
 <li><p>Phase-shift image is retrieved from two previous image-stacks (<a class="reference internal" href="#fig-5-1-9"><span class="std std-numref">Fig. 5.1.9</span></a>) using a single function.
 Full options for choosing back-end methods, surface reconstruction methods, and searching parameters are at
 the <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.phase.html#algotom.prep.phase.retrieve_phase_based_speckle_tracking">API reference page</a>.</p>
-<div class="align-center figure" id="fig-5-1-9" style="width: 90%">
+<figure class="align-center" id="fig-5-1-9" style="width: 90%">
 <img alt="../../_images/fig_5_1_9.jpg" src="../../_images/fig_5_1_9.jpg" />
-<p class="caption"><span class="caption-number">Fig. 5.1.9 </span><span class="caption-text">Speckle-image stack (a). Sample-image stack (b). Phase-shift image (c) retrieved from (a) and (b).</span><a class="headerlink" href="#fig-5-1-9" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.1.9 </span><span class="caption-text">Speckle-image stack (a). Sample-image stack (b). Phase-shift image (c) retrieved from (a) and (b).</span><a class="headerlink" href="#fig-5-1-9" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 </li>
 </ul>
-<p>Algotom implements three approaches: the correlation-based method using 1D <span id="id11">[<a class="reference internal" href="../credits.html#id24" title="Hongchang Wang and Kawal Sawhney. Hard x-ray omnidirectional differential phase and dark-field imaging. Proceedings of the National Academy of Sciences, 2021. doi:10.1073/pnas.2022319118.">R7</a>]</span> and 2D <span id="id12">[<a class="reference internal" href="../credits.html#id23" title="Sebastien Berujon and Eric Ziegler. X-ray multimodal tomography using speckle-vector tracking. Phys. Rev. Applied, 5:044014, 2016. doi:10.1103/PhysRevApplied.5.044014.">R6</a>]</span> search,
-and the cost-based approach <span id="id13">[<a class="reference internal" href="../credits.html#id27" title="Marie-Christine Zdora, Pierre Thibault, Tunhe Zhou, Frieder J. Koch, Jenny Romell, Simone Sala, Arndt Last, Christoph Rau, and Irene Zanette. X-ray phase-contrast imaging and metrology through unified modulated pattern analysis. Phys. Rev. Lett., 118:203903, 2017. doi:10.1103/PhysRevLett.118.203903.">R5</a>]</span>, known as the UMPA (Unified Modulated Pattern Analysis) method.
+<p>Algotom implements three approaches: the correlation-based method using 1D <span id="id11">[<a class="reference internal" href="../credits.html#id24" title="Hongchang Wang and Kawal Sawhney. Hard x-ray omnidirectional differential phase and dark-field imaging. Proceedings of the National Academy of Sciences, 2021. doi:10.1073/pnas.2022319118.">R11</a>]</span> and 2D <span id="id12">[<a class="reference internal" href="../credits.html#id23" title="Sebastien Berujon and Eric Ziegler. X-ray multimodal tomography using speckle-vector tracking. Phys. Rev. Applied, 5:044014, 2016. doi:10.1103/PhysRevApplied.5.044014.">R1</a>]</span> search,
+and the cost-based approach <span id="id13">[<a class="reference internal" href="../credits.html#id27" title="Marie-Christine Zdora, Pierre Thibault, Tunhe Zhou, Frieder J. Koch, Jenny Romell, Simone Sala, Arndt Last, Christoph Rau, and Irene Zanette. X-ray phase-contrast imaging and metrology through unified modulated pattern analysis. Phys. Rev. Lett., 118:203903, 2017. doi:10.1103/PhysRevLett.118.203903.">R12</a>]</span>, known as the UMPA (Unified Modulated Pattern Analysis) method.
 A summary of computing time for retrieving a single phase-shift image using different options is shown
 in <a class="reference internal" href="#fig-5-1-10"><span class="std std-numref">Fig. 5.1.10</span></a> where the window size is 7 and the margin is 10. As can be seen, there is a huge
 speed-up of computing time if using GPU.</p>
 <blockquote>
-<div><div class="align-center figure" id="fig-5-1-10" style="width: 75%">
+<div><figure class="align-center" id="fig-5-1-10" style="width: 75%">
 <img alt="../../_images/fig_5_1_10.jpg" src="../../_images/fig_5_1_10.jpg" />
-<p class="caption"><span class="caption-number">Fig. 5.1.10 </span><span class="caption-text">Comparison of computing time using different approaches.</span><a class="headerlink" href="#fig-5-1-10" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.1.10 </span><span class="caption-text">Comparison of computing time using different approaches.</span><a class="headerlink" href="#fig-5-1-10" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 </div></blockquote>
 <p>For tomographic reconstruction, phase retrieval is applied to all projections then the sinograms are generated
 for reconstructing slice-by-slice. This step can be manually parallelized for multiple-CPUs or multiple-GPUs to
 reduce computing time. In practice, users may want to tweak parameters and check the results before running full
 reconstruction. This can be done by performing phase retrieval on a small area of projection-images.</p>
 <p><a class="reference internal" href="#fig-5-1-11"><span class="std std-numref">Fig. 5.1.11</span></a> shows reconstructed images in horizontal and vertical direction from the three approaches
-where ring artifact removal methods <span id="id14">[<a class="reference internal" href="../credits.html#id7" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Superior techniques for eliminating ring artifacts in x-ray micro-tomography. Opt. Express, 26(22):28396–28412, Oct 2018. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-26-22-28396, doi:10.1364/OE.26.028396.">R1</a>, <a class="reference internal" href="../credits.html#id12" title="Beat Münch, Pavel Trtik, Federica Marone, and Marco Stampanoni. Stripe and ring artifact removal with combined wavelet — fourier filtering. Opt. Express, 17(10):8567–8591, May 2009. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-17-10-8567, doi:10.1364/OE.17.008567.">R12</a>]</span> and the FBP reconstruction method were used. There
+where ring artifact removal methods <span id="id14">[<a class="reference internal" href="../credits.html#id12" title="Beat Münch, Pavel Trtik, Federica Marone, and Marco Stampanoni. Stripe and ring artifact removal with combined wavelet — fourier filtering. Opt. Express, 17(10):8567–8591, May 2009. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-17-10-8567, doi:10.1364/OE.17.008567.">R5</a>, <a class="reference internal" href="../credits.html#id7" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Superior techniques for eliminating ring artifacts in x-ray micro-tomography. Opt. Express, 26(22):28396–28412, Oct 2018. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-26-22-28396, doi:10.1364/OE.26.028396.">R8</a>]</span> and the FBP reconstruction method were used. There
 are several interesting findings from the results. Firstly, the 1D-search method gives less-sharp images than
 other methods but with better contrast and clearer features. There is not much different between the 2D-search
 method and the UMPA method out of the low-pass component. However, the main advantage of the UMPA approach over
@@ -415,21 +436,25 @@ of the sample which are mineral olivine. Because the olivine is a crystal it can
 shown in <a class="reference internal" href="#fig-5-1-12"><span class="std std-numref">Fig. 5.1.12</span></a> (c,f). Making use of dark-signal images to gain deeper understanding of materials
 is a very promising application of the technique.</p>
 <blockquote>
-<div><div class="align-center figure" id="fig-5-1-11" style="width: 100%">
+<div><figure class="align-center" id="fig-5-1-11" style="width: 100%">
 <img alt="../../_images/fig_5_1_11.jpg" src="../../_images/fig_5_1_11.jpg" />
-<p class="caption"><span class="caption-number">Fig. 5.1.11 </span><span class="caption-text">Horizontal slice and vertical slice of reconstructed volumes from the 3 approaches: the 1D-search method (a,d);
+<figcaption>
+<p><span class="caption-number">Fig. 5.1.11 </span><span class="caption-text">Horizontal slice and vertical slice of reconstructed volumes from the 3 approaches: the 1D-search method (a,d);
 the 2D-search method (b,e); and UMPA (c,f).</span><a class="headerlink" href="#fig-5-1-11" title="Permalink to this image">¶</a></p>
-</div>
-<div class="align-center figure" id="fig-5-1-12" style="width: 100%">
+</figcaption>
+</figure>
+<figure class="align-center" id="fig-5-1-12" style="width: 100%">
 <img alt="../../_images/fig_5_1_12.jpg" src="../../_images/fig_5_1_12.jpg" />
-<p class="caption"><span class="caption-number">Fig. 5.1.12 </span><span class="caption-text">Horizontal slice and vertical slice of reconstructed volumes from 3 imaging modes: phase-shift image (a,d);
+<figcaption>
+<p><span class="caption-number">Fig. 5.1.12 </span><span class="caption-text">Horizontal slice and vertical slice of reconstructed volumes from 3 imaging modes: phase-shift image (a,d);
 transmission image (b,e); and dark-signal image (c,f).</span><a class="headerlink" href="#fig-5-1-12" title="Permalink to this image">¶</a></p>
-</div>
+</figcaption>
+</figure>
 </div></blockquote>
 <p>Python codes used to process data for this report are at <a class="reference external" href="https://github.com/algotom/algotom/tree/master/examples/speckle_based_tomography/i12_data">here</a>.
-Detailed references can be found in <span id="id15">[<a class="reference internal" href="../credits.html#id28" title="Nghia T. Vo, Hongchang Wang, Lingfei Hu, Tunhe Zhou, Marie-Christine Zdora, Hans Deyhle, Robert C. Atwood, and Michael Drakopoulos. Practical implementations of speckle-based phase-retrieval methods in python and gpu for tomography. In Developments in X-Ray Tomography XIV, volume 12242, 122420E. International Society for Optics and Photonics, SPIE, 2022. doi:10.1117/12.2636834.">R4</a>]</span>.</p>
-</div>
-</div>
+Detailed references can be found in <span id="id15">[<a class="reference internal" href="../credits.html#id28" title="Nghia T. Vo, Hongchang Wang, Lingfei Hu, Tunhe Zhou, Marie-Christine Zdora, Hans Deyhle, Robert C. Atwood, and Michael Drakopoulos. Practical implementations of speckle-based phase-retrieval methods in python and gpu for tomography. In Developments in X-Ray Tomography XIV, volume 12242, 122420E. International Society for Optics and Photonics, SPIE, 2022. doi:10.1117/12.2636834.">R10</a>]</span>.</p>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -490,7 +515,7 @@ Detailed references can be found in <span id="id15">[<a class="reference interna
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo.
+        &#169; Copyright 2021, Nghia T. Vo  Diamond Light Source, UK; NSLS-II, Brookhaven National Lab, US.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
 

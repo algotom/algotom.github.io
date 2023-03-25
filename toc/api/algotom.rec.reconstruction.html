@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>7.3.1. algotom.rec.reconstruction &#8212; Algotom&#39;s documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=0.7.0-1" />
@@ -159,7 +160,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-algotom.rec.reconstruction">
+  <section id="module-algotom.rec.reconstruction">
 <span id="algotom-rec-reconstruction"></span><h1><span class="section-number">7.3.1. </span><a class="reference internal" href="#module-algotom.rec.reconstruction" title="algotom.rec.reconstruction"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.rec.reconstruction</span></code></a><a class="headerlink" href="#module-algotom.rec.reconstruction" title="Permalink to this heading">¶</a></h1>
 <p>Module of FFT-based reconstruction methods in the reconstruction stage:</p>
 <blockquote>
@@ -169,6 +170,7 @@ and CPU.</p></li>
 <li><p>Direct Fourier inversion (DFI) method.</p></li>
 <li><p>Wrapper for Astra-Toolbox reconstruction methods (optional)</p></li>
 <li><p>Wrapper for Tomopy-gridrec reconstruction method (optional)</p></li>
+<li><p>Center-of-rotation determination using slice metrics.</p></li>
 </ul>
 </div></blockquote>
 <p class="rubric"><strong>Functions:</strong></p>
@@ -194,19 +196,22 @@ and CPU.</p></li>
 <td><p>Implement the back-projection algorithm using CPU.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#algotom.rec.reconstruction.fbp_reconstruction" title="algotom.rec.reconstruction.fbp_reconstruction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fbp_reconstruction</span></code></a>(sinogram, center[, ...])</p></td>
-<td><p>Apply the FBP (filtered back-projection) reconstruction method to a sinogram image.</p></td>
+<td><p>Apply the FBP (filtered back-projection) reconstruction method to a sinogram-image or a chunk of sinogram-images.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#algotom.rec.reconstruction.generate_mapping_coordinate" title="algotom.rec.reconstruction.generate_mapping_coordinate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_mapping_coordinate</span></code></a>(width_sino, ...)</p></td>
 <td><p>Calculate coordinates in the sinogram space from coordinates in the reconstruction space (in the Fourier domain).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#algotom.rec.reconstruction.dfi_reconstruction" title="algotom.rec.reconstruction.dfi_reconstruction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dfi_reconstruction</span></code></a>(sinogram, center[, ...])</p></td>
-<td><p>Apply the DFI (direct Fourier inversion) reconstruction method to a sinogram image (Ref.</p></td>
+<td><p>Apply the DFI (direct Fourier inversion) reconstruction method (Ref.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#algotom.rec.reconstruction.gridrec_reconstruction" title="algotom.rec.reconstruction.gridrec_reconstruction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gridrec_reconstruction</span></code></a>(sinogram, center[, ...])</p></td>
-<td><p>Wrapper of the gridrec method implemented in the tomopy package: <a class="reference external" href="https://tomopy.readthedocs.io/en/latest/api/tomopy.recon.algorithm.html">https://tomopy.readthedocs.io/en/latest/api/tomopy.recon.algorithm.html</a> Users must install Tomopy before using this function.</p></td>
+<td><p>Apply the gridrec method to a sinogram-image or a chunk of sinogram-images.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#algotom.rec.reconstruction.astra_reconstruction" title="algotom.rec.reconstruction.astra_reconstruction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">astra_reconstruction</span></code></a>(sinogram, center[, ...])</p></td>
 <td><p>Wrapper of reconstruction methods implemented in the astra toolbox package.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.rec.reconstruction.find_center_based_slice_metric" title="algotom.rec.reconstruction.find_center_based_slice_metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_center_based_slice_metric</span></code></a>(sinogram, ...)</p></td>
+<td><p>Find the center-of-rotation (COR) using metrics of reconstructed slices at different CORs.</p></td>
 </tr>
 </tbody>
 </table>
@@ -275,7 +280,7 @@ width if None is given.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>recon</strong> (<em>array_like</em>) – Square array of zeros. Reconstruction image.</p></li>
+<li><p><strong>recon</strong> (<em>array_like</em>) – Square array of zeros. Initialized reconstruction-image.</p></li>
 <li><p><strong>sinogram</strong> (<em>array_like</em>) – 2D array. (Filtered) sinogram image.</p></li>
 <li><p><strong>angles</strong> (<em>array_like</em>) – 1D array. Angles (radian) corresponding to the sinogram.</p></li>
 <li><p><strong>xlist</strong> (<em>array_like</em>) – 1D array. Distances of the integration lines to the image center.</p></li>
@@ -286,6 +291,30 @@ width if None is given.</p></li>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>recon</strong> (<em>array_like</em>) – Note that this is the GPU kernel function, i.e. no need of “return”.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.rec.reconstruction.back_projection_gpu_chunk">
+<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">back_projection_gpu_chunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recons</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sinograms</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sino_height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sino_width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_sino</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#algotom.rec.reconstruction.back_projection_gpu_chunk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement the back-projection algorithm for a chunk of sinograms using GPU.
+Axis of a sinogram/slice in the 3D array is 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>recons</strong> (<em>array_like</em>) – 3D array of zeros. Initialized reconstruction-images.</p></li>
+<li><p><strong>sinograms</strong> (<em>array_like</em>) – 3D array. (Filtered) sinogram images.</p></li>
+<li><p><strong>angles</strong> (<em>array_like</em>) – 1D array. Angles (radian) corresponding to a sinogram.</p></li>
+<li><p><strong>xlist</strong> (<em>array_like</em>) – 1D array. Distances of the integration lines to the image center.</p></li>
+<li><p><strong>center</strong> (<em>float</em>) – Center of rotation.</p></li>
+<li><p><strong>sino_height</strong> (<em>int</em>) – Height of the sinogram image.</p></li>
+<li><p><strong>sino_width</strong> (<em>int</em>) – Width of the sinogram image.</p></li>
+<li><p><strong>num_sino</strong> (<em>int</em>) – Number of sinograms.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>recons</strong> (<em>array_like</em>) – Reconstructed images.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -311,13 +340,15 @@ width if None is given.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.rec.reconstruction.fbp_reconstruction">
-<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">fbp_reconstruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ramp_win</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hann'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'edge'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#fbp_reconstruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.fbp_reconstruction" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">fbp_reconstruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ramp_win</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hann'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'edge'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(16,</span> <span class="pre">16)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#fbp_reconstruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.fbp_reconstruction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply the FBP (filtered back-projection) reconstruction method to a
-sinogram image.</p>
+sinogram-image or a chunk of sinogram-images. Angular axis is 0.
+If input is 3D array, the slicing axis of sinograms must be 1,
+e.g. data[:, index, :].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>sinogram</strong> (<em>array_like</em>) – 2D array. Sinogram image.</p></li>
+<li><p><strong>sinogram</strong> (<em>array_like</em>) – 2D/3D array. Sinogram image.</p></li>
 <li><p><strong>center</strong> (<em>float</em>) – Center of rotation.</p></li>
 <li><p><strong>angles</strong> (<em>array_like, optional</em>) – 1D array. List of angles (in radian) corresponding to the sinogram.</p></li>
 <li><p><strong>ratio</strong> (<em>float, optional</em>) – To apply a circle mask to the reconstructed image.</p></li>
@@ -328,6 +359,8 @@ width if None is given.</p></li>
 <li><p><strong>pad_mode</strong> (<em>str, optional</em>) – Padding method. Full list can be found at numpy_pad documentation.</p></li>
 <li><p><strong>apply_log</strong> (<em>bool, optional</em>) – Apply the logarithm function to the sinogram before reconstruction.</p></li>
 <li><p><strong>gpu</strong> (<em>bool, optional</em>) – Use GPU for computing if True.</p></li>
+<li><p><strong>block</strong> (<em>tuple of two integer-values, optional</em>) – Size of a GPU block. E.g. (8, 8), (16, 16), (32, 32), …</p></li>
+<li><p><strong>ncore</strong> (<em>int or None</em>) – Number of cpu-cores used for computing. Automatically selected if None.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -363,14 +396,15 @@ DFI (direct Fourier inversion) reconstruction method.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.rec.reconstruction.dfi_reconstruction">
-<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">dfi_reconstruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hann'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'edge'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#dfi_reconstruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.dfi_reconstruction" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply the DFI (direct Fourier inversion) reconstruction method to a
-sinogram image (Ref. [1]). The method is a practical and direct
-implementation of the Fourier slice theorem (Ref. [2]).</p>
+<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">dfi_reconstruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hann'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'edge'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#dfi_reconstruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.dfi_reconstruction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the DFI (direct Fourier inversion) reconstruction method (Ref. [1])
+to a sinogram-image or a chunk of sinogram-images. Angular axis is 0.
+If input is 3D array, the slicing axis of sinograms must be 1,
+e.g. data[:, index, :].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>sinogram</strong> (<em>array_like</em>) – 2D array. Sinogram image.</p></li>
+<li><p><strong>sinogram</strong> (<em>array_like</em>) – 2D/3D array. Sinogram image.</p></li>
 <li><p><strong>center</strong> (<em>float</em>) – Center of rotation.</p></li>
 <li><p><strong>angles</strong> (<em>array_like</em>) – 1D array. List of angles (in radian) corresponding to the sinogram.</p></li>
 <li><p><strong>ratio</strong> (<em>float</em>) – To apply a circle mask to the reconstructed image.</p></li>
@@ -379,6 +413,7 @@ implementation of the Fourier slice theorem (Ref. [2]).</p>
 (pad_rate * image_width).</p></li>
 <li><p><strong>pad_mode</strong> (<em>str</em>) – Padding method. Full list can be found at numpy_pad documentation.</p></li>
 <li><p><strong>apply_log</strong> (<em>bool</em>) – Apply the logarithm function to the sinogram before reconstruction.</p></li>
+<li><p><strong>ncore</strong> (<em>int or None</em>) – Number of cpu-cores used for computing. Automatically selected if None.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -386,27 +421,29 @@ implementation of the Fourier slice theorem (Ref. [2]).</p>
 </dd>
 </dl>
 <p class="rubric">References</p>
-<p>[1] : <a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
-<p>[2] : <a class="reference external" href="https://doi.org/10.1071/PH560198">https://doi.org/10.1071/PH560198</a></p>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1071/PH560198">https://doi.org/10.1071/PH560198</a></p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.rec.reconstruction.gridrec_reconstruction">
-<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">gridrec_reconstruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'shepp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#gridrec_reconstruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.gridrec_reconstruction" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wrapper of the gridrec method implemented in the tomopy package:
-<a class="reference external" href="https://tomopy.readthedocs.io/en/latest/api/tomopy.recon.algorithm.html">https://tomopy.readthedocs.io/en/latest/api/tomopy.recon.algorithm.html</a>
+<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">gridrec_reconstruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'shepp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#gridrec_reconstruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.gridrec_reconstruction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the gridrec method to a sinogram-image or a chunk of sinogram-images.
+Angular axis is 0. If input is 3D array, the slicing axis of sinograms
+must be 1, e.g. data[:, index, :]. This is the wrapper of the gridrec
+method implemented in the Tomopy package:
+<a class="reference external" href="https://tomopy.readthedocs.io/en/latest/api/tomopy.recon.algorithm.html">https://tomopy.readthedocs.io/en/latest/api/tomopy.recon.algorithm.html</a>.
 Users must install Tomopy before using this function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>sinogram</strong> (<em>array_like</em>) – 2D array. Sinogram image.</p></li>
+<li><p><strong>sinogram</strong> (<em>array_like</em>) – 2D/3D array. Sinogram image.</p></li>
 <li><p><strong>center</strong> (<em>float</em>) – Center of rotation.</p></li>
 <li><p><strong>angles</strong> (<em>array_like</em>) – 1D array. List of angles (radian) corresponding to the sinogram.</p></li>
 <li><p><strong>ratio</strong> (<em>float</em>) – To apply a circle mask to the reconstructed image.</p></li>
-<li><p><strong>filter_name</strong> (<em>str</em>) – Apply a smoothing filter. Full list is at:
+<li><p><strong>filter_name</strong> (<em>str or None</em>) – Apply a smoothing filter. Full list is at:
 <a class="reference external" href="https://github.com/tomopy/tomopy/blob/master/source/tomopy/recon/algorithm.py">https://github.com/tomopy/tomopy/blob/master/source/tomopy/recon/algorithm.py</a></p></li>
 <li><p><strong>apply_log</strong> (<em>bool</em>) – Apply the logarithm function to the sinogram before reconstruction.</p></li>
-<li><p><strong>pad</strong> (<em>bool</em>) – Apply edge padding to the nearest power of 2.</p></li>
+<li><p><strong>pad</strong> (<em>bool or int</em>) – Apply edge padding to the nearest power of 2.</p></li>
 <li><p><strong>ncore</strong> (<em>int or None</em>) – Number of cpu-cores used for computing. Automatically selected if None.</p></li>
 </ul>
 </dd>
@@ -418,7 +455,7 @@ Users must install Tomopy before using this function.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.rec.reconstruction.astra_reconstruction">
-<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">astra_reconstruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'FBP_CUDA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hann'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#astra_reconstruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.astra_reconstruction" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">astra_reconstruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'FBP_CUDA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hann'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#astra_reconstruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.astra_reconstruction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wrapper of reconstruction methods implemented in the astra toolbox package.
 <a class="reference external" href="https://www.astra-toolbox.com/docs/algs/index.html">https://www.astra-toolbox.com/docs/algs/index.html</a>
 Users must install Astra Toolbox before using this function.</p>
@@ -429,11 +466,11 @@ Users must install Astra Toolbox before using this function.</p>
 <li><p><strong>center</strong> (<em>float</em>) – Center of rotation.</p></li>
 <li><p><strong>angles</strong> (<em>array_like</em>) – 1D array. List of angles (radian) corresponding to the sinogram.</p></li>
 <li><p><strong>ratio</strong> (<em>float</em>) – To apply a circle mask to the reconstructed image.</p></li>
-<li><p><strong>method</strong> (<em>str</em>) – Reconstruction algorithms. for CPU: ‘FBP’, ‘SIRT’, ‘SART’, ‘ART’,
-‘CGLS’. for GPU: ‘FBP_CUDA’, ‘SIRT_CUDA’, ‘SART_CUDA’, ‘CGLS_CUDA’.</p></li>
+<li><p><strong>method</strong> (<em>str</em>) – Reconstruction algorithms. For CPU: ‘FBP’, ‘SIRT’, ‘SART’, ‘ART’, and
+‘CGLS’. For GPU: ‘FBP_CUDA’, ‘SIRT_CUDA’, ‘SART_CUDA’, and ‘CGLS_CUDA’.</p></li>
 <li><p><strong>num_iter</strong> (<em>int</em>) – Number of iterations if using iteration methods.</p></li>
-<li><p><strong>filter_name</strong> (<em>str</em>) – Apply filter if using FBP method. Options: ‘hamming’, ‘hann’,
-‘lanczos’, ‘kaiser’, ‘parzen’,…</p></li>
+<li><p><strong>filter_name</strong> (<em>str or None</em>) – Apply filter if using FBP method. Options: ‘ram-lak’, ‘hamming’,
+‘hann’, ‘lanczos’, ‘kaiser’, ‘parzen’,…</p></li>
 <li><p><strong>pad</strong> (<em>int</em>) – Padding to reduce the side effect of FFT.</p></li>
 <li><p><strong>apply_log</strong> (<em>bool</em>) – Apply the logarithm function to the sinogram before reconstruction.</p></li>
 </ul>
@@ -444,7 +481,45 @@ Users must install Astra Toolbox before using this function.</p>
 </dl>
 </dd></dl>
 
-</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.rec.reconstruction.find_center_based_slice_metric">
+<span class="sig-prename descclassname"><span class="pre">algotom.rec.reconstruction.</span></span><span class="sig-name descname"><span class="pre">find_center_based_slice_metric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dfi'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hann'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/rec/reconstruction.html#find_center_based_slice_metric"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.rec.reconstruction.find_center_based_slice_metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the center-of-rotation (COR) using metrics of reconstructed slices
+at different CORs. The entropy of histogram (Ref. [1]) is used by default
+if the metric-function is set to None. If customized metrics are used, the
+minimum value must be corresponding to the best center.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sinogram</strong> (<em>array_like</em>) – 2D array. Sinogram image.</p></li>
+<li><p><strong>start</strong> (<em>float</em>) – Starting point for searching CoR.</p></li>
+<li><p><strong>stop</strong> (<em>float</em>) – Ending point for searching CoR.</p></li>
+<li><p><strong>step</strong> (<em>float</em>) – Sub-pixel searching step.</p></li>
+<li><p><strong>radius</strong> (<em>float</em>) – Searching range with the sub-pixel step.</p></li>
+<li><p><strong>zoom</strong> (<em>float</em>) – To resize the sinogram for fast coarse-searching. For example, 0.5 &lt;=&gt;
+reduce the size of the image by half.</p></li>
+<li><p><strong>method</strong> (<em>{“dfi”, “gridrec”, “fbp”, “astra”}</em>) – To select a backend method for reconstruction.</p></li>
+<li><p><strong>gpu</strong> (<em>bool, optional</em>) – Use GPU for computing if True.</p></li>
+<li><p><strong>angles</strong> (<em>array_like, optional</em>) – 1D array. List of angles (in radian) corresponding to the sinogram.</p></li>
+<li><p><strong>ratio</strong> (<em>float, optional</em>) – To apply a circle mask to the reconstructed image.</p></li>
+<li><p><strong>filter_name</strong> (<em>{None, “hann”, “bartlett”, “blackman”, “hamming”,                  “nuttall”, “parzen”, “triang”}</em>) – Apply a smoothing filter before reconstruction.</p></li>
+<li><p><strong>apply_log</strong> (<em>bool, optional</em>) – Apply the logarithm function to the sinogram before reconstruction.</p></li>
+<li><p><strong>ncore</strong> (<em>int or None</em>) – Number of cpu-cores used for computing. Automatically selected if None.</p></li>
+<li><p><strong>sigma</strong> (<em>int</em>) – Denoising the sinogram before reconstruction. Should be set to 0 for
+noise-free data (simulation).</p></li>
+<li><p><strong>metric_function</strong> (<em>obj</em>) – To apply a customized function for calculating metric going with
+keyword arguments (<a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>float</em> – Center-of-rotation.</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1364/JOSAA.23.001048">https://doi.org/10.1364/JOSAA.23.001048</a></p>
+</dd></dl>
+
+</section>
 
 
             <div class="clearer"></div>
@@ -474,7 +549,7 @@ Users must install Astra Toolbox before using this function.</p>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo.
+        &#169; Copyright 2021, Nghia T. Vo  Diamond Light Source, UK; NSLS-II, Brookhaven National Lab, US.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
 

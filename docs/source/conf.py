@@ -18,9 +18,11 @@ sys.path.insert(0, os.path.abspath('../..'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'Algotom'
-copyright = '2021, Nghia T. Vo'
-author = 'Nghia T. Vo'
+Affiliation1 = " Diamond Light Source, UK"
+Affiliation2 = "; NSLS-II, Brookhaven National Lab, US"
+project = "Algotom"
+copyright = "2021, Nghia T. Vo " + Affiliation1 + Affiliation2
+author = "Nghia T. Vo"
 
 # The full version, including alpha/beta/rc tags
 release = ''

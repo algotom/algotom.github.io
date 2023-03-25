@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>7.2.3. algotom.prep.correction &#8212; Algotom&#39;s documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=0.7.0-1" />
@@ -159,7 +160,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-algotom.prep.correction">
+  <section id="module-algotom.prep.correction">
 <span id="algotom-prep-correction"></span><h1><span class="section-number">7.2.3. </span><a class="reference internal" href="#module-algotom.prep.correction" title="algotom.prep.correction"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.correction</span></code></a><a class="headerlink" href="#module-algotom.prep.correction" title="Permalink to this heading">¶</a></h1>
 <p>Module of correction methods in the preprocessing stage:</p>
 <blockquote>
@@ -170,6 +171,7 @@
 <li><p>Tilted sinogram generation.</p></li>
 <li><p>Tilted 1D intensity-profile generation.</p></li>
 <li><p>Beam hardening correction.</p></li>
+<li><p>Sinogram upsampling.</p></li>
 </ul>
 </div></blockquote>
 <p class="rubric"><strong>Functions:</strong></p>
@@ -211,6 +213,9 @@
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#algotom.prep.correction.beam_hardening_correction" title="algotom.prep.correction.beam_hardening_correction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beam_hardening_correction</span></code></a>(mat, q, n[, opt])</p></td>
 <td><p>Correct the grayscale values of a normalized image using a non-linear function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#algotom.prep.correction.upsample_sinogram" title="algotom.prep.correction.upsample_sinogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">upsample_sinogram</span></code></a>(sinogram, scale[, center, ...])</p></td>
+<td><p>Upsample a sinogram-image along angular direction based on the double-wedge filter (Ref.</p></td>
 </tr>
 </tbody>
 </table>
@@ -449,7 +454,29 @@ False: Curve towards 1.0.</p></li>
 </dl>
 </dd></dl>
 
-</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.prep.correction.upsample_sinogram">
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.correction.</span></span><span class="sig-name descname"><span class="pre">upsample_sinogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sino_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'180'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iteration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/correction.html#upsample_sinogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.correction.upsample_sinogram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upsample a sinogram-image along angular direction based on the
+double-wedge filter (Ref. [1]).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sinogram</strong> (<em>array_like</em>) – 2D array. Sinogram image.</p></li>
+<li><p><strong>scale</strong> (<em>int</em>) – Upscale 2n_x time. E.g. 2, 4, 6.</p></li>
+<li><p><strong>center</strong> (<em>float, optional</em>) – Center-of-rotation. No need for a 360-sinogram.</p></li>
+<li><p><strong>sino_type</strong> (<em>{“180”, “360”}</em>) – Sinogram type : 180-degree or 360-degree.</p></li>
+<li><p><strong>iteration</strong> (<em>int, optional</em>) – Number of iteration for the double-wedge filter.</p></li>
+<li><p><strong>pad</strong> (<em>int, optional</em>) – Padding width for FFT.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>array_like</em> – Upsampled sinogram.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 
 
             <div class="clearer"></div>
@@ -479,7 +506,7 @@ False: Curve towards 1.0.</p></li>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo.
+        &#169; Copyright 2021, Nghia T. Vo  Diamond Light Source, UK; NSLS-II, Brookhaven National Lab, US.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
 

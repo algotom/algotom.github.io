@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>4.2. Exploring raw data and making use of the input-output module &#8212; Algotom&#39;s documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=0.7.0-1" />
@@ -149,11 +150,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="exploring-raw-data-and-making-use-of-the-input-output-module">
+  <section id="exploring-raw-data-and-making-use-of-the-input-output-module">
 <h1><span class="section-number">4.2. </span>Exploring raw data and making use of the input-output module<a class="headerlink" href="#exploring-raw-data-and-making-use-of-the-input-output-module" title="Permalink to this heading">¶</a></h1>
 <p>The following sections show how to handle different types of raw data before
 they can be used for processing and reconstruction.</p>
-<div class="section" id="nxs-hdf-files">
+<section id="nxs-hdf-files">
 <h2><span class="section-number">4.2.1. </span>Nxs/hdf files<a class="headerlink" href="#nxs-hdf-files" title="Permalink to this heading">¶</a></h2>
 <p>A nxs/hdf file can contain multiple datasets and data-types. Generally speaking,
 it likes a folder with many sub-folders and files inside (i.e. hierarchical format).
@@ -265,8 +266,8 @@ it will be created.</p>
 </div></blockquote>
 </li>
 </ul>
-</div>
-<div class="section" id="tiff-files">
+</section>
+<section id="tiff-files">
 <h2><span class="section-number">4.2.2. </span>Tiff files<a class="headerlink" href="#tiff-files" title="Permalink to this heading">¶</a></h2>
 <p>In some tomography systems, raw data are saved as tiff images. As shown in <a class="reference internal" href="../section2.html#section2"><span class="std std-ref">section 2</span></a>,
 processing methods for tomographic data work either on projection space or sinogram space, or on both.
@@ -299,8 +300,8 @@ dark-field images. This can be done in different ways</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="mrc-files">
+</section>
+<section id="mrc-files">
 <h2><span class="section-number">4.2.3. </span>Mrc files<a class="headerlink" href="#mrc-files" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference external" href="https://www.ccpem.ac.uk/mrc_format/mrc_format.php">Mrc format</a> is a standard format in electron tomography.
 To load this data, users need to install the <a class="reference external" href="https://pypi.org/project/mrcfile/">Mrcfile library</a></p>
@@ -328,8 +329,8 @@ of data needed as shown below.</p>
 <p>Methods in Algotom assume that the rotation axis of a tomographic data is parallel to the columns of
 an image. Users may need to rotate images loaded from a mrc file because the rotation axis is often
 parallel to image-rows instead.</p>
-</div>
-<div class="section" id="other-file-formats">
+</section>
+<section id="other-file-formats">
 <h2><span class="section-number">4.2.4. </span>Other file formats<a class="headerlink" href="#other-file-formats" title="Permalink to this heading">¶</a></h2>
 <p>For other file formats such as xrm, txrm, fits, … users can use the <a class="reference external" href="https://github.com/data-exchange/dxchange">DXchange library</a>
 to load data</p>
@@ -339,8 +340,8 @@ to load data</p>
 </div>
 </div></blockquote>
 <p>and refer <a class="reference external" href="http://dxchange.readthedocs.io/">the documentation page</a> for more details.</p>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -390,7 +391,7 @@ to load data</p>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo.
+        &#169; Copyright 2021, Nghia T. Vo  Diamond Light Source, UK; NSLS-II, Brookhaven National Lab, US.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
 

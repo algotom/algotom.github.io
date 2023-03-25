@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>4.3. Methods and tools for removing ring artifacts &#8212; Algotom&#39;s documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=0.7.0-1" />
@@ -149,7 +150,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="methods-and-tools-for-removing-ring-artifacts">
+  <section id="methods-and-tools-for-removing-ring-artifacts">
 <span id="section4-3"></span><h1><span class="section-number">4.3. </span>Methods and tools for removing ring artifacts<a class="headerlink" href="#methods-and-tools-for-removing-ring-artifacts" title="Permalink to this heading">¶</a></h1>
 <p>Algotom provides improved implementations of many methods for removing ring artifacts;
 which were published previously by the same author in <a class="reference external" href="https://sarepy.readthedocs.io/">Sarepy</a>;
@@ -159,20 +160,24 @@ design their own removal methods.</p>
 the sinogram image or the polar-transformed image. Most of ring removal methods are actually
 stripe removal methods under the surface.</p>
 <blockquote>
-<div><div class="align-center figure" id="fig-4-3-1" style="width: 70%">
+<div><figure class="align-center" id="fig-4-3-1" style="width: 70%">
 <img alt="../../_images/fig_4_3_1.jpg" src="../../_images/fig_4_3_1.jpg" />
-<p class="caption"><span class="caption-number">Fig. 4.3.1 </span><span class="caption-text">Ring removal methods working on sinogram image, known as pre-processing methods.
+<figcaption>
+<p><span class="caption-number">Fig. 4.3.1 </span><span class="caption-text">Ring removal methods working on sinogram image, known as pre-processing methods.
 (a) Sinogram before correction. (b) Sinogram after correction. (c) Reconstructed
 image from sinogram (a). (d) Reconstructed image from sinogram (b).</span><a class="headerlink" href="#fig-4-3-1" title="Permalink to this image">¶</a></p>
-</div>
-<div class="align-center figure" id="fig-4-3-2" style="width: 70%">
+</figcaption>
+</figure>
+<figure class="align-center" id="fig-4-3-2" style="width: 70%">
 <img alt="../../_images/fig_4_3_2.jpg" src="../../_images/fig_4_3_2.jpg" />
-<p class="caption"><span class="caption-number">Fig. 4.3.2 </span><span class="caption-text">Ring removal methods working on polar-transformed image, known as post-processing methods.
+<figcaption>
+<p><span class="caption-number">Fig. 4.3.2 </span><span class="caption-text">Ring removal methods working on polar-transformed image, known as post-processing methods.
 (a) Reconstructed image before correction. (b) Polar transformation of image (a). (d) Stripe
 artifacts removed from image (b). (c) Cartesian transformation of image (d).</span><a class="headerlink" href="#fig-4-3-2" title="Permalink to this image">¶</a></p>
-</div>
+</figcaption>
+</figure>
 </div></blockquote>
-<div class="section" id="improvements">
+<section id="improvements">
 <h2><span class="section-number">4.3.1. </span>Improvements<a class="headerlink" href="#improvements" title="Permalink to this heading">¶</a></h2>
 <ul>
 <li><p>Users can select different smoothing filters available in <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/ndimage.html">Scipy</a>
@@ -195,8 +200,8 @@ partial stripes and avoid void-center artifacts, is an option for other ring rem
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="tools-for-designing-ring-removal-methods">
+</section>
+<section id="tools-for-designing-ring-removal-methods">
 <h2><span class="section-number">4.3.2. </span>Tools for designing ring removal methods<a class="headerlink" href="#tools-for-designing-ring-removal-methods" title="Permalink to this heading">¶</a></h2>
 <p>The cleaning capability with least side-effect of a ring removal method relies
 on a smoothing filter or an interpolation technique which the method employs.
@@ -204,18 +209,20 @@ Other supporting techniques for revealing stripe artifacts such as sorting,
 filtering, fitting, wavelet decomposition, polar transformation, or forward projection
 are commonly used. Algotom provides these supporting tools for users to incorporate
 with their own smoothing filters or interpolation techniques.</p>
-<div class="section" id="back-and-forth-sorting">
+<section id="back-and-forth-sorting">
 <h3><span class="section-number">4.3.2.1. </span>Back-and-forth sorting<a class="headerlink" href="#back-and-forth-sorting" title="Permalink to this heading">¶</a></h3>
 <blockquote>
-<div><p>The technique (algorithm 3 in <span id="id1">[<a class="reference internal" href="../credits.html#id7" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Superior techniques for eliminating ring artifacts in x-ray micro-tomography. Opt. Express, 26(22):28396–28412, Oct 2018. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-26-22-28396, doi:10.1364/OE.26.028396.">R1</a>]</span>) couples an image with an index array
+<div><p>The technique (algorithm 3 in <span id="id1">[<a class="reference internal" href="../credits.html#id7" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Superior techniques for eliminating ring artifacts in x-ray micro-tomography. Opt. Express, 26(22):28396–28412, Oct 2018. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-26-22-28396, doi:10.1364/OE.26.028396.">R8</a>]</span>) couples an image with an index array
 for sorting the image backward and forward along an axis. Users can combine the
 <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.util.utility.html#algotom.util.utility.sort_forward">sorting forward</a>
 method, a customized filter, and the <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.util.utility.html#algotom.util.utility.sort_backward">sorting backward</a>
 method as follows</p>
-<div class="align-center figure" id="fig-4-3-3" style="width: 70%">
+<figure class="align-center" id="fig-4-3-3" style="width: 70%">
 <img alt="../../_images/fig_4_3_3.jpg" src="../../_images/fig_4_3_3.jpg" />
-<p class="caption"><span class="caption-number">Fig. 4.3.3 </span><span class="caption-text">Demonstration of the forward sorting.</span><a class="headerlink" href="#fig-4-3-3" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4.3.3 </span><span class="caption-text">Demonstration of the forward sorting.</span><a class="headerlink" href="#fig-4-3-3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">algotom.util.utility</span> <span class="k">as</span> <span class="nn">util</span>
 <span class="kn">import</span> <span class="nn">scipy.ndimage</span> <span class="k">as</span> <span class="nn">ndi</span>
 
@@ -227,13 +234,15 @@ method as follows</p>
 <span class="n">sino_corr</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">sort_backward</span><span class="p">(</span><span class="n">sino_sort</span><span class="p">,</span> <span class="n">mat_index</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="align-center figure" id="fig-4-3-4" style="width: 70%">
+<figure class="align-center" id="fig-4-3-4" style="width: 70%">
 <img alt="../../_images/fig_4_3_4.jpg" src="../../_images/fig_4_3_4.jpg" />
-<p class="caption"><span class="caption-number">Fig. 4.3.4 </span><span class="caption-text">Demonstration of the backward sorting.</span><a class="headerlink" href="#fig-4-3-4" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4.3.4 </span><span class="caption-text">Demonstration of the backward sorting.</span><a class="headerlink" href="#fig-4-3-4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 </div></blockquote>
-</div>
-<div class="section" id="separation-of-frequency-components">
+</section>
+<section id="separation-of-frequency-components">
 <h3><span class="section-number">4.3.2.2. </span>Separation of frequency components<a class="headerlink" href="#separation-of-frequency-components" title="Permalink to this heading">¶</a></h3>
 <blockquote>
 <div><p>The <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.util.utility.html#algotom.util.utility.separate_frequency_component">technique</a>
@@ -250,13 +259,15 @@ of how to use the technique:</p>
 <span class="n">sino_corr</span> <span class="o">=</span> <span class="n">sino_smooth_filtered</span> <span class="o">+</span> <span class="n">sino_sharp</span>
 </pre></div>
 </div>
-<div class="align-center figure" id="fig-4-3-5" style="width: 70%">
+<figure class="align-center" id="fig-4-3-5" style="width: 70%">
 <img alt="../../_images/fig_4_3_5.jpg" src="../../_images/fig_4_3_5.jpg" />
-<p class="caption"><span class="caption-number">Fig. 4.3.5 </span><span class="caption-text">Demonstration of how to separate frequency components of a sinogram along each column.</span><a class="headerlink" href="#fig-4-3-5" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4.3.5 </span><span class="caption-text">Demonstration of how to separate frequency components of a sinogram along each column.</span><a class="headerlink" href="#fig-4-3-5" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 </div></blockquote>
-</div>
-<div class="section" id="polynomial-fitting-along-an-axis">
+</section>
+<section id="polynomial-fitting-along-an-axis">
 <h3><span class="section-number">4.3.2.3. </span>Polynomial fitting along an axis<a class="headerlink" href="#polynomial-fitting-along-an-axis" title="Permalink to this heading">¶</a></h3>
 <blockquote>
 <div><p>The <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.util.utility.html#algotom.util.utility.generate_fitted_image">technique</a>
@@ -268,13 +279,15 @@ can help to reveal low contrast stripes easily by applying a polynomial fit alon
 <span class="n">sino_corr</span> <span class="o">=</span> <span class="p">(</span><span class="n">sinogram</span> <span class="o">/</span> <span class="n">sino_fit</span><span class="p">)</span> <span class="o">*</span> <span class="n">sino_smooth</span>
 </pre></div>
 </div>
-<div class="align-center figure" id="fig-4-3-6" style="width: 70%">
+<figure class="align-center" id="fig-4-3-6" style="width: 70%">
 <img alt="../../_images/fig_4_3_6.jpg" src="../../_images/fig_4_3_6.jpg" />
-<p class="caption"><span class="caption-number">Fig. 4.3.6 </span><span class="caption-text">Demonstration of how to apply a polynomial fitting along each column of a sinogram.</span><a class="headerlink" href="#fig-4-3-6" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4.3.6 </span><span class="caption-text">Demonstration of how to apply a polynomial fitting along each column of a sinogram.</span><a class="headerlink" href="#fig-4-3-6" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 </div></blockquote>
-</div>
-<div class="section" id="wavelet-decomposition-and-reconstruction">
+</section>
+<section id="wavelet-decomposition-and-reconstruction">
 <h3><span class="section-number">4.3.2.4. </span>Wavelet decomposition and reconstruction<a class="headerlink" href="#wavelet-decomposition-and-reconstruction" title="Permalink to this heading">¶</a></h3>
 <blockquote>
 <div><p>Functions for <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.util.utility.html#algotom.util.utility.apply_wavelet_decomposition">wavelet decomposition</a>,
@@ -299,13 +312,15 @@ to remove these stripes then apply a wavelet reconstruction to get the resulting
 <span class="n">sino_corr</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">apply_wavelet_reconstruction</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="s2">&quot;db9&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="align-center figure" id="fig-4-3-7" style="width: 90%">
+<figure class="align-center" id="fig-4-3-7" style="width: 90%">
 <img alt="../../_images/fig_4_3_7.jpg" src="../../_images/fig_4_3_7.jpg" />
-<p class="caption"><span class="caption-number">Fig. 4.3.7 </span><span class="caption-text">Demonstration of the wavelet decomposition.</span><a class="headerlink" href="#fig-4-3-7" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4.3.7 </span><span class="caption-text">Demonstration of the wavelet decomposition.</span><a class="headerlink" href="#fig-4-3-7" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 </div></blockquote>
-</div>
-<div class="section" id="stripe-interpolation">
+</section>
+<section id="stripe-interpolation">
 <h3><span class="section-number">4.3.2.5. </span>Stripe interpolation<a class="headerlink" href="#stripe-interpolation" title="Permalink to this heading">¶</a></h3>
 <blockquote>
 <div><p>Users can design a customized stripe-detection method, then pass the result (as a 1D binary array) to the
@@ -315,8 +330,8 @@ to remove stripes by interpolation.</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="transformation-between-cartesian-and-polar-coordinate-system">
+</section>
+<section id="transformation-between-cartesian-and-polar-coordinate-system">
 <h3><span class="section-number">4.3.2.6. </span>Transformation between Cartesian and polar coordinate system<a class="headerlink" href="#transformation-between-cartesian-and-polar-coordinate-system" title="Permalink to this heading">¶</a></h3>
 <blockquote>
 <div><p>This is a well-known technique to remove ring artifacts from a reconstructed image
@@ -333,8 +348,8 @@ as shown in <a class="reference internal" href="#fig-4-3-2"><span class="std std
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="transformation-between-sinogram-space-and-reconstruction-space">
+</section>
+<section id="transformation-between-sinogram-space-and-reconstruction-space">
 <h3><span class="section-number">4.3.2.7. </span>Transformation between sinogram space and reconstruction space<a class="headerlink" href="#transformation-between-sinogram-space-and-reconstruction-space" title="Permalink to this heading">¶</a></h3>
 <blockquote>
 <div><p>Algotom provides a <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.util.simulation.html#algotom.util.simulation.make_sinogram">re-projection method</a>
@@ -359,14 +374,16 @@ image-rotation-based methods.</p>
 <span class="n">img_rec</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">dfi_reconstruction</span><span class="p">(</span><span class="n">sino_corr</span><span class="p">,</span> <span class="p">(</span><span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">apply_log</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="align-center figure" id="fig-4-3-8" style="width: 80%">
+<figure class="align-center" id="fig-4-3-8" style="width: 80%">
 <img alt="../../_images/fig_4_3_8.jpg" src="../../_images/fig_4_3_8.jpg" />
-<p class="caption"><span class="caption-number">Fig. 4.3.8 </span><span class="caption-text">Demonstration of how to re-project a reconstructed image.</span><a class="headerlink" href="#fig-4-3-8" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4.3.8 </span><span class="caption-text">Demonstration of how to re-project a reconstructed image.</span><a class="headerlink" href="#fig-4-3-8" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 </div></blockquote>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -423,7 +440,7 @@ image-rotation-based methods.</p>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo.
+        &#169; Copyright 2021, Nghia T. Vo  Diamond Light Source, UK; NSLS-II, Brookhaven National Lab, US.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
 

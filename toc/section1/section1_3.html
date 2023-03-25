@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>1.3. Basic components of an X-ray tomography system &#8212; Algotom&#39;s documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=0.7.0-1" />
@@ -150,9 +151,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="basic-components-of-an-x-ray-tomography-system">
+  <section id="basic-components-of-an-x-ray-tomography-system">
 <h1><span class="section-number">1.3. </span>Basic components of an X-ray tomography system<a class="headerlink" href="#basic-components-of-an-x-ray-tomography-system" title="Permalink to this heading">¶</a></h1>
-<div class="section" id="how-tomography-works">
+<section id="how-tomography-works">
 <h2><span class="section-number">1.3.1. </span>How tomography works<a class="headerlink" href="#how-tomography-works" title="Permalink to this heading">¶</a></h2>
 <a class="reference internal image-reference" href="../../_images/fig_1_3_0.png"><img alt="../../_images/fig_1_3_0.png" class="align-center" src="../../_images/fig_1_3_0.png" style="width: 100%;" /></a>
 <p>As demonstrated above, tomography is an imaging technique by which the
@@ -165,18 +166,22 @@ projection range forms a sinogram, i.e. a 2D data array corresponding to each
 individual row. Applying a reconstruction method on an individual sinogram
 yields a reconstructed 2D slice of the sample (<a class="reference internal" href="#fig-1-3-1"><span class="std std-numref">Fig. 1.3.1</span></a>). Combining
 all slices creates the 3D image of the sample.</p>
-<div class="align-center figure" id="fig-1-3-1" style="width: 97%">
+<figure class="align-center" id="fig-1-3-1" style="width: 97%">
 <img alt="../../_images/fig_1_3_1.png" src="../../_images/fig_1_3_1.png" />
-<p class="caption"><span class="caption-number">Fig. 1.3.1 </span><span class="caption-text">Steps for reconstructing a slice in parallel-beam tomography.</span><a class="headerlink" href="#fig-1-3-1" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="id1">
+<figcaption>
+<p><span class="caption-number">Fig. 1.3.1 </span><span class="caption-text">Steps for reconstructing a slice in parallel-beam tomography.</span><a class="headerlink" href="#fig-1-3-1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id1">
 <h2><span class="section-number">1.3.2. </span>Basic components of an X-ray tomography system<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
-<div class="align-center figure" id="fig-1-3-2" style="width: 97%">
+<figure class="align-center" id="fig-1-3-2" style="width: 97%">
 <img alt="../../_images/fig_1_3_2.png" src="../../_images/fig_1_3_2.png" />
-<p class="caption"><span class="caption-number">Fig. 1.3.2 </span><span class="caption-text">Basic components of an X-ray tomography system and problems associated with them.</span><a class="headerlink" href="#fig-1-3-2" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="x-ray-source">
+<figcaption>
+<p><span class="caption-number">Fig. 1.3.2 </span><span class="caption-text">Basic components of an X-ray tomography system and problems associated with them.</span><a class="headerlink" href="#fig-1-3-2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="x-ray-source">
 <h3><span class="section-number">1.3.2.1. </span>X-ray source<a class="headerlink" href="#x-ray-source" title="Permalink to this heading">¶</a></h3>
 <blockquote>
 <div><p>An ideal X-ray source for tomography experiments is monochromatic, stable,
@@ -195,33 +200,39 @@ between transmission beams and scattering beams after going through samples.
 This, known as the edge-enhanced effect, alters X-ray intensities
 at the interfaces between different materials of samples as can be seen in
 <a class="reference internal" href="#fig-1-3-3"><span class="std std-numref">Fig. 1.3.3</span></a></p>
-<div class="align-center figure" id="fig-1-3-3" style="width: 97%">
+<figure class="align-center" id="fig-1-3-3" style="width: 97%">
 <img alt="../../_images/fig_1_3_3.png" src="../../_images/fig_1_3_3.png" />
-<p class="caption"><span class="caption-number">Fig. 1.3.3 </span><span class="caption-text">Coherent source causes the edge-enhanced effect in a projection-image.</span><a class="headerlink" href="#fig-1-3-3" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 1.3.3 </span><span class="caption-text">Coherent source causes the edge-enhanced effect in a projection-image.</span><a class="headerlink" href="#fig-1-3-3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The edge-enhanced effect is useful for applications where the interfaces
 between materials are more important than their densities, such as studying
 crack formation in steels, rocks, or <a class="reference external" href="https://doi.org/10.1038/srep43399">bones</a>.
 However, this effect gives rise     to streak artifacts and causes strong fluctuations
 of gray scales between interfaces in reconstructed images. These hampers the
 performance of post-processing methods such as image segmentation or image rescaling.</p>
-<div class="align-center figure" id="fig-1-3-4" style="width: 75%">
+<figure class="align-center" id="fig-1-3-4" style="width: 75%">
 <img alt="../../_images/fig_1_3_4.png" src="../../_images/fig_1_3_4.png" />
-<p class="caption"><span class="caption-number">Fig. 1.3.4 </span><span class="caption-text">Impacts of the edge-enhanced effect to a reconstructed image: streak
+<figcaption>
+<p><span class="caption-number">Fig. 1.3.4 </span><span class="caption-text">Impacts of the edge-enhanced effect to a reconstructed image: streak
 artifacts (arrowed), negative attenuation coefficients (circled).</span><a class="headerlink" href="#fig-1-3-4" title="Permalink to this image">¶</a></p>
-</div>
+</figcaption>
+</figure>
 <p>Other problems often seen at synchrotron-based sources come from
 high-heat-load monochromators. They can cause the fluctuation of source
 intensity or the shift of intensity profile. These problems impact the process
 of flat-field correction in tomography which results in artifacts.</p>
-<div class="align-center figure" id="fig-1-3-5" style="width: 97%">
+<figure class="align-center" id="fig-1-3-5" style="width: 97%">
 <img alt="../../_images/fig_1_3_5.jpg" src="../../_images/fig_1_3_5.jpg" />
-<p class="caption"><span class="caption-number">Fig. 1.3.5 </span><span class="caption-text">Impacts of a monochromator to the intensity profile of a source. (a) Flat-field image.
+<figcaption>
+<p><span class="caption-number">Fig. 1.3.5 </span><span class="caption-text">Impacts of a monochromator to the intensity profile of a source. (a) Flat-field image.
 (b) Sample image. (c) Flat-field-corrected image</span><a class="headerlink" href="#fig-1-3-5" title="Permalink to this image">¶</a></p>
-</div>
+</figcaption>
+</figure>
 </div></blockquote>
-</div>
-<div class="section" id="stage">
+</section>
+<section id="stage">
 <h3><span class="section-number">1.3.2.2. </span>Stage<a class="headerlink" href="#stage" title="Permalink to this heading">¶</a></h3>
 <blockquote>
 <div><p>In a micro-scale system, a major problem caused by the same-stage is the
@@ -233,21 +244,25 @@ rotation axis can be shifted a few pixels because of that. As a result, the
 center of rotation (COR) in the reconstruction space is changed
 (<a class="reference internal" href="#fig-1-3-6"><span class="std std-numref">Fig. 1.3.6</span></a>). This is inconvenient for the case that one collects
 multiple-datasets but can’t use the same value of COR across.</p>
-<div class="align-center figure" id="fig-1-3-6" style="width: 75%">
+<figure class="align-center" id="fig-1-3-6" style="width: 75%">
 <img alt="../../_images/fig_1_3_6.png" src="../../_images/fig_1_3_6.png" />
-<p class="caption"><span class="caption-number">Fig. 1.3.6 </span><span class="caption-text">Center of rotation was changed between two scans</span><a class="headerlink" href="#fig-1-3-6" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 1.3.6 </span><span class="caption-text">Center of rotation was changed between two scans</span><a class="headerlink" href="#fig-1-3-6" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>In a nano-scale system, the main problem is the positioning accuracy of the
 stage. This causes the shift between projections of a tomographic dataset.
 To process such data, we have to apply image alignment/registration methods.</p>
-<div class="align-center figure" id="fig-1-3-7" style="width: 97%">
+<figure class="align-center" id="fig-1-3-7" style="width: 97%">
 <img alt="../../_images/fig_1_3_7.png" src="../../_images/fig_1_3_7.png" />
-<p class="caption"><span class="caption-number">Fig. 1.3.7 </span><span class="caption-text">Shift between <a class="reference external" href="https://doi.org/10.1186/s12645-021-00081-z">two projections</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.3.7 </span><span class="caption-text">Shift between <a class="reference external" href="https://doi.org/10.1186/s12645-021-00081-z">two projections</a>
 acquired by a nanoprobe X-ray fluorescence imaging system.</span><a class="headerlink" href="#fig-1-3-7" title="Permalink to this image">¶</a></p>
-</div>
+</figcaption>
+</figure>
 </div></blockquote>
-</div>
-<div class="section" id="sample">
+</section>
+<section id="sample">
 <h3><span class="section-number">1.3.2.3. </span>Sample<a class="headerlink" href="#sample" title="Permalink to this heading">¶</a></h3>
 <blockquote>
 <div><p>Samples can impact to the quality of reconstructed images as demonstrated in
@@ -256,58 +271,70 @@ a few examples as follows</p>
 X-rays may not penetrate at some angles or detectors (mostly coupled to a
 16-bit or 8-bit CCD chip) can not record such a large dynamic range of intensity.
 These impacts can result in different types of artifacts as shown in <a class="reference internal" href="#fig-1-3-8"><span class="std std-numref">Fig. 1.3.8</span></a>.</p>
-<div class="align-center figure" id="fig-1-3-8" style="width: 97%">
+<figure class="align-center" id="fig-1-3-8" style="width: 97%">
 <img alt="../../_images/fig_1_3_8.png" src="../../_images/fig_1_3_8.png" />
-<p class="caption"><span class="caption-number">Fig. 1.3.8 </span><span class="caption-text">Artifacts caused by a flat sample. (a) Projection at 0-degree. (b) Projection
+<figcaption>
+<p><span class="caption-number">Fig. 1.3.8 </span><span class="caption-text">Artifacts caused by a flat sample. (a) Projection at 0-degree. (b) Projection
 at 90-degree. (c) Reconstructed image with partial <a class="reference external" href="https://sarepy.readthedocs.io/toc/section1.html">ring artifacts</a> (yellow arrow) and cupping artifacts (red arrow).</span><a class="headerlink" href="#fig-1-3-8" title="Permalink to this image">¶</a></p>
-</div>
+</figcaption>
+</figure>
 <p>For crystalline samples, they can block X-rays at certain angles causing partially
 horizontal dark-stripes in sinograms. This can affect algebraic     reconstruction-methods
 as shown in <a class="reference internal" href="#fig-1-3-9"><span class="std std-numref">Fig. 1.3.9</span></a>.</p>
-<div class="align-center figure" id="fig-1-3-9" style="width: 97%">
+<figure class="align-center" id="fig-1-3-9" style="width: 97%">
 <img alt="../../_images/fig_1_3_9.png" src="../../_images/fig_1_3_9.png" />
-<p class="caption"><span class="caption-number">Fig. 1.3.9 </span><span class="caption-text">Artifacts caused by a crystalline sample. (a) Sinogram. (b) Zoom-in at the
+<figcaption>
+<p><span class="caption-number">Fig. 1.3.9 </span><span class="caption-text">Artifacts caused by a crystalline sample. (a) Sinogram. (b) Zoom-in at the
 bottom-left area of (a). (c) Reconstructed image using the SART method.</span><a class="headerlink" href="#fig-1-3-9" title="Permalink to this image">¶</a></p>
-</div>
+</figcaption>
+</figure>
 <p>Scanning biological samples using hard X-rays can result in low-contrast images (<a class="reference internal" href="#fig-1-3-10"><span class="std std-numref">Fig. 1.3.10</span></a>).
 which affects the performance of post-processing methods such as segmentation or feature detection.</p>
-<div class="align-center figure" id="fig-1-3-10" style="width: 50%">
+<figure class="align-center" id="fig-1-3-10" style="width: 50%">
 <img alt="../../_images/fig_1_3_10.jpg" src="../../_images/fig_1_3_10.jpg" />
-<p class="caption"><span class="caption-number">Fig. 1.3.10 </span><span class="caption-text">Reconstructed image of a <a class="reference external" href="https://doi.org/10.1038/srep43399">trabecular bone sample</a> using a 53keV X-ray source.</span><a class="headerlink" href="#fig-1-3-10" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 1.3.10 </span><span class="caption-text">Reconstructed image of a <a class="reference external" href="https://doi.org/10.1038/srep43399">trabecular bone sample</a> using a 53keV X-ray source.</span><a class="headerlink" href="#fig-1-3-10" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 </div></blockquote>
-</div>
-<div class="section" id="detector">
+</section>
+<section id="detector">
 <h3><span class="section-number">1.3.2.4. </span>Detector<a class="headerlink" href="#detector" title="Permalink to this heading">¶</a></h3>
 <blockquote>
 <div><p>Technical problems or limitations of a detecting system can cause various types of artifacts.
 The irregular response caused by defects in its hardware components, such as a scintillator or CCD chip,
 gives rise to ring artifacts as described in detail <a class="reference external" href="https://sarepy.readthedocs.io/">here</a> and
 shown in <a class="reference internal" href="#fig-1-3-11"><span class="std std-numref">Fig. 1.3.11</span></a></p>
-<div class="align-center figure" id="fig-1-3-11" style="width: 90%">
+<figure class="align-center" id="fig-1-3-11" style="width: 90%">
 <img alt="../../_images/fig_1_3_11.jpg" src="../../_images/fig_1_3_11.jpg" />
-<p class="caption"><span class="caption-number">Fig. 1.3.11 </span><span class="caption-text">Ring artifacts caused by defects of a scintillator of a detecting system. (a)
+<figcaption>
+<p><span class="caption-number">Fig. 1.3.11 </span><span class="caption-text">Ring artifacts caused by defects of a scintillator of a detecting system. (a)
 Visible defects (white blobs) on a flat field image. (b) Ring artifacts caused by these defects.</span><a class="headerlink" href="#fig-1-3-11" title="Permalink to this image">¶</a></p>
-</div>
+</figcaption>
+</figure>
 <p>The <a class="reference external" href="https://doi.org/10.1117/12.2530324">scattering of scintillation photons</a> in a
 scintillator, of an indirect X-ray detector, has a strong effect to the linear response of
 the system and cause cupping artifacts in reconstructed images (<a class="reference internal" href="#fig-1-3-12"><span class="std std-numref">Fig. 1.3.12</span></a>).</p>
-<div class="align-center figure" id="fig-1-3-12" style="width: 98%">
+<figure class="align-center" id="fig-1-3-12" style="width: 98%">
 <img alt="../../_images/fig_1_3_12.jpg" src="../../_images/fig_1_3_12.jpg" />
-<p class="caption"><span class="caption-number">Fig. 1.3.12 </span><span class="caption-text">Cupping artifacts caused by the scattering of scintillation photons. (a) Flat-field
+<figcaption>
+<p><span class="caption-number">Fig. 1.3.12 </span><span class="caption-text">Cupping artifacts caused by the scattering of scintillation photons. (a) Flat-field
 image with a half field of view completely blocked using 0.05 s of exposure time. (b) Same
 as (a) using 0.5 s of exposure time. (c) Projection image of a strong absorber. (d)
 Reconstructed image. (e) Line profile along the red line in (d).</span><a class="headerlink" href="#fig-1-3-12" title="Permalink to this image">¶</a></p>
-</div>
+</figcaption>
+</figure>
 <p>Another common component of a detecting system is a lens which can has
 <a class="reference external" href="https://discorpy.readthedocs.io/en/latest/tutorials.html">radial distortion problem.</a>
 This problem gives raise to distinguishable artifacts in reconstructed images where
 artifacts only appear at some areas (<a class="reference internal" href="#fig-1-3-13"><span class="std std-numref">Fig. 1.3.13</span></a>).</p>
-<div class="align-center figure" id="fig-1-3-13" style="width: 98%">
+<figure class="align-center" id="fig-1-3-13" style="width: 98%">
 <img alt="../../_images/fig_1_3_13.jpg" src="../../_images/fig_1_3_13.jpg" />
-<p class="caption"><span class="caption-number">Fig. 1.3.13 </span><span class="caption-text">Artifacts caused the lens-distortion problem. (a) Distorted image of a
+<figcaption>
+<p><span class="caption-number">Fig. 1.3.13 </span><span class="caption-text">Artifacts caused the lens-distortion problem. (a) Distorted image of a
 grid pattern. (b) Artifacts in a reconstructed image.</span><a class="headerlink" href="#fig-1-3-13" title="Permalink to this image">¶</a></p>
-</div>
+</figcaption>
+</figure>
 <p>Most of cameras are 16-bit, 14-bit, 12-bit, or 8-bit types. The number of bit dictates
 the dynamic range of intensity a camera can record. For example, a 16-bit camera can
 record intensities in the range of 0-65535 counts. In cases that the dynamic range (min-max)
@@ -315,14 +342,16 @@ of incoming intensities are out of this range no matter how we adjust the exposu
 the acquired images can have underexposed areas or overexposed areas as shown in <a class="reference internal" href="#fig-1-3-14"><span class="std std-numref">Fig. 1.3.14</span></a>.
 In tomography, for samples giving a high dynamic range of transmission intensities we
 have to accept the underexposed areas which can give raise to cupping artifacts (<a class="reference internal" href="#fig-1-3-8"><span class="std std-numref">Fig. 1.3.8</span></a>).</p>
-<div class="align-center figure" id="fig-1-3-14" style="width: 98%">
+<figure class="align-center" id="fig-1-3-14" style="width: 98%">
 <img alt="../../_images/fig_1_3_14.jpg" src="../../_images/fig_1_3_14.jpg" />
-<p class="caption"><span class="caption-number">Fig. 1.3.14 </span><span class="caption-text">Problems due to the limited dynamic range of a camera. (a) Underexposed
+<figcaption>
+<p><span class="caption-number">Fig. 1.3.14 </span><span class="caption-text">Problems due to the limited dynamic range of a camera. (a) Underexposed
 area. (b) Overexposed area.</span><a class="headerlink" href="#fig-1-3-14" title="Permalink to this image">¶</a></p>
-</div>
+</figcaption>
+</figure>
 </div></blockquote>
-</div>
-<div class="section" id="computing-resources">
+</section>
+<section id="computing-resources">
 <h3><span class="section-number">1.3.2.5. </span>Computing resources<a class="headerlink" href="#computing-resources" title="Permalink to this heading">¶</a></h3>
 <blockquote>
 <div><p>Available computing resources such as GPU, multicore CPU, RAM, or storage system can
@@ -333,14 +362,16 @@ at beamline I12, Diamond Light Source, UK. The SIRT returns better result.
 However, it can’t be used in practice due to the huge number of datasets acquired by the experiments.
 The total amount of data is ~250 TB and it would take years to reconstruct all of them using
 the SIRT method.</p>
-<div class="align-center figure" id="fig-1-3-15" style="width: 98%">
+<figure class="align-center" id="fig-1-3-15" style="width: 98%">
 <img alt="../../_images/fig_1_3_15.jpg" src="../../_images/fig_1_3_15.jpg" />
-<p class="caption"><span class="caption-number">Fig. 1.3.15 </span><span class="caption-text">Comparison of two reconstruction methods. (a) FBP. (b) SIRT.</span><a class="headerlink" href="#fig-1-3-15" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 1.3.15 </span><span class="caption-text">Comparison of two reconstruction methods. (a) FBP. (b) SIRT.</span><a class="headerlink" href="#fig-1-3-15" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 </div></blockquote>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -395,7 +426,7 @@ the SIRT method.</p>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo.
+        &#169; Copyright 2021, Nghia T. Vo  Diamond Light Source, UK; NSLS-II, Brookhaven National Lab, US.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
 
