@@ -181,6 +181,8 @@
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>
+<span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">Parallel</span><span class="p">,</span> <span class="n">delayed</span><span class="p">,</span> <span class="n">parallel_backend</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span><span class="p">,</span> <span class="n">deque</span>
 <span class="kn">import</span> <span class="nn">h5py</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -205,7 +207,7 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    float</span>
+<span class="sd">    array_like</span>
 <span class="sd">        2D array.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span> <span class="ow">in</span> <span class="n">file_path</span><span class="p">:</span>
@@ -348,7 +350,7 @@
     <span class="k">return</span> <span class="n">list_dkey</span><span class="p">,</span> <span class="n">list_dshape</span><span class="p">,</span> <span class="n">list_dtype</span></div>
 
 
-<div class="viewcode-block" id="load_hdf"><a class="viewcode-back" href="../../../toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.load_hdf">[docs]</a><span class="k">def</span> <span class="nf">load_hdf</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">key_path</span><span class="p">):</span>
+<div class="viewcode-block" id="load_hdf"><a class="viewcode-back" href="../../../toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.load_hdf">[docs]</a><span class="k">def</span> <span class="nf">load_hdf</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">key_path</span><span class="p">,</span> <span class="n">return_file_obj</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Load a hdf/nexus dataset as an object.</span>
 
@@ -358,11 +360,12 @@
 <span class="sd">        Path to the file.</span>
 <span class="sd">    key_path : str</span>
 <span class="sd">        Key path to the dataset.</span>
+<span class="sd">    return_file_obj : bool, optional</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    object</span>
-<span class="sd">        hdf/nxs object.</span>
+<span class="sd">    objects</span>
+<span class="sd">        hdf-dataset object, and file-object if return_file_obj is True.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">hdf_object</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -372,7 +375,10 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">check</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
             <span class="s2">&quot;Couldn&#39;t open object with the given key: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key_path</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">hdf_object</span><span class="p">[</span><span class="n">key_path</span><span class="p">]</span></div>
+    <span class="k">if</span> <span class="n">return_file_obj</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">hdf_object</span><span class="p">[</span><span class="n">key_path</span><span class="p">],</span> <span class="n">hdf_object</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">hdf_object</span><span class="p">[</span><span class="n">key_path</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="make_folder"><a class="viewcode-back" href="../../../toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.make_folder">[docs]</a><span class="k">def</span> <span class="nf">make_folder</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
@@ -389,6 +395,8 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_base</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">file_base</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">FileExistsError</span><span class="p">:</span>
+            <span class="k">pass</span>
         <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t create the folder: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_base</span><span class="p">))</span></div>
 
@@ -1097,7 +1105,7 @@
 <div class="viewcode-block" id="get_tif_stack"><a class="viewcode-back" href="../../../toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.get_tif_stack">[docs]</a><span class="k">def</span> <span class="nf">get_tif_stack</span><span class="p">(</span><span class="n">file_base</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">flat_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                   <span class="n">dark_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_use</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fix_zero_div</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Load tif images to a stack.</span>
+<span class="sd">    Load tif images to a stack. Supplementary method for &#39;get_image_stack&#39;.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1296,6 +1304,105 @@
                                   <span class="n">dark_field</span><span class="o">=</span><span class="n">dark_field</span><span class="p">,</span> <span class="n">num_use</span><span class="o">=</span><span class="n">num_use</span><span class="p">,</span>
                                   <span class="n">fix_zero_div</span><span class="o">=</span><span class="n">fix_zero_div</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">img_stack</span></div>
+
+
+<div class="viewcode-block" id="load_image_multiple"><a class="viewcode-back" href="../../../toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.load_image_multiple">[docs]</a><span class="k">def</span> <span class="nf">load_image_multiple</span><span class="p">(</span><span class="n">list_path</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load list of images in parallel.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    list_path : str</span>
+<span class="sd">        List of file paths.</span>
+<span class="sd">    ncore : int or None</span>
+<span class="sd">        Number of cpu-cores. Automatically selected if None.</span>
+<span class="sd">    prefer : {&quot;threads&quot;, &quot;processes&quot;}</span>
+<span class="sd">        Prefer backend for parallel processing.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    array_like</span>
+<span class="sd">        3D array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">list_path</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">ncore</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">ncore</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">num_file</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_path</span><span class="p">)</span>
+        <span class="n">ncore</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">ncore</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_file</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ncore</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">imgs</span> <span class="o">=</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="n">prefer</span><span class="p">)(</span>
+                <span class="n">delayed</span><span class="p">(</span><span class="n">load_image</span><span class="p">)(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_file</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">imgs</span> <span class="o">=</span> <span class="p">[</span><span class="n">load_image</span><span class="p">(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_file</span><span class="p">)]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input must be a list of file paths!!!&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">imgs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="save_image_multiple"><a class="viewcode-back" href="../../../toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.save_image_multiple">[docs]</a><span class="k">def</span> <span class="nf">save_image_multiple</span><span class="p">(</span><span class="n">list_path</span><span class="p">,</span> <span class="n">image_stack</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Save an 3D-array to a list of tif images in parallel.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    list_path : str</span>
+<span class="sd">        List of output paths.</span>
+<span class="sd">    image_stack : array_like</span>
+<span class="sd">        3D array.</span>
+<span class="sd">    overwrite : bool</span>
+<span class="sd">        Overwrite an existing file if True.</span>
+<span class="sd">    ncore : int or None</span>
+<span class="sd">        Number of cpu-cores. Automatically selected if None.</span>
+<span class="sd">    prefer : {&quot;threads&quot;, &quot;processes&quot;}</span>
+<span class="sd">        Prefer backend for parallel processing.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">list_path</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input must be a list of file paths!!!&quot;</span><span class="p">)</span>
+    <span class="n">num_file</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_path</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">image_stack</span><span class="o">.</span><span class="n">shape</span>
+    <span class="k">if</span> <span class="n">ncore</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ncore</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">ncore</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">ncore</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_file</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">axis</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">width</span> <span class="o">!=</span> <span class="n">num_file</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Mismatch between the number of images: </span><span class="si">{0}</span><span class="s2"> and &quot;</span>
+                             <span class="s2">&quot;the number of file paths: </span><span class="si">{1}</span><span class="s2">&quot;</span>
+                             <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">num_file</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ncore</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="n">prefer</span><span class="p">)(</span>
+                    <span class="n">delayed</span><span class="p">(</span><span class="n">save_image</span><span class="p">)(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">image_stack</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">],</span>
+                                        <span class="n">overwrite</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_file</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_file</span><span class="p">):</span>
+                    <span class="n">save_image</span><span class="p">(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">image_stack</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">overwrite</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">axis</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">height</span> <span class="o">!=</span> <span class="n">num_file</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Mismatch between the number of images: </span><span class="si">{0}</span><span class="s2"> and &quot;</span>
+                             <span class="s2">&quot;the number of file paths: </span><span class="si">{1}</span><span class="s2">&quot;</span>
+                             <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">num_file</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ncore</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="n">prefer</span><span class="p">)(</span>
+                    <span class="n">delayed</span><span class="p">(</span><span class="n">save_image</span><span class="p">)(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">image_stack</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="p">:],</span>
+                                        <span class="n">overwrite</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_file</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_file</span><span class="p">):</span>
+                    <span class="n">save_image</span><span class="p">(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">image_stack</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">overwrite</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">depth</span> <span class="o">!=</span> <span class="n">num_file</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Mismatch between the number of images: </span><span class="si">{0}</span><span class="s2"> and &quot;</span>
+                             <span class="s2">&quot;the number of file paths: </span><span class="si">{1}</span><span class="s2">&quot;</span>
+                             <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">num_file</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ncore</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="n">prefer</span><span class="p">)(</span>
+                    <span class="n">delayed</span><span class="p">(</span><span class="n">save_image</span><span class="p">)(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">image_stack</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                        <span class="n">overwrite</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_file</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_file</span><span class="p">):</span>
+                    <span class="n">save_image</span><span class="p">(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">image_stack</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">overwrite</span><span class="p">)</span></div>
 </pre></div>
 
             <div class="clearer"></div>
@@ -1320,7 +1427,7 @@
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo  Diamond Light Source, UK; NSLS-II, Brookhaven National Lab, US.
+        &#169; Copyright 2021, Nghia T. Vo  NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
 

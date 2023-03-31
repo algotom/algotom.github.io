@@ -153,7 +153,7 @@
   <section id="comparison-of-ring-removal-methods-on-challenging-sinograms">
 <h1><span class="section-number">4.4. </span>Comparison of ring removal methods on challenging sinograms<a class="headerlink" href="#comparison-of-ring-removal-methods-on-challenging-sinograms" title="Permalink to this heading">¶</a></h1>
 <p>Ring artifact is the most pervasive type of artifacts in tomographic imaging. Numerous approaches for removing this
-artifact have been published over the years. In <span id="id1">[<a class="reference internal" href="../credits.html#id7" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Superior techniques for eliminating ring artifacts in x-ray micro-tomography. Opt. Express, 26(22):28396–28412, Oct 2018. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-26-22-28396, doi:10.1364/OE.26.028396.">R8</a>]</span>, the author proposed many algorithms and a combination
+artifact have been published over the years. In <span id="id1">[<a class="reference internal" href="../credits.html#id7" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Superior techniques for eliminating ring artifacts in x-ray micro-tomography. Opt. Express, 26(22):28396–28412, Oct 2018. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-26-22-28396, doi:10.1364/OE.26.028396.">R19</a>]</span>, the author proposed many algorithms and a combination
 of them (algorithm 6, 5, 4, and 3) to remove most types of ring artifacts. This combined method,
 called <strong>algo-6543</strong> for short, is easy-to-use and very effective. It has been implemented in Python, Matlab,
 and available in several tomographic Python packages. To know more about causes of ring artifacts, types of ring
@@ -261,7 +261,7 @@ which cause partial ring artifacts.</p>
 </div></blockquote>
 </li>
 <li><p>If using the <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_sorting">sorting-based method</a>
-(algorithm 3 in <span id="id2">[<a class="reference internal" href="../credits.html#id7" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Superior techniques for eliminating ring artifacts in x-ray micro-tomography. Opt. Express, 26(22):28396–28412, Oct 2018. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-26-22-28396, doi:10.1364/OE.26.028396.">R8</a>]</span>):</p>
+(algorithm 3 in <span id="id2">[<a class="reference internal" href="../credits.html#id7" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Superior techniques for eliminating ring artifacts in x-ray micro-tomography. Opt. Express, 26(22):28396–28412, Oct 2018. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-26-22-28396, doi:10.1364/OE.26.028396.">R19</a>]</span>):</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
 <span class="kn">import</span> <span class="nn">algotom.prep.calculation</span> <span class="k">as</span> <span class="nn">calc</span>
@@ -299,7 +299,7 @@ which cause partial ring artifacts.</p>
 <a class="reference internal image-reference" href="../../_images/img_4_4_11.jpg" id="img-4-4-11"><img alt="../../_images/img_4_4_11.jpg" class="align-center" id="img-4-4-11" src="../../_images/img_4_4_11.jpg" style="width: 100%;" /></a>
 <p>As can be seen, the original wavelet-fft-based method can’t remove partial rings effectively.
 In Algotom, this method is improved by combining with the sorting method, which is the key part
-of algorithm 3 in <span id="id3">[<a class="reference internal" href="../credits.html#id7" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Superior techniques for eliminating ring artifacts in x-ray micro-tomography. Opt. Express, 26(22):28396–28412, Oct 2018. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-26-22-28396, doi:10.1364/OE.26.028396.">R8</a>]</span>. This helps to avoid void-center artifacts when strong parameters
+of algorithm 3 in <span id="id3">[<a class="reference internal" href="../credits.html#id7" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Superior techniques for eliminating ring artifacts in x-ray micro-tomography. Opt. Express, 26(22):28396–28412, Oct 2018. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-26-22-28396, doi:10.1364/OE.26.028396.">R19</a>]</span>. This helps to avoid void-center artifacts when strong parameters
 of the wavelet-fft-based method are used as demonstrated below</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sinogram1a</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_stripe_based_wavelet_fft</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span> <span class="n">wavelet_name</span><span class="o">=</span><span class="s2">&quot;db10&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -385,7 +385,7 @@ in one slice.</p>
 <p>As can be seen, there are still low-contrast ring artifacts which are difficult to detect and remove. These
 low-contrast rings are caused by the <a class="reference external" href="https://sarepy.readthedocs.io/toc/section2.html#id5">halo effect</a>
 around blob areas on a scintillator. There is <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_fitting">a strong removal method</a>
-proposed in <span id="id4">[<a class="reference internal" href="../credits.html#id7" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Superior techniques for eliminating ring artifacts in x-ray micro-tomography. Opt. Express, 26(22):28396–28412, Oct 2018. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-26-22-28396, doi:10.1364/OE.26.028396.">R8</a>]</span> and its improvement can help to deal with such ring artifacts as below.</p>
+proposed in <span id="id4">[<a class="reference internal" href="../credits.html#id7" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Superior techniques for eliminating ring artifacts in x-ray micro-tomography. Opt. Express, 26(22):28396–28412, Oct 2018. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-26-22-28396, doi:10.1364/OE.26.028396.">R19</a>]</span> and its improvement can help to deal with such ring artifacts as below.</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sinogram1</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_all_stripe</span><span class="p">(</span><span class="n">sinogram1</span><span class="p">,</span> <span class="n">snr</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">la_size</span><span class="o">=</span><span class="mi">81</span><span class="p">,</span> <span class="n">sm_size</span><span class="o">=</span><span class="mi">31</span><span class="p">)</span>
 <span class="n">sinogram2</span> <span class="o">=</span> <span class="n">rem</span><span class="o">.</span><span class="n">remove_all_stripe</span><span class="p">(</span><span class="n">sinogram2</span><span class="p">,</span> <span class="n">snr</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">la_size</span><span class="o">=</span><span class="mi">81</span><span class="p">,</span> <span class="n">sm_size</span><span class="o">=</span><span class="mi">31</span><span class="p">)</span>
@@ -670,7 +670,7 @@ a commercial cone-beam system. Data provided by <a class="reference external" hr
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo  Diamond Light Source, UK; NSLS-II, Brookhaven National Lab, US.
+        &#169; Copyright 2021, Nghia T. Vo  NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
 

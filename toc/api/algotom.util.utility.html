@@ -322,7 +322,7 @@
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.apply_method_to_multiple_sinograms">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">apply_method_to_multiple_sinograms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">para</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#apply_method_to_multiple_sinograms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.apply_method_to_multiple_sinograms" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">apply_method_to_multiple_sinograms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">para</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'threads'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#apply_method_to_multiple_sinograms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.apply_method_to_multiple_sinograms" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply a processing method (in “filtering”, “removal”, and “reconstruction”
 module) to multiple sinograms or multiple slices in parallel.</p>
 <dl class="field-list simple">
@@ -333,6 +333,7 @@ e.g [:, i, :].</p></li>
 <li><p><strong>method</strong> (<em>str</em>) – Name of a method. e.g. “remove_stripe_based_sorting”.</p></li>
 <li><p><strong>para</strong> (<em>list</em>) – Parameters of the method. e.g. [21, 1]</p></li>
 <li><p><strong>ncore</strong> (<em>int or None</em>) – Number of cpu-cores used for computing. Automatically selected if None.</p></li>
+<li><p><strong>prefer</strong> (<em>{“threads”, “processes”}</em>) – Prefer backend for parallel processing.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1011,7 +1012,7 @@ size of images by half.</p></li>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo  Diamond Light Source, UK; NSLS-II, Brookhaven National Lab, US.
+        &#169; Copyright 2021, Nghia T. Vo  NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
 

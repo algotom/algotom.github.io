@@ -336,7 +336,7 @@
             <span class="n">list_metric</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">calculate_center_metric</span><span class="p">(</span>
                 <span class="n">list_cor</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sino_180</span><span class="p">,</span> <span class="n">sino_flip</span><span class="p">,</span> <span class="n">sino_comp</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">list_metric</span> <span class="o">=</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;threading&quot;</span><span class="p">)(</span>
+        <span class="n">list_metric</span> <span class="o">=</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)(</span>
             <span class="n">delayed</span><span class="p">(</span><span class="n">calculate_center_metric</span><span class="p">)(</span><span class="n">list_cor</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sino_180</span><span class="p">,</span> <span class="n">sino_flip</span><span class="p">,</span>
                                              <span class="n">sino_comp</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span>
             <span class="nb">range</span><span class="p">(</span><span class="n">num_metric</span><span class="p">))</span>
@@ -401,7 +401,7 @@
             <span class="n">list_metric</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">calculate_center_metric</span><span class="p">(</span>
                 <span class="n">list_cor</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sino_180</span><span class="p">,</span> <span class="n">sino_flip</span><span class="p">,</span> <span class="n">sino_comp</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">list_metric</span> <span class="o">=</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;threading&quot;</span><span class="p">)(</span>
+        <span class="n">list_metric</span> <span class="o">=</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)(</span>
             <span class="n">delayed</span><span class="p">(</span><span class="n">calculate_center_metric</span><span class="p">)(</span><span class="n">list_cor</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sino_180</span><span class="p">,</span> <span class="n">sino_flip</span><span class="p">,</span>
                                              <span class="n">sino_comp</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span>
             <span class="nb">range</span><span class="p">(</span><span class="n">num_metric</span><span class="p">))</span>
@@ -1086,7 +1086,7 @@
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo  Diamond Light Source, UK; NSLS-II, Brookhaven National Lab, US.
+        &#169; Copyright 2021, Nghia T. Vo  NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
 
