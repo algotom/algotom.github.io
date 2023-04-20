@@ -225,7 +225,7 @@ to handle different tasks such as converting tif images to hdf, displaying the
 hdf tree, or saving output to a hdf file.</p>
 </section>
 <section id="flat-field-correction">
-<h2><span class="section-number">1.4.2. </span>Flat-field correction<a class="headerlink" href="#flat-field-correction" title="Permalink to this heading">¶</a></h2>
+<span id="id1"></span><h2><span class="section-number">1.4.2. </span>Flat-field correction<a class="headerlink" href="#flat-field-correction" title="Permalink to this heading">¶</a></h2>
 <p>The flat-field correction process is based on the Beer-Lambert’s law</p>
 <div class="math notranslate nohighlight">
 \[\frac{I}{I_0} = \int_{}e^{-\alpha (x,y,z) dx}\]</div>
@@ -318,7 +318,7 @@ in Algotom</p>
 </section>
 <section id="ring-artifact-removal">
 <h2><span class="section-number">1.4.4. </span>Ring artifact removal<a class="headerlink" href="#ring-artifact-removal" title="Permalink to this heading">¶</a></h2>
-<p>Causes of ring artifacts and methods for removing them <span id="id1">[<a class="reference internal" href="../credits.html#id7" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Superior techniques for eliminating ring artifacts in x-ray micro-tomography. Opt. Express, 26(22):28396–28412, Oct 2018. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-26-22-28396, doi:10.1364/OE.26.028396.">R19</a>]</span> have been documented in detailed
+<p>Causes of ring artifacts and methods for removing them <span id="id2">[<a class="reference internal" href="../credits.html#id7" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Superior techniques for eliminating ring artifacts in x-ray micro-tomography. Opt. Express, 26(22):28396–28412, Oct 2018. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-26-22-28396, doi:10.1364/OE.26.028396.">R19</a>]</span> have been documented in detailed
 <a class="reference external" href="https://sarepy.readthedocs.io/">here</a>. There are many methods to choose from
 in Algotom. However the <a class="reference external" href="https://doi.org/10.1364/OE.26.028396">combination of methods</a>
 has been proven to be the most effective way to clean most of ring artifact types.
@@ -341,7 +341,7 @@ of how to use the methods</p>
 <section id="center-of-rotation-determination">
 <h2><span class="section-number">1.4.5. </span>Center-of-rotation determination<a class="headerlink" href="#center-of-rotation-determination" title="Permalink to this heading">¶</a></h2>
 <p>There are <a class="reference external" href="https://algotom.readthedocs.io/en/latest/api/algotom.prep.calculation.html">a few methods</a>
-to determine the center-of-rotation. The demonstrated method <span id="id2">[<a class="reference internal" href="../credits.html#id5" title="Nghia T. Vo, Michael Drakopoulos, Robert C. Atwood, and Christina Reinhard. Reliable method for calculating the center of rotation in parallel-beam tomography. Opt. Express, 22(16):19078–19086, Aug 2014. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-22-16-19078, doi:10.1364/OE.22.019078.">R21</a>]</span> below uses a 180-degree
+to determine the center-of-rotation. The demonstrated method <span id="id3">[<a class="reference internal" href="../credits.html#id5" title="Nghia T. Vo, Michael Drakopoulos, Robert C. Atwood, and Christina Reinhard. Reliable method for calculating the center of rotation in parallel-beam tomography. Opt. Express, 22(16):19078–19086, Aug 2014. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-22-16-19078, doi:10.1364/OE.22.019078.">R21</a>]</span> below uses a 180-degree
 sinogram for calculation.</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">algotom.prep.calculation</span> <span class="k">as</span> <span class="nn">calc</span>
@@ -427,7 +427,7 @@ different strengths:</p>
 routine is as follows:</p>
 <ul>
 <li><p>Acquire a <a class="reference external" href="https://discorpy.readthedocs.io/en/latest/tutorials/methods.html#extracting-reference-points-from-a-calibration-image">grid-pattern image</a>.</p></li>
-<li><p>Calculate distortion coefficients <span id="id3">[<a class="reference internal" href="../credits.html#id6" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Radial lens distortion correction with sub-pixel accuracy for x-ray micro-tomography. Opt. Express, 23(25):32859–32868, Dec 2015. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-23-25-32859, doi:10.1364/OE.23.032859.">R18</a>]</span> using the <a class="reference external" href="https://discorpy.readthedocs.io/en/latest/usage/demo_01.html">Discorpy package</a>. The output is a text file.</p></li>
+<li><p>Calculate distortion coefficients <span id="id4">[<a class="reference internal" href="../credits.html#id6" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Radial lens distortion correction with sub-pixel accuracy for x-ray micro-tomography. Opt. Express, 23(25):32859–32868, Dec 2015. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-23-25-32859, doi:10.1364/OE.23.032859.">R18</a>]</span> using the <a class="reference external" href="https://discorpy.readthedocs.io/en/latest/usage/demo_01.html">Discorpy package</a>. The output is a text file.</p></li>
 <li><p>Use the calculated coefficients for correction.</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -489,7 +489,7 @@ converted to an equivalent 180-degree sinogram by stitching two halves of
 the 360-degree sinogram, before reconstruction. For stitching, we need to know
 either the center-of-rotation, or the overlap-area and overlap-side between
 two halves of the sinogram. Algotom provides <a class="reference external" href="https://algotom.readthedocs.io/en/latest/api/algotom.prep.calculation.html#algotom.prep.calculation.find_center_360">methods</a>
-<span id="id4">[<a class="reference internal" href="../credits.html#id3" title="Nghia T. Vo, Robert C. Atwood, Michael Drakopoulos, and Thomas Connolley. Data processing methods and data acquisition for samples larger than the field of view in parallel-beam tomography. Opt. Express, 29(12):17849–17874, Jun 2021. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-29-12-17849, doi:10.1364/OE.418448.">C1</a>]</span> for automatically finding these parameters.</p>
+<span id="id5">[<a class="reference internal" href="../credits.html#id3" title="Nghia T. Vo, Robert C. Atwood, Michael Drakopoulos, and Thomas Connolley. Data processing methods and data acquisition for samples larger than the field of view in parallel-beam tomography. Opt. Express, 29(12):17849–17874, Jun 2021. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-29-12-17849, doi:10.1364/OE.418448.">C1</a>]</span> for automatically finding these parameters.</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>

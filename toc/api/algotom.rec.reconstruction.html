@@ -180,26 +180,8 @@ and CPU.</p></li>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.rec.reconstruction.make_smoothing_window" title="algotom.rec.reconstruction.make_smoothing_window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_smoothing_window</span></code></a>(filter_name, width)</p></td>
-<td><p>Make a 1d smoothing window.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#algotom.rec.reconstruction.make_2d_ramp_window" title="algotom.rec.reconstruction.make_2d_ramp_window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_2d_ramp_window</span></code></a>(height, width[, filter_name])</p></td>
-<td><p>Make the 2d ramp window (in the Fourier space) by repeating the 1d ramp window with the option of adding a smoothing window.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.rec.reconstruction.apply_ramp_filter" title="algotom.rec.reconstruction.apply_ramp_filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_ramp_filter</span></code></a>(sinogram[, ramp_win, ...])</p></td>
-<td><p>Apply the ramp filter to a sinogram with the option of adding a smoothing filter.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#algotom.rec.reconstruction.back_projection_gpu" title="algotom.rec.reconstruction.back_projection_gpu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">back_projection_gpu</span></code></a></p></td>
-<td><p>Implement the back-projection algorithm using GPU.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.rec.reconstruction.back_projection_cpu" title="algotom.rec.reconstruction.back_projection_cpu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">back_projection_cpu</span></code></a></p></td>
-<td><p>Implement the back-projection algorithm using CPU.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#algotom.rec.reconstruction.fbp_reconstruction" title="algotom.rec.reconstruction.fbp_reconstruction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fbp_reconstruction</span></code></a>(sinogram, center[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.rec.reconstruction.fbp_reconstruction" title="algotom.rec.reconstruction.fbp_reconstruction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fbp_reconstruction</span></code></a>(sinogram, center[, ...])</p></td>
 <td><p>Apply the FBP (filtered back-projection) reconstruction method to a sinogram-image or a chunk of sinogram-images.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.rec.reconstruction.generate_mapping_coordinate" title="algotom.rec.reconstruction.generate_mapping_coordinate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_mapping_coordinate</span></code></a>(width_sino, ...)</p></td>
-<td><p>Calculate coordinates in the sinogram space from coordinates in the reconstruction space (in the Fourier domain).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#algotom.rec.reconstruction.dfi_reconstruction" title="algotom.rec.reconstruction.dfi_reconstruction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dfi_reconstruction</span></code></a>(sinogram, center[, ...])</p></td>
 <td><p>Apply the DFI (direct Fourier inversion) reconstruction method (Ref.</p></td>
@@ -508,7 +490,7 @@ reduce the size of the image by half.</p></li>
 <li><p><strong>sigma</strong> (<em>int</em>) – Denoising the sinogram before reconstruction. Should be set to 0 for
 noise-free data (simulation).</p></li>
 <li><p><strong>metric_function</strong> (<em>obj</em>) – To apply a customized function for calculating metric going with
-keyword arguments (kwargs).</p></li>
+keyword arguments (<a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
