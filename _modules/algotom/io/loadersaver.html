@@ -1340,14 +1340,14 @@
 
 
 <div class="viewcode-block" id="save_image_multiple"><a class="viewcode-back" href="../../../toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.save_image_multiple">[docs]</a><span class="k">def</span> <span class="nf">save_image_multiple</span><span class="p">(</span><span class="n">list_path</span><span class="p">,</span> <span class="n">image_stack</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                        <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">):</span>
+                        <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">,</span> <span class="n">start_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Save an 3D-array to a list of tif images in parallel.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    list_path : str</span>
-<span class="sd">        List of output paths.</span>
+<span class="sd">        List of output paths or a folder path</span>
 <span class="sd">    image_stack : array_like</span>
 <span class="sd">        3D array.</span>
 <span class="sd">    overwrite : bool</span>
@@ -1356,53 +1356,50 @@
 <span class="sd">        Number of cpu-cores. Automatically selected if None.</span>
 <span class="sd">    prefer : {&quot;threads&quot;, &quot;processes&quot;}</span>
 <span class="sd">        Prefer backend for parallel processing.</span>
+<span class="sd">    start_idx : int</span>
+<span class="sd">        Starting index of the output files if input is a folder.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">list_path</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input must be a list of file paths!!!&quot;</span><span class="p">)</span>
-    <span class="n">num_file</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_path</span><span class="p">)</span>
-    <span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">image_stack</span><span class="o">.</span><span class="n">shape</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">list_path</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">num_path</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_path</span><span class="p">)</span>
+        <span class="n">num_file</span> <span class="o">=</span> <span class="n">image_stack</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">num_path</span> <span class="o">!=</span> <span class="n">num_file</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Number of file paths: </span><span class="si">{0}</span><span class="s2"> is different to the &quot;</span>
+                             <span class="s2">&quot;number of images: </span><span class="si">{1}</span><span class="s2"> given the axis of </span><span class="si">{2}</span><span class="s2">!!!&quot;</span>
+                             <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num_path</span><span class="p">,</span> <span class="n">num_file</span><span class="p">,</span> <span class="n">axis</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">list_path</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">num_file</span> <span class="o">=</span> <span class="n">image_stack</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span>
+        <span class="n">start_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">start_idx</span><span class="p">)</span>
+        <span class="n">list_path</span> <span class="o">=</span> <span class="p">[(</span><span class="n">list_path</span> <span class="o">+</span> <span class="s2">&quot;/img_&quot;</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&quot;00000&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span> <span class="o">+</span> <span class="s2">&quot;.tif&quot;</span><span class="p">)</span>
+                     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start_idx</span><span class="p">,</span> <span class="n">start_idx</span> <span class="o">+</span> <span class="n">num_file</span><span class="p">)]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input must be a list of file paths or a folder path&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">ncore</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ncore</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
     <span class="n">ncore</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">ncore</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_file</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">axis</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">width</span> <span class="o">!=</span> <span class="n">num_file</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Mismatch between the number of images: </span><span class="si">{0}</span><span class="s2"> and &quot;</span>
-                             <span class="s2">&quot;the number of file paths: </span><span class="si">{1}</span><span class="s2">&quot;</span>
-                             <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">num_file</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">ncore</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="n">prefer</span><span class="p">)(</span>
+                <span class="n">delayed</span><span class="p">(</span><span class="n">save_image</span><span class="p">)(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">image_stack</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">],</span>
+                                    <span class="n">overwrite</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_file</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">ncore</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="n">prefer</span><span class="p">)(</span>
-                    <span class="n">delayed</span><span class="p">(</span><span class="n">save_image</span><span class="p">)(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">image_stack</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">],</span>
-                                        <span class="n">overwrite</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_file</span><span class="p">))</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_file</span><span class="p">):</span>
-                    <span class="n">save_image</span><span class="p">(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">image_stack</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">overwrite</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_file</span><span class="p">):</span>
+                <span class="n">save_image</span><span class="p">(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">image_stack</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">overwrite</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">axis</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">height</span> <span class="o">!=</span> <span class="n">num_file</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Mismatch between the number of images: </span><span class="si">{0}</span><span class="s2"> and &quot;</span>
-                             <span class="s2">&quot;the number of file paths: </span><span class="si">{1}</span><span class="s2">&quot;</span>
-                             <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">num_file</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">ncore</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="n">prefer</span><span class="p">)(</span>
+                <span class="n">delayed</span><span class="p">(</span><span class="n">save_image</span><span class="p">)(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">image_stack</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="p">:],</span>
+                                    <span class="n">overwrite</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_file</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">ncore</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="n">prefer</span><span class="p">)(</span>
-                    <span class="n">delayed</span><span class="p">(</span><span class="n">save_image</span><span class="p">)(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">image_stack</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="p">:],</span>
-                                        <span class="n">overwrite</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_file</span><span class="p">))</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_file</span><span class="p">):</span>
-                    <span class="n">save_image</span><span class="p">(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">image_stack</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">overwrite</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_file</span><span class="p">):</span>
+                <span class="n">save_image</span><span class="p">(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">image_stack</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">overwrite</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">depth</span> <span class="o">!=</span> <span class="n">num_file</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Mismatch between the number of images: </span><span class="si">{0}</span><span class="s2"> and &quot;</span>
-                             <span class="s2">&quot;the number of file paths: </span><span class="si">{1}</span><span class="s2">&quot;</span>
-                             <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">num_file</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">ncore</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="n">prefer</span><span class="p">)(</span>
+                <span class="n">delayed</span><span class="p">(</span><span class="n">save_image</span><span class="p">)(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">image_stack</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                    <span class="n">overwrite</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_file</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">ncore</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="n">prefer</span><span class="p">)(</span>
-                    <span class="n">delayed</span><span class="p">(</span><span class="n">save_image</span><span class="p">)(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">image_stack</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-                                        <span class="n">overwrite</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_file</span><span class="p">))</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_file</span><span class="p">):</span>
-                    <span class="n">save_image</span><span class="p">(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">image_stack</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">overwrite</span><span class="p">)</span></div>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_file</span><span class="p">):</span>
+                <span class="n">save_image</span><span class="p">(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">image_stack</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">overwrite</span><span class="p">)</span></div>
 </pre></div>
 
             <div class="clearer"></div>
@@ -1427,7 +1424,7 @@
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo  NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
+        &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
 

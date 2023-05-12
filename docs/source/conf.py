@@ -18,10 +18,10 @@ sys.path.insert(0, os.path.abspath('../..'))
 
 # -- Project information -----------------------------------------------------
 
-Affiliation1 = " NSLS-II, Brookhaven National Lab, US"
-Affiliation2 = "; Diamond Light Source, UK"
+Affiliation1 = "NSLS-II, Brookhaven National Lab, US"
+Affiliation2 = "Diamond Light Source, UK"
 project = "Algotom"
-copyright = "2021, Nghia T. Vo " + Affiliation1 + Affiliation2
+copyright = "2021, Nghia T. Vo; " + Affiliation1 + "; " + Affiliation2
 author = "Nghia T. Vo"
 
 # The full version, including alpha/beta/rc tags
