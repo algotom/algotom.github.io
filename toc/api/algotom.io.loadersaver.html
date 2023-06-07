@@ -125,7 +125,7 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../section1.html">1. Basic tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../section2.html">2. Features and capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section2.html">2. Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section3.html">3. Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section4.html">4. Demonstrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section5.html">5. Technical notes</a></li>
@@ -231,8 +231,8 @@ be used by speckle-based phase contrast tomography.</p></li>
 <tr class="row-even"><td><p><a class="reference internal" href="#algotom.io.loadersaver.get_tif_stack" title="algotom.io.loadersaver.get_tif_stack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_tif_stack</span></code></a>(file_base[, idx, crop, ...])</p></td>
 <td><p>Load tif images to a stack.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.io.loadersaver.get_image_stack" title="algotom.io.loadersaver.get_image_stack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_image_stack</span></code></a>(idx, list_path[, data_key, ...])</p></td>
-<td><p>Stack images having the same index from multiple datasets.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.io.loadersaver.get_image_stack" title="algotom.io.loadersaver.get_image_stack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_image_stack</span></code></a>(idx, paths[, data_key, ...])</p></td>
+<td><p>To get multiple images with the same index from multiple datasets (tif format or hdf format).</p></td>
 </tr>
 </tbody>
 </table>
@@ -563,16 +563,18 @@ crop = (crop_top, crop_bottom, crop_left, crop_right).</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.io.loadersaver.get_image_stack">
-<span class="sig-prename descclassname"><span class="pre">algotom.io.loadersaver.</span></span><span class="sig-name descname"><span class="pre">get_image_stack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flat_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dark_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_use</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fix_zero_div</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/io/loadersaver.html#get_image_stack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.io.loadersaver.get_image_stack" title="Permalink to this definition">¶</a></dt>
-<dd><p>Stack images having the same index from multiple datasets. For tif images,
-if only one dataset is provided (list_path is a string, not a list),
-there is an option, idx = None, to load the whole stack.</p>
+<span class="sig-prename descclassname"><span class="pre">algotom.io.loadersaver.</span></span><span class="sig-name descname"><span class="pre">get_image_stack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flat_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dark_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_use</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fix_zero_div</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/io/loadersaver.html#get_image_stack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.io.loadersaver.get_image_stack" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get multiple images with the same index from multiple datasets
+(tif format or hdf format). For tif images, if paths is a string
+(not a list) use idx=None to load all images. For getting a stack of images
+from a single hdf file, use the “load_hdf” method instead.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>idx</strong> (<em>int or None</em>) – Index of an image in a dataset. Use None to load all images if only
 one dataset provided.</p></li>
-<li><p><strong>list_path</strong> (<em>list of str</em>) – List of hdf/nxs file-paths or folders of tif-images to datasets.</p></li>
+<li><p><strong>paths</strong> (<em>list of str or str</em>) – List of hdf/nxs file-paths, list of folders of tif-images, or a folder
+of tif-images.</p></li>
 <li><p><strong>data_key</strong> (<em>str</em>) – Requested if input is a hdf/nxs files.</p></li>
 <li><p><strong>average</strong> (<em>bool, optional</em>) – Average images in a dataset if True.</p></li>
 <li><p><strong>crop</strong> (<em>tuple of int, optional</em>) – Crop the images from the edges, i.e.

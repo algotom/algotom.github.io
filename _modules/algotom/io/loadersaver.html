@@ -122,7 +122,7 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper"><ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/section1.html">1. Basic tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../toc/section2.html">2. Features and capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toc/section2.html">2. Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/section3.html">3. Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/section4.html">4. Demonstrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/section5.html">5. Technical notes</a></li>
@@ -1187,21 +1187,23 @@
     <span class="k">return</span> <span class="n">img_stack</span></div>
 
 
-<div class="viewcode-block" id="get_image_stack"><a class="viewcode-back" href="../../../toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.get_image_stack">[docs]</a><span class="k">def</span> <span class="nf">get_image_stack</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">list_path</span><span class="p">,</span> <span class="n">data_key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<div class="viewcode-block" id="get_image_stack"><a class="viewcode-back" href="../../../toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.get_image_stack">[docs]</a><span class="k">def</span> <span class="nf">get_image_stack</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">paths</span><span class="p">,</span> <span class="n">data_key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                     <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">flat_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dark_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                     <span class="n">num_use</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fix_zero_div</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Stack images having the same index from multiple datasets. For tif images,</span>
-<span class="sd">    if only one dataset is provided (list_path is a string, not a list),</span>
-<span class="sd">    there is an option, idx = None, to load the whole stack.</span>
+<span class="sd">    To get multiple images with the same index from multiple datasets</span>
+<span class="sd">    (tif format or hdf format). For tif images, if paths is a string</span>
+<span class="sd">    (not a list) use idx=None to load all images. For getting a stack of images</span>
+<span class="sd">    from a single hdf file, use the &quot;load_hdf&quot; method instead.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    idx : int or None</span>
 <span class="sd">        Index of an image in a dataset. Use None to load all images if only</span>
 <span class="sd">        one dataset provided.</span>
-<span class="sd">    list_path : list of str</span>
-<span class="sd">        List of hdf/nxs file-paths or folders of tif-images to datasets.</span>
+<span class="sd">    paths : list of str or str</span>
+<span class="sd">        List of hdf/nxs file-paths, list of folders of tif-images, or a folder</span>
+<span class="sd">        of tif-images.</span>
 <span class="sd">    data_key : str</span>
 <span class="sd">        Requested if input is a hdf/nxs files.</span>
 <span class="sd">    average : bool, optional</span>
@@ -1223,14 +1225,22 @@
 <span class="sd">    img_stack : ndarray</span>
 <span class="sd">        3D array. A stack of images.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">list_path</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-        <span class="n">num_file</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_path</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">file_base</span><span class="p">,</span> <span class="n">file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">file_ext</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input must be a folder path!!!&quot;</span><span class="p">)</span>
+        <span class="n">img_stack</span> <span class="o">=</span> <span class="n">get_tif_stack</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">idx</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="n">crop</span><span class="p">,</span>
+                                  <span class="n">flat_field</span><span class="o">=</span><span class="n">flat_field</span><span class="p">,</span>
+                                  <span class="n">dark_field</span><span class="o">=</span><span class="n">dark_field</span><span class="p">,</span> <span class="n">num_use</span><span class="o">=</span><span class="n">num_use</span><span class="p">,</span>
+                                  <span class="n">fix_zero_div</span><span class="o">=</span><span class="n">fix_zero_div</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">num_file</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">num_use</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">num_use</span> <span class="o">=</span> <span class="n">num_file</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">num_use</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">num_use</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_file</span><span class="p">)</span>
         <span class="n">tif_format</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="n">file_base</span><span class="p">,</span> <span class="n">file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">list_path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">file_base</span><span class="p">,</span> <span class="n">file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="k">if</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
             <span class="n">tif_format</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1244,7 +1254,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No tif-images in: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_base</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">load_hdf</span><span class="p">(</span><span class="n">list_path</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">data_key</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
+            <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">load_hdf</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">data_key</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
         <span class="n">cr_top</span><span class="p">,</span> <span class="n">cr_bot</span><span class="p">,</span> <span class="n">cr_left</span><span class="p">,</span> <span class="n">cr_right</span> <span class="o">=</span> <span class="n">crop</span>
         <span class="n">top</span> <span class="o">=</span> <span class="n">cr_top</span>
         <span class="n">bot</span> <span class="o">=</span> <span class="n">height</span> <span class="o">-</span> <span class="n">cr_bot</span>
@@ -1267,7 +1277,7 @@
         <span class="n">img_stack</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">tif_format</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_use</span><span class="p">):</span>
-                <span class="n">data_obj</span> <span class="o">=</span> <span class="n">load_hdf</span><span class="p">(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">data_key</span><span class="p">)</span>
+                <span class="n">data_obj</span> <span class="o">=</span> <span class="n">load_hdf</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">data_key</span><span class="p">)</span>
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_obj</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">average</span><span class="p">:</span>
                         <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data_obj</span><span class="p">[:,</span> <span class="n">top</span><span class="p">:</span><span class="n">bot</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span><span class="n">right</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -1282,7 +1292,7 @@
                 <span class="n">img_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_use</span><span class="p">):</span>
-                <span class="n">list_file</span> <span class="o">=</span> <span class="n">find_file</span><span class="p">(</span><span class="n">list_path</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;/*tif*&quot;</span><span class="p">)</span>
+                <span class="n">list_file</span> <span class="o">=</span> <span class="n">find_file</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;/*tif*&quot;</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">average</span><span class="p">:</span>
                     <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span>
                         <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">load_image</span><span class="p">(</span><span class="n">file</span><span class="p">)[</span><span class="n">top</span><span class="p">:</span><span class="n">bot</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span><span class="n">right</span><span class="p">]</span>
@@ -1299,10 +1309,7 @@
             <span class="n">nmean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">img_stack</span><span class="p">)</span>
             <span class="n">img_stack</span><span class="p">[</span><span class="n">img_stack</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="n">nmean</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">img_stack</span> <span class="o">=</span> <span class="n">get_tif_stack</span><span class="p">(</span><span class="n">list_path</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">idx</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="n">crop</span><span class="p">,</span>
-                                  <span class="n">flat_field</span><span class="o">=</span><span class="n">flat_field</span><span class="p">,</span>
-                                  <span class="n">dark_field</span><span class="o">=</span><span class="n">dark_field</span><span class="p">,</span> <span class="n">num_use</span><span class="o">=</span><span class="n">num_use</span><span class="p">,</span>
-                                  <span class="n">fix_zero_div</span><span class="o">=</span><span class="n">fix_zero_div</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input must be a list of strings or a folder path!!!&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">img_stack</span></div>
 
 

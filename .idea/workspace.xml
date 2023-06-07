@@ -2,11 +2,58 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd7108d9-b1b3-4aba-9605-7e4d6e864f32" name="Changes" comment="Update">
+      <change beforePath="$PROJECT_DIR$/.doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/.doctrees/environment.pickle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.doctrees/toc/api/algotom.io.loadersaver.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/.doctrees/toc/api/algotom.io.loadersaver.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.doctrees/toc/api/algotom.rec.reconstruction.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/.doctrees/toc/api/algotom.rec.reconstruction.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.doctrees/toc/section2.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/.doctrees/toc/section2.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_modules/algotom/io/loadersaver.html" beforeDir="false" afterPath="$PROJECT_DIR$/_modules/algotom/io/loadersaver.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_modules/algotom/rec/reconstruction.html" beforeDir="false" afterPath="$PROJECT_DIR$/_modules/algotom/rec/reconstruction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_modules/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_modules/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_sources/toc/section2.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/_sources/toc/section2.rst.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algotom/io/loadersaver.py" beforeDir="false" afterPath="$PROJECT_DIR$/algotom/io/loadersaver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algotom/prep/phase.py" beforeDir="false" afterPath="$PROJECT_DIR$/algotom/prep/phase.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algotom/rec/reconstruction.py" beforeDir="false" afterPath="$PROJECT_DIR$/algotom/rec/reconstruction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/source/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/conf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/source/toc/section2.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/toc/section2.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/genindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/genindex.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/objects.inv" beforeDir="false" afterPath="$PROJECT_DIR$/objects.inv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py-modindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/py-modindex.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/searchindex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/api.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/api/algotom.io.converter.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.io.converter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/api/algotom.io.loadersaver.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.io.loadersaver.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/api/algotom.post.postprocessing.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.post.postprocessing.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/api/algotom.prep.calculation.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.prep.calculation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/api/algotom.prep.conversion.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.prep.conversion.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/api/algotom.prep.correction.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.prep.correction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/api/algotom.prep.filtering.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.prep.filtering.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/api/algotom.prep.phase.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.prep.phase.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/api/algotom.prep.removal.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.prep.removal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/api/algotom.rec.reconstruction.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.rec.reconstruction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/api/algotom.util.calibration.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.util.calibration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/api/algotom.util.correlation.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.util.correlation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/api/algotom.util.simulation.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.util.simulation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/api/algotom.util.utility.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/api/algotom.util.utility.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/credits.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/credits.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/highlights.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/highlights.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/section1.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/section1/section1_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section1/section1_1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/section1/section1_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section1/section1_2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/section1/section1_3.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section1/section1_3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/section1/section1_4.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section1/section1_4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/section1/section1_5.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section1/section1_5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/section2.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/section3.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/section4.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/section4/section4_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section4/section4_1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/section4/section4_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section4/section4_2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/section4/section4_3.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section4/section4_3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/section4/section4_4.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section4/section4_4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/section4/section4_5.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section4/section4_5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/section5.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/section5/section5_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section5/section5_1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toc/section6.html" beforeDir="false" afterPath="$PROJECT_DIR$/toc/section6.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
