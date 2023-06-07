@@ -1192,7 +1192,7 @@
                     <span class="n">num_use</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fix_zero_div</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    To get multiple images with the same index from multiple datasets</span>
-<span class="sd">    (tif format or hdf format). For tif images, if paths is a string</span>
+<span class="sd">    (tif format or hdf format). For tif images, if &quot;paths&quot; is a string</span>
 <span class="sd">    (not a list) use idx=None to load all images. For getting a stack of images</span>
 <span class="sd">    from a single hdf file, use the &quot;load_hdf&quot; method instead.</span>
 
@@ -1226,13 +1226,13 @@
 <span class="sd">        3D array. A stack of images.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="n">file_base</span><span class="p">,</span> <span class="n">file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">file_ext</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input must be a folder path!!!&quot;</span><span class="p">)</span>
-        <span class="n">img_stack</span> <span class="o">=</span> <span class="n">get_tif_stack</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">idx</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="n">crop</span><span class="p">,</span>
-                                  <span class="n">flat_field</span><span class="o">=</span><span class="n">flat_field</span><span class="p">,</span>
-                                  <span class="n">dark_field</span><span class="o">=</span><span class="n">dark_field</span><span class="p">,</span> <span class="n">num_use</span><span class="o">=</span><span class="n">num_use</span><span class="p">,</span>
-                                  <span class="n">fix_zero_div</span><span class="o">=</span><span class="n">fix_zero_div</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">paths</span><span class="p">):</span>
+            <span class="n">img_stack</span> <span class="o">=</span> <span class="n">get_tif_stack</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">idx</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="n">crop</span><span class="p">,</span>
+                                      <span class="n">flat_field</span><span class="o">=</span><span class="n">flat_field</span><span class="p">,</span>
+                                      <span class="n">dark_field</span><span class="o">=</span><span class="n">dark_field</span><span class="p">,</span> <span class="n">num_use</span><span class="o">=</span><span class="n">num_use</span><span class="p">,</span>
+                                      <span class="n">fix_zero_div</span><span class="o">=</span><span class="n">fix_zero_div</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The folder: </span><span class="si">{}</span><span class="s2"> does not exist.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">paths</span><span class="p">))</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
         <span class="n">num_file</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">num_use</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -1240,19 +1240,18 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">num_use</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">num_use</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_file</span><span class="p">)</span>
         <span class="n">tif_format</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="n">file_base</span><span class="p">,</span> <span class="n">file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="k">if</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
             <span class="n">tif_format</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">data_key</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                     <span class="s2">&quot;Please provide the key to a dataset in the hdf/nxs file&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">tif_format</span><span class="p">:</span>
-            <span class="n">list_file</span> <span class="o">=</span> <span class="n">find_file</span><span class="p">(</span><span class="n">file_base</span> <span class="o">+</span> <span class="s2">&quot;/*tif*&quot;</span><span class="p">)</span>
+            <span class="n">list_file</span> <span class="o">=</span> <span class="n">find_file</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;/*tif*&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_file</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">load_image</span><span class="p">(</span><span class="n">list_file</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No tif-images in: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_base</span><span class="p">))</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No tif-images in: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="o">=</span> <span class="n">load_hdf</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">data_key</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
         <span class="n">cr_top</span><span class="p">,</span> <span class="n">cr_bot</span><span class="p">,</span> <span class="n">cr_left</span><span class="p">,</span> <span class="n">cr_right</span> <span class="o">=</span> <span class="n">crop</span>
