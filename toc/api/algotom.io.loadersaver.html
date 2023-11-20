@@ -234,6 +234,12 @@ be used by speckle-based phase contrast tomography.</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="#algotom.io.loadersaver.get_image_stack" title="algotom.io.loadersaver.get_image_stack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_image_stack</span></code></a>(idx, paths[, data_key, ...])</p></td>
 <td><p>To get multiple images with the same index from multiple datasets (tif format or hdf format).</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#algotom.io.loadersaver.load_image_multiple" title="algotom.io.loadersaver.load_image_multiple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_image_multiple</span></code></a>(list_path[, ncore, prefer])</p></td>
+<td><p>Load list of images in parallel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.io.loadersaver.save_image_multiple" title="algotom.io.loadersaver.save_image_multiple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_image_multiple</span></code></a>(list_path, image_stack)</p></td>
+<td><p>Save an 3D-array to a list of tif images in parallel.</p></td>
+</tr>
 </tbody>
 </table>
 <dl class="py function">
