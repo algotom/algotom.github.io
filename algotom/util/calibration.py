@@ -27,8 +27,12 @@ Module of calibration methods:
     -   Binarizing an image.
     -   Calculating the distance between two point-like objects segmented from
         two images. Useful for determining pixel-size in helical scans.
+    -   Find the tilt and roll of a parallel-beam tomography system given
+        coordinates of a point-like object scanned in the range of
+        [0, 360] degrees.
 """
 
+import warnings
 import numpy as np
 import scipy.ndimage as ndi
 import algotom.util.utility as util
@@ -333,3 +337,176 @@ def calculate_distance(mat1, mat2, size_opt="max", threshold=None,
     com2 = ndi.center_of_mass(mat_bin2)
     distance = np.sqrt((com1[0] - com2[0]) ** 2 + (com1[1] - com2[1]) ** 2)
     return distance
+
+
+def fit_points_to_ellipse(x, y):
+    """
+    Fit an ellipse to a set of points.
+
+    Parameters
+    ----------
+    x : ndarray
+        x-coordinates of the points.
+    y : ndarray
+        y-coordinates of the points.
+
+    Returns
+    -------
+    roll_angle : float
+        Rotation angle of the ellipse in degree.
+    a_major : float
+        Length of the major axis.
+    b_minor : float
+        Length of the minor axis.
+    xc : float
+        x-coordinate of the ellipse center.
+    yc : float
+        y-coordinate of the ellipse center.
+    """
+    if len(x) != len(y):
+        raise ValueError("x and y must have the same length!!!")
+    A = np.array([x**2, x*y, y**2, x, y, np.ones_like(x)]).T
+    vh = np.linalg.svd(A, full_matrices=False)[-1]
+    a0, b0, c0, d0, e0, f0 = vh.T[:, -1]
+    denom = b0 ** 2 - 4 * a0 * c0
+    msg = "Can't fit to an ellipse!!!"
+    if denom == 0:
+        raise ValueError(msg)
+    xc = (2 * c0 * d0 - b0 * e0) / denom
+    yc = (2 * a0 * e0 - b0 * d0) / denom
+    roll_angle = np.rad2deg(
+        np.arctan2(c0 - a0 - np.sqrt((a0 - c0) ** 2 + b0 ** 2), b0))
+    if roll_angle > 90.0:
+        roll_angle = - (180 - roll_angle)
+    if roll_angle < -90.0:
+        roll_angle = (180 + roll_angle)
+    a_term = 2 * (a0 * e0 ** 2 + c0 * d0 ** 2 -
+                  b0 * d0 * e0 + denom * f0) * (
+                         a0 + c0 + np.sqrt((a0 - c0) ** 2 + b0 ** 2))
+    if a_term < 0.0:
+        raise ValueError(msg)
+    a_major = -2 * np.sqrt(a_term) / denom
+    b_term = 2 * (a0 * e0 ** 2 + c0 * d0 ** 2 -
+                  b0 * d0 * e0 + denom * f0) * (
+                      a0 + c0 - np.sqrt((a0 - c0) ** 2 + b0 ** 2))
+    if b_term < 0.0:
+        raise ValueError(msg)
+    b_minor = -2 * np.sqrt(b_term) / denom
+    if a_major < b_minor:
+        a_major, b_minor = b_minor, a_major
+        if roll_angle < 0.0:
+            roll_angle = 90 + roll_angle
+        else:
+            roll_angle = -90 + roll_angle
+    return roll_angle, a_major, b_minor, xc, yc
+
+
+def find_tilt_roll_based_linear_fit(x, y):
+    """
+    Find the tilt and roll of a parallel-beam tomography system given
+    coordinates of a point-like object scanned in the range of
+    [0, 360] degrees. Uses a linear-fit-based approach [1].
+
+    Parameters
+    ----------
+    x : ndarray
+        x-coordinates of the points.
+    y : ndarray
+        y-coordinates of the points.
+
+    Returns
+    -------
+    tilt : float
+        Tilt angle in degree.
+    roll : float
+        Roll angle in degree.
+
+    References
+    ----------
+
+    [1] : https://doi.org/10.1098/rsta.2014.0398
+    """
+    (a, b) = np.polyfit(x, y, 1)[:2]
+    dist_list = np.abs(a * x - y + b) / np.sqrt(a ** 2 + 1)
+    appr_major = np.max(np.asarray([np.sqrt((x[i] - x[j]) ** 2 +
+                                            (y[i] - y[j]) ** 2)
+                                    for i in range(len(x))
+                                    for j in range(i + 1, len(x))]))
+    dist_list = ndi.gaussian_filter1d(dist_list, 2)
+    appr_minor = 2.0 * np.max(dist_list)
+    tilt_angle = np.rad2deg(np.arctan2(appr_minor, appr_major))
+    roll_angle = np.rad2deg(np.arctan(a))
+    return tilt_angle, roll_angle
+
+
+def find_tilt_roll_based_ellipse_fit(x, y):
+    """
+    Find the tilt and roll of a parallel-beam tomography system given
+    coordinates of a point-like object scanned in the range of
+    [0, 360] degrees. Uses an ellipse-fit-based approach.
+
+    Parameters
+    ----------
+    x : ndarray
+        x-coordinates of the points.
+    y : ndarray
+        y-coordinates of the points.
+
+    Returns
+    -------
+    tilt : float
+        Tilt angle in degree.
+    roll : float
+        Roll angle in degree.
+    """
+    try:
+        result = fit_points_to_ellipse(x, y)
+        roll_angle, major_axis, minor_axis = result[:3]
+        tilt_angle = np.rad2deg(np.arctan2(minor_axis, major_axis))
+        return tilt_angle, roll_angle
+    except ValueError:
+        return None, None
+
+
+def find_tilt_roll(x, y, method="ellipse"):
+    """
+    Find the tilt and roll of a parallel-beam tomography system given
+    coordinates of a point-like object scanned in the range of
+    [0, 360] degrees.
+
+    Parameters
+    ----------
+    x : ndarray
+        x-coordinates of the points.
+    y : ndarray
+        y-coordinates of the points.
+    method : {"linear", "ellipse"}
+        Method for finding tilt and roll.
+
+    Returns
+    -------
+    tilt : float
+        Tilt angle in degree.
+    roll : float
+        Roll angle in degree.
+    """
+    if len(x) != len(y):
+        raise ValueError("Length of inputs must be the same!!!")
+    if not (method == "linear" or method == "ellipse"):
+        raise ValueError("Only select one of 2 options: 'linear', 'ellipse'")
+    if method == "linear":
+        tilt, roll = find_tilt_roll_based_linear_fit(x, y)
+    else:
+        (a, b) = np.polyfit(x, y, 1)[:2]
+        dist_list = np.abs(a * x - y + b) / np.sqrt(a ** 2 + 1)
+        dist_list = ndi.gaussian_filter1d(dist_list, 2)
+        msg = "Can't fit to an ellipse, use the linear-fit method instead!!!"
+        if np.max(dist_list) < 1.0:
+            warnings.warn(msg)
+            tilt, roll = find_tilt_roll_based_linear_fit(x, y)
+        else:
+            tilt, roll = find_tilt_roll_based_ellipse_fit(x, y)
+            if tilt is None:
+                warnings.warn(msg)
+                tilt, roll = find_tilt_roll_based_linear_fit(x, y)
+    return tilt, roll

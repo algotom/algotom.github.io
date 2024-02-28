@@ -220,7 +220,7 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#algotom.prep.removal.select_zinger" title="algotom.prep.removal.select_zinger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select_zinger</span></code></a>(mat, max_size)</p></td>
 <td><p>Select zingers smaller than a certain size.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.prep.removal.remove_zinger" title="algotom.prep.removal.remove_zinger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_zinger</span></code></a>(mat, threshold[, size])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.prep.removal.remove_zinger" title="algotom.prep.removal.remove_zinger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_zinger</span></code></a>(mat, threshold[, size, check_size])</p></td>
 <td><p>Remove zinger using the method in Ref.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#algotom.prep.removal.generate_blob_mask" title="algotom.prep.removal.generate_blob_mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_blob_mask</span></code></a>(flat, size, snr)</p></td>
@@ -570,7 +570,7 @@ E.g. options={“method”: “gaussian_filter”, “para1”: (1,21))}</p></li
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.prep.removal.remove_zinger">
-<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_zinger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_zinger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_zinger" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.prep.removal.</span></span><span class="sig-name descname"><span class="pre">remove_zinger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/prep/removal.html#remove_zinger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.prep.removal.remove_zinger" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove zinger using the method in Ref. [1], working on a projection image
 or sinogram image.</p>
 <dl class="field-list simple">
@@ -580,6 +580,7 @@ or sinogram image.</p>
 <li><p><strong>threshold</strong> (<em>float</em>) – Threshold to segment zingers. Smaller is more sensitive.
 Recommended range [0.05, 0.1].</p></li>
 <li><p><strong>size</strong> (<em>int</em>) – Size of a zinger.</p></li>
+<li><p><strong>check_size</strong> (<em>bool</em>) – Enable/disable size checking before removal.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

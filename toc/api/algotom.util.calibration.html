@@ -169,6 +169,9 @@
 <li><p>Binarizing an image.</p></li>
 <li><p>Calculating the distance between two point-like objects segmented from
 two images. Useful for determining pixel-size in helical scans.</p></li>
+<li><p>Find the tilt and roll of a parallel-beam tomography system given
+coordinates of a point-like object scanned in the range of
+[0, 360] degrees.</p></li>
 </ul>
 </div></blockquote>
 <p class="rubric"><strong>Functions:</strong></p>
@@ -204,6 +207,12 @@ two images. Useful for determining pixel-size in helical scans.</p></li>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#algotom.util.calibration.calculate_distance" title="algotom.util.calibration.calculate_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_distance</span></code></a>(mat1, mat2[, size_opt, ...])</p></td>
 <td><p>Calculate the distance between two point-like objects segmented from two images.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#algotom.util.calibration.fit_points_to_ellipse" title="algotom.util.calibration.fit_points_to_ellipse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_points_to_ellipse</span></code></a>(x, y)</p></td>
+<td><p>Fit an ellipse to a set of points.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.util.calibration.find_tilt_roll" title="algotom.util.calibration.find_tilt_roll"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_tilt_roll</span></code></a>(x, y[, method])</p></td>
+<td><p>Find the tilt and roll of a parallel-beam tomography system given coordinates of a point-like object scanned in the range of [0, 360] degrees.</p></td>
 </tr>
 </tbody>
 </table>
@@ -380,6 +389,102 @@ Algorithm 4 in Ref. [2] if None.</p></li>
 <p class="rubric">References</p>
 <p>[1] : <a class="reference external" href="https://doi.org/10.1364/OE.418448">https://doi.org/10.1364/OE.418448</a></p>
 <p>[2] : <a class="reference external" href="https://doi.org/10.1364/OE.26.028396">https://doi.org/10.1364/OE.26.028396</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.util.calibration.fit_points_to_ellipse">
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">fit_points_to_ellipse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#fit_points_to_ellipse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.fit_points_to_ellipse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit an ellipse to a set of points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>ndarray</em>) – x-coordinates of the points.</p></li>
+<li><p><strong>y</strong> (<em>ndarray</em>) – y-coordinates of the points.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>roll_angle</strong> (<em>float</em>) – Rotation angle of the ellipse in degree.</p></li>
+<li><p><strong>a_major</strong> (<em>float</em>) – Length of the major axis.</p></li>
+<li><p><strong>b_minor</strong> (<em>float</em>) – Length of the minor axis.</p></li>
+<li><p><strong>xc</strong> (<em>float</em>) – x-coordinate of the ellipse center.</p></li>
+<li><p><strong>yc</strong> (<em>float</em>) – y-coordinate of the ellipse center.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.util.calibration.find_tilt_roll_based_linear_fit">
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">find_tilt_roll_based_linear_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#find_tilt_roll_based_linear_fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.find_tilt_roll_based_linear_fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the tilt and roll of a parallel-beam tomography system given
+coordinates of a point-like object scanned in the range of
+[0, 360] degrees. Uses a linear-fit-based approach [1].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>ndarray</em>) – x-coordinates of the points.</p></li>
+<li><p><strong>y</strong> (<em>ndarray</em>) – y-coordinates of the points.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>tilt</strong> (<em>float</em>) – Tilt angle in degree.</p></li>
+<li><p><strong>roll</strong> (<em>float</em>) – Roll angle in degree.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<p>[1] : <a class="reference external" href="https://doi.org/10.1098/rsta.2014.0398">https://doi.org/10.1098/rsta.2014.0398</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.util.calibration.find_tilt_roll_based_ellipse_fit">
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">find_tilt_roll_based_ellipse_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#find_tilt_roll_based_ellipse_fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.find_tilt_roll_based_ellipse_fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the tilt and roll of a parallel-beam tomography system given
+coordinates of a point-like object scanned in the range of
+[0, 360] degrees. Uses an ellipse-fit-based approach.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>ndarray</em>) – x-coordinates of the points.</p></li>
+<li><p><strong>y</strong> (<em>ndarray</em>) – y-coordinates of the points.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>tilt</strong> (<em>float</em>) – Tilt angle in degree.</p></li>
+<li><p><strong>roll</strong> (<em>float</em>) – Roll angle in degree.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.util.calibration.find_tilt_roll">
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">find_tilt_roll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ellipse'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#find_tilt_roll"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.find_tilt_roll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the tilt and roll of a parallel-beam tomography system given
+coordinates of a point-like object scanned in the range of
+[0, 360] degrees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>ndarray</em>) – x-coordinates of the points.</p></li>
+<li><p><strong>y</strong> (<em>ndarray</em>) – y-coordinates of the points.</p></li>
+<li><p><strong>method</strong> (<em>{“linear”, “ellipse”}</em>) – Method for finding tilt and roll.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>tilt</strong> (<em>float</em>) – Tilt angle in degree.</p></li>
+<li><p><strong>roll</strong> (<em>float</em>) – Roll angle in degree.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

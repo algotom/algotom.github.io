@@ -159,7 +159,7 @@
 <span class="c1"># limitations under the License.</span>
 <span class="c1"># ============================================================================</span>
 <span class="c1"># Author: Nghia T. Vo</span>
-<span class="c1"># E-mail:  </span>
+<span class="c1"># E-mail:</span>
 <span class="c1"># Description: Python module of reconstruction methods</span>
 <span class="c1"># Contributors:</span>
 <span class="c1"># ============================================================================</span>
@@ -982,11 +982,15 @@
 <span class="sd">    Wrapper of reconstruction methods implemented in the astra toolbox package.</span>
 <span class="sd">    https://www.astra-toolbox.com/docs/algs/index.html</span>
 <span class="sd">    Users must install Astra Toolbox before using this function.</span>
+<span class="sd">    Apply the method to a sinogram-image or a chunk of sinogram-images.</span>
+<span class="sd">    Angular axis is 0. If input is 3D array, the slicing axis of sinograms</span>
+<span class="sd">    must be 1, e.g. data[:, index, :]</span>
+
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    sinogram : array_like</span>
-<span class="sd">        2D array. Sinogram image.</span>
+<span class="sd">        2D/3D array. Sinogram image.</span>
 <span class="sd">    center : float</span>
 <span class="sd">        Center of rotation.</span>
 <span class="sd">    angles : array_like</span>

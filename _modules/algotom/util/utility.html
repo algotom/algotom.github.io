@@ -122,7 +122,7 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper"><ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/section1.html">1. Basic tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../toc/section2.html">2. Features and capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toc/section2.html">2. Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/section3.html">3. Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/section4.html">4. Demonstrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/section5.html">5. Technical notes</a></li>
@@ -1495,7 +1495,7 @@
 
 
 <div class="viewcode-block" id="find_center_visual_sinograms"><a class="viewcode-back" href="../../../toc/api/algotom.util.utility.html#algotom.util.utility.find_center_visual_sinograms">[docs]</a><span class="k">def</span> <span class="nf">find_center_visual_sinograms</span><span class="p">(</span><span class="n">sino_180</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                                 <span class="n">zoom</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+                                 <span class="n">zoom</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    For visually finding the center-of-rotation (COR) using converted</span>
 <span class="sd">    360-degree sinograms from a 180-degree sinogram at different</span>
@@ -1516,6 +1516,8 @@
 <span class="sd">    zoom : float</span>
 <span class="sd">        To resize output images. For example, 0.5 &lt;=&gt; reduce the size of</span>
 <span class="sd">        output images by half.</span>
+<span class="sd">    display : bool</span>
+<span class="sd">        Print the output if True.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -1540,16 +1542,19 @@
         <span class="n">sino_shift</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">sino_flip</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">shift_col</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
                                <span class="n">prefilter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">)</span>
         <span class="n">sino_360</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">sino_180</span><span class="p">,</span> <span class="n">sino_shift</span><span class="p">))</span>
-        <span class="n">sino_zoom</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="n">sino_360</span><span class="p">,</span> <span class="n">zoom</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">zoom</span> <span class="o">!=</span> <span class="mf">1.0</span><span class="p">:</span>
+            <span class="n">sino_360</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="n">sino_360</span><span class="p">,</span> <span class="n">zoom</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">)</span>
         <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;/center_</span><span class="si">{0:6.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">center</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.tif&quot;</span>
-        <span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">sino_zoom</span><span class="p">)</span>
+        <span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">sino_360</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">display</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">output_base</span></div>
 
 
 <div class="viewcode-block" id="find_center_visual_slices"><a class="viewcode-back" href="../../../toc/api/algotom.util.utility.html#algotom.util.utility.find_center_visual_slices">[docs]</a><span class="k">def</span> <span class="nf">find_center_visual_slices</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                               <span class="n">method</span><span class="o">=</span><span class="s2">&quot;dfi&quot;</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                               <span class="n">ratio</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">filter_name</span><span class="o">=</span><span class="s2">&quot;hann&quot;</span><span class="p">,</span> <span class="n">apply_log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                              <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+                              <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    For visually finding the center-of-rotation (COR) using reconstructed</span>
 <span class="sd">    slices at different CORs.</span>
@@ -1584,6 +1589,8 @@
 <span class="sd">        Apply the logarithm function to the sinogram before reconstruction.</span>
 <span class="sd">    ncore : int or None</span>
 <span class="sd">        Number of cpu-cores used for computing. Automatically selected if None.</span>
+<span class="sd">    display : bool</span>
+<span class="sd">        Print the output if True.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -1611,10 +1618,12 @@
         <span class="n">gpu</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">for</span> <span class="n">center</span> <span class="ow">in</span> <span class="n">list_center</span><span class="p">:</span>
         <span class="n">rec_img</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">_reconstruct_slice</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span>
-                                          <span class="n">ratio</span><span class="p">,</span> <span class="n">filter_name</span><span class="p">,</span> <span class="n">apply_log</span><span class="p">,</span> <span class="n">gpu</span><span class="p">,</span>
-                                          <span class="n">ncore</span><span class="p">)</span>
+                                         <span class="n">ratio</span><span class="p">,</span> <span class="n">filter_name</span><span class="p">,</span> <span class="n">apply_log</span><span class="p">,</span> <span class="n">gpu</span><span class="p">,</span>
+                                         <span class="n">ncore</span><span class="p">)</span>
         <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;center_</span><span class="si">{0:6.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">center</span> <span class="o">/</span> <span class="n">zoom</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.tif&quot;</span>
         <span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">rec_img</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">display</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">output_base</span></div>
 </pre></div>
 
@@ -1640,7 +1649,7 @@
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo  NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
+        &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
 
