@@ -28,4 +28,5 @@ Table of Contents
    toc/api
    toc/credits
    toc/highlights
+   toc/links
 

@@ -122,7 +122,7 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper"><ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/section1.html">1. Basic tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../toc/section2.html">2. Features and capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toc/section2.html">2. Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/section3.html">3. Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/section4.html">4. Demonstrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/section5.html">5. Technical notes</a></li>
@@ -786,8 +786,8 @@
                 <span class="k">if</span> <span class="n">last_chunk</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="n">mat_tmp</span> <span class="o">=</span> <span class="p">[]</span>
                     <span class="n">mat_chunk</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_image_multiple</span><span class="p">(</span>
-                        <span class="n">data</span><span class="p">[</span><span class="n">depth1</span> <span class="o">-</span> <span class="n">last_chunk</span><span class="p">:</span> <span class="n">depth1</span><span class="p">],</span> <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span>
-                        <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
+                        <span class="n">data</span><span class="p">[</span><span class="n">depth1</span> <span class="o">-</span> <span class="n">last_chunk</span> <span class="o">+</span> <span class="n">d1</span><span class="p">:</span> <span class="n">depth1</span> <span class="o">+</span> <span class="n">d1</span><span class="p">],</span>
+                        <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
                     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">last_chunk</span><span class="p">):</span>
                         <span class="n">mat</span> <span class="o">=</span> <span class="n">mat_chunk</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
                         <span class="k">if</span> <span class="n">rotate</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
@@ -826,8 +826,8 @@
                 <span class="k">if</span> <span class="n">last_chunk</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="n">mat_tmp</span> <span class="o">=</span> <span class="p">[]</span>
                     <span class="n">mat_chunk</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_image_multiple</span><span class="p">(</span>
-                        <span class="n">data</span><span class="p">[</span><span class="n">depth1</span> <span class="o">-</span> <span class="n">last_chunk</span><span class="p">:</span> <span class="n">depth1</span><span class="p">],</span> <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span>
-                        <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
+                        <span class="n">data</span><span class="p">[</span><span class="n">depth1</span> <span class="o">-</span> <span class="n">last_chunk</span> <span class="o">+</span> <span class="n">d1</span><span class="p">:</span> <span class="n">depth1</span> <span class="o">+</span> <span class="n">d1</span><span class="p">],</span>
+                        <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
                     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">last_chunk</span><span class="p">):</span>
                         <span class="n">mat</span> <span class="o">=</span> <span class="n">mat_chunk</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
                         <span class="k">if</span> <span class="n">rotate</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
@@ -1202,7 +1202,7 @@
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo  NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
+        &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
 
