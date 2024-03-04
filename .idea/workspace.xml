@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd7108d9-b1b3-4aba-9605-7e4d6e864f32" name="Changes" comment="Update">
-      <change afterPath="$PROJECT_DIR$/docs/source/toc/links.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/.doctrees/environment.pickle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_modules/algotom/post/postprocessing.html" beforeDir="false" afterPath="$PROJECT_DIR$/_modules/algotom/post/postprocessing.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sources/toc/highlights.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/_sources/toc/highlights.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algotom/post/postprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/algotom/post/postprocessing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/source/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/index.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/source/toc/highlights.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/toc/highlights.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/objects.inv" beforeDir="false" afterPath="$PROJECT_DIR$/objects.inv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/searchindex.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

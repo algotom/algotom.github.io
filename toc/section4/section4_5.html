@@ -140,6 +140,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../api.html">7. API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../credits.html">8. Credits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../highlights.html">9. Highlights</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../links.html">10. Quick links</a></li>
 </ul>
 
         </div>
@@ -1147,16 +1148,16 @@ to install it, then installing Python packages as shown <a class="reference exte
 to make it easy to customize the workflow. The following example demonstrates how to do that for a <a class="reference external" href="https://help.rc.ufl.edu/doc/Sample_SLURM_Scripts">SLURM cluster scheduler</a>
 (for Univa Grid Engine scheduler, refer the example <a class="reference external" href="https://github.com/algotom/algotom/tree/master/examples/utilities">here</a>):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/path/to/python/environment/bin/python</span>
+
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">subprocess</span>
 
 <span class="n">python_script</span> <span class="o">=</span> <span class="s2">&quot;full_reconstruction.py&quot;</span>
-
+<span class="n">use_gpu</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">input_folder</span> <span class="o">=</span> <span class="s2">&quot;/facility/beamline/data/year/proposals/visit/raw_data/&quot;</span>
 <span class="c1"># Get a list of nxs files in the input folder.</span>
 <span class="n">list_file</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">input_folder</span> <span class="o">+</span> <span class="s2">&quot;/*nxs&quot;</span><span class="p">)</span>
-
 <span class="c1"># Specify where to save the processed data</span>
 <span class="n">output_base</span> <span class="o">=</span> <span class="s2">&quot;/facility/beamline/data/year/proposals/visit/processing/reconstruction&quot;</span>
 <span class="c1"># Specify the folder for cluster output-file and error-file.</span>
@@ -1173,6 +1174,33 @@ to make it easy to customize the workflow. The following example demonstrates ho
         <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t create the folder: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_base</span><span class="p">))</span>
 
+<span class="n">sbatch_script_cpu</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;#!/bin/bash</span>
+
+<span class="s2">#SBATCH --job-name=demo_workflow</span>
+<span class="s2">#SBATCH --ntasks 1</span>
+<span class="s2">#SBATCH --cpus-per-task 16</span>
+<span class="s2">#SBATCH --nodes=1</span>
+<span class="s2">#SBATCH --mem=16G</span>
+<span class="s2">#SBATCH --qos=normal</span>
+<span class="s2">#SBATCH --time=60:00</span>
+
+<span class="s2">srun -o </span><span class="si">{0}</span><span class="s2">/output_%j.txt -e </span><span class="si">{0}</span><span class="s2">/error_%j.txt ./</span><span class="si">{1}</span><span class="s2"> </span><span class="si">{2}</span><span class="s2"> </span><span class="si">{3}</span><span class="s2"></span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">sbatch_script_gpu</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;#!/bin/bash</span>
+
+<span class="s2">#SBATCH --job-name=demo_workflow</span>
+<span class="s2">#SBATCH --ntasks 1</span>
+<span class="s2">#SBATCH --cpus-per-task 16</span>
+<span class="s2">#SBATCH --nodes=1</span>
+<span class="s2">#SBATCH --mem=16G</span>
+<span class="s2">#SBATCH --gres=gpu:1</span>
+<span class="s2">#SBATCH --qos=normal</span>
+<span class="s2">#SBATCH --time=60:00</span>
+
+<span class="s2">srun -o </span><span class="si">{0}</span><span class="s2">/output_%j.txt -e </span><span class="si">{0}</span><span class="s2">/error_%j.txt ./</span><span class="si">{1}</span><span class="s2"> </span><span class="si">{2}</span><span class="s2"> </span><span class="si">{3}</span><span class="s2"></span>
+<span class="s2">&quot;&quot;&quot;</span>
+
 <span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">list_file</span><span class="p">:</span>
     <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.nxs&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
@@ -1180,19 +1208,12 @@ to make it easy to customize the workflow. The following example demonstrates ho
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Submit to process the raw-data file : </span><span class="si">{}</span><span class="s2">...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_name</span><span class="p">))</span>
     <span class="n">cluster_output</span> <span class="o">=</span> <span class="n">cluster_dir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
     <span class="n">make_folder</span><span class="p">(</span><span class="n">cluster_output</span><span class="p">)</span>
-
-    <span class="n">sbatch_script</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;#!/bin/bash</span>
-<span class="s2">    #SBATCH --job-name=demo_workflow</span>
-<span class="s2">    #SBATCH --ntasks 1</span>
-<span class="s2">    #SBATCH --cpus-per-task 16</span>
-<span class="s2">    #SBATCH --nodes=1</span>
-<span class="s2">    #SBATCH --mem=16G</span>
-<span class="s2">    #SBATCH --qos=normal</span>
-<span class="s2">    #SBATCH --time=60:00</span>
-
-<span class="s2">    srun -o </span><span class="si">{0}</span><span class="s2">/output_%j.txt -e </span><span class="si">{0}</span><span class="s2">/error_%j.txt ./</span><span class="si">{1}</span><span class="s2"> </span><span class="si">{2}</span><span class="s2"> </span><span class="si">{3}</span><span class="s2"></span>
-<span class="s2">    &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cluster_output</span><span class="p">,</span> <span class="n">python_script</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">output_folder</span><span class="p">)</span>
-
+    <span class="k">if</span> <span class="n">use_gpu</span><span class="p">:</span>
+        <span class="n">sbatch_script</span> <span class="o">=</span> <span class="n">sbatch_script_gpu</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cluster_output</span><span class="p">,</span> <span class="n">python_script</span><span class="p">,</span>
+                                                 <span class="n">file_path</span><span class="p">,</span> <span class="n">output_folder</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sbatch_script</span> <span class="o">=</span> <span class="n">sbatch_script_cpu</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cluster_output</span><span class="p">,</span> <span class="n">python_script</span><span class="p">,</span>
+                                                 <span class="n">file_path</span><span class="p">,</span> <span class="n">output_folder</span><span class="p">)</span>
     <span class="c1"># Call sbatch and pass the sbatch script contents as input</span>
     <span class="n">process</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;sbatch&#39;</span><span class="p">],</span> <span class="n">stdin</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
     <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">communicate</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="n">sbatch_script</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
@@ -1224,7 +1245,7 @@ Algotom provides convenient functions for these tasks, which can be applied to a
 <span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
 <span class="kn">import</span> <span class="nn">algotom.post.postprocessing</span> <span class="k">as</span> <span class="nn">post</span>
 
-<span class="n">output_base</span> <span class="o">=</span> <span class="s2">&quot;E:/output/date_reduction/&quot;</span>
+<span class="n">output_base</span> <span class="o">=</span> <span class="s2">&quot;E:/output/data_reduction/&quot;</span>
 
 <span class="c1"># Rescale the volume to 16-bit data including cropping.</span>
 <span class="c1"># Input is tif, output is tif</span>
