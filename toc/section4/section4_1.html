@@ -140,6 +140,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../api.html">7. API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../credits.html">8. Credits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../highlights.html">9. Highlights</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../links.html">10. Quick links</a></li>
 </ul>
 
         </div>
@@ -188,10 +189,10 @@ command will create an environment named <em>myspace</em></p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../_images/fig_4_1_2.png" id="fig-4-1-2"><img alt="../../_images/fig_4_1_2.png" class="align-center" id="fig-4-1-2" src="../../_images/fig_4_1_2.png" style="width: 100%;" /></a>
 </div></blockquote>
-<p>First things first, we install Python. Here we specify Python 3.9, not the
+<p>First things first, we install Python. Here we specify Python 3.10 (or 3.11), not the
 latest one, as the Python ecosystem taking time to keep up.</p>
 <blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">conda install python=3.9</span>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">conda install python=3.10</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -210,20 +211,8 @@ documentation page.</p>
 </div></blockquote>
 <p>Because Algotom relies on <a class="reference external" href="https://github.com/algotom/algotom/blob/master/requirements.txt">dependencies</a>,
 e.g. Numpy, Numba, Scipy, H5py,… they are also installed at the same time.
-The Python environment and its packages are at <em>C:/Users/user_ID/miniconda3/envs/myspace</em>.
-Users can run a Python script, in the activated environment, by</p>
-<blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python C:/my_project/my_script.py</span>
-</pre></div>
-</div>
-</div></blockquote>
-<p>or in the Window Command Prompt by providing the absolute path to <em>python.exe</em> of the enviroment</p>
-<blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">C:/Users/user_ID/miniconda3/envs/myspace/python C:/my_project/my_script.py</span>
-</pre></div>
-</div>
-</div></blockquote>
-<p>Other conda commands are often used:</p>
+The Python environment and its packages are at <em>C:/Users/user_ID/miniconda3/envs/myspace</em>. Other <em>conda</em> commands
+are often used:</p>
 <ul class="simple">
 <li><p><em>conda list</em> : list packages installed in an activated environment.</p></li>
 <li><p><em>conda uninstall &lt;package&gt;</em> : to uninstall a package.</p></li>
@@ -238,7 +227,7 @@ Users can run a Python script, in the activated environment, by</p>
 Algotom: <a class="reference external" href="https://www.astra-toolbox.com/docs/install.html">Astra Toolbox</a>
 and <a class="reference external" href="https://tomopy.readthedocs.io/en/stable/install.html#installing-from-conda">Tomopy</a></p>
 <blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">conda install -c astra-toolbox astra-toolbox</span>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">conda install -c astra-toolbox astra-toolbox=2.1.0</span>
 
 <span class="go">conda install -c conda-forge tomopy</span>
 </pre></div>
