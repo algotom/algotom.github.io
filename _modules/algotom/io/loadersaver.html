@@ -130,6 +130,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/api.html">7. API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/credits.html">8. Credits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/highlights.html">9. Highlights</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toc/links.html">10. Quick links</a></li>
 </ul>
 
         </div>
@@ -815,20 +816,20 @@
                 <span class="n">ref_ave</span> <span class="o">=</span> <span class="p">(</span><span class="n">ref_ave</span> <span class="o">-</span> <span class="n">dark_ave</span><span class="p">)</span> <span class="o">/</span> <span class="n">flat_dark</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">ref_ave</span> <span class="o">=</span> <span class="n">ref_ave</span> <span class="o">-</span> <span class="n">dark_ave</span>
-            <span class="n">ref_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ref_ave</span><span class="p">)</span>
+            <span class="n">ref_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">ref_ave</span><span class="p">))</span>
         <span class="n">idx</span> <span class="o">=</span> <span class="n">list_sam_idx</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">proj_idx</span><span class="p">]</span>
         <span class="n">proj</span> <span class="o">=</span> <span class="n">list_data_obj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">idx</span><span class="p">,</span> <span class="n">top</span><span class="p">:</span><span class="n">bot</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span><span class="n">right</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">flat_field</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">proj</span> <span class="o">=</span> <span class="p">(</span><span class="n">proj</span> <span class="o">-</span> <span class="n">dark_ave</span><span class="p">)</span> <span class="o">/</span> <span class="n">flat_dark</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">proj</span> <span class="o">=</span> <span class="p">(</span><span class="n">proj</span> <span class="o">-</span> <span class="n">dark_ave</span><span class="p">)</span>
-        <span class="n">sam_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span>
-    <span class="n">sam_stack</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">sam_stack</span><span class="p">)</span>
+        <span class="n">sam_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">proj</span><span class="p">))</span>
+    <span class="n">sam_stack</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">sam_stack</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">fix_zero_div</span><span class="p">:</span>
         <span class="n">nmean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sam_stack</span><span class="p">)</span>
         <span class="n">sam_stack</span><span class="p">[</span><span class="n">sam_stack</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="n">nmean</span>
     <span class="k">if</span> <span class="n">ref_stack</span><span class="p">:</span>
-        <span class="n">ref_stack</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">)</span>
+        <span class="n">ref_stack</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">fix_zero_div</span><span class="p">:</span>
             <span class="n">nmean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">)</span>
             <span class="n">ref_stack</span><span class="p">[</span><span class="n">ref_stack</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="n">nmean</span>
@@ -1091,10 +1092,10 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">ref_ave</span> <span class="o">=</span> <span class="n">ref_ave</span> <span class="o">-</span> <span class="n">dark_field</span>
             <span class="n">proj</span> <span class="o">=</span> <span class="p">(</span><span class="n">proj</span> <span class="o">-</span> <span class="n">dark_field</span><span class="p">)</span>
-        <span class="n">ref_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ref_ave</span><span class="p">)</span>
-        <span class="n">sam_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span>
-    <span class="n">ref_stack</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">)</span>
-    <span class="n">sam_stack</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">sam_stack</span><span class="p">)</span>
+        <span class="n">ref_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">ref_ave</span><span class="p">))</span>
+        <span class="n">sam_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">proj</span><span class="p">))</span>
+    <span class="n">ref_stack</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">sam_stack</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">sam_stack</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">fix_zero_div</span><span class="p">:</span>
         <span class="n">nmean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ref_stack</span><span class="p">)</span>
         <span class="n">ref_stack</span><span class="p">[</span><span class="n">ref_stack</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="n">nmean</span>

@@ -130,6 +130,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/api.html">7. API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/credits.html">8. Credits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/highlights.html">9. Highlights</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toc/links.html">10. Quick links</a></li>
 </ul>
 
         </div>
@@ -235,16 +236,15 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Supplementary method: to check if output folder/file exists</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;File/folder exists!!! Choose another path or set `overwrite=True`&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="n">file_base</span><span class="p">,</span> <span class="n">file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_base</span><span class="p">):</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="s2">&quot;Folder exists!!! Please choose another path!!!&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="s2">&quot;File exists!!! Please choose another file path!!!&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">__get_shape</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -511,7 +511,7 @@
 
 <div class="viewcode-block" id="downsample_dataset"><a class="viewcode-back" href="../../../toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.downsample_dataset">[docs]</a><span class="k">def</span> <span class="nf">downsample_dataset</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                        <span class="n">rescaling</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nbit</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">minmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                       <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)):</span>
+                       <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Downsample a dataset. Input can be a folder of tif files, a hdf file,</span>
 <span class="sd">    or a 3D array.</span>
@@ -541,13 +541,16 @@
 <span class="sd">        Crop 3D data from the edges, i.e.</span>
 <span class="sd">        crop = (crop_depth1, crop_depth2, crop_height1, crop_height2,</span>
 <span class="sd">        crop_width1, crop_width2).</span>
+<span class="sd">    overwrite : bool</span>
+<span class="sd">        Overwrite an existing file/folder if True.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    array_like or None</span>
 <span class="sd">        If output is None, returning a 3D array.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">__check_output</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">overwrite</span><span class="p">:</span>
+        <span class="n">__check_output</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">__get_cropped_shape</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="n">crop</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="n">key_path</span><span class="p">)</span>
     <span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">h1</span><span class="p">,</span> <span class="n">h2</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="p">(</span><span class="n">depth1</span><span class="p">,</span> <span class="n">height1</span><span class="p">,</span> <span class="n">width1</span><span class="p">)</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -647,7 +650,7 @@
 
 
 <div class="viewcode-block" id="rescale_dataset"><a class="viewcode-back" href="../../../toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.rescale_dataset">[docs]</a><span class="k">def</span> <span class="nf">rescale_dataset</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">nbit</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">minmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                    <span class="n">key_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)):</span>
+                    <span class="n">key_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Rescale a dataset to 8-bit or 16-bit data-type. The dataset can be a</span>
 <span class="sd">    folder of tif files, a hdf file, or a 3D array.</span>
@@ -671,13 +674,16 @@
 <span class="sd">        Crop 3D data from the edges, i.e.</span>
 <span class="sd">        crop = (crop_depth1, crop_depth2, crop_height1, crop_height2,</span>
 <span class="sd">        crop_width1, crop_width2).</span>
+<span class="sd">    overwrite : bool</span>
+<span class="sd">        Overwrite an existing file/folder if True.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    array_like or None</span>
 <span class="sd">        If output is None, returning an 3D array.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">__check_output</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">overwrite</span><span class="p">:</span>
+        <span class="n">__check_output</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">__get_cropped_shape</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="n">crop</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="n">key_path</span><span class="p">)</span>
     <span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">h1</span><span class="p">,</span> <span class="n">h2</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="p">(</span><span class="n">depth1</span><span class="p">,</span> <span class="n">height1</span><span class="p">,</span> <span class="n">width1</span><span class="p">)</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -922,7 +928,7 @@
 <div class="viewcode-block" id="reslice_dataset"><a class="viewcode-back" href="../../../toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.reslice_dataset">[docs]</a><span class="k">def</span> <span class="nf">reslice_dataset</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rescaling</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                     <span class="n">nbit</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">minmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rotate</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">chunk</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
                     <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;constant&quot;</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-                    <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_progress</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+                    <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_progress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Reslice a 3d dataset. Input can be a folder of tif files or a hdf file.</span>
 
@@ -960,6 +966,8 @@
 <span class="sd">        Number of cpu-cores. Automatically selected if None.</span>
 <span class="sd">    show_progress : bool</span>
 <span class="sd">        Show the progress of reslicing data if True.</span>
+<span class="sd">    overwrite : bool</span>
+<span class="sd">        Overwrite an existing file/folder if True.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -972,7 +980,8 @@
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Only two options for axis: 1 or 2&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">axis</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
-    <span class="n">__check_output</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">overwrite</span><span class="p">:</span>
+        <span class="n">__check_output</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
     <span class="n">in_type</span> <span class="o">=</span> <span class="n">__get_input_type</span><span class="p">(</span><span class="n">input_</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">in_type</span> <span class="o">!=</span> <span class="s2">&quot;tif&quot;</span> <span class="ow">and</span> <span class="n">in_type</span> <span class="o">!=</span> <span class="s2">&quot;hdf&quot;</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Wrong input type !!!&quot;</span><span class="p">)</span>
