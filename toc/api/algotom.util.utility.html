@@ -213,9 +213,8 @@
 </dl>
 </li>
 <li><dl class="simple">
-<dt>Methods for finding the center of rotation by visual inspection.</dt><dd><ul>
+<dt>Method for finding the center of rotation by visual inspection.</dt><dd><ul>
 <li><p>find_center_visual_sinograms</p></li>
-<li><p>find_center_visual_slices</p></li>
 </ul>
 </dd>
 </dl>
@@ -229,8 +228,8 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.util.utility.apply_method_to_multiple_sinograms" title="algotom.util.utility.apply_method_to_multiple_sinograms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_method_to_multiple_sinograms</span></code></a>(data, ...)</p></td>
-<td><p>Apply a processing method (in &quot;filtering&quot;, &quot;removal&quot;, and &quot;reconstruction&quot; module) to multiple sinograms or multiple slices in parallel.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.util.utility.parallel_process_slices" title="algotom.util.utility.parallel_process_slices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parallel_process_slices</span></code></a>(data, method, parameters)</p></td>
+<td><p>Apply a processing method to slices of a 3D array in parallel.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#algotom.util.utility.mapping" title="algotom.util.utility.mapping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapping</span></code></a>(mat, x_mat, y_mat[, order, mode])</p></td>
 <td><p>Apply a geometric transformation to a 2D array</p></td>
@@ -295,7 +294,7 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#algotom.util.utility.apply_regularization_filter" title="algotom.util.utility.apply_regularization_filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_regularization_filter</span></code></a>(mat, alpha[, ...])</p></td>
 <td><p>Apply a regularization filter using the method in Ref.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.util.utility.transform_1d_window_to_2d" title="algotom.util.utility.transform_1d_window_to_2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform_1d_window_to_2d</span></code></a>(win_1d)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#algotom.util.utility.transform_1d_window_to_2d" title="algotom.util.utility.transform_1d_window_to_2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform_1d_window_to_2d</span></code></a>(win_1d[, order, mode])</p></td>
 <td><p>Transform a 1d-window to 2d-window.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#algotom.util.utility.detect_sample" title="algotom.util.utility.detect_sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">detect_sample</span></code></a>(sinogram[, sino_type])</p></td>
@@ -316,25 +315,23 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#algotom.util.utility.find_center_visual_sinograms" title="algotom.util.utility.find_center_visual_sinograms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_center_visual_sinograms</span></code></a>(sino_180, ...)</p></td>
 <td><p>For visually finding the center-of-rotation (COR) using converted 360-degree sinograms from a 180-degree sinogram at different CORs (Ref.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#algotom.util.utility.find_center_visual_slices" title="algotom.util.utility.find_center_visual_slices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_center_visual_slices</span></code></a>(sinogram, output, ...)</p></td>
-<td><p>For visually finding the center-of-rotation (COR) using reconstructed slices at different CORs.</p></td>
-</tr>
 </tbody>
 </table>
 <dl class="py function">
-<dt class="sig sig-object py" id="algotom.util.utility.apply_method_to_multiple_sinograms">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">apply_method_to_multiple_sinograms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">para</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'threads'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#apply_method_to_multiple_sinograms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.apply_method_to_multiple_sinograms" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply a processing method (in “filtering”, “removal”, and “reconstruction”
-module) to multiple sinograms or multiple slices in parallel.</p>
+<dt class="sig sig-object py" id="algotom.util.utility.parallel_process_slices">
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">parallel_process_slices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'threads'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#parallel_process_slices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.parallel_process_slices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a processing method to slices of a 3D array in parallel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>array_like or hdf object</em>) – 3D array data where sinograms/slices are extracted along axis 1,
-e.g [:, i, :].</p></li>
-<li><p><strong>method</strong> (<em>str</em>) – Name of a method. e.g. “remove_stripe_based_sorting”.</p></li>
-<li><p><strong>para</strong> (<em>list</em>) – Parameters of the method. e.g. [21, 1]</p></li>
-<li><p><strong>ncore</strong> (<em>int or None</em>) – Number of cpu-cores used for computing. Automatically selected if None.</p></li>
-<li><p><strong>prefer</strong> (<em>{“threads”, “processes”}</em>) – Prefer backend for parallel processing.</p></li>
+<li><p><strong>data</strong> (<em>array_like or hdf object</em>) – 3D data array or HDF dataset.</p></li>
+<li><p><strong>method</strong> (<em>callable</em>) – Function to apply to each slice.</p></li>
+<li><p><strong>parameters</strong> (<em>list</em>) – List of positional parameters for the method.</p></li>
+<li><p><strong>axis</strong> (<em>int</em>) – Axis along which the method is applied.</p></li>
+<li><p><strong>ncore</strong> (<em>int, optional</em>) – Number of cpu-cores used for computing. Automatically selected if None.</p></li>
+<li><p><strong>prefer</strong> (<em>{“threads”, “processes”}</em>) – Preferred parallel backend (“threads” for I/O bound tasks or
+“processes” for CPU-bound tasks).</p></li>
+<li><p><strong>**kwargs</strong> (<em>dict</em>) – Additional keyword parameters to pass to the method.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -342,6 +339,11 @@ e.g [:, i, :].</p></li>
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.util.utility.apply_method_to_multiple_sinograms">
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">apply_method_to_multiple_sinograms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#apply_method_to_multiple_sinograms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.apply_method_to_multiple_sinograms" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.mapping">
@@ -796,12 +798,18 @@ Note that it’s computationally costly.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.transform_1d_window_to_2d">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">transform_1d_window_to_2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">win_1d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#transform_1d_window_to_2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.transform_1d_window_to_2d" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">transform_1d_window_to_2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">win_1d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#transform_1d_window_to_2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.transform_1d_window_to_2d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform a 1d-window to 2d-window.
 Useful for designing a Fourier filter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>win_1d</strong> (<em>array_like</em>) – 1D array.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>win_1d</strong> (<em>array_like</em>) – 1D array.</p></li>
+<li><p><strong>order</strong> (<em>int, optional</em>) – The order of the spline interpolation, default is 1.
+The order has to be in the range 0-5.</p></li>
+<li><p><strong>mode</strong> (<em>{‘reflect’, ‘constant’, ‘nearest’, ‘mirror’, ‘wrap’}, optional</em>) – The mode parameter determines how the input array is extended beyond
+its boundaries. Default is ‘reflect’.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>win_2d</strong> (<em>array_like</em>) – Square array, a 2D version of the 1d-window.</p>
@@ -956,34 +964,8 @@ output images by half.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.find_center_visual_slices">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">find_center_visual_slices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dfi'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hann'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#find_center_visual_slices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.find_center_visual_slices" title="Permalink to this definition">¶</a></dt>
-<dd><p>For visually finding the center-of-rotation (COR) using reconstructed
-slices at different CORs.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>sinogram</strong> (<em>array_like</em>) – 2D array. Sinogram image.</p></li>
-<li><p><strong>output</strong> (<em>str</em>) – Base folder for saving reconstructed slices.</p></li>
-<li><p><strong>start</strong> (<em>float</em>) – Starting point for searching CoR.</p></li>
-<li><p><strong>stop</strong> (<em>float</em>) – Ending point for searching CoR.</p></li>
-<li><p><strong>step</strong> (<em>float</em>) – Searching step.</p></li>
-<li><p><strong>zoom</strong> (<em>float</em>) – To resize input and output images. For example, 0.5 &lt;=&gt; reduce the
-size of images by half.</p></li>
-<li><p><strong>method</strong> (<em>{“dfi”, “gridrec”, “fbp”, “astra”}</em>) – To select a backend method for reconstruction.</p></li>
-<li><p><strong>gpu</strong> (<em>bool, optional</em>) – Use GPU for computing if True.</p></li>
-<li><p><strong>angles</strong> (<em>array_like, optional</em>) – 1D array. List of angles (in radian) corresponding to the sinogram.</p></li>
-<li><p><strong>ratio</strong> (<em>float, optional</em>) – To apply a circle mask to the reconstructed image.</p></li>
-<li><p><strong>filter_name</strong> (<em>{None, “hann”, “bartlett”, “blackman”, “hamming”,                  “nuttall”, “parzen”, “triang”}</em>) – Apply a smoothing filter.</p></li>
-<li><p><strong>apply_log</strong> (<em>bool, optional</em>) – Apply the logarithm function to the sinogram before reconstruction.</p></li>
-<li><p><strong>ncore</strong> (<em>int or None</em>) – Number of cpu-cores used for computing. Automatically selected if None.</p></li>
-<li><p><strong>display</strong> (<em>bool</em>) – Print the output if True.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>str</em> – Folder path to tif images.</p>
-</dd>
-</dl>
-</dd></dl>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">find_center_visual_slices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#find_center_visual_slices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.find_center_visual_slices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </section>
 

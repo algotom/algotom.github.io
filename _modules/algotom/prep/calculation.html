@@ -344,11 +344,11 @@
     <span class="n">min_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">list_metric</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">min_pos</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Global minimum is out of the searching range. Please &quot;</span> \
-              <span class="s2">&quot;reduce the start-value !!!&quot;</span>
+              <span class="s2">&quot;reduce the starting value !!!&quot;</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">min_pos</span> <span class="o">==</span> <span class="p">(</span><span class="n">num_metric</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
         <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Global minimum is out of the searching range. Please &quot;</span> \
-              <span class="s2">&quot;increase the stop-value !!!&quot;</span>
+              <span class="s2">&quot;increase the stopping value !!!&quot;</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">list_cor</span><span class="p">[</span><span class="n">min_pos</span><span class="p">]</span></div>
 
