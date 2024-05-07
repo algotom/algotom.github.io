@@ -21,7 +21,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="7. API Reference" href="api.html" />
-    <link rel="prev" title="5.1. Implementations of X-ray speckle-based phase-contrast tomography" href="section5/section5_1.html" /> 
+    <link rel="prev" title="5.2. Implementations of direct vertical-slice reconstruction for tomography" href="section5/section5_2.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -239,6 +239,21 @@
 <blockquote>
 <div><ul class="simple">
 <li><p>Add back-projection filtering (BPF) method.</p></li>
+<li><p>Update method for processing slices of 3D array in parallel.</p></li>
+<li><p>Move “find_center_based_slice_metric” and “find_center_based_slice_metric” from utility.py
+to reconstruction.py</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>06/05/2024:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Add module <strong>vertrec.py</strong> for direct vertical slice reconstructions: single slice, multiple slices, and multiple
+slices at different orientations; and methods for finding the center of rotation using vertical slices.</p></li>
+<li><p>Add demos for vertical reconstruction.</p></li>
+<li><p>Add technical note on implementations of direct vertical-slice reconstruction for tomography.</p></li>
+<li><p>Enable parallel computing for image-stitching-related methods in calculation.py module</p></li>
+<li><p>Add “sharpness” metric to “find_center_based_slice_metric” method.</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -258,8 +273,8 @@
         <div class="button_nav">
             <div class="left">
                 
-                <a href="section5/section5_1.html">
-                    <span class="icon"><</span><span><span class="section-number">5.1. </span>Implementations of X-ray speckle-based phase-contrast tomography</span></a>
+                <a href="section5/section5_2.html">
+                    <span class="icon"><</span><span><span class="section-number">5.2. </span>Implementations of direct vertical-slice reconstruction for tomography</span></a>
                 
             </div>
 

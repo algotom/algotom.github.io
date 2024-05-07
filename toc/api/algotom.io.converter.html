@@ -140,6 +140,7 @@
 <li class="toctree-l2"><a class="reference internal" href="algotom.prep.removal.html">7.2.5. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.removal</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="algotom.prep.phase.html">7.2.6. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.phase</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="algotom.rec.reconstruction.html">7.3.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.rec.reconstruction</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="algotom.rec.vertrec.html">7.3.2. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.rec.vertrec</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="algotom.post.postprocessing.html">7.4.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.post.postprocessing</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="algotom.util.calibration.html">7.5.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.calibration</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="algotom.util.simulation.html">7.5.2. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.simulation</span></code></a></li>
@@ -168,6 +169,7 @@
 <div><ul class="simple">
 <li><p>Convert a list of tif files to a hdf/nxs file.</p></li>
 <li><p>Extract tif images from a hdf/nxs file.</p></li>
+<li><p>Emulate an HDF5-like interface for TIF files in a folder.</p></li>
 </ul>
 </div></blockquote>
 <p class="rubric"><strong>Functions:</strong></p>
@@ -228,6 +230,40 @@ crop = (crop_top, crop_bottom, crop_left, crop_right).</p></li>
 <dd class="field-even"><p><em>str</em> – Folder path to the tif files.</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="algotom.io.converter.HdfEmulatorFromTif">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">algotom.io.converter.</span></span><span class="sig-name descname"><span class="pre">HdfEmulatorFromTif</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/io/converter.html#HdfEmulatorFromTif"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.io.converter.HdfEmulatorFromTif" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Emulate an HDF5-like interface for TIF files in a folder, allowing
+indexed and sliced data access.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>folder_path</strong> (<em>str</em>) – Path to the folder containing TIFF files.</p></li>
+<li><p><strong>ncore</strong> (<em>int, optional</em>) – Number of cores to use for parallel processing. The default is 1
+(sequential processing).</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hdf_emulator</span> <span class="o">=</span> <span class="n">HdfEmulatorFromTif</span><span class="p">(</span><span class="s1">&#39;/path/to/tif/files&#39;</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">hdf_emulator</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">last_image</span> <span class="o">=</span> <span class="n">hdf_emulator</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image_stack</span> <span class="o">=</span> <span class="n">hdf_emulator</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="p">:]</span>
+</pre></div>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="algotom.io.converter.HdfEmulatorFromTif.shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#algotom.io.converter.HdfEmulatorFromTif.shape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="algotom.io.converter.HdfEmulatorFromTif.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#algotom.io.converter.HdfEmulatorFromTif.dtype" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 </section>
