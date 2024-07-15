@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>1.6. Alignment for a parallel-beam tomography system &#8212; Algotom&#39;s documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
@@ -14,6 +14,7 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <script src="../../_static/js/petite-vue.js"></script>
@@ -447,7 +448,7 @@ the scintillator or optics system, an additional cleaning step for image process
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">measure</span><span class="p">,</span> <span class="n">segmentation</span>
 
 <span class="k">def</span> <span class="nf">remove_non_round_objects</span><span class="p">(</span><span class="n">binary_image</span><span class="p">,</span> <span class="n">ratio_threshold</span><span class="o">=</span><span class="mf">0.9</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    To clean binary image and remove non-round objects</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">binary_image</span> <span class="o">=</span> <span class="n">segmentation</span><span class="o">.</span><span class="n">clear_border</span><span class="p">(</span><span class="n">binary_image</span><span class="p">)</span>
@@ -520,7 +521,7 @@ the ImageJ macros can be downloaded from
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>7.1.2. algotom.io.loadersaver &#8212; Algotom&#39;s documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
@@ -14,6 +14,7 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <script src="../../_static/js/petite-vue.js"></script>
@@ -644,6 +645,41 @@ crop = (crop_top, crop_bottom, crop_left, crop_right).</p></li>
         </div>
       </div>
     
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon"><</span><span>Page contents<span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">></span><span>Page contents:<span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">7.1.2. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.io.loadersaver</span></code></a><ul>
+<li><a class="reference internal" href="#algotom.io.loadersaver.load_image"><code class="docutils literal notranslate"><span class="pre">load_image()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.io.loadersaver.get_hdf_information"><code class="docutils literal notranslate"><span class="pre">get_hdf_information()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.io.loadersaver.find_hdf_key"><code class="docutils literal notranslate"><span class="pre">find_hdf_key()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.io.loadersaver.load_hdf"><code class="docutils literal notranslate"><span class="pre">load_hdf()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.io.loadersaver.make_folder"><code class="docutils literal notranslate"><span class="pre">make_folder()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.io.loadersaver.make_file_name"><code class="docutils literal notranslate"><span class="pre">make_file_name()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.io.loadersaver.make_folder_name"><code class="docutils literal notranslate"><span class="pre">make_folder_name()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.io.loadersaver.find_file"><code class="docutils literal notranslate"><span class="pre">find_file()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.io.loadersaver.save_image"><code class="docutils literal notranslate"><span class="pre">save_image()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.io.loadersaver.open_hdf_stream"><code class="docutils literal notranslate"><span class="pre">open_hdf_stream()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.io.loadersaver.load_distortion_coefficient"><code class="docutils literal notranslate"><span class="pre">load_distortion_coefficient()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.io.loadersaver.save_distortion_coefficient"><code class="docutils literal notranslate"><span class="pre">save_distortion_coefficient()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.io.loadersaver.get_hdf_tree"><code class="docutils literal notranslate"><span class="pre">get_hdf_tree()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.io.loadersaver.get_reference_sample_stacks_dls"><code class="docutils literal notranslate"><span class="pre">get_reference_sample_stacks_dls()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.io.loadersaver.get_reference_sample_stacks"><code class="docutils literal notranslate"><span class="pre">get_reference_sample_stacks()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.io.loadersaver.get_tif_stack"><code class="docutils literal notranslate"><span class="pre">get_tif_stack()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.io.loadersaver.get_image_stack"><code class="docutils literal notranslate"><span class="pre">get_image_stack()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.io.loadersaver.load_image_multiple"><code class="docutils literal notranslate"><span class="pre">load_image_multiple()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.io.loadersaver.save_image_multiple"><code class="docutils literal notranslate"><span class="pre">save_image_multiple()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
 
       <div class="clearer"></div>
     </div>
@@ -667,7 +703,7 @@ crop = (crop_top, crop_bottom, crop_left, crop_right).</p></li>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

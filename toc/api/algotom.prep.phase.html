@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>7.2.6. algotom.prep.phase &#8212; Algotom&#39;s documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
@@ -14,6 +14,7 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <script src="../../_static/js/petite-vue.js"></script>
@@ -600,6 +601,34 @@ dark-signal image. If dark_signal is True and return_shifts is True.</p></li>
         </div>
       </div>
     
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon"><</span><span>Page contents<span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">></span><span>Page contents:<span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">7.2.6. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.phase</span></code></a><ul>
+<li><a class="reference internal" href="#algotom.prep.phase.get_quality_map"><code class="docutils literal notranslate"><span class="pre">get_quality_map()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.phase.get_weight_mask"><code class="docutils literal notranslate"><span class="pre">get_weight_mask()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.phase.unwrap_phase_based_cosine_transform"><code class="docutils literal notranslate"><span class="pre">unwrap_phase_based_cosine_transform()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.phase.unwrap_phase_based_fft"><code class="docutils literal notranslate"><span class="pre">unwrap_phase_based_fft()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.phase.unwrap_phase_iterative_fft"><code class="docutils literal notranslate"><span class="pre">unwrap_phase_iterative_fft()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.phase.reconstruct_surface_from_gradient_FC_method"><code class="docutils literal notranslate"><span class="pre">reconstruct_surface_from_gradient_FC_method()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.phase.reconstruct_surface_from_gradient_SCS_method"><code class="docutils literal notranslate"><span class="pre">reconstruct_surface_from_gradient_SCS_method()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.phase.find_shift_between_image_stacks"><code class="docutils literal notranslate"><span class="pre">find_shift_between_image_stacks()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.phase.find_shift_between_sample_images"><code class="docutils literal notranslate"><span class="pre">find_shift_between_sample_images()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.phase.align_image_stacks"><code class="docutils literal notranslate"><span class="pre">align_image_stacks()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.phase.get_transmission_dark_field_signal"><code class="docutils literal notranslate"><span class="pre">get_transmission_dark_field_signal()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.phase.retrieve_phase_based_speckle_tracking"><code class="docutils literal notranslate"><span class="pre">retrieve_phase_based_speckle_tracking()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
 
       <div class="clearer"></div>
     </div>
@@ -623,7 +652,7 @@ dark-signal image. If dark_signal is True and return_shifts is True.</p></li>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

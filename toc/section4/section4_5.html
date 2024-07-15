@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>4.5. Complete workflow for processing tomographic data &#8212; Algotom&#39;s documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
@@ -14,6 +14,7 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <script src="../../_static/js/petite-vue.js"></script>
@@ -859,21 +860,34 @@ and perform the reconstruction.</p>
     <span class="c1"># Perform pre-processing</span>
     <span class="k">if</span> <span class="n">preprocessing</span><span class="p">:</span>
         <span class="n">t0</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
-        <span class="n">sinograms</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">apply_method_to_multiple_sinograms</span><span class="p">(</span><span class="n">sinograms</span><span class="p">,</span>
-                                                            <span class="s2">&quot;remove_zinger&quot;</span><span class="p">,</span>
-                                                            <span class="p">[</span><span class="mf">0.08</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-                                                            <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span>
-                                                            <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
-        <span class="n">sinograms</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">apply_method_to_multiple_sinograms</span><span class="p">(</span><span class="n">sinograms</span><span class="p">,</span>
-                                                            <span class="s2">&quot;remove_all_stripe&quot;</span><span class="p">,</span>
-                                                            <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">21</span><span class="p">],</span>
-                                                            <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span>
-                                                            <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
-        <span class="n">sinograms</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">apply_method_to_multiple_sinograms</span><span class="p">(</span><span class="n">sinograms</span><span class="p">,</span>
-                                                            <span class="s2">&quot;fresnel_filter&quot;</span><span class="p">,</span>
-                                                            <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-                                                            <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span>
-                                                            <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
+        <span class="c1"># Algotom &lt; 1.6</span>
+        <span class="c1"># sinograms = util.apply_method_to_multiple_sinograms(sinograms,</span>
+        <span class="c1">#                                                     &quot;remove_zinger&quot;,</span>
+        <span class="c1">#                                                     [0.08, 1],</span>
+        <span class="c1">#                                                     ncore=ncore,</span>
+        <span class="c1">#                                                     prefer=&quot;threads&quot;)</span>
+        <span class="c1"># sinograms = util.apply_method_to_multiple_sinograms(sinograms,</span>
+        <span class="c1">#                                                     &quot;remove_all_stripe&quot;,</span>
+        <span class="c1">#                                                     [3.0, 51, 21],</span>
+        <span class="c1">#                                                     ncore=ncore,</span>
+        <span class="c1">#                                                     prefer=&quot;threads&quot;)</span>
+        <span class="c1"># sinograms = util.apply_method_to_multiple_sinograms(sinograms,</span>
+        <span class="c1">#                                                     &quot;fresnel_filter&quot;,</span>
+        <span class="c1">#                                                     [200, 1],</span>
+        <span class="c1">#                                                     ncore=ncore,</span>
+        <span class="c1">#                                                     prefer=&quot;threads&quot;)</span>
+        <span class="c1"># Algotom &gt;= 1.6</span>
+        <span class="n">sinograms</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">parallel_process_slices</span><span class="p">(</span><span class="n">sinograms</span><span class="p">,</span> <span class="n">remo</span><span class="o">.</span><span class="n">remove_zinger</span><span class="p">,</span>
+                                                 <span class="p">[</span><span class="mf">0.08</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span>
+                                                 <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
+        <span class="n">sinograms</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">parallel_process_slices</span><span class="p">(</span><span class="n">sinograms</span><span class="p">,</span>
+                                                 <span class="n">remo</span><span class="o">.</span><span class="n">remove_all_stripe</span><span class="p">,</span>
+                                                 <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">21</span><span class="p">],</span> <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span>
+                                                 <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
+        <span class="n">sinograms</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">parallel_process_slices</span><span class="p">(</span><span class="n">sinograms</span><span class="p">,</span>
+                                                 <span class="n">filt</span><span class="o">.</span><span class="n">fresnel_filter</span><span class="p">,</span>
+                                                 <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span>
+                                                 <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
         <span class="n">t1</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
         <span class="n">t_prep</span> <span class="o">=</span> <span class="n">t_prep</span> <span class="o">+</span> <span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span>
 
@@ -912,20 +926,34 @@ and perform the reconstruction.</p>
     <span class="c1"># Perform pre-processing</span>
     <span class="k">if</span> <span class="n">preprocessing</span><span class="p">:</span>
         <span class="n">t0</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
-        <span class="n">sinograms</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">apply_method_to_multiple_sinograms</span><span class="p">(</span><span class="n">sinograms</span><span class="p">,</span>
-                                                            <span class="s2">&quot;remove_zinger&quot;</span><span class="p">,</span>
-                                                            <span class="p">[</span><span class="mf">0.08</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-                                                            <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span>
-                                                            <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
-        <span class="n">sinograms</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">apply_method_to_multiple_sinograms</span><span class="p">(</span><span class="n">sinograms</span><span class="p">,</span>
-                                                            <span class="s2">&quot;remove_all_stripe&quot;</span><span class="p">,</span>
-                                                            <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">21</span><span class="p">],</span>
-                                                            <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span>
-                                                            <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
-        <span class="n">sinograms</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">apply_method_to_multiple_sinograms</span><span class="p">(</span><span class="n">sinograms</span><span class="p">,</span>
-                                                            <span class="s2">&quot;fresnel_filter&quot;</span><span class="p">,</span>
-                                                            <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-                                                            <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">)</span>
+        <span class="c1"># Algotom &lt; 1.6</span>
+        <span class="c1"># sinograms = util.apply_method_to_multiple_sinograms(sinograms,</span>
+        <span class="c1">#                                                     &quot;remove_zinger&quot;,</span>
+        <span class="c1">#                                                     [0.08, 1],</span>
+        <span class="c1">#                                                     ncore=ncore,</span>
+        <span class="c1">#                                                     prefer=&quot;threads&quot;)</span>
+        <span class="c1"># sinograms = util.apply_method_to_multiple_sinograms(sinograms,</span>
+        <span class="c1">#                                                     &quot;remove_all_stripe&quot;,</span>
+        <span class="c1">#                                                     [3.0, 51, 21],</span>
+        <span class="c1">#                                                     ncore=ncore,</span>
+        <span class="c1">#                                                     prefer=&quot;threads&quot;)</span>
+        <span class="c1"># sinograms = util.apply_method_to_multiple_sinograms(sinograms,</span>
+        <span class="c1">#                                                     &quot;fresnel_filter&quot;,</span>
+        <span class="c1">#                                                     [200, 1],</span>
+        <span class="c1">#                                                     ncore=ncore,</span>
+        <span class="c1">#                                                     prefer=&quot;threads&quot;)</span>
+        <span class="c1"># Algotom &gt;= 1.6</span>
+        <span class="n">sinograms</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">parallel_process_slices</span><span class="p">(</span><span class="n">sinograms</span><span class="p">,</span> <span class="n">remo</span><span class="o">.</span><span class="n">remove_zinger</span><span class="p">,</span>
+                                                 <span class="p">[</span><span class="mf">0.08</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span>
+                                                 <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
+        <span class="n">sinograms</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">parallel_process_slices</span><span class="p">(</span><span class="n">sinograms</span><span class="p">,</span>
+                                                 <span class="n">remo</span><span class="o">.</span><span class="n">remove_all_stripe</span><span class="p">,</span>
+                                                 <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">21</span><span class="p">],</span> <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span>
+                                                 <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
+        <span class="n">sinograms</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">parallel_process_slices</span><span class="p">(</span><span class="n">sinograms</span><span class="p">,</span>
+                                                 <span class="n">filt</span><span class="o">.</span><span class="n">fresnel_filter</span><span class="p">,</span>
+                                                 <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ncore</span><span class="o">=</span><span class="n">ncore</span><span class="p">,</span>
+                                                 <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
         <span class="n">t1</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
         <span class="n">t_prep</span> <span class="o">=</span> <span class="n">t_prep</span> <span class="o">+</span> <span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span>
 
@@ -1184,7 +1212,7 @@ to make it easy to customize the workflow. The following example demonstrates ho
 <span class="s2">#SBATCH --qos=normal</span>
 <span class="s2">#SBATCH --time=60:00</span>
 
-<span class="s2">srun -o </span><span class="si">{0}</span><span class="s2">/output_%j.txt -e </span><span class="si">{0}</span><span class="s2">/error_%j.txt ./</span><span class="si">{1}</span><span class="s2"> </span><span class="si">{2}</span><span class="s2"> </span><span class="si">{3}</span><span class="s2"></span>
+<span class="s2">srun -o </span><span class="si">{0}</span><span class="s2">/output_%j.txt -e </span><span class="si">{0}</span><span class="s2">/error_%j.txt ./</span><span class="si">{1}</span><span class="s2"> </span><span class="si">{2}</span><span class="s2"> </span><span class="si">{3}</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
 <span class="n">sbatch_script_gpu</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;#!/bin/bash</span>
@@ -1198,7 +1226,7 @@ to make it easy to customize the workflow. The following example demonstrates ho
 <span class="s2">#SBATCH --qos=normal</span>
 <span class="s2">#SBATCH --time=60:00</span>
 
-<span class="s2">srun -o </span><span class="si">{0}</span><span class="s2">/output_%j.txt -e </span><span class="si">{0}</span><span class="s2">/error_%j.txt ./</span><span class="si">{1}</span><span class="s2"> </span><span class="si">{2}</span><span class="s2"> </span><span class="si">{3}</span><span class="s2"></span>
+<span class="s2">srun -o </span><span class="si">{0}</span><span class="s2">/output_%j.txt -e </span><span class="si">{0}</span><span class="s2">/error_%j.txt ./</span><span class="si">{1}</span><span class="s2"> </span><span class="si">{2}</span><span class="s2"> </span><span class="si">{3}</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
 <span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">list_file</span><span class="p">:</span>
@@ -1504,13 +1532,24 @@ multiple datasets, making sure that the <em>ncore</em> option in Algotom API is 
 </div></blockquote>
 <p>Applying methods in parallel using Algotom API:</p>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sinograms</span> <span class="o">=</span> <span class="n">corr</span><span class="o">.</span><span class="n">flat_field_correction</span><span class="p">(</span><span class="n">proj_obj</span><span class="p">[:,</span> <span class="mi">20</span><span class="p">:</span><span class="mi">40</span><span class="p">,</span> <span class="p">:],</span> <span class="n">flat_field</span><span class="p">[</span><span class="mi">20</span><span class="p">:</span><span class="mi">40</span><span class="p">,</span> <span class="p">:],</span> <span class="n">dark_field</span><span class="p">[</span><span class="mi">20</span><span class="p">:</span><span class="mi">40</span><span class="p">,</span> <span class="p">:])</span>
-<span class="n">sinograms</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">apply_method_to_multiple_sinograms</span><span class="p">(</span><span class="n">sinograms</span><span class="p">,</span> <span class="s2">&quot;remove_zinger&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.08</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Algotom &lt; 1.6</span>
+<span class="c1"># sinograms = corr.flat_field_correction(proj_obj[:, 20:40, :], flat_field[20:40, :], dark_field[20:40, :])</span>
+<span class="c1"># sinograms = util.apply_method_to_multiple_sinograms(sinograms, &quot;remove_zinger&quot;, [0.08, 1],</span>
+<span class="c1">#                                                     ncore=None, prefer=&quot;threads&quot;)</span>
+<span class="c1"># sinograms = util.apply_method_to_multiple_sinograms(sinograms, &quot;remove_all_stripe&quot;, [3.0, 51, 17],</span>
                                                     <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
-<span class="n">sinograms</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">apply_method_to_multiple_sinograms</span><span class="p">(</span><span class="n">sinograms</span><span class="p">,</span> <span class="s2">&quot;remove_all_stripe&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">17</span><span class="p">],</span>
+<span class="c1"># sinograms = util.apply_method_to_multiple_sinograms(sinograms, &quot;fresnel_filter&quot;, [200, 1],</span>
                                                     <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
-<span class="n">sinograms</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">apply_method_to_multiple_sinograms</span><span class="p">(</span><span class="n">sinograms</span><span class="p">,</span> <span class="s2">&quot;fresnel_filter&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-                                                    <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
+<span class="c1"># Algotom &gt;= 1.6</span>
+<span class="n">sinograms</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">parallel_process_slices</span><span class="p">(</span><span class="n">sinograms</span><span class="p">,</span> <span class="n">remo</span><span class="o">.</span><span class="n">remove_zinger</span><span class="p">,</span>
+                                         <span class="p">[</span><span class="mf">0.08</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                         <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
+<span class="n">sinograms</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">parallel_process_slices</span><span class="p">(</span><span class="n">sinograms</span><span class="p">,</span> <span class="n">remo</span><span class="o">.</span><span class="n">remove_all_stripe</span><span class="p">,</span>
+                                         <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">17</span><span class="p">],</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                         <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
+<span class="n">sinograms</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">parallel_process_slices</span><span class="p">(</span><span class="n">sinograms</span><span class="p">,</span> <span class="n">filt</span><span class="o">.</span><span class="n">fresnel_filter</span><span class="p">,</span>
+                                         <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                         <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -1686,7 +1725,7 @@ and benefits of this technique.</p></li>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

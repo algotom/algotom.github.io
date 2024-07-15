@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Data processing algorithms for tomography &#8212; Algotom&#39;s documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -14,6 +14,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <script src="_static/js/petite-vue.js"></script>
@@ -300,33 +301,256 @@ technical notes, and applications.</p>
 <li class="toctree-l1"><a class="reference internal" href="toc/section6.html">6. Update notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="toc/api.html">7. API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="toc/api.html#input-output">7.1. Input-output</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.io.converter.html">7.1.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.io.converter</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html">7.1.2. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.io.loadersaver</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.io.converter.html">7.1.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.io.converter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.converter.html#algotom.io.converter.convert_tif_to_hdf"><code class="docutils literal notranslate"><span class="pre">convert_tif_to_hdf()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.converter.html#algotom.io.converter.extract_tif_from_hdf"><code class="docutils literal notranslate"><span class="pre">extract_tif_from_hdf()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.converter.html#algotom.io.converter.HdfEmulatorFromTif"><code class="docutils literal notranslate"><span class="pre">HdfEmulatorFromTif</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html">7.1.2. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.io.loadersaver</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.load_image"><code class="docutils literal notranslate"><span class="pre">load_image()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.get_hdf_information"><code class="docutils literal notranslate"><span class="pre">get_hdf_information()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.find_hdf_key"><code class="docutils literal notranslate"><span class="pre">find_hdf_key()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.load_hdf"><code class="docutils literal notranslate"><span class="pre">load_hdf()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.make_folder"><code class="docutils literal notranslate"><span class="pre">make_folder()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.make_file_name"><code class="docutils literal notranslate"><span class="pre">make_file_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.make_folder_name"><code class="docutils literal notranslate"><span class="pre">make_folder_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.find_file"><code class="docutils literal notranslate"><span class="pre">find_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.save_image"><code class="docutils literal notranslate"><span class="pre">save_image()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.open_hdf_stream"><code class="docutils literal notranslate"><span class="pre">open_hdf_stream()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.load_distortion_coefficient"><code class="docutils literal notranslate"><span class="pre">load_distortion_coefficient()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.save_distortion_coefficient"><code class="docutils literal notranslate"><span class="pre">save_distortion_coefficient()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.get_hdf_tree"><code class="docutils literal notranslate"><span class="pre">get_hdf_tree()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.get_reference_sample_stacks_dls"><code class="docutils literal notranslate"><span class="pre">get_reference_sample_stacks_dls()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.get_reference_sample_stacks"><code class="docutils literal notranslate"><span class="pre">get_reference_sample_stacks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.get_tif_stack"><code class="docutils literal notranslate"><span class="pre">get_tif_stack()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.get_image_stack"><code class="docutils literal notranslate"><span class="pre">get_image_stack()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.load_image_multiple"><code class="docutils literal notranslate"><span class="pre">load_image_multiple()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.io.loadersaver.html#algotom.io.loadersaver.save_image_multiple"><code class="docutils literal notranslate"><span class="pre">save_image_multiple()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="toc/api.html#pre-processing">7.2. Pre-processing</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.prep.calculation.html">7.2.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.calculation</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.prep.conversion.html">7.2.2. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.conversion</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.prep.correction.html">7.2.3. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.correction</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.prep.filtering.html">7.2.4. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.filtering</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.prep.removal.html">7.2.5. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.removal</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.prep.phase.html">7.2.6. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.phase</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.prep.calculation.html">7.2.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.calculation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.calculation.html#algotom.prep.calculation.make_inverse_double_wedge_mask"><code class="docutils literal notranslate"><span class="pre">make_inverse_double_wedge_mask()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.calculation.html#algotom.prep.calculation.calculate_center_metric"><code class="docutils literal notranslate"><span class="pre">calculate_center_metric()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.calculation.html#algotom.prep.calculation.coarse_search_cor"><code class="docutils literal notranslate"><span class="pre">coarse_search_cor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.calculation.html#algotom.prep.calculation.fine_search_cor"><code class="docutils literal notranslate"><span class="pre">fine_search_cor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.calculation.html#algotom.prep.calculation.downsample_cor"><code class="docutils literal notranslate"><span class="pre">downsample_cor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_center_vo"><code class="docutils literal notranslate"><span class="pre">find_center_vo()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.calculation.html#algotom.prep.calculation.calculate_curvature"><code class="docutils literal notranslate"><span class="pre">calculate_curvature()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.calculation.html#algotom.prep.calculation.correlation_metric"><code class="docutils literal notranslate"><span class="pre">correlation_metric()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.calculation.html#algotom.prep.calculation.search_overlap"><code class="docutils literal notranslate"><span class="pre">search_overlap()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_overlap"><code class="docutils literal notranslate"><span class="pre">find_overlap()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_overlap_multiple"><code class="docutils literal notranslate"><span class="pre">find_overlap_multiple()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_center_360"><code class="docutils literal notranslate"><span class="pre">find_center_360()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.calculation.html#algotom.prep.calculation.complex_gradient"><code class="docutils literal notranslate"><span class="pre">complex_gradient()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_shift_based_phase_correlation"><code class="docutils literal notranslate"><span class="pre">find_shift_based_phase_correlation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_center_based_phase_correlation"><code class="docutils literal notranslate"><span class="pre">find_center_based_phase_correlation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_center_projection"><code class="docutils literal notranslate"><span class="pre">find_center_projection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.calculation.html#algotom.prep.calculation.calculate_reconstructable_height"><code class="docutils literal notranslate"><span class="pre">calculate_reconstructable_height()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.calculation.html#algotom.prep.calculation.calculate_maximum_index"><code class="docutils literal notranslate"><span class="pre">calculate_maximum_index()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.prep.conversion.html">7.2.2. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.conversion</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.conversion.html#algotom.prep.conversion.make_weight_matrix"><code class="docutils literal notranslate"><span class="pre">make_weight_matrix()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.conversion.html#algotom.prep.conversion.stitch_image"><code class="docutils literal notranslate"><span class="pre">stitch_image()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.conversion.html#algotom.prep.conversion.join_image"><code class="docutils literal notranslate"><span class="pre">join_image()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.conversion.html#algotom.prep.conversion.stitch_image_multiple"><code class="docutils literal notranslate"><span class="pre">stitch_image_multiple()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.conversion.html#algotom.prep.conversion.join_image_multiple"><code class="docutils literal notranslate"><span class="pre">join_image_multiple()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.conversion.html#algotom.prep.conversion.convert_sinogram_360_to_180"><code class="docutils literal notranslate"><span class="pre">convert_sinogram_360_to_180()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.conversion.html#algotom.prep.conversion.convert_sinogram_180_to_360"><code class="docutils literal notranslate"><span class="pre">convert_sinogram_180_to_360()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.conversion.html#algotom.prep.conversion.extend_sinogram"><code class="docutils literal notranslate"><span class="pre">extend_sinogram()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.conversion.html#algotom.prep.conversion.generate_sinogram_helical_scan"><code class="docutils literal notranslate"><span class="pre">generate_sinogram_helical_scan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.conversion.html#algotom.prep.conversion.generate_full_sinogram_helical_scan"><code class="docutils literal notranslate"><span class="pre">generate_full_sinogram_helical_scan()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.prep.correction.html">7.2.3. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.correction</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.correction.html#algotom.prep.correction.flat_field_correction"><code class="docutils literal notranslate"><span class="pre">flat_field_correction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.correction.html#algotom.prep.correction.unwarp_projection"><code class="docutils literal notranslate"><span class="pre">unwarp_projection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.correction.html#algotom.prep.correction.unwarp_sinogram"><code class="docutils literal notranslate"><span class="pre">unwarp_sinogram()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.correction.html#algotom.prep.correction.unwarp_sinogram_chunk"><code class="docutils literal notranslate"><span class="pre">unwarp_sinogram_chunk()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.correction.html#algotom.prep.correction.mtf_deconvolution"><code class="docutils literal notranslate"><span class="pre">mtf_deconvolution()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.correction.html#algotom.prep.correction.generate_tilted_sinogram"><code class="docutils literal notranslate"><span class="pre">generate_tilted_sinogram()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.correction.html#algotom.prep.correction.generate_tilted_sinogram_chunk"><code class="docutils literal notranslate"><span class="pre">generate_tilted_sinogram_chunk()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.correction.html#algotom.prep.correction.generate_tilted_profile_line"><code class="docutils literal notranslate"><span class="pre">generate_tilted_profile_line()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.correction.html#algotom.prep.correction.generate_tilted_profile_chunk"><code class="docutils literal notranslate"><span class="pre">generate_tilted_profile_chunk()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.correction.html#algotom.prep.correction.non_linear_function"><code class="docutils literal notranslate"><span class="pre">non_linear_function()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.correction.html#algotom.prep.correction.beam_hardening_correction"><code class="docutils literal notranslate"><span class="pre">beam_hardening_correction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.correction.html#algotom.prep.correction.upsample_sinogram"><code class="docutils literal notranslate"><span class="pre">upsample_sinogram()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.prep.filtering.html">7.2.4. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.filtering</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.filtering.html#algotom.prep.filtering.make_fresnel_window"><code class="docutils literal notranslate"><span class="pre">make_fresnel_window()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.filtering.html#algotom.prep.filtering.fresnel_filter"><code class="docutils literal notranslate"><span class="pre">fresnel_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.filtering.html#algotom.prep.filtering.make_double_wedge_mask"><code class="docutils literal notranslate"><span class="pre">make_double_wedge_mask()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.filtering.html#algotom.prep.filtering.double_wedge_filter"><code class="docutils literal notranslate"><span class="pre">double_wedge_filter()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.prep.removal.html">7.2.5. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.removal</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_sorting"><code class="docutils literal notranslate"><span class="pre">remove_stripe_based_sorting()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_filtering"><code class="docutils literal notranslate"><span class="pre">remove_stripe_based_filtering()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_fitting"><code class="docutils literal notranslate"><span class="pre">remove_stripe_based_fitting()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_large_stripe"><code class="docutils literal notranslate"><span class="pre">remove_large_stripe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_dead_stripe"><code class="docutils literal notranslate"><span class="pre">remove_dead_stripe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_all_stripe"><code class="docutils literal notranslate"><span class="pre">remove_all_stripe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_2d_filtering_sorting"><code class="docutils literal notranslate"><span class="pre">remove_stripe_based_2d_filtering_sorting()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_normalization"><code class="docutils literal notranslate"><span class="pre">remove_stripe_based_normalization()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_regularization"><code class="docutils literal notranslate"><span class="pre">remove_stripe_based_regularization()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_fft"><code class="docutils literal notranslate"><span class="pre">remove_stripe_based_fft()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_wavelet_fft"><code class="docutils literal notranslate"><span class="pre">remove_stripe_based_wavelet_fft()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_stripe_based_interpolation"><code class="docutils literal notranslate"><span class="pre">remove_stripe_based_interpolation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.removal.html#algotom.prep.removal.check_zinger_size"><code class="docutils literal notranslate"><span class="pre">check_zinger_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.removal.html#algotom.prep.removal.select_zinger"><code class="docutils literal notranslate"><span class="pre">select_zinger()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_zinger"><code class="docutils literal notranslate"><span class="pre">remove_zinger()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.removal.html#algotom.prep.removal.generate_blob_mask"><code class="docutils literal notranslate"><span class="pre">generate_blob_mask()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_blob_1d"><code class="docutils literal notranslate"><span class="pre">remove_blob_1d()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.removal.html#algotom.prep.removal.remove_blob"><code class="docutils literal notranslate"><span class="pre">remove_blob()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.prep.phase.html">7.2.6. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.phase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.phase.html#algotom.prep.phase.get_quality_map"><code class="docutils literal notranslate"><span class="pre">get_quality_map()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.phase.html#algotom.prep.phase.get_weight_mask"><code class="docutils literal notranslate"><span class="pre">get_weight_mask()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.phase.html#algotom.prep.phase.unwrap_phase_based_cosine_transform"><code class="docutils literal notranslate"><span class="pre">unwrap_phase_based_cosine_transform()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.phase.html#algotom.prep.phase.unwrap_phase_based_fft"><code class="docutils literal notranslate"><span class="pre">unwrap_phase_based_fft()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.phase.html#algotom.prep.phase.unwrap_phase_iterative_fft"><code class="docutils literal notranslate"><span class="pre">unwrap_phase_iterative_fft()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.phase.html#algotom.prep.phase.reconstruct_surface_from_gradient_FC_method"><code class="docutils literal notranslate"><span class="pre">reconstruct_surface_from_gradient_FC_method()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.phase.html#algotom.prep.phase.reconstruct_surface_from_gradient_SCS_method"><code class="docutils literal notranslate"><span class="pre">reconstruct_surface_from_gradient_SCS_method()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.phase.html#algotom.prep.phase.find_shift_between_image_stacks"><code class="docutils literal notranslate"><span class="pre">find_shift_between_image_stacks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.phase.html#algotom.prep.phase.find_shift_between_sample_images"><code class="docutils literal notranslate"><span class="pre">find_shift_between_sample_images()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.phase.html#algotom.prep.phase.align_image_stacks"><code class="docutils literal notranslate"><span class="pre">align_image_stacks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.phase.html#algotom.prep.phase.get_transmission_dark_field_signal"><code class="docutils literal notranslate"><span class="pre">get_transmission_dark_field_signal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.prep.phase.html#algotom.prep.phase.retrieve_phase_based_speckle_tracking"><code class="docutils literal notranslate"><span class="pre">retrieve_phase_based_speckle_tracking()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="toc/api.html#reconstruction">7.3. Reconstruction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.rec.reconstruction.html">7.3.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.rec.reconstruction</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.rec.vertrec.html">7.3.2. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.rec.vertrec</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.rec.reconstruction.html">7.3.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.rec.reconstruction</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.make_smoothing_window"><code class="docutils literal notranslate"><span class="pre">make_smoothing_window()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.make_2d_ramp_window"><code class="docutils literal notranslate"><span class="pre">make_2d_ramp_window()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.apply_ramp_filter"><code class="docutils literal notranslate"><span class="pre">apply_ramp_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.back_projection_gpu"><code class="docutils literal notranslate"><span class="pre">back_projection_gpu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.back_projection_gpu_chunk"><code class="docutils literal notranslate"><span class="pre">back_projection_gpu_chunk()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.back_projection_cpu"><code class="docutils literal notranslate"><span class="pre">back_projection_cpu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.fbp_reconstruction"><code class="docutils literal notranslate"><span class="pre">fbp_reconstruction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.make_circular_ramp_window"><code class="docutils literal notranslate"><span class="pre">make_circular_ramp_window()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.apply_circular_ramp_filter"><code class="docutils literal notranslate"><span class="pre">apply_circular_ramp_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.bpf_reconstruction"><code class="docutils literal notranslate"><span class="pre">bpf_reconstruction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.generate_mapping_coordinate"><code class="docutils literal notranslate"><span class="pre">generate_mapping_coordinate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.dfi_reconstruction"><code class="docutils literal notranslate"><span class="pre">dfi_reconstruction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.gridrec_reconstruction"><code class="docutils literal notranslate"><span class="pre">gridrec_reconstruction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.astra_reconstruction"><code class="docutils literal notranslate"><span class="pre">astra_reconstruction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.find_center_based_slice_metric"><code class="docutils literal notranslate"><span class="pre">find_center_based_slice_metric()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.find_center_visual_slices"><code class="docutils literal notranslate"><span class="pre">find_center_visual_slices()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.rec.vertrec.html">7.3.2. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.rec.vertrec</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.vertical_back_projection_cpu"><code class="docutils literal notranslate"><span class="pre">vertical_back_projection_cpu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.vertical_back_projection_cpu_chunk"><code class="docutils literal notranslate"><span class="pre">vertical_back_projection_cpu_chunk()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.vertical_back_projection_gpu"><code class="docutils literal notranslate"><span class="pre">vertical_back_projection_gpu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.vertical_back_projection_gpu_chunk"><code class="docutils literal notranslate"><span class="pre">vertical_back_projection_gpu_chunk()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.vertical_reconstruction"><code class="docutils literal notranslate"><span class="pre">vertical_reconstruction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.vertical_reconstruction_multiple"><code class="docutils literal notranslate"><span class="pre">vertical_reconstruction_multiple()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.vertical_reconstruction_different_angles"><code class="docutils literal notranslate"><span class="pre">vertical_reconstruction_different_angles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.find_center_vertical_slice"><code class="docutils literal notranslate"><span class="pre">find_center_vertical_slice()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.find_center_visual_vertical_slices"><code class="docutils literal notranslate"><span class="pre">find_center_visual_vertical_slices()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="toc/api.html#post-processing">7.4. Post-processing</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.post.postprocessing.html">7.4.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.post.postprocessing</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.post.postprocessing.html">7.4.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.post.postprocessing</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.get_statistical_information"><code class="docutils literal notranslate"><span class="pre">get_statistical_information()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.get_statistical_information_dataset"><code class="docutils literal notranslate"><span class="pre">get_statistical_information_dataset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.downsample"><code class="docutils literal notranslate"><span class="pre">downsample()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.rescale"><code class="docutils literal notranslate"><span class="pre">rescale()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.downsample_dataset"><code class="docutils literal notranslate"><span class="pre">downsample_dataset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.rescale_dataset"><code class="docutils literal notranslate"><span class="pre">rescale_dataset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.reslice_dataset"><code class="docutils literal notranslate"><span class="pre">reslice_dataset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.remove_ring_based_fft"><code class="docutils literal notranslate"><span class="pre">remove_ring_based_fft()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.post.postprocessing.html#algotom.post.postprocessing.remove_ring_based_wavelet_fft"><code class="docutils literal notranslate"><span class="pre">remove_ring_based_wavelet_fft()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="toc/api.html#utilities">7.5. Utilities</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.util.calibration.html">7.5.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.calibration</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.util.simulation.html">7.5.2. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.simulation</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.util.utility.html">7.5.3. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.utility</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.util.correlation.html">7.5.4. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.correlation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.util.calibration.html">7.5.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.calibration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.calibration.html#algotom.util.calibration.normalize_background"><code class="docutils literal notranslate"><span class="pre">normalize_background()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.calibration.html#algotom.util.calibration.normalize_background_based_fft"><code class="docutils literal notranslate"><span class="pre">normalize_background_based_fft()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.calibration.html#algotom.util.calibration.invert_dot_contrast"><code class="docutils literal notranslate"><span class="pre">invert_dot_contrast()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.calibration.html#algotom.util.calibration.calculate_threshold"><code class="docutils literal notranslate"><span class="pre">calculate_threshold()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.calibration.html#algotom.util.calibration.binarize_image"><code class="docutils literal notranslate"><span class="pre">binarize_image()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.calibration.html#algotom.util.calibration.get_dot_size"><code class="docutils literal notranslate"><span class="pre">get_dot_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.calibration.html#algotom.util.calibration.check_dot_size"><code class="docutils literal notranslate"><span class="pre">check_dot_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.calibration.html#algotom.util.calibration.select_dot_based_size"><code class="docutils literal notranslate"><span class="pre">select_dot_based_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.calibration.html#algotom.util.calibration.calculate_distance"><code class="docutils literal notranslate"><span class="pre">calculate_distance()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.calibration.html#algotom.util.calibration.fit_points_to_ellipse"><code class="docutils literal notranslate"><span class="pre">fit_points_to_ellipse()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.calibration.html#algotom.util.calibration.find_tilt_roll_based_linear_fit"><code class="docutils literal notranslate"><span class="pre">find_tilt_roll_based_linear_fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.calibration.html#algotom.util.calibration.find_tilt_roll_based_ellipse_fit"><code class="docutils literal notranslate"><span class="pre">find_tilt_roll_based_ellipse_fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.calibration.html#algotom.util.calibration.find_tilt_roll"><code class="docutils literal notranslate"><span class="pre">find_tilt_roll()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.util.simulation.html">7.5.2. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.simulation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.simulation.html#algotom.util.simulation.make_elliptic_mask"><code class="docutils literal notranslate"><span class="pre">make_elliptic_mask()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.simulation.html#algotom.util.simulation.make_rectangular_mask"><code class="docutils literal notranslate"><span class="pre">make_rectangular_mask()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.simulation.html#algotom.util.simulation.make_triangular_mask"><code class="docutils literal notranslate"><span class="pre">make_triangular_mask()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.simulation.html#algotom.util.simulation.make_line_target"><code class="docutils literal notranslate"><span class="pre">make_line_target()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.simulation.html#algotom.util.simulation.make_face_phantom"><code class="docutils literal notranslate"><span class="pre">make_face_phantom()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.simulation.html#algotom.util.simulation.make_sinogram"><code class="docutils literal notranslate"><span class="pre">make_sinogram()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.simulation.html#algotom.util.simulation.add_noise"><code class="docutils literal notranslate"><span class="pre">add_noise()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.simulation.html#algotom.util.simulation.add_stripe_artifact"><code class="docutils literal notranslate"><span class="pre">add_stripe_artifact()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.simulation.html#algotom.util.simulation.convert_to_Xray_image"><code class="docutils literal notranslate"><span class="pre">convert_to_Xray_image()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.simulation.html#algotom.util.simulation.add_background_fluctuation"><code class="docutils literal notranslate"><span class="pre">add_background_fluctuation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.util.utility.html">7.5.3. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.utility</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.parallel_process_slices"><code class="docutils literal notranslate"><span class="pre">parallel_process_slices()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.apply_method_to_multiple_sinograms"><code class="docutils literal notranslate"><span class="pre">apply_method_to_multiple_sinograms()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.mapping"><code class="docutils literal notranslate"><span class="pre">mapping()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.make_circle_mask"><code class="docutils literal notranslate"><span class="pre">make_circle_mask()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.sort_forward"><code class="docutils literal notranslate"><span class="pre">sort_forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.sort_backward"><code class="docutils literal notranslate"><span class="pre">sort_backward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.separate_frequency_component"><code class="docutils literal notranslate"><span class="pre">separate_frequency_component()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.generate_fitted_image"><code class="docutils literal notranslate"><span class="pre">generate_fitted_image()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.detect_stripe"><code class="docutils literal notranslate"><span class="pre">detect_stripe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.calculate_regularization_coefficient"><code class="docutils literal notranslate"><span class="pre">calculate_regularization_coefficient()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.make_2d_butterworth_window"><code class="docutils literal notranslate"><span class="pre">make_2d_butterworth_window()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.make_2d_damping_window"><code class="docutils literal notranslate"><span class="pre">make_2d_damping_window()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.apply_wavelet_decomposition"><code class="docutils literal notranslate"><span class="pre">apply_wavelet_decomposition()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.apply_wavelet_reconstruction"><code class="docutils literal notranslate"><span class="pre">apply_wavelet_reconstruction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.check_level"><code class="docutils literal notranslate"><span class="pre">check_level()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.apply_filter_to_wavelet_component"><code class="docutils literal notranslate"><span class="pre">apply_filter_to_wavelet_component()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.interpolate_inside_stripe"><code class="docutils literal notranslate"><span class="pre">interpolate_inside_stripe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.rectangular_from_polar"><code class="docutils literal notranslate"><span class="pre">rectangular_from_polar()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.polar_from_rectangular"><code class="docutils literal notranslate"><span class="pre">polar_from_rectangular()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.transform_slice_forward"><code class="docutils literal notranslate"><span class="pre">transform_slice_forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.transform_slice_backward"><code class="docutils literal notranslate"><span class="pre">transform_slice_backward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.make_2d_gaussian_window"><code class="docutils literal notranslate"><span class="pre">make_2d_gaussian_window()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.apply_gaussian_filter"><code class="docutils literal notranslate"><span class="pre">apply_gaussian_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.apply_1d_regularizer"><code class="docutils literal notranslate"><span class="pre">apply_1d_regularizer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.apply_regularization_filter"><code class="docutils literal notranslate"><span class="pre">apply_regularization_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.transform_1d_window_to_2d"><code class="docutils literal notranslate"><span class="pre">transform_1d_window_to_2d()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.detect_sample"><code class="docutils literal notranslate"><span class="pre">detect_sample()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.fix_non_sample_areas"><code class="docutils literal notranslate"><span class="pre">fix_non_sample_areas()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.locate_slice"><code class="docutils literal notranslate"><span class="pre">locate_slice()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.locate_slice_chunk"><code class="docutils literal notranslate"><span class="pre">locate_slice_chunk()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.generate_spiral_positions"><code class="docutils literal notranslate"><span class="pre">generate_spiral_positions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.find_center_visual_sinograms"><code class="docutils literal notranslate"><span class="pre">find_center_visual_sinograms()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.utility.html#algotom.util.utility.find_center_visual_slices"><code class="docutils literal notranslate"><span class="pre">find_center_visual_slices()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="toc/api/algotom.util.correlation.html">7.5.4. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.correlation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.correlation.html#algotom.util.correlation.normalize_image"><code class="docutils literal notranslate"><span class="pre">normalize_image()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.correlation.html#algotom.util.correlation.generate_correlation_map"><code class="docutils literal notranslate"><span class="pre">generate_correlation_map()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.correlation.html#algotom.util.correlation.locate_peak"><code class="docutils literal notranslate"><span class="pre">locate_peak()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.correlation.html#algotom.util.correlation.find_shift_based_correlation_map"><code class="docutils literal notranslate"><span class="pre">find_shift_based_correlation_map()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.correlation.html#algotom.util.correlation.find_local_shifts"><code class="docutils literal notranslate"><span class="pre">find_local_shifts()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.correlation.html#algotom.util.correlation.find_global_shift_based_local_shifts"><code class="docutils literal notranslate"><span class="pre">find_global_shift_based_local_shifts()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="toc/api/algotom.util.correlation.html#algotom.util.correlation.find_local_shifts_umpa"><code class="docutils literal notranslate"><span class="pre">find_local_shifts_umpa()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -383,7 +607,7 @@ technical notes, and applications.</p>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

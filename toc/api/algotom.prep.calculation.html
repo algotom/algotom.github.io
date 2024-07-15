@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>7.2.1. algotom.prep.calculation &#8212; Algotom&#39;s documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
@@ -14,6 +14,7 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <script src="../../_static/js/petite-vue.js"></script>
@@ -684,6 +685,40 @@ correlation coefficients if True.</p></li>
         </div>
       </div>
     
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon"><</span><span>Page contents<span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">></span><span>Page contents:<span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">7.2.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.prep.calculation</span></code></a><ul>
+<li><a class="reference internal" href="#algotom.prep.calculation.make_inverse_double_wedge_mask"><code class="docutils literal notranslate"><span class="pre">make_inverse_double_wedge_mask()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.calculation.calculate_center_metric"><code class="docutils literal notranslate"><span class="pre">calculate_center_metric()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.calculation.coarse_search_cor"><code class="docutils literal notranslate"><span class="pre">coarse_search_cor()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.calculation.fine_search_cor"><code class="docutils literal notranslate"><span class="pre">fine_search_cor()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.calculation.downsample_cor"><code class="docutils literal notranslate"><span class="pre">downsample_cor()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.calculation.find_center_vo"><code class="docutils literal notranslate"><span class="pre">find_center_vo()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.calculation.calculate_curvature"><code class="docutils literal notranslate"><span class="pre">calculate_curvature()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.calculation.correlation_metric"><code class="docutils literal notranslate"><span class="pre">correlation_metric()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.calculation.search_overlap"><code class="docutils literal notranslate"><span class="pre">search_overlap()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.calculation.find_overlap"><code class="docutils literal notranslate"><span class="pre">find_overlap()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.calculation.find_overlap_multiple"><code class="docutils literal notranslate"><span class="pre">find_overlap_multiple()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.calculation.find_center_360"><code class="docutils literal notranslate"><span class="pre">find_center_360()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.calculation.complex_gradient"><code class="docutils literal notranslate"><span class="pre">complex_gradient()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.calculation.find_shift_based_phase_correlation"><code class="docutils literal notranslate"><span class="pre">find_shift_based_phase_correlation()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.calculation.find_center_based_phase_correlation"><code class="docutils literal notranslate"><span class="pre">find_center_based_phase_correlation()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.calculation.find_center_projection"><code class="docutils literal notranslate"><span class="pre">find_center_projection()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.calculation.calculate_reconstructable_height"><code class="docutils literal notranslate"><span class="pre">calculate_reconstructable_height()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.prep.calculation.calculate_maximum_index"><code class="docutils literal notranslate"><span class="pre">calculate_maximum_index()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
 
       <div class="clearer"></div>
     </div>
@@ -707,7 +742,7 @@ correlation coefficients if True.</p></li>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

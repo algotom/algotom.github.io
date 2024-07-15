@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>7.3.1. algotom.rec.reconstruction &#8212; Algotom&#39;s documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
@@ -14,6 +14,7 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <script src="../../_static/js/petite-vue.js"></script>
@@ -620,6 +621,38 @@ size of images by half.</p></li>
         </div>
       </div>
     
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon"><</span><span>Page contents<span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">></span><span>Page contents:<span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">7.3.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.rec.reconstruction</span></code></a><ul>
+<li><a class="reference internal" href="#algotom.rec.reconstruction.make_smoothing_window"><code class="docutils literal notranslate"><span class="pre">make_smoothing_window()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.rec.reconstruction.make_2d_ramp_window"><code class="docutils literal notranslate"><span class="pre">make_2d_ramp_window()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.rec.reconstruction.apply_ramp_filter"><code class="docutils literal notranslate"><span class="pre">apply_ramp_filter()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.rec.reconstruction.back_projection_gpu"><code class="docutils literal notranslate"><span class="pre">back_projection_gpu()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.rec.reconstruction.back_projection_gpu_chunk"><code class="docutils literal notranslate"><span class="pre">back_projection_gpu_chunk()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.rec.reconstruction.back_projection_cpu"><code class="docutils literal notranslate"><span class="pre">back_projection_cpu()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.rec.reconstruction.fbp_reconstruction"><code class="docutils literal notranslate"><span class="pre">fbp_reconstruction()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.rec.reconstruction.make_circular_ramp_window"><code class="docutils literal notranslate"><span class="pre">make_circular_ramp_window()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.rec.reconstruction.apply_circular_ramp_filter"><code class="docutils literal notranslate"><span class="pre">apply_circular_ramp_filter()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.rec.reconstruction.bpf_reconstruction"><code class="docutils literal notranslate"><span class="pre">bpf_reconstruction()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.rec.reconstruction.generate_mapping_coordinate"><code class="docutils literal notranslate"><span class="pre">generate_mapping_coordinate()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.rec.reconstruction.dfi_reconstruction"><code class="docutils literal notranslate"><span class="pre">dfi_reconstruction()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.rec.reconstruction.gridrec_reconstruction"><code class="docutils literal notranslate"><span class="pre">gridrec_reconstruction()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.rec.reconstruction.astra_reconstruction"><code class="docutils literal notranslate"><span class="pre">astra_reconstruction()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.rec.reconstruction.find_center_based_slice_metric"><code class="docutils literal notranslate"><span class="pre">find_center_based_slice_metric()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.rec.reconstruction.find_center_visual_slices"><code class="docutils literal notranslate"><span class="pre">find_center_visual_slices()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
 
       <div class="clearer"></div>
     </div>
@@ -643,7 +676,7 @@ size of images by half.</p></li>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>
