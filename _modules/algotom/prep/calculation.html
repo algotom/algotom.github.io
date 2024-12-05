@@ -13,6 +13,7 @@
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <script src="../../../_static/js/petite-vue.js"></script>
@@ -190,7 +191,7 @@
 
 <div class="viewcode-block" id="make_inverse_double_wedge_mask"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.make_inverse_double_wedge_mask">[docs]</a><span class="k">def</span> <span class="nf">make_inverse_double_wedge_mask</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">hor_drop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                    <span class="n">ver_drop</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate a double-wedge binary mask using Eq. (3) in Ref. [1].</span>
 <span class="sd">    Values outside the double-wedge region correspond to 1.0.</span>
 
@@ -242,7 +243,7 @@
 
 
 <div class="viewcode-block" id="calculate_center_metric"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.calculate_center_metric">[docs]</a><span class="k">def</span> <span class="nf">calculate_center_metric</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">sino_180</span><span class="p">,</span> <span class="n">sino_flip</span><span class="p">,</span> <span class="n">sino_comp</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate a metric of an estimated center-of-rotation.</span>
 
 <span class="sd">    Parameters</span>
@@ -291,7 +292,7 @@
 
 <div class="viewcode-block" id="coarse_search_cor"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.coarse_search_cor">[docs]</a><span class="k">def</span> <span class="nf">coarse_search_cor</span><span class="p">(</span><span class="n">sino_180</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">denoise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                       <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hor_drop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ver_drop</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the center-of-rotation (COR) using integer shifting.</span>
 
 <span class="sd">    Parameters</span>
@@ -355,7 +356,7 @@
 
 <div class="viewcode-block" id="fine_search_cor"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.fine_search_cor">[docs]</a><span class="k">def</span> <span class="nf">fine_search_cor</span><span class="p">(</span><span class="n">sino_180</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">denoise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                     <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hor_drop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ver_drop</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the center-of-rotation (COR) using sub-pixel shifting.</span>
 
 <span class="sd">    Parameters</span>
@@ -410,7 +411,7 @@
 
 
 <div class="viewcode-block" id="downsample_cor"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.downsample_cor">[docs]</a><span class="k">def</span> <span class="nf">downsample_cor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">dsp_fact0</span><span class="p">,</span> <span class="n">dsp_fact1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Downsample an image by averaging.</span>
 
 <span class="sd">    Parameters</span>
@@ -441,7 +442,7 @@
 <div class="viewcode-block" id="find_center_vo"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_center_vo">[docs]</a><span class="k">def</span> <span class="nf">find_center_vo</span><span class="p">(</span><span class="n">sino_180</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
                    <span class="n">ratio</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">dsp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hor_drop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                    <span class="n">ver_drop</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the center-of-rotation using the method described in Ref. [1].</span>
 
 <span class="sd">    Parameters</span>
@@ -514,7 +515,7 @@
 
 
 <div class="viewcode-block" id="calculate_curvature"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.calculate_curvature">[docs]</a><span class="k">def</span> <span class="nf">calculate_curvature</span><span class="p">(</span><span class="n">list_metric</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate the curvature of a fitted curve going through the minimum</span>
 <span class="sd">    value of a metric list.</span>
 
@@ -535,10 +536,16 @@
     <span class="n">min_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span>
         <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">list_metric</span><span class="p">),</span> <span class="n">radi</span><span class="p">,</span> <span class="n">num_metric</span> <span class="o">-</span> <span class="n">radi</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">list1</span> <span class="o">=</span> <span class="n">list_metric</span><span class="p">[</span><span class="n">min_pos</span> <span class="o">-</span> <span class="n">radi</span><span class="p">:</span><span class="n">min_pos</span> <span class="o">+</span> <span class="n">radi</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="p">(</span><span class="n">afact1</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">radi</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">list1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">afact1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">radi</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">list1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">afact1</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">list2</span> <span class="o">=</span> <span class="n">list_metric</span><span class="p">[</span><span class="n">min_pos</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span><span class="n">min_pos</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span>
-    <span class="p">(</span><span class="n">afact2</span><span class="p">,</span> <span class="n">bfact2</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">min_pos</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">min_pos</span> <span class="o">+</span> <span class="mi">2</span><span class="p">),</span> <span class="n">list2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">afact2</span><span class="p">,</span> <span class="n">bfact2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">min_pos</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">min_pos</span> <span class="o">+</span> <span class="mi">2</span><span class="p">),</span> <span class="n">list2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)[:</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">afact2</span><span class="p">,</span> <span class="n">bfact2</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span>
     <span class="n">curvature</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">afact1</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">afact2</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
         <span class="n">num</span> <span class="o">=</span> <span class="o">-</span> <span class="n">bfact2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">afact2</span><span class="p">)</span>
@@ -548,7 +555,7 @@
 
 
 <div class="viewcode-block" id="correlation_metric"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.correlation_metric">[docs]</a><span class="k">def</span> <span class="nf">correlation_metric</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate the correlation metric. Smaller metric corresponds to better</span>
 <span class="sd">    correlation.</span>
 
@@ -562,9 +569,10 @@
 <span class="sd">    float</span>
 <span class="sd">        Correlation metric.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">metric</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span>
-        <span class="mf">1.0</span> <span class="o">-</span> <span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">mat1</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">),</span> <span class="n">mat2</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">metric</span></div>
+    <span class="n">mat1_flat</span> <span class="o">=</span> <span class="n">mat1</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+    <span class="n">mat2_flat</span> <span class="o">=</span> <span class="n">mat2</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+    <span class="n">corr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">mat1_flat</span><span class="p">,</span> <span class="n">mat2_flat</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">corr</span><span class="p">)</span></div>
 
 
 <span class="k">def</span> <span class="nf">__calc_overlap_metric</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">use_overlap</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">wei_down</span><span class="p">,</span>
@@ -595,7 +603,7 @@
 
 <div class="viewcode-block" id="search_overlap"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.search_overlap">[docs]</a><span class="k">def</span> <span class="nf">search_overlap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">win_width</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">denoise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                    <span class="n">use_overlap</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate the correlation metrics between a rectangular region, defined</span>
 <span class="sd">    by the window width, on the utmost left/right side of image 2 and the</span>
 <span class="sd">    same size region in image 1 where the region is slided across image 1.</span>
@@ -680,7 +688,7 @@
 
 <div class="viewcode-block" id="find_overlap"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_overlap">[docs]</a><span class="k">def</span> <span class="nf">find_overlap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">win_width</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">denoise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">use_overlap</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the overlap area and overlap side between two images (Ref. [1]) where</span>
 <span class="sd">    the overlap side referring to the first image.</span>
 
@@ -713,8 +721,8 @@
 <span class="sd">    side : int</span>
 <span class="sd">        Overlap side between two images.</span>
 <span class="sd">    overlap_position : float</span>
-<span class="sd">        Position of the window in the first image giving the best</span>
-<span class="sd">        correlation metric.</span>
+<span class="sd">        Position of the horizontal middle of the window in the first image</span>
+<span class="sd">        giving the best correlation metric.</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
@@ -761,7 +769,7 @@
 
 <div class="viewcode-block" id="find_overlap_multiple"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_overlap_multiple">[docs]</a><span class="k">def</span> <span class="nf">find_overlap_multiple</span><span class="p">(</span><span class="n">list_mat</span><span class="p">,</span> <span class="n">win_width</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">denoise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                           <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">use_overlap</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the overlap-areas and overlap-sides of a list of images where the</span>
 <span class="sd">    overlap side referring to the previous image.</span>
 
@@ -791,8 +799,8 @@
 <span class="sd">        List of [overlap, side, overlap_position].</span>
 <span class="sd">        overlap : Width of the overlap area between two images.</span>
 <span class="sd">        side : Overlap side between two images.</span>
-<span class="sd">        overlap_position : Position of the window in the first</span>
-<span class="sd">        image giving the best correlation metric.</span>
+<span class="sd">        overlap_position : Position of the horizontal middle of the window</span>
+<span class="sd">        in the first image giving the best correlation metric.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">list_overlap</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">num_mat</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_mat</span><span class="p">)</span>
@@ -808,7 +816,7 @@
 
 <div class="viewcode-block" id="find_center_360"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_center_360">[docs]</a><span class="k">def</span> <span class="nf">find_center_360</span><span class="p">(</span><span class="n">sino_360</span><span class="p">,</span> <span class="n">win_width</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">denoise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                     <span class="n">use_overlap</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the center-of-rotation (COR) in a 360-degree scan with offset COR use</span>
 <span class="sd">    the method presented in Ref. [1].</span>
 
@@ -841,8 +849,8 @@
 <span class="sd">    side : int</span>
 <span class="sd">        Overlap side between two halves of the sinogram.</span>
 <span class="sd">    overlap_position : float</span>
-<span class="sd">        Position of the window in the first image giving the best</span>
-<span class="sd">        correlation metric.</span>
+<span class="sd">        Position of the horizontal middle of the window in the first image</span>
+<span class="sd">        giving the best correlation metric.</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
@@ -856,14 +864,14 @@
                                                      <span class="n">win_width</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">denoise</span><span class="p">,</span>
                                                      <span class="n">norm</span><span class="p">,</span> <span class="n">use_overlap</span><span class="p">,</span> <span class="n">ncore</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">side</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">cor</span> <span class="o">=</span> <span class="n">overlap</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">-</span> <span class="mf">1.0</span>
+        <span class="n">cor</span> <span class="o">=</span> <span class="n">overlap</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">-</span> <span class="mf">0.5</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">cor</span> <span class="o">=</span> <span class="n">ncol</span> <span class="o">-</span> <span class="n">overlap</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">-</span> <span class="mf">1.0</span>
+        <span class="n">cor</span> <span class="o">=</span> <span class="n">ncol</span> <span class="o">-</span> <span class="n">overlap</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">-</span> <span class="mf">0.5</span>
     <span class="k">return</span> <span class="n">cor</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">overlap_position</span></div>
 
 
 <div class="viewcode-block" id="complex_gradient"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.complex_gradient">[docs]</a><span class="k">def</span> <span class="nf">complex_gradient</span><span class="p">(</span><span class="n">mat</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return complex gradient of a 2D array.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">mat1a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -879,7 +887,7 @@
 
 
 <div class="viewcode-block" id="find_shift_based_phase_correlation"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_shift_based_phase_correlation">[docs]</a><span class="k">def</span> <span class="nf">find_shift_based_phase_correlation</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">gradient</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find relative translation in x and y direction between images with</span>
 <span class="sd">    haft-pixel accuracy (Ref. [1]).</span>
 
@@ -938,7 +946,7 @@
 
 
 <div class="viewcode-block" id="find_center_based_phase_correlation"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_center_based_phase_correlation">[docs]</a><span class="k">def</span> <span class="nf">find_center_based_phase_correlation</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">flip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">gradient</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the center-of-rotation (COR) using projection images at 0-degree</span>
 <span class="sd">    and 180-degree.</span>
 
@@ -969,7 +977,7 @@
 <div class="viewcode-block" id="find_center_projection"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_center_projection">[docs]</a><span class="k">def</span> <span class="nf">find_center_projection</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">flip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">win_width</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                            <span class="n">chunk_height</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">start_row</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">denoise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                            <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">use_overlap</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the center-of-rotation (COR) using projection images at 0-degree</span>
 <span class="sd">    and 180-degree based on a method in Ref. [1].</span>
 
@@ -1040,7 +1048,7 @@
 
 
 <div class="viewcode-block" id="calculate_reconstructable_height"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.calculate_reconstructable_height">[docs]</a><span class="k">def</span> <span class="nf">calculate_reconstructable_height</span><span class="p">(</span><span class="n">y_start</span><span class="p">,</span> <span class="n">y_stop</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">scan_type</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate reconstructable height in a helical scan.</span>
 
 <span class="sd">    Parameters</span>
@@ -1074,7 +1082,7 @@
 
 
 <div class="viewcode-block" id="calculate_maximum_index"><a class="viewcode-back" href="../../../toc/api/algotom.prep.calculation.html#algotom.prep.calculation.calculate_maximum_index">[docs]</a><span class="k">def</span> <span class="nf">calculate_maximum_index</span><span class="p">(</span><span class="n">y_start</span><span class="p">,</span> <span class="n">y_stop</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">pixel_size</span><span class="p">,</span> <span class="n">scan_type</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate the maximum index of a reconstructable slice in a helical scan.</span>
 
 <span class="sd">    Parameters</span>
@@ -1127,7 +1135,7 @@
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

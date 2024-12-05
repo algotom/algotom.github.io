@@ -390,10 +390,16 @@ def calculate_curvature(list_metric):
     min_pos = np.clip(
         np.argmin(list_metric), radi, num_metric - radi - 1)
     list1 = list_metric[min_pos - radi:min_pos + radi + 1]
-    (afact1, _, _) = np.polyfit(np.arange(0, 2 * radi + 1), list1, 2)
+    try:
+        afact1 = np.polyfit(np.arange(0, 2 * radi + 1), list1, 2)[0]
+    except:
+        afact1 = 0
     list2 = list_metric[min_pos - 1:min_pos + 2]
-    (afact2, bfact2, _) = np.polyfit(
-        np.arange(min_pos - 1, min_pos + 2), list2, 2)
+    try:
+        afact2, bfact2 = np.polyfit(
+            np.arange(min_pos - 1, min_pos + 2), list2, 2)[:2]
+    except:
+        afact2, bfact2 = 0.0, 0.0
     curvature = np.abs(afact1)
     if afact2 != 0.0:
         num = - bfact2 / (2 * afact2)
@@ -417,9 +423,10 @@ def correlation_metric(mat1, mat2):
     float
         Correlation metric.
     """
-    metric = np.abs(
-        1.0 - stats.pearsonr(mat1.flatten('F'), mat2.flatten('F'))[0])
-    return metric
+    mat1_flat = mat1.flatten('F')
+    mat2_flat = mat2.flatten('F')
+    corr, _ = stats.pearsonr(mat1_flat, mat2_flat)
+    return np.abs(1.0 - corr)
 
 
 def __calc_overlap_metric(mat1, pos, offset, use_overlap, side, norm, wei_down,
@@ -568,8 +575,8 @@ def find_overlap(mat1, mat2, win_width, side=None, denoise=True, norm=False,
     side : int
         Overlap side between two images.
     overlap_position : float
-        Position of the window in the first image giving the best
-        correlation metric.
+        Position of the horizontal middle of the window in the first image
+        giving the best correlation metric.
 
     References
     ----------
@@ -646,8 +653,8 @@ def find_overlap_multiple(list_mat, win_width, side=None, denoise=True,
         List of [overlap, side, overlap_position].
         overlap : Width of the overlap area between two images.
         side : Overlap side between two images.
-        overlap_position : Position of the window in the first
-        image giving the best correlation metric.
+        overlap_position : Position of the horizontal middle of the window
+        in the first image giving the best correlation metric.
     """
     list_overlap = []
     num_mat = len(list_mat)
@@ -696,8 +703,8 @@ def find_center_360(sino_360, win_width, side=None, denoise=True, norm=False,
     side : int
         Overlap side between two halves of the sinogram.
     overlap_position : float
-        Position of the window in the first image giving the best
-        correlation metric.
+        Position of the horizontal middle of the window in the first image
+        giving the best correlation metric.
 
     References
     ----------
@@ -711,9 +718,9 @@ def find_center_360(sino_360, win_width, side=None, denoise=True, norm=False,
                                                      win_width, side, denoise,
                                                      norm, use_overlap, ncore)
     if side == 0:
-        cor = overlap / 2.0 - 1.0
+        cor = overlap / 2.0 - 0.5
     else:
-        cor = ncol - overlap / 2.0 - 1.0
+        cor = ncol - overlap / 2.0 - 0.5
     return cor, overlap, side, overlap_position
 
 

@@ -249,7 +249,7 @@ indexed and sliced data access.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hdf_emulator</span> <span class="o">=</span> <span class="n">HdfEmulatorFromTif</span><span class="p">(</span><span class="s1">&#39;/path/to/tif/files&#39;</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hdf_emulator</span> <span class="o">=</span> <span class="n">HdfEmulatorFromTif</span><span class="p">(</span><span class="s1">&#39;C:/path/to/tif/files&#39;</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">hdf_emulator</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">last_image</span> <span class="o">=</span> <span class="n">hdf_emulator</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image_stack</span> <span class="o">=</span> <span class="n">hdf_emulator</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="p">:]</span>

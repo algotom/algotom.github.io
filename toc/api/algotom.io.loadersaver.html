@@ -187,7 +187,7 @@ be used by speckle-based phase contrast tomography.</p></li>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#algotom.io.loadersaver.load_image" title="algotom.io.loadersaver.load_image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_image</span></code></a>(file_path)</p></td>
-<td><p>Load data from an image.</p></td>
+<td><p>Load an image and convert it to a 2D array</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#algotom.io.loadersaver.get_hdf_information" title="algotom.io.loadersaver.get_hdf_information"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_hdf_information</span></code></a>(file_path[, display])</p></td>
 <td><p>Get information of datasets in a hdf/nxs file.</p></td>
@@ -248,7 +248,7 @@ be used by speckle-based phase contrast tomography.</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.io.loadersaver.load_image">
 <span class="sig-prename descclassname"><span class="pre">algotom.io.loadersaver.</span></span><span class="sig-name descname"><span class="pre">load_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/io/loadersaver.html#load_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.io.loadersaver.load_image" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load data from an image.</p>
+<dd><p>Load an image and convert it to a 2D array</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Path to the file.</p>
@@ -335,20 +335,6 @@ supplementary function for savers.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="algotom.io.loadersaver.make_file_name">
-<span class="sig-prename descclassname"><span class="pre">algotom.io.loadersaver.</span></span><span class="sig-name descname"><span class="pre">make_file_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/io/loadersaver.html#make_file_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.io.loadersaver.make_file_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a new file name to avoid overwriting.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>)</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>str</em> – Updated file path.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="algotom.io.loadersaver.make_folder_name">
 <span class="sig-prename descclassname"><span class="pre">algotom.io.loadersaver.</span></span><span class="sig-name descname"><span class="pre">make_folder_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Output'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zero_prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/io/loadersaver.html#make_folder_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.io.loadersaver.make_folder_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new folder name to avoid overwriting.
@@ -363,6 +349,20 @@ E.g: Output_00001, Output_00002…</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><em>str</em> – Name of the folder.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algotom.io.loadersaver.make_file_name">
+<span class="sig-prename descclassname"><span class="pre">algotom.io.loadersaver.</span></span><span class="sig-name descname"><span class="pre">make_file_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/io/loadersaver.html#make_file_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.io.loadersaver.make_file_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new file name to avoid overwriting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str or Path object</em>) – Path to the file.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>str</em> – Updated file path.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -659,8 +659,8 @@ crop = (crop_top, crop_bottom, crop_left, crop_right).</p></li>
 <li><a class="reference internal" href="#algotom.io.loadersaver.find_hdf_key"><code class="docutils literal notranslate"><span class="pre">find_hdf_key()</span></code></a></li>
 <li><a class="reference internal" href="#algotom.io.loadersaver.load_hdf"><code class="docutils literal notranslate"><span class="pre">load_hdf()</span></code></a></li>
 <li><a class="reference internal" href="#algotom.io.loadersaver.make_folder"><code class="docutils literal notranslate"><span class="pre">make_folder()</span></code></a></li>
-<li><a class="reference internal" href="#algotom.io.loadersaver.make_file_name"><code class="docutils literal notranslate"><span class="pre">make_file_name()</span></code></a></li>
 <li><a class="reference internal" href="#algotom.io.loadersaver.make_folder_name"><code class="docutils literal notranslate"><span class="pre">make_folder_name()</span></code></a></li>
+<li><a class="reference internal" href="#algotom.io.loadersaver.make_file_name"><code class="docutils literal notranslate"><span class="pre">make_file_name()</span></code></a></li>
 <li><a class="reference internal" href="#algotom.io.loadersaver.find_file"><code class="docutils literal notranslate"><span class="pre">find_file()</span></code></a></li>
 <li><a class="reference internal" href="#algotom.io.loadersaver.save_image"><code class="docutils literal notranslate"><span class="pre">save_image()</span></code></a></li>
 <li><a class="reference internal" href="#algotom.io.loadersaver.open_hdf_stream"><code class="docutils literal notranslate"><span class="pre">open_hdf_stream()</span></code></a></li>
