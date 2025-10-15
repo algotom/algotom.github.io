@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>1.2. Common data format at synchrotron facilities &#8212; Algotom&#39;s documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=0.7.0-1" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=9b2032db" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <script src="../../_static/js/petite-vue.js"></script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="1.3. Basic components of an X-ray tomography system" href="section1_3.html" />
@@ -108,7 +104,7 @@
 
         <div class="searchbox_wrapper">
             
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
@@ -116,14 +112,14 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
     </nav>
 </div>
 
     
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../section1.html">1. Basic tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="section1_1.html">1.1. Python for tomography scientists as beginners</a></li>
@@ -155,7 +151,7 @@
           <div class="body" role="main">
             
   <section id="common-data-format-at-synchrotron-facilities">
-<h1><span class="section-number">1.2. </span>Common data format at synchrotron facilities<a class="headerlink" href="#common-data-format-at-synchrotron-facilities" title="Permalink to this heading">¶</a></h1>
+<h1><span class="section-number">1.2. </span>Common data format at synchrotron facilities<a class="headerlink" href="#common-data-format-at-synchrotron-facilities" title="Link to this heading">¶</a></h1>
 <p>Two types of data format often used at most of synchrotron facilities are
 tiff and hdf. Hdf (<a class="reference external" href="https://www.hdfgroup.org/solutions/hdf5/">Hierarchical Data Format</a>)
 format allows to store multiple data-sets, multiple data-types in a single file.
@@ -167,7 +163,7 @@ dataset using a normal computer. Tiff format is used because it is
 supported by most of image-related software and it can store 32-bit grayscale
 values.</p>
 <section id="hdf-format">
-<span id="id1"></span><h2><span class="section-number">1.2.1. </span>Hdf format<a class="headerlink" href="#hdf-format" title="Permalink to this heading">¶</a></h2>
+<span id="id1"></span><h2><span class="section-number">1.2.1. </span>Hdf format<a class="headerlink" href="#hdf-format" title="Link to this heading">¶</a></h2>
 <p><strong>How to view the structure of a hdf file</strong></p>
 <blockquote>
 <div><p>To work with a hdf file, we need to know its structure or how to access
@@ -182,7 +178,7 @@ the same software and Python libraries to access both hdf and nxs files.</p>
 <figure class="align-center" id="fig-1-2-1" style="width: 90%">
 <img alt="../../_images/fig_1_2_1.png" src="../../_images/fig_1_2_1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.2.1 </span><span class="caption-text">Viewing the structure of a nxs/hdf file using the Hdfview software.</span><a class="headerlink" href="#fig-1-2-1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1.2.1 </span><span class="caption-text">Viewing the structure of a nxs/hdf file using the Hdfview software.</span><a class="headerlink" href="#fig-1-2-1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Another way to display a tree view of a hdf/nxs file is to use an Algotom’s
@@ -190,7 +186,7 @@ function as shown below.</p>
 <figure class="align-center" id="fig-1-2-2" style="width: 90%">
 <img alt="../../_images/fig_1_2_2.png" src="../../_images/fig_1_2_2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.2.2 </span><span class="caption-text">Displaying the tree view of a nxs/hdf file using an Algotom’s function.</span><a class="headerlink" href="#fig-1-2-2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1.2.2 </span><span class="caption-text">Displaying the tree view of a nxs/hdf file using an Algotom’s function.</span><a class="headerlink" href="#fig-1-2-2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>There are many GUI software in Python for viewing hdf/nxs/h5 files such as: <a class="reference external" href="https://github.com/algotom/broh5">Broh5</a>,
@@ -282,7 +278,7 @@ on how to optimize hdf I/O performance.</p>
 </div></blockquote>
 </section>
 <section id="tiff-format">
-<h2><span class="section-number">1.2.2. </span>Tiff format<a class="headerlink" href="#tiff-format" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">1.2.2. </span>Tiff format<a class="headerlink" href="#tiff-format" title="Link to this heading">¶</a></h2>
 <p>This is a very popular file format and supported by most of image-related software.
 There are 8-bit, 16-bit, and 32-bit format. 8-bit format can store grayscale
 values as 8-bit unsigned integers (range of 0 to 255 = 2 <sup>8</sup> - 1).
@@ -295,7 +291,7 @@ or <a class="reference external" href="https://imagej.net/software/fiji/download
 <figure class="align-center" id="fig-1-2-3" style="width: 95%">
 <img alt="../../_images/fig_1_2_3.png" src="../../_images/fig_1_2_3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.2.3 </span><span class="caption-text">Opening a 32-tiff image using Photos software (a) and Imagej software (b).</span><a class="headerlink" href="#fig-1-2-3" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1.2.3 </span><span class="caption-text">Opening a 32-tiff image using Photos software (a) and Imagej software (b).</span><a class="headerlink" href="#fig-1-2-3" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Sometimes users may want to extract a 2D slice of 3D tomographic data and
@@ -377,11 +373,11 @@ data are rescaled to lower bits.</p>
       </div>
     
         <div id="show_right_sidebar">
-            <p><a class="toggle_right_sidebar" href="#"><span class="icon"><</span><span>Page contents<span></a></p>
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
         </div>
 
         <div id="right_sidebar">
-            <p><a class="toggle_right_sidebar" href="#"><span class="icon">></span><span>Page contents:<span></a></p>
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
 <li><a class="reference internal" href="#">1.2. Common data format at synchrotron facilities</a><ul>
@@ -402,13 +398,13 @@ data are rescaled to lower bits.</p>
             <div class="left">
                 
                 <a href="section1_1.html">
-                    <span class="icon"><</span><span><span class="section-number">1.1. </span>Python for tomography scientists as beginners</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">1.1. </span>Python for tomography scientists as beginners</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="section1_3.html"><span><span class="section-number">1.3. </span>Basic components of an X-ray tomography system</span><span class="icon">></span></a>
+                    <a href="section1_3.html"><span><span class="section-number">1.3. </span>Basic components of an X-ray tomography system</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -416,8 +412,8 @@ data are rescaled to lower bits.</p>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

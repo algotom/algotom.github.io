@@ -1,26 +1,22 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>1.4. Basic workflow for processing tomographic data &#8212; Algotom&#39;s documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=0.7.0-1" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=9b2032db" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <script src="../../_static/js/petite-vue.js"></script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="1.5. Parallel processing in Python" href="section1_5.html" />
@@ -110,7 +106,7 @@
 
         <div class="searchbox_wrapper">
             
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
@@ -118,14 +114,14 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
     </nav>
 </div>
 
     
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../section1.html">1. Basic tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="section1_1.html">1.1. Python for tomography scientists as beginners</a></li>
@@ -157,9 +153,9 @@
           <div class="body" role="main">
             
   <section id="basic-workflow-for-processing-tomographic-data">
-<h1><span class="section-number">1.4. </span>Basic workflow for processing tomographic data<a class="headerlink" href="#basic-workflow-for-processing-tomographic-data" title="Permalink to this heading">¶</a></h1>
+<h1><span class="section-number">1.4. </span>Basic workflow for processing tomographic data<a class="headerlink" href="#basic-workflow-for-processing-tomographic-data" title="Link to this heading">¶</a></h1>
 <section id="read-write-data">
-<h2><span class="section-number">1.4.1. </span>Read/write data<a class="headerlink" href="#read-write-data" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">1.4.1. </span>Read/write data<a class="headerlink" href="#read-write-data" title="Link to this heading">¶</a></h2>
 <p>The first step is to know how to load data to workspace. Different
 communities use different file formats: hdf/nxs, mrc, txrm, xrm, tif, dicom,
 raw,… and they need specific Python libraries to work with. The common format
@@ -182,7 +178,7 @@ to datasets used for tomographic reconstruction.</p>
 <div><figure class="align-center" id="fig-1-4-1" style="width: 100%">
 <img alt="../../_images/fig_1_4_1.png" src="../../_images/fig_1_4_1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.4.1 </span><span class="caption-text">Datasets of a tomographic <a class="reference external" href="https://tomobank.readthedocs.io/en/latest/source/data/docs.data.phasecontrast.html#multi-distance">hdf file</a>.</span><a class="headerlink" href="#fig-1-4-1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1.4.1 </span><span class="caption-text">Datasets of a tomographic <a class="reference external" href="https://tomobank.readthedocs.io/en/latest/source/data/docs.data.phasecontrast.html#multi-distance">hdf file</a>.</span><a class="headerlink" href="#fig-1-4-1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -207,7 +203,7 @@ where there is a dataset named “image_key” used to distinguish these images.
 <img alt="../../_images/fig_1_4_2.png" src="../../_images/fig_1_4_2.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.4.2 </span><span class="caption-text">Datasets of a tomographic hdf file acquired at DLS. Image-key value of 2 is
-for dark-field, 1 is for flat-field, and 0 is for projection image.</span><a class="headerlink" href="#fig-1-4-2" title="Permalink to this image">¶</a></p>
+for dark-field, 1 is for flat-field, and 0 is for projection image.</span><a class="headerlink" href="#fig-1-4-2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -228,7 +224,7 @@ to handle different tasks such as converting tif images to hdf, displaying the
 hdf tree, or saving output to a hdf file.</p>
 </section>
 <section id="flat-field-correction">
-<span id="id1"></span><h2><span class="section-number">1.4.2. </span>Flat-field correction<a class="headerlink" href="#flat-field-correction" title="Permalink to this heading">¶</a></h2>
+<span id="id1"></span><h2><span class="section-number">1.4.2. </span>Flat-field correction<a class="headerlink" href="#flat-field-correction" title="Link to this heading">¶</a></h2>
 <p>The flat-field correction process is based on the Beer-Lambert’s law</p>
 <div class="math notranslate nohighlight">
 \[\frac{I}{I_0} = \int_{}e^{-\alpha (x,y,z) dx}\]</div>
@@ -296,7 +292,7 @@ demonstration can be download from <a class="reference external" href="https://d
 </div></blockquote>
 </section>
 <section id="zinger-removal">
-<h2><span class="section-number">1.4.3. </span>Zinger removal<a class="headerlink" href="#zinger-removal" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">1.4.3. </span>Zinger removal<a class="headerlink" href="#zinger-removal" title="Link to this heading">¶</a></h2>
 <p>Zingers are prominent bright dots in images caused by scattered X-rays hitting
 the detector system CCD or CMOS chip (<a class="reference internal" href="#fig-1-4-5"><span class="std std-numref">Fig. 1.4.3</span></a> (a,b)). They produce
 line artifacts across a reconstructed image (<a class="reference internal" href="#fig-1-4-5"><span class="std std-numref">Fig. 1.4.3</span></a> (c)).</p>
@@ -305,7 +301,7 @@ line artifacts across a reconstructed image (<a class="reference internal" href=
 <img alt="../../_images/fig_1_4_5.jpg" src="../../_images/fig_1_4_5.jpg" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.4.3 </span><span class="caption-text">Artifacts caused by zingers. (a) Zingers in the sinogram space. (b) Zingers
-in the projection space. (c) Line artifacts caused by the zingers.</span><a class="headerlink" href="#fig-1-4-5" title="Permalink to this image">¶</a></p>
+in the projection space. (c) Line artifacts caused by the zingers.</span><a class="headerlink" href="#fig-1-4-5" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -320,7 +316,7 @@ in Algotom</p>
 </div></blockquote>
 </section>
 <section id="ring-artifact-removal">
-<h2><span class="section-number">1.4.4. </span>Ring artifact removal<a class="headerlink" href="#ring-artifact-removal" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">1.4.4. </span>Ring artifact removal<a class="headerlink" href="#ring-artifact-removal" title="Link to this heading">¶</a></h2>
 <p>Causes of ring artifacts and methods for removing them <span id="id2">[<a class="reference internal" href="../credits.html#id7" title="Nghia T. Vo, Robert C. Atwood, and Michael Drakopoulos. Superior techniques for eliminating ring artifacts in x-ray micro-tomography. Opt. Express, 26(22):28396–28412, Oct 2018. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-26-22-28396, doi:10.1364/OE.26.028396.">R19</a>]</span> have been documented in detailed
 <a class="reference external" href="https://sarepy.readthedocs.io/">here</a>. There are many methods to choose from
 in Algotom. However the <a class="reference external" href="https://doi.org/10.1364/OE.26.028396">combination of methods</a>
@@ -342,7 +338,7 @@ of how to use the methods</p>
 </div></blockquote>
 </section>
 <section id="center-of-rotation-determination">
-<h2><span class="section-number">1.4.5. </span>Center-of-rotation determination<a class="headerlink" href="#center-of-rotation-determination" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">1.4.5. </span>Center-of-rotation determination<a class="headerlink" href="#center-of-rotation-determination" title="Link to this heading">¶</a></h2>
 <p>There are <a class="reference external" href="https://algotom.readthedocs.io/en/latest/api/algotom.prep.calculation.html">a few methods</a>
 to determine the center-of-rotation. The demonstrated method <span id="id3">[<a class="reference internal" href="../credits.html#id5" title="Nghia T. Vo, Michael Drakopoulos, Robert C. Atwood, and Christina Reinhard. Reliable method for calculating the center of rotation in parallel-beam tomography. Opt. Express, 22(16):19078–19086, Aug 2014. URL: http://www.opticsexpress.org/abstract.cfm?URI=oe-22-16-19078, doi:10.1364/OE.22.019078.">R21</a>]</span> below uses a 180-degree
 sinogram for calculation.</p>
@@ -356,7 +352,7 @@ sinogram for calculation.</p>
 </div></blockquote>
 </section>
 <section id="denoising-or-contrast-enhancement">
-<h2><span class="section-number">1.4.6. </span>Denoising or contrast enhancement<a class="headerlink" href="#denoising-or-contrast-enhancement" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">1.4.6. </span>Denoising or contrast enhancement<a class="headerlink" href="#denoising-or-contrast-enhancement" title="Link to this heading">¶</a></h2>
 <p>There is a method for enhancing the contrast of an image, known as the <a class="reference external" href="https://doi.org/10.1046/j.1365-2818.2002.01010.x">Paganin filter</a>
 which is commonly used at synchrotron facilities. Algotom implements a
 <a class="reference external" href="https://doi.org/10.1364/OE.418448">simplified version</a> of this filter, named
@@ -381,13 +377,13 @@ Blurring an image will impact the performance of these methods.</p>
 <img alt="../../_images/fig_1_4_7.jpg" src="../../_images/fig_1_4_7.jpg" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.4.4 </span><span class="caption-text">Results of using the <a class="reference external" href="https://algotom.readthedocs.io/en/latest/api/algotom.prep.filtering.html#algotom.prep.filtering.fresnel_filter">Fresnel filter</a>. (a)
-Ratio = 200. (b) Ratio = 1000.</span><a class="headerlink" href="#fig-1-4-7" title="Permalink to this image">¶</a></p>
+Ratio = 200. (b) Ratio = 1000.</span><a class="headerlink" href="#fig-1-4-7" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </div></blockquote>
 </section>
 <section id="image-reconstruction">
-<h2><span class="section-number">1.4.7. </span>Image reconstruction<a class="headerlink" href="#image-reconstruction" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">1.4.7. </span>Image reconstruction<a class="headerlink" href="#image-reconstruction" title="Link to this heading">¶</a></h2>
 <p>There are many choices for reconstruction methods and open-source software. In
 the current version (&lt;=1.1), Algotom implements two FFT-based methods which is fast enough
 for a 2k x 2k x 2k dataset. Algotom also provides wrappers for other reconstruction
@@ -423,9 +419,9 @@ different strengths:</p>
 </div></blockquote>
 </section>
 <section id="other-data-processing-steps">
-<h2><span class="section-number">1.4.8. </span>Other data processing steps<a class="headerlink" href="#other-data-processing-steps" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">1.4.8. </span>Other data processing steps<a class="headerlink" href="#other-data-processing-steps" title="Link to this heading">¶</a></h2>
 <section id="distortion-correction">
-<h3><span class="section-number">1.4.8.1. </span>Distortion correction<a class="headerlink" href="#distortion-correction" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">1.4.8.1. </span>Distortion correction<a class="headerlink" href="#distortion-correction" title="Link to this heading">¶</a></h3>
 <p>If a detecting system suffers from the lens-distortion problem, the working
 routine is as follows:</p>
 <ul>
@@ -483,7 +479,7 @@ routine is as follows:</p>
 </ul>
 </section>
 <section id="sinogram-stitching-for-a-half-acquisition-scan">
-<span id="half-acquisition"></span><h3><span class="section-number">1.4.8.2. </span>Sinogram stitching for a half-acquisition scan<a class="headerlink" href="#sinogram-stitching-for-a-half-acquisition-scan" title="Permalink to this heading">¶</a></h3>
+<span id="half-acquisition"></span><h3><span class="section-number">1.4.8.2. </span>Sinogram stitching for a half-acquisition scan<a class="headerlink" href="#sinogram-stitching-for-a-half-acquisition-scan" title="Link to this heading">¶</a></h3>
 <p>Half-acquisition scanning technique are being used more often at <a class="reference external" href="https://doi.org/10.1364/OE.418448">synchrotron facilities</a>.
 It is a simple technique to double the field-of-view (FOV) of a tomography system
 by shifting the rotation axis to a side of the FOV then acquiring data in the
@@ -566,11 +562,11 @@ two halves of the sinogram. Algotom provides <a class="reference external" href=
       </div>
     
         <div id="show_right_sidebar">
-            <p><a class="toggle_right_sidebar" href="#"><span class="icon"><</span><span>Page contents<span></a></p>
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
         </div>
 
         <div id="right_sidebar">
-            <p><a class="toggle_right_sidebar" href="#"><span class="icon">></span><span>Page contents:<span></a></p>
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
 <li><a class="reference internal" href="#">1.4. Basic workflow for processing tomographic data</a><ul>
@@ -601,13 +597,13 @@ two halves of the sinogram. Algotom provides <a class="reference external" href=
             <div class="left">
                 
                 <a href="section1_3.html">
-                    <span class="icon"><</span><span><span class="section-number">1.3. </span>Basic components of an X-ray tomography system</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">1.3. </span>Basic components of an X-ray tomography system</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="section1_5.html"><span><span class="section-number">1.5. </span>Parallel processing in Python</span><span class="icon">></span></a>
+                    <a href="section1_5.html"><span><span class="section-number">1.5. </span>Parallel processing in Python</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -615,8 +611,8 @@ two halves of the sinogram. Algotom provides <a class="reference external" href=
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

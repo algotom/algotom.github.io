@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>4.5. Complete workflow for processing tomographic data &#8212; Algotom&#39;s documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=0.7.0-1" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=9b2032db" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <script src="../../_static/js/petite-vue.js"></script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="5. Technical notes" href="../section5.html" />
@@ -108,7 +104,7 @@
 
         <div class="searchbox_wrapper">
             
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
@@ -116,14 +112,14 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
     </nav>
 </div>
 
     
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../section1.html">1. Basic tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section2.html">2. Features</a></li>
@@ -154,11 +150,11 @@
           <div class="body" role="main">
             
   <section id="complete-workflow-for-processing-tomographic-data">
-<h1><span class="section-number">4.5. </span>Complete workflow for processing tomographic data<a class="headerlink" href="#complete-workflow-for-processing-tomographic-data" title="Permalink to this heading">¶</a></h1>
+<h1><span class="section-number">4.5. </span>Complete workflow for processing tomographic data<a class="headerlink" href="#complete-workflow-for-processing-tomographic-data" title="Link to this heading">¶</a></h1>
 <p>This guide presents a comprehensive workflow for processing tomographic data, starting from raw data. In addition,
 it includes useful tips and explanations to users’ common mistakes.</p>
 <section id="assessing-raw-data">
-<h2><span class="section-number">4.5.1. </span>Assessing raw data<a class="headerlink" href="#assessing-raw-data" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.5.1. </span>Assessing raw data<a class="headerlink" href="#assessing-raw-data" title="Link to this heading">¶</a></h2>
 <p>A typical tomographic dataset includes:</p>
 <ul class="simple">
 <li><p>Raw data acquired by a detector which are: projection images, flat-field image, and dark-field images.</p></li>
@@ -193,14 +189,16 @@ tif images as the following:</p>
 </div>
 <p>If the first and last projection are 180-degree apart, the second image should be a mirror
 reflection (left-right flip) of the first image.</p>
-<a class="reference internal image-reference" href="../../_images/img_4_5_1.jpg" id="img-4-5-1"><img alt="../../_images/img_4_5_1.jpg" class="align-center" id="img-4-5-1" src="../../_images/img_4_5_1.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../../_images/img_4_5_1.jpg" id="img-4-5-1"><img alt="../../_images/img_4_5_1.jpg" class="align-center" id="img-4-5-1" src="../../_images/img_4_5_1.jpg" style="width: 100%;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>If data were acquired using a <a class="reference external" href="https://doi.org/10.1364/OE.418448">360-degree scan with an offset rotation axis</a>,
 it is important to verify that the rotation axis is positioned to one side of the field of view (FOV). This can be done
 by checking for an overlap between the 0-degree projection and the left-right flipped 180-degree projection image.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/img_4_5_2.jpg" id="img-4-5-2"><img alt="../../_images/img_4_5_2.jpg" class="align-center" id="img-4-5-2" src="../../_images/img_4_5_2.jpg" style="width: 100%;" /></a>
+<div><a class="reference internal image-reference" href="../../_images/img_4_5_2.jpg" id="img-4-5-2"><img alt="../../_images/img_4_5_2.jpg" class="align-center" id="img-4-5-2" src="../../_images/img_4_5_2.jpg" style="width: 100%;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>Check if the rotation axis is tilted. This can be done by calculating the difference/average between the
@@ -208,7 +206,8 @@ by checking for an overlap between the 0-degree projection and the left-right fl
 If the x-location of the symmetric line is the same at the top and bottom of the image, the rotation axis
 is properly aligned.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/img_4_5_3.jpg" id="img-4-5-3"><img alt="../../_images/img_4_5_3.jpg" class="align-center" id="img-4-5-3" src="../../_images/img_4_5_3.jpg" style="width: 100%;" /></a>
+<div><a class="reference internal image-reference" href="../../_images/img_4_5_3.jpg" id="img-4-5-3"><img alt="../../_images/img_4_5_3.jpg" class="align-center" id="img-4-5-3" src="../../_images/img_4_5_3.jpg" style="width: 100%;" />
+</a>
 <p>If a tilt is detected, the tilt angle can be accurately calculated by locating the <a class="reference external" href="https://algotom.readthedocs.io/en/latest/toc/api/algotom.prep.calculation.html#algotom.prep.calculation.find_center_vo">center of rotation</a>
 using sinograms generated at the top, middle, and bottom of the FOV; then applying a linear fit to the results.
 The resulting tilt angle can be used to correct the tilted tomographic images, as shown
@@ -218,7 +217,8 @@ The resulting tilt angle can be used to correct the tilted tomographic images, a
 <li><p>Ensure that projection images were acquired at evenly spaced angles and there was no stage jittering during
 the scan by inspecting a sinogram image:</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/img_4_5_4.jpg" id="img-4-5-4"><img alt="../../_images/img_4_5_4.jpg" class="align-center" id="img-4-5-4" src="../../_images/img_4_5_4.jpg" style="width: 100%;" /></a>
+<div><a class="reference internal image-reference" href="../../_images/img_4_5_4.jpg" id="img-4-5-4"><img alt="../../_images/img_4_5_4.jpg" class="align-center" id="img-4-5-4" src="../../_images/img_4_5_4.jpg" style="width: 100%;" />
+</a>
 <p>If raw data are in hdf/h5/nxs format, the sinogram can be extracted and saved as tif format as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
@@ -278,7 +278,7 @@ sinogram image:</p>
 </ul>
 </section>
 <section id="reconstructing-several-slices">
-<h2><span class="section-number">4.5.2. </span>Reconstructing several slices<a class="headerlink" href="#reconstructing-several-slices" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.5.2. </span>Reconstructing several slices<a class="headerlink" href="#reconstructing-several-slices" title="Link to this heading">¶</a></h2>
 <p>In high throughput tomographic systems, it’s common that users want to quickly reconstruct only
 a few slices in order to verify the quality of the data or to locate the region of interest for
 higher resolution scans. This can be achieved by following these steps:</p>
@@ -413,7 +413,7 @@ be installed along with Algotom.</p>
 </ul>
 </section>
 <section id="finding-the-center-of-rotation">
-<span id="find-center"></span><h2><span class="section-number">4.5.3. </span>Finding the center of rotation<a class="headerlink" href="#finding-the-center-of-rotation" title="Permalink to this heading">¶</a></h2>
+<span id="find-center"></span><h2><span class="section-number">4.5.3. </span>Finding the center of rotation<a class="headerlink" href="#finding-the-center-of-rotation" title="Link to this heading">¶</a></h2>
 <p>Algotom offers several methods for automatically calculating the center of rotation (COR),
 which refers to the rotation axis of the sample stage with respect to the FOV. These methods
 work on different processing spaces (<a class="reference internal" href="#fig-4-5-1"><span class="std std-numref">Fig. 4.5.1</span></a>) and can be selected according to specific
@@ -422,7 +422,7 @@ types of input images.</p>
 <div><figure class="align-center" id="fig-4-5-1" style="width: 100%">
 <img alt="../../_images/fig_4_5_1.png" src="../../_images/fig_4_5_1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 4.5.1 </span><span class="caption-text">Different processing spaces can be used for finding the center of rotation.</span><a class="headerlink" href="#fig-4-5-1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.5.1 </span><span class="caption-text">Different processing spaces can be used for finding the center of rotation.</span><a class="headerlink" href="#fig-4-5-1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -467,7 +467,7 @@ achieving a success rate of 98%. A visual explanation of how the method works is
 <div><figure class="align-center" id="fig-4-5-2" style="width: 100%">
 <img alt="../../_images/fig_4_5_2.png" src="../../_images/fig_4_5_2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 4.5.2 </span><span class="caption-text">Explanation of how the autocentering method in the sinogram space works.</span><a class="headerlink" href="#fig-4-5-2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4.5.2 </span><span class="caption-text">Explanation of how the autocentering method in the sinogram space works.</span><a class="headerlink" href="#fig-4-5-2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="n">height</span> <span class="o">//</span> <span class="mi">2</span>
@@ -556,7 +556,8 @@ transition between the two halves of the sinogram, as illustrated in the figure 
                                   <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../../_images/img_4_5_5.jpg" id="img-4-5-5"><img alt="../../_images/img_4_5_5.jpg" class="align-center" id="img-4-5-5" src="../../_images/img_4_5_5.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../../_images/img_4_5_5.jpg" id="img-4-5-5"><img alt="../../_images/img_4_5_5.jpg" class="align-center" id="img-4-5-5" src="../../_images/img_4_5_5.jpg" style="width: 100%;" />
+</a>
 </li>
 <li><p>The second manual method involves reconstructing a list of slices using a list of estimated CORs. Users
 can find the best COR by visually inspecting the reconstructed slices and selecting the one with the least
@@ -566,7 +567,8 @@ streak artifacts.</p>
                                <span class="n">width</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;fbp&quot;</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../../_images/img_4_5_6.jpg" id="img-4-5-6"><img alt="../../_images/img_4_5_6.jpg" class="align-center" id="img-4-5-6" src="../../_images/img_4_5_6.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../../_images/img_4_5_6.jpg" id="img-4-5-6"><img alt="../../_images/img_4_5_6.jpg" class="align-center" id="img-4-5-6" src="../../_images/img_4_5_6.jpg" style="width: 100%;" />
+</a>
 </li>
 </ul>
 </div></blockquote>
@@ -574,7 +576,7 @@ streak artifacts.</p>
 </ul>
 </section>
 <section id="tweaking-parameters-of-preprocessing-methods">
-<h2><span class="section-number">4.5.4. </span>Tweaking parameters of preprocessing methods<a class="headerlink" href="#tweaking-parameters-of-preprocessing-methods" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.5.4. </span>Tweaking parameters of preprocessing methods<a class="headerlink" href="#tweaking-parameters-of-preprocessing-methods" title="Link to this heading">¶</a></h2>
 <p>When reconstructing synchrotron-based X-ray microtomography data, users often spend most of time tweaking
 parameters of preprocessing methods such as ring artifact removal or contrast-enhancement methods.
 We can setup different workflows to test methods as below:</p>
@@ -672,12 +674,13 @@ and have additional options for customization:</p>
     <span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="s2">&quot;/scan_value_&quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;.tif&quot;</span><span class="p">,</span> <span class="n">rec_img</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../../_images/img_4_5_7.jpg" id="img-4-5-7"><img alt="../../_images/img_4_5_7.jpg" class="align-center" id="img-4-5-7" src="../../_images/img_4_5_7.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../../_images/img_4_5_7.jpg" id="img-4-5-7"><img alt="../../_images/img_4_5_7.jpg" class="align-center" id="img-4-5-7" src="../../_images/img_4_5_7.jpg" style="width: 100%;" />
+</a>
 </li>
 </ul>
 </section>
 <section id="choosing-a-reconstruction-method">
-<h2><span class="section-number">4.5.5. </span>Choosing a reconstruction method<a class="headerlink" href="#choosing-a-reconstruction-method" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.5.5. </span>Choosing a reconstruction method<a class="headerlink" href="#choosing-a-reconstruction-method" title="Link to this heading">¶</a></h2>
 <p>The quality of reconstructed data in synchrotron-based X-ray microtomography depends heavily on the
 preprocessing methods applied. If the number of acquired projections is standard and the data are properly cleaned,
 the choice of reconstruction method will have less impact on the quality of the final results. Therefore, users can
@@ -723,7 +726,8 @@ choose a reconstruction method based on the availability of computing resources.
 <span class="go">Using the gridrec method (CPU). Time: 1.7366413999999963</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../../_images/img_4_5_8.jpg" id="img-4-5-8"><img alt="../../_images/img_4_5_8.jpg" class="align-center" id="img-4-5-8" src="../../_images/img_4_5_8.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../../_images/img_4_5_8.jpg" id="img-4-5-8"><img alt="../../_images/img_4_5_8.jpg" class="align-center" id="img-4-5-8" src="../../_images/img_4_5_8.jpg" style="width: 100%;" />
+</a>
 </div></blockquote>
 <p>When dealing with undersampled sinogram, iterative reconstruction methods like SIRT <a class="reference external" href="https://doi.org/10.1016/0022-5193(72)90180-4">(Simultaneous iterative reconstruction technique)</a>
 can be advantageous over Fourier-based methods. However, iterative methods are computationally
@@ -750,11 +754,12 @@ to the sinogram.</p>
 <span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="s2">&quot;/fbp_denoising_upsampling.tif&quot;</span><span class="p">,</span> <span class="n">rec_img3</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../../_images/img_4_5_9.jpg" id="img-4-5-9"><img alt="../../_images/img_4_5_9.jpg" class="align-center" id="img-4-5-9" src="../../_images/img_4_5_9.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../../_images/img_4_5_9.jpg" id="img-4-5-9"><img alt="../../_images/img_4_5_9.jpg" class="align-center" id="img-4-5-9" src="../../_images/img_4_5_9.jpg" style="width: 100%;" />
+</a>
 </div></blockquote>
 </section>
 <section id="performing-full-reconstruction">
-<h2><span class="section-number">4.5.6. </span>Performing full reconstruction<a class="headerlink" href="#performing-full-reconstruction" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.5.6. </span>Performing full reconstruction<a class="headerlink" href="#performing-full-reconstruction" title="Link to this heading">¶</a></h2>
 <p>After completing all the steps for selecting parameters and testing methods, we can proceed with the
 full reconstruction process. The main difference compared to the previous steps is that
 sinograms are processed in chunks, which reduces I/O overhead and utilizes parallel processing.
@@ -1033,7 +1038,7 @@ can be applied to the entire volume and different datasets.</p>
 </ul>
 </section>
 <section id="automating-the-workflow">
-<h2><span class="section-number">4.5.7. </span>Automating the workflow<a class="headerlink" href="#automating-the-workflow" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.5.7. </span>Automating the workflow<a class="headerlink" href="#automating-the-workflow" title="Link to this heading">¶</a></h2>
 <p>In practice, we often need to reconstruct not just one but hundreds or even thousands of datasets
 per synchrotron beamtime. In these cases, manually processing each dataset would be time-consuming
 and impractical. Instead, we can leverage the power of Python to automate the workflow.
@@ -1262,7 +1267,7 @@ before submitting another batch. This approach ensures fair use of cluster resou
 </div></blockquote>
 </section>
 <section id="downsampling-rescaling-and-reslicing-reconstructed-volume">
-<h2><span class="section-number">4.5.8. </span>Downsampling, rescaling, and reslicing reconstructed volume<a class="headerlink" href="#downsampling-rescaling-and-reslicing-reconstructed-volume" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.5.8. </span>Downsampling, rescaling, and reslicing reconstructed volume<a class="headerlink" href="#downsampling-rescaling-and-reslicing-reconstructed-volume" title="Link to this heading">¶</a></h2>
 <p>Reconstructed volume is in 32-bit tif or hdf format. In the above example, the size of the volume
 is 2150 x 2560 x 2560 pixels, which corresponds to ~50 GB of data. To enable post-analysis on software
 for volume visualization and analysis; e.g. Avizo, Amira, DragonFly, Drishti, Paraview, 3D Slicer, …;
@@ -1347,16 +1352,18 @@ for cropping, rotating, and rescaling the volume are also included.</p>
 <p>As shown below, reslicing along the direction perpendicular to the missing wedge can produce high-quality images
 suitable for post-analysis.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/img_4_5_10.jpg" id="img-4-5-10"><img alt="../../_images/img_4_5_10.jpg" class="align-center" id="img-4-5-10" src="../../_images/img_4_5_10.jpg" style="width: 100%;" /></a>
+<div><a class="reference internal image-reference" href="../../_images/img_4_5_10.jpg" id="img-4-5-10"><img alt="../../_images/img_4_5_10.jpg" class="align-center" id="img-4-5-10" src="../../_images/img_4_5_10.jpg" style="width: 100%;" />
+</a>
 </div></blockquote>
 </section>
 <section id="common-mistakes-and-useful-tips">
-<h2><span class="section-number">4.5.9. </span>Common mistakes and useful tips<a class="headerlink" href="#common-mistakes-and-useful-tips" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.5.9. </span>Common mistakes and useful tips<a class="headerlink" href="#common-mistakes-and-useful-tips" title="Link to this heading">¶</a></h2>
 <ol class="arabic">
 <li><p>We may see black images when using viewer software that does not support 32-bit tif images. Users need to use
 <a class="reference external" href="https://imagej.net/ij/download.html">ImageJ</a> or <a class="reference external" href="https://imagej.net/software/fiji/downloads">Fiji</a>
 to view 32-bit tif reconstructed slices or flat-field-corrected images.</p>
-<a class="reference internal image-reference" href="../../_images/img_4_5_11.jpg" id="img-4-5-11"><img alt="../../_images/img_4_5_11.jpg" class="align-center" id="img-4-5-11" src="../../_images/img_4_5_11.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../../_images/img_4_5_11.jpg" id="img-4-5-11"><img alt="../../_images/img_4_5_11.jpg" class="align-center" id="img-4-5-11" src="../../_images/img_4_5_11.jpg" style="width: 100%;" />
+</a>
 </li>
 <li><p>Black reconstructed slice is returned due to the zero division problem. Reconstruction methods in Algotom apply
 the logarithm function to a sinogram by default, based on Beer-Lambert’s law. However, this can result in NaN values
@@ -1418,7 +1425,8 @@ or zero-padding is used. The following image demonstrates the difference between
 <span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="s2">&quot;/gridrec_zero_padding.tif&quot;</span><span class="p">,</span> <span class="n">rec_img2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../../_images/img_4_5_12.jpg" id="img-4-5-12"><img alt="../../_images/img_4_5_12.jpg" class="align-center" id="img-4-5-12" src="../../_images/img_4_5_12.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../../_images/img_4_5_12.jpg" id="img-4-5-12"><img alt="../../_images/img_4_5_12.jpg" class="align-center" id="img-4-5-12" src="../../_images/img_4_5_12.jpg" style="width: 100%;" />
+</a>
 <p>and demonstration for the FBP method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
 <span class="kn">import</span> <span class="nn">algotom.prep.calculation</span> <span class="k">as</span> <span class="nn">calc</span>
@@ -1438,7 +1446,8 @@ or zero-padding is used. The following image demonstrates the difference between
 <span class="n">losa</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="s2">&quot;/FBP_zero_padding.tif&quot;</span><span class="p">,</span> <span class="n">rec_img2</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../../_images/img_4_5_13.jpg" id="img-4-5-13"><img alt="../../_images/img_4_5_13.jpg" class="align-center" id="img-4-5-13" src="../../_images/img_4_5_13.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../../_images/img_4_5_13.jpg" id="img-4-5-13"><img alt="../../_images/img_4_5_13.jpg" class="align-center" id="img-4-5-13" src="../../_images/img_4_5_13.jpg" style="width: 100%;" />
+</a>
 </li>
 <li><p>Users may not be aware of autoscaling implemented by image viewer software. Image viewers often apply autoscaling
 to account for differences in intensity range between different image types, such as 32-bit, 16-bit or 8-bit. However,
@@ -1450,19 +1459,22 @@ As can be seen, the left-side image is more noisy and has a higher dynamic range
 maximum intensity and minimum intensity) compared to the right-side image. When the auto-scaling is applied, the contrast
 of the right-side image is improved because it has lower dynamic range.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/img_4_5_14.png" id="img-4-5-14"><img alt="../../_images/img_4_5_14.png" class="align-center" id="img-4-5-14" src="../../_images/img_4_5_14.png" style="width: 100%;" /></a>
+<div><a class="reference internal image-reference" href="../../_images/img_4_5_14.png" id="img-4-5-14"><img alt="../../_images/img_4_5_14.png" class="align-center" id="img-4-5-14" src="../../_images/img_4_5_14.png" style="width: 100%;" />
+</a>
 </div></blockquote>
 <p>The following images shows the intensity profiles along the red lines in each image where the whole dynamic range of
 intensities are used to plot.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/img_4_5_15.png" id="img-4-5-15"><img alt="../../_images/img_4_5_15.png" class="align-center" id="img-4-5-15" src="../../_images/img_4_5_15.png" style="width: 100%;" /></a>
+<div><a class="reference internal image-reference" href="../../_images/img_4_5_15.png" id="img-4-5-15"><img alt="../../_images/img_4_5_15.png" class="align-center" id="img-4-5-15" src="../../_images/img_4_5_15.png" style="width: 100%;" />
+</a>
 </div></blockquote>
 <p>The following images show the intensity profiles along the red lines in each image where the dynamic range of
 intensities is set to be the same in both images. As can be seen, the gray-scale values of an Aluminum sphere are
 the same. Note that the intensities at the interfaces are strongly fluctuating due to the coherent effect of the
 X-ray source.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/img_4_5_16.png" id="img-4-5-16"><img alt="../../_images/img_4_5_16.png" class="align-center" id="img-4-5-16" src="../../_images/img_4_5_16.png" style="width: 100%;" /></a>
+<div><a class="reference internal image-reference" href="../../_images/img_4_5_16.png" id="img-4-5-16"><img alt="../../_images/img_4_5_16.png" class="align-center" id="img-4-5-16" src="../../_images/img_4_5_16.png" style="width: 100%;" />
+</a>
 </div></blockquote>
 <p>The above demonstration actually shows images reconstructed without and with Paganin filter (R=400), which was used
 to explain the common misconception that the resulting Paganin filter image is a phase-contrast image. From a
@@ -1561,11 +1573,13 @@ extracting sinograms.</p>
 to reduce/remove side-effect artifacts. Without padding, well-used Fourier-based filters, such as Paganin filter or
 Fresnel filter, applied on projection images can produce barrel-shaped intensity profiles in reconstructed images</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/img_4_5_17.jpg" id="img-4-5-17"><img alt="../../_images/img_4_5_17.jpg" class="align-center" id="img-4-5-17" src="../../_images/img_4_5_17.jpg" style="width: 50%;" /></a>
+<div><a class="reference internal image-reference" href="../../_images/img_4_5_17.jpg" id="img-4-5-17"><img alt="../../_images/img_4_5_17.jpg" class="align-center" id="img-4-5-17" src="../../_images/img_4_5_17.jpg" style="width: 50%;" />
+</a>
 </div></blockquote>
 <p>or ghost features in the top and bottom slices caused by cross-shaped artifacts in the frequency domain due to spectral leakage.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/img_4_5_18.jpg" id="img-4-5-18"><img alt="../../_images/img_4_5_18.jpg" class="align-center" id="img-4-5-18" src="../../_images/img_4_5_18.jpg" style="width: 100%;" /></a>
+<div><a class="reference internal image-reference" href="../../_images/img_4_5_18.jpg" id="img-4-5-18"><img alt="../../_images/img_4_5_18.jpg" class="align-center" id="img-4-5-18" src="../../_images/img_4_5_18.jpg" style="width: 100%;" />
+</a>
 </div></blockquote>
 </li>
 <li><p>In some cases, a tomography system may not be well-aligned, resulting in a rotation axis that is not perpendicular to
@@ -1640,17 +1654,19 @@ also known as half-acquisition (though this can be a confusing name), is commonl
 note that the rotation axis should be shifted to the side of the field of view, not the sample itself. From
 the projection image, it can be confusing as both shifts give the same results.</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/img_4_5_19.png" id="img-4-5-19"><img alt="../../_images/img_4_5_19.png" class="align-center" id="img-4-5-19" src="../../_images/img_4_5_19.png" style="width: 60%;" /></a>
+<div><a class="reference internal image-reference" href="../../_images/img_4_5_19.png" id="img-4-5-19"><img alt="../../_images/img_4_5_19.png" class="align-center" id="img-4-5-19" src="../../_images/img_4_5_19.png" style="width: 60%;" />
+</a>
 </div></blockquote>
 <p>but it’s much easier to understand using the sketch below</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/img_4_5_20.png" id="img-4-5-20"><img alt="../../_images/img_4_5_20.png" class="align-center" id="img-4-5-20" src="../../_images/img_4_5_20.png" style="width: 100%;" /></a>
+<div><a class="reference internal image-reference" href="../../_images/img_4_5_20.png" id="img-4-5-20"><img alt="../../_images/img_4_5_20.png" class="align-center" id="img-4-5-20" src="../../_images/img_4_5_20.png" style="width: 100%;" />
+</a>
 </div></blockquote>
 </li>
 </ol>
 </section>
 <section id="data-analysis">
-<h2><span class="section-number">4.5.10. </span>Data analysis<a class="headerlink" href="#data-analysis" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.5.10. </span>Data analysis<a class="headerlink" href="#data-analysis" title="Link to this heading">¶</a></h2>
 <p>After cleaning and reconstructing all slices, the next step is to analyze the data to answer scientific questions.
 There are a variety of tools and software available to users. For beginners, the following resources may be helpful:</p>
 <ul class="simple">
@@ -1677,11 +1693,11 @@ and benefits of this technique.</p></li>
       </div>
     
         <div id="show_right_sidebar">
-            <p><a class="toggle_right_sidebar" href="#"><span class="icon"><</span><span>Page contents<span></a></p>
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
         </div>
 
         <div id="right_sidebar">
-            <p><a class="toggle_right_sidebar" href="#"><span class="icon">></span><span>Page contents:<span></a></p>
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
 <li><a class="reference internal" href="#">4.5. Complete workflow for processing tomographic data</a><ul>
@@ -1710,13 +1726,13 @@ and benefits of this technique.</p></li>
             <div class="left">
                 
                 <a href="section4_4.html">
-                    <span class="icon"><</span><span><span class="section-number">4.4. </span>Comparison of ring removal methods on challenging sinograms</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">4.4. </span>Comparison of ring removal methods on challenging sinograms</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="../section5.html"><span><span class="section-number">5. </span>Technical notes</span><span class="icon">></span></a>
+                    <a href="../section5.html"><span><span class="section-number">5. </span>Technical notes</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -1724,8 +1740,8 @@ and benefits of this technique.</p></li>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

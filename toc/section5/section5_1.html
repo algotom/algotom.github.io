@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>5.1. Implementations of X-ray speckle-based phase-contrast tomography &#8212; Algotom&#39;s documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=0.7.0-1" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=9b2032db" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <script src="../../_static/js/petite-vue.js"></script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="5.2. Implementations of direct vertical-slice reconstruction for tomography" href="section5_2.html" />
@@ -108,7 +104,7 @@
 
         <div class="searchbox_wrapper">
             
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
@@ -116,14 +112,14 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
     </nav>
 </div>
 
     
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../section1.html">1. Basic tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section2.html">2. Features</a></li>
@@ -151,14 +147,14 @@
           <div class="body" role="main">
             
   <section id="implementations-of-x-ray-speckle-based-phase-contrast-tomography">
-<span id="section5-1"></span><h1><span class="section-number">5.1. </span>Implementations of X-ray speckle-based phase-contrast tomography<a class="headerlink" href="#implementations-of-x-ray-speckle-based-phase-contrast-tomography" title="Permalink to this heading">¶</a></h1>
+<span id="section5-1"></span><h1><span class="section-number">5.1. </span>Implementations of X-ray speckle-based phase-contrast tomography<a class="headerlink" href="#implementations-of-x-ray-speckle-based-phase-contrast-tomography" title="Link to this heading">¶</a></h1>
 <p>From version 1.1, methods for speckle-based phase contrast imaging have been implemented into
 Algotom. This is the result of the collaboration between the author, Nghia Vo, and his
 collaborators: Hongchang Wang, Marie-Christine Zdora, Lingfei Hu, and Tunhe Zhou; who are
 experienced with developing and using speckle-based imaging methods. This technical note
 is to summarize the work done (for more detail, see <span id="id1">[<a class="reference internal" href="../credits.html#id28" title="Nghia T. Vo, Hongchang Wang, Lingfei Hu, Tunhe Zhou, Marie-Christine Zdora, Hans Deyhle, Robert C. Atwood, and Michael Drakopoulos. Practical implementations of speckle-based phase-retrieval methods in python and gpu for tomography. In Developments in X-Ray Tomography XIV, volume 12242, 122420E. International Society for Optics and Photonics, SPIE, 2022. doi:10.1117/12.2636834.">R22</a>]</span>).</p>
 <section id="introduction">
-<h2><span class="section-number">5.1.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.1.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
 <p>When a sample interacts with a coherent X-ray beam, it will cause reduction in the intensity
 and change in the direction of the beam. The latter effect comes from the phase shift of the
 X-ray wave. Using the first effect to image samples in tomography, known as X-ray absorption-contrast
@@ -178,7 +174,7 @@ scanned at different positions, with and without sample, and analyze the images 
 around each pixel.</p>
 </section>
 <section id="data-acquisition">
-<h2><span class="section-number">5.1.2. </span>Data acquisition<a class="headerlink" href="#data-acquisition" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.1.2. </span>Data acquisition<a class="headerlink" href="#data-acquisition" title="Link to this heading">¶</a></h2>
 <p>For producing a random speckle-pattern, a diffuser made of a sandpaper can be used. The purpose of
 a diffuser is to provide a reference-image used to detect local displacements caused by a sample.
 It is crucial to get a high-contrast reference-image with the average feature size of a few pixels, e.g. 5-9 pixels.
@@ -187,7 +183,8 @@ the mean value of pixel intensities, above 10% is good enough for use. For high-
 users can stack sandpapers together or using a box of material powder to improve the contrast of a
 speckle-image. Other practical considerations for setting up an experiment are as follows:</p>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/img_5_1_1.png" id="img-5-1-1"><img alt="../../_images/img_5_1_1.png" class="align-center" id="img-5-1-1" src="../../_images/img_5_1_1.png" style="width: 100%;" /></a>
+<div><a class="reference internal image-reference" href="../../_images/img_5_1_1.png" id="img-5-1-1"><img alt="../../_images/img_5_1_1.png" class="align-center" id="img-5-1-1" src="../../_images/img_5_1_1.png" style="width: 100%;" />
+</a>
 </div></blockquote>
 <ul class="simple">
 <li><p>The diffuser can be positioned before or after a sample depending on experiment conditions. For example,
@@ -213,9 +210,9 @@ the sample image.</p></li>
 </ul>
 </section>
 <section id="data-processing">
-<h2><span class="section-number">5.1.3. </span>Data processing<a class="headerlink" href="#data-processing" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.1.3. </span>Data processing<a class="headerlink" href="#data-processing" title="Link to this heading">¶</a></h2>
 <section id="finding-pixel-shifts">
-<h3><span class="section-number">5.1.3.1. </span>Finding pixel shifts<a class="headerlink" href="#finding-pixel-shifts" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.1.3.1. </span>Finding pixel shifts<a class="headerlink" href="#finding-pixel-shifts" title="Link to this heading">¶</a></h3>
 <p>The core idea of the technique is to find the shift of each pixel of a speckle-image caused by a sample.
 This is done by: selecting a small window (5-11 pixels) around each pixel of the sample-stack image; sliding
 this window around a slightly larger window (margin ~10 pixels) taken from the reference-stack image and
@@ -232,13 +229,13 @@ direction of image stacks, to find shifts in x and y-direction separately.</p>
 <div><figure class="align-center" id="fig-5-1-1" style="width: 70%">
 <img alt="../../_images/fig_5_1_1.jpg" src="../../_images/fig_5_1_1.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 5.1.1 </span><span class="caption-text">Demonstration of how to find the shift of each speckle-pixel.</span><a class="headerlink" href="#fig-5-1-1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.1.1 </span><span class="caption-text">Demonstration of how to find the shift of each speckle-pixel.</span><a class="headerlink" href="#fig-5-1-1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </div></blockquote>
 </section>
 <section id="surface-reconstruction">
-<h3><span class="section-number">5.1.3.2. </span>Surface reconstruction<a class="headerlink" href="#surface-reconstruction" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.1.3.2. </span>Surface reconstruction<a class="headerlink" href="#surface-reconstruction" title="Link to this heading">¶</a></h3>
 <p>The result of the previous step is separated into an x-shift image and a y-shift image, i.e. gradient images.
 A phase-shift image is then retrieved by applying a method of surface reconstruction, or normal integration
 (<a class="reference internal" href="#fig-5-1-2"><span class="std std-numref">Fig. 5.1.2</span></a>). There are many available options for implementing this step. However, Fourier-transform-based
@@ -251,20 +248,20 @@ can be corrected (<a class="reference internal" href="#fig-5-1-3"><span class="s
 <img alt="../../_images/fig_5_1_2.jpg" src="../../_images/fig_5_1_2.jpg" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.1.2 </span><span class="caption-text">Phase-shift image (c) is retrieved by normal integration using two gradient
-images: (a) x-direction; (b) y-direction.</span><a class="headerlink" href="#fig-5-1-2" title="Permalink to this image">¶</a></p>
+images: (a) x-direction; (b) y-direction.</span><a class="headerlink" href="#fig-5-1-2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="fig-5-1-3" style="width: 90%">
 <img alt="../../_images/fig_5_1_3.jpg" src="../../_images/fig_5_1_3.jpg" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.1.3 </span><span class="caption-text">(a) Fluctuation of grayscale values in a sinogram caused by the FT-based surface-reconstruction
-method. (b) Corrected image after using the double-wedge filter.</span><a class="headerlink" href="#fig-5-1-3" title="Permalink to this image">¶</a></p>
+method. (b) Corrected image after using the double-wedge filter.</span><a class="headerlink" href="#fig-5-1-3" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </div></blockquote>
 </section>
 <section id="extracting-transmission-and-dark-field-signals">
-<h3><span class="section-number">5.1.3.3. </span>Extracting transmission and dark-field signals<a class="headerlink" href="#extracting-transmission-and-dark-field-signals" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.1.3.3. </span>Extracting transmission and dark-field signals<a class="headerlink" href="#extracting-transmission-and-dark-field-signals" title="Link to this heading">¶</a></h3>
 <p>Another interesting capability of the speckle-based technique is that transmission image
 (absorption-contrast image) and dark-field image (small-angle scattering signal, not to be confused
 with dark-noise of a camera) can be extracted from data together with the phase-shift image (<a class="reference internal" href="#fig-5-1-4"><span class="std std-numref">Fig. 5.1.4</span></a>).
@@ -276,29 +273,29 @@ equation.</p>
 <img alt="../../_images/fig_5_1_4.jpg" src="../../_images/fig_5_1_4.jpg" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.1.4 </span><span class="caption-text">All imaging signal retrieved by the speckle-based technique can be used for tomography. (a) Phase-shift image.
-(b) Transmission image. (c) Dark-field image.</span><a class="headerlink" href="#fig-5-1-4" title="Permalink to this image">¶</a></p>
+(b) Transmission image. (c) Dark-field image.</span><a class="headerlink" href="#fig-5-1-4" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </div></blockquote>
 </section>
 <section id="tomographic-reconstruction">
-<h3><span class="section-number">5.1.3.4. </span>Tomographic reconstruction<a class="headerlink" href="#tomographic-reconstruction" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.1.3.4. </span>Tomographic reconstruction<a class="headerlink" href="#tomographic-reconstruction" title="Link to this heading">¶</a></h3>
 <p>Above processing steps are repeated for every projection then the results are used for tomographic
 reconstruction as shown in <a class="reference internal" href="#fig-5-1-5"><span class="std std-numref">Fig. 5.1.5</span></a></p>
 <blockquote>
 <div><figure class="align-center" id="fig-5-1-5" style="width: 100%">
 <img alt="../../_images/fig_5_1_5.jpg" src="../../_images/fig_5_1_5.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 5.1.5 </span><span class="caption-text">Demonstration of the speckle-based phase-contrast tomography</span><a class="headerlink" href="#fig-5-1-5" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.1.5 </span><span class="caption-text">Demonstration of the speckle-based phase-contrast tomography</span><a class="headerlink" href="#fig-5-1-5" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </div></blockquote>
 </section>
 </section>
 <section id="implementation">
-<h2><span class="section-number">5.1.4. </span>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.1.4. </span>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">¶</a></h2>
 <section id="design-principles">
-<h3><span class="section-number">5.1.4.1. </span>Design principles<a class="headerlink" href="#design-principles" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.1.4.1. </span>Design principles<a class="headerlink" href="#design-principles" title="Link to this heading">¶</a></h3>
 <p>Practical design-principles have been followed in the implementation:</p>
 <ul class="simple">
 <li><p>To ensure that the software can work across platforms and is easy-to-install; dependencies are minimized,
@@ -319,7 +316,7 @@ More importantly, this design allows users to customize methods or build data pr
 </ul>
 </section>
 <section id="building-blocks">
-<h3><span class="section-number">5.1.4.2. </span>Building blocks<a class="headerlink" href="#building-blocks" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.1.4.2. </span>Building blocks<a class="headerlink" href="#building-blocks" title="Link to this heading">¶</a></h3>
 <p>A dedicated module in Algotom, named <a class="reference external" href="https://github.com/algotom/algotom/blob/master/algotom/util/correlation.py">correlation</a>,
 is a collection of methods as the building blocks for the top layer methods described in the previous section.</p>
 <p>The first block is a method to generate correlation-coefficient map between two 2D/3D images (<a class="reference internal" href="#fig-5-1-1"><span class="std std-numref">Fig. 5.1.1</span></a>).
@@ -351,19 +348,19 @@ straightforward to implement either directly or by making use of the methods in 
 <div><figure class="align-center" id="fig-5-1-6" style="width: 60%">
 <img alt="../../_images/fig_5_1_6.png" src="../../_images/fig_5_1_6.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 5.1.6 </span><span class="caption-text">Building blocks of the <em>correlation</em> module.</span><a class="headerlink" href="#fig-5-1-6" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.1.6 </span><span class="caption-text">Building blocks of the <em>correlation</em> module.</span><a class="headerlink" href="#fig-5-1-6" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </div></blockquote>
 </section>
 </section>
 <section id="demonstration">
-<h2><span class="section-number">5.1.5. </span>Demonstration<a class="headerlink" href="#demonstration" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.1.5. </span>Demonstration<a class="headerlink" href="#demonstration" title="Link to this heading">¶</a></h2>
 <blockquote>
 <div><figure class="align-center" id="fig-5-1-7" style="width: 95%">
 <img alt="../../_images/fig_5_1_7.jpg" src="../../_images/fig_5_1_7.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 5.1.7 </span><span class="caption-text">Speckle-based tomographic experiment at beamline I12.</span><a class="headerlink" href="#fig-5-1-7" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.1.7 </span><span class="caption-text">Speckle-based tomographic experiment at beamline I12.</span><a class="headerlink" href="#fig-5-1-7" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -388,7 +385,7 @@ using free-space areas in each image (<a class="reference internal" href="#fig-5
 <img alt="../../_images/fig_5_1_8.jpg" src="../../_images/fig_5_1_8.jpg" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.1.8 </span><span class="caption-text">Demonstration of the impact of image alignment. (a) Small area of an image which is the result of dividing
-between speckle-image with sample and without sample. (b) Same as (a) but after image alignment.</span><a class="headerlink" href="#fig-5-1-8" title="Permalink to this image">¶</a></p>
+between speckle-image with sample and without sample. (b) Same as (a) but after image alignment.</span><a class="headerlink" href="#fig-5-1-8" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -405,7 +402,7 @@ the <a class="reference external" href="https://algotom.readthedocs.io/en/latest
 <figure class="align-center" id="fig-5-1-9" style="width: 90%">
 <img alt="../../_images/fig_5_1_9.jpg" src="../../_images/fig_5_1_9.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 5.1.9 </span><span class="caption-text">Speckle-image stack (a). Sample-image stack (b). Phase-shift image (c) retrieved from (a) and (b).</span><a class="headerlink" href="#fig-5-1-9" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.1.9 </span><span class="caption-text">Speckle-image stack (a). Sample-image stack (b). Phase-shift image (c) retrieved from (a) and (b).</span><a class="headerlink" href="#fig-5-1-9" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </li>
@@ -419,7 +416,7 @@ speed-up of computing time if using GPU.</p>
 <div><figure class="align-center" id="fig-5-1-10" style="width: 75%">
 <img alt="../../_images/fig_5_1_10.jpg" src="../../_images/fig_5_1_10.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 5.1.10 </span><span class="caption-text">Comparison of computing time using different approaches.</span><a class="headerlink" href="#fig-5-1-10" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.1.10 </span><span class="caption-text">Comparison of computing time using different approaches.</span><a class="headerlink" href="#fig-5-1-10" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -443,14 +440,14 @@ is a very promising application of the technique.</p>
 <img alt="../../_images/fig_5_1_11.jpg" src="../../_images/fig_5_1_11.jpg" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.1.11 </span><span class="caption-text">Horizontal slice and vertical slice of reconstructed volumes from the 3 approaches: the 1D-search method (a,d);
-the 2D-search method (b,e); and UMPA (c,f).</span><a class="headerlink" href="#fig-5-1-11" title="Permalink to this image">¶</a></p>
+the 2D-search method (b,e); and UMPA (c,f).</span><a class="headerlink" href="#fig-5-1-11" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="fig-5-1-12" style="width: 100%">
 <img alt="../../_images/fig_5_1_12.jpg" src="../../_images/fig_5_1_12.jpg" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.1.12 </span><span class="caption-text">Horizontal slice and vertical slice of reconstructed volumes from 3 imaging modes: phase-shift image (a,d);
-transmission image (b,e); and dark-signal image (c,f).</span><a class="headerlink" href="#fig-5-1-12" title="Permalink to this image">¶</a></p>
+transmission image (b,e); and dark-signal image (c,f).</span><a class="headerlink" href="#fig-5-1-12" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -466,11 +463,11 @@ Detailed references can be found in <span id="id15">[<a class="reference interna
       </div>
     
         <div id="show_right_sidebar">
-            <p><a class="toggle_right_sidebar" href="#"><span class="icon"><</span><span>Page contents<span></a></p>
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
         </div>
 
         <div id="right_sidebar">
-            <p><a class="toggle_right_sidebar" href="#"><span class="icon">></span><span>Page contents:<span></a></p>
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
 <li><a class="reference internal" href="#">5.1. Implementations of X-ray speckle-based phase-contrast tomography</a><ul>
@@ -504,13 +501,13 @@ Detailed references can be found in <span id="id15">[<a class="reference interna
             <div class="left">
                 
                 <a href="../section5.html">
-                    <span class="icon"><</span><span><span class="section-number">5. </span>Technical notes</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">5. </span>Technical notes</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="section5_2.html"><span><span class="section-number">5.2. </span>Implementations of direct vertical-slice reconstruction for tomography</span><span class="icon">></span></a>
+                    <a href="section5_2.html"><span><span class="section-number">5.2. </span>Implementations of direct vertical-slice reconstruction for tomography</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -518,8 +515,8 @@ Detailed references can be found in <span id="id15">[<a class="reference interna
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

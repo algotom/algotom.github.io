@@ -1,23 +1,19 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>algotom.io.converter &#8212; Algotom&#39;s documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic_mod.css?v=0.7.0-1" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic_mod.css?v=0836103a" />
+    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <script src="../../../_static/js/petite-vue.js"></script>
-    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
   </head><body data-dark_mode_code_blocks="true">
@@ -105,7 +101,7 @@
 
         <div class="searchbox_wrapper">
             
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
@@ -113,14 +109,14 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
     </nav>
 </div>
 
     
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/section1.html">1. Basic tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/section2.html">2. Features</a></li>
@@ -180,8 +176,11 @@
 <span class="kn">import</span> <span class="nn">algotom.io.loadersaver</span> <span class="k">as</span> <span class="nn">losa</span>
 
 
-<div class="viewcode-block" id="convert_tif_to_hdf"><a class="viewcode-back" href="../../../toc/api/algotom.io.converter.html#algotom.io.converter.convert_tif_to_hdf">[docs]</a><span class="k">def</span> <span class="nf">convert_tif_to_hdf</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">output_path</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="s2">&quot;entry/data&quot;</span><span class="p">,</span>
-                       <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">pattern</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+<div class="viewcode-block" id="convert_tif_to_hdf">
+<a class="viewcode-back" href="../../../toc/api/algotom.io.converter.html#algotom.io.converter.convert_tif_to_hdf">[docs]</a>
+<span class="k">def</span> <span class="nf">convert_tif_to_hdf</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">output_path</span><span class="p">,</span> <span class="n">key_path</span><span class="o">=</span><span class="s2">&quot;entry/data&quot;</span><span class="p">,</span>
+                       <span class="n">data_type</span><span class="o">=</span><span class="s1">&#39;float32&#39;</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                       <span class="n">pattern</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert a folder of tif files to a hdf/nxs file.</span>
 
@@ -193,11 +192,13 @@
 <span class="sd">        Path to the hdf/nxs file.</span>
 <span class="sd">    key_path : str, optional</span>
 <span class="sd">        Key path to the dataset.</span>
+<span class="sd">    data_type: str</span>
+<span class="sd">        Type of data.</span>
 <span class="sd">    crop : tuple of int, optional</span>
 <span class="sd">        Crop the images from the edges, i.e.</span>
 <span class="sd">        crop = (crop_top, crop_bottom, crop_left, crop_right).</span>
 <span class="sd">    pattern : str, optional</span>
-<span class="sd">        Used to find tif files with names matching the pattern.</span>
+<span class="sd">        Used to find tif files with names matching the pattern.E.g &quot;img&quot;</span>
 <span class="sd">    options : dict, optional</span>
 <span class="sd">        Add metadata. E.g options={&quot;entry/angles&quot;: angles, &quot;entry/energy&quot;: 53}.</span>
 
@@ -222,15 +223,18 @@
     <span class="k">if</span> <span class="n">cr_height</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">cr_width</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t crop images with the given parameters !!!&quot;</span><span class="p">)</span>
     <span class="n">data_out</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">open_hdf_stream</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">cr_height</span><span class="p">,</span> <span class="n">cr_width</span><span class="p">),</span>
-                                    <span class="n">key_path</span><span class="o">=</span><span class="n">key_path</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                                    <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+                                    <span class="n">key_path</span><span class="o">=</span><span class="n">key_path</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="n">data_type</span><span class="p">,</span>
+                                    <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_file</span><span class="p">):</span>
         <span class="n">data_out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">losa</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">file_path</span><span class="p">)[</span><span class="n">cr_top</span><span class="p">:</span><span class="n">cr_height</span> <span class="o">+</span> <span class="n">cr_top</span><span class="p">,</span>
                       <span class="n">cr_left</span><span class="p">:</span><span class="n">cr_width</span> <span class="o">+</span> <span class="n">cr_left</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">output_path</span></div>
 
 
-<div class="viewcode-block" id="extract_tif_from_hdf"><a class="viewcode-back" href="../../../toc/api/algotom.io.converter.html#algotom.io.converter.extract_tif_from_hdf">[docs]</a><span class="k">def</span> <span class="nf">extract_tif_from_hdf</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">output_path</span><span class="p">,</span> <span class="n">key_path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+
+<div class="viewcode-block" id="extract_tif_from_hdf">
+<a class="viewcode-back" href="../../../toc/api/algotom.io.converter.html#algotom.io.converter.extract_tif_from_hdf">[docs]</a>
+<span class="k">def</span> <span class="nf">extract_tif_from_hdf</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">output_path</span><span class="p">,</span> <span class="n">key_path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
                          <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;img&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Extract tif images from a hdf/nxs file.</span>
@@ -292,7 +296,10 @@
     <span class="k">return</span> <span class="n">output_path</span></div>
 
 
-<div class="viewcode-block" id="HdfEmulatorFromTif"><a class="viewcode-back" href="../../../toc/api/algotom.io.converter.html#algotom.io.converter.HdfEmulatorFromTif">[docs]</a><span class="k">class</span> <span class="nc">HdfEmulatorFromTif</span><span class="p">:</span>
+
+<div class="viewcode-block" id="HdfEmulatorFromTif">
+<a class="viewcode-back" href="../../../toc/api/algotom.io.converter.html#algotom.io.converter.HdfEmulatorFromTif">[docs]</a>
+<span class="k">class</span> <span class="nc">HdfEmulatorFromTif</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Emulate an HDF5-like interface for TIF files in a folder, allowing</span>
 <span class="sd">    indexed and sliced data access.</span>
@@ -356,6 +363,7 @@
 
     <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">)</span></div>
+
 </pre></div>
 
             <div class="clearer"></div>
@@ -380,8 +388,8 @@
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

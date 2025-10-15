@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>1.6. Alignment for a parallel-beam tomography system &#8212; Algotom&#39;s documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=0.7.0-1" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=9b2032db" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <script src="../../_static/js/petite-vue.js"></script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="2. Features" href="../section2.html" />
@@ -108,7 +104,7 @@
 
         <div class="searchbox_wrapper">
             
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
@@ -116,14 +112,14 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
     </nav>
 </div>
 
     
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../section1.html">1. Basic tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="section1_1.html">1.1. Python for tomography scientists as beginners</a></li>
@@ -155,7 +151,7 @@
           <div class="body" role="main">
             
   <section id="alignment-for-a-parallel-beam-tomography-system">
-<h1><span class="section-number">1.6. </span>Alignment for a parallel-beam tomography system<a class="headerlink" href="#alignment-for-a-parallel-beam-tomography-system" title="Permalink to this heading">¶</a></h1>
+<h1><span class="section-number">1.6. </span>Alignment for a parallel-beam tomography system<a class="headerlink" href="#alignment-for-a-parallel-beam-tomography-system" title="Link to this heading">¶</a></h1>
 <p>Due to the parallelism of the penetrating X-rays, 2D projections can be divided into independent 1D projection rows.
 Collecting 1D projections at a specific row angularly forms a sinogram, which is used to reconstruct a 2D slice of
 an object (<a class="reference internal" href="#fig-1-6-1"><span class="std std-numref">Fig. 1.6.1</span></a>). To ensure the independence of 1D projections at each row, it is crucial to maintain
@@ -166,7 +162,7 @@ As the result, alignment adjustments are necessary for different tomography setu
 <figure class="align-center" id="fig-1-6-1" style="width: 75%">
 <img alt="../../_images/fig_1_6_1.jpg" src="../../_images/fig_1_6_1.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.6.1 </span><span class="caption-text">Schematic of parallel-beam X-ray tomography.</span><a class="headerlink" href="#fig-1-6-1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1.6.1 </span><span class="caption-text">Schematic of parallel-beam X-ray tomography.</span><a class="headerlink" href="#fig-1-6-1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The misalignment of a tomography system is identified by measuring the tilt and roll angle of the rotation axis
@@ -176,7 +172,7 @@ A similar approach can be employed using a needle by tracking the top of it thro
 <figure class="align-center" id="fig-1-6-2" style="width: 70%">
 <img alt="../../_images/fig_1_6_2.png" src="../../_images/fig_1_6_2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.6.2 </span><span class="caption-text">Overlay of projections of a sphere during a circular scan.</span><a class="headerlink" href="#fig-1-6-2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1.6.2 </span><span class="caption-text">Overlay of projections of a sphere during a circular scan.</span><a class="headerlink" href="#fig-1-6-2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>In a well-aligned system, the range of y-coordinates of points remains below 1 pixel, as depicted in <a class="reference internal" href="#fig-1-6-3"><span class="std std-numref">Fig. 1.6.3</span></a>.
@@ -185,7 +181,7 @@ the angle of the major axis, and the tilt is related to the ratio between the mi
 <figure class="align-center" id="fig-1-6-3" style="width: 100%">
 <img alt="../../_images/fig_1_6_3.png" src="../../_images/fig_1_6_3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.6.3 </span><span class="caption-text">Demonstration of a well-aligned tomography system and a misaligned one</span><a class="headerlink" href="#fig-1-6-3" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1.6.3 </span><span class="caption-text">Demonstration of a well-aligned tomography system and a misaligned one</span><a class="headerlink" href="#fig-1-6-3" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>This section demonstrates how to use methods available in Algotom to calculate the tilt and roll angle of the rotation
@@ -241,19 +237,19 @@ as follows:</p>
 <figure class="align-center" id="fig-1-6-4" style="width: 70%">
 <img alt="../../_images/fig_1_6_4.jpg" src="../../_images/fig_1_6_4.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.6.4 </span><span class="caption-text">Projection of the sphere</span><a class="headerlink" href="#fig-1-6-4" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1.6.4 </span><span class="caption-text">Projection of the sphere</span><a class="headerlink" href="#fig-1-6-4" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="fig-1-6-5" style="width: 70%">
 <img alt="../../_images/fig_1_6_5.jpg" src="../../_images/fig_1_6_5.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.6.5 </span><span class="caption-text">Binarized image</span><a class="headerlink" href="#fig-1-6-5" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1.6.5 </span><span class="caption-text">Binarized image</span><a class="headerlink" href="#fig-1-6-5" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="fig-1-6-6" style="width: 70%">
 <img alt="../../_images/fig_1_6_6.jpg" src="../../_images/fig_1_6_6.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.6.6 </span><span class="caption-text">Segmented sphere</span><a class="headerlink" href="#fig-1-6-6" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1.6.6 </span><span class="caption-text">Segmented sphere</span><a class="headerlink" href="#fig-1-6-6" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x_centers</span> <span class="o">=</span> <span class="p">[]</span>
@@ -412,13 +408,13 @@ using an ellipse-fit method or a linear-fit method.</p>
 <figure class="align-center" id="fig-1-6-7" style="width: 100%">
 <img alt="../../_images/fig_1_6_7.jpg" src="../../_images/fig_1_6_7.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.6.7 </span><span class="caption-text">Overlay of projections of a sphere for checking.</span><a class="headerlink" href="#fig-1-6-7" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1.6.7 </span><span class="caption-text">Overlay of projections of a sphere for checking.</span><a class="headerlink" href="#fig-1-6-7" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="fig-1-6-8" style="width: 100%">
 <img alt="../../_images/fig_1_6_8.jpg" src="../../_images/fig_1_6_8.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.6.8 </span><span class="caption-text">Showing the result of finding the tilt and roll.</span><a class="headerlink" href="#fig-1-6-8" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1.6.8 </span><span class="caption-text">Showing the result of finding the tilt and roll.</span><a class="headerlink" href="#fig-1-6-8" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </li>
@@ -431,13 +427,13 @@ we can correctly identify the sign of these angles. After the adjustment, calcul
 <div><figure class="align-center" id="fig-1-6-9" style="width: 100%">
 <img alt="../../_images/fig_1_6_9.jpg" src="../../_images/fig_1_6_9.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.6.9 </span><span class="caption-text">Overlay of projections of a sphere after alignment.</span><a class="headerlink" href="#fig-1-6-9" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1.6.9 </span><span class="caption-text">Overlay of projections of a sphere after alignment.</span><a class="headerlink" href="#fig-1-6-9" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="fig-1-6-10" style="width: 100%">
 <img alt="../../_images/fig_1_6_10.jpg" src="../../_images/fig_1_6_10.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.6.10 </span><span class="caption-text">Result of finding the tilt and roll after alignment.</span><a class="headerlink" href="#fig-1-6-10" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1.6.10 </span><span class="caption-text">Result of finding the tilt and roll after alignment.</span><a class="headerlink" href="#fig-1-6-10" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -486,7 +482,7 @@ the ImageJ macros can be downloaded from
 <div><figure class="align-center" id="fig-1-6-11" style="width: 100%">
 <img alt="../../_images/fig_1_6_11.jpg" src="../../_images/fig_1_6_11.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.6.11 </span><span class="caption-text">Interactive approach for tomography alignment using ImageJ macro.</span><a class="headerlink" href="#fig-1-6-11" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1.6.11 </span><span class="caption-text">Interactive approach for tomography alignment using ImageJ macro.</span><a class="headerlink" href="#fig-1-6-11" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -506,13 +502,13 @@ the ImageJ macros can be downloaded from
             <div class="left">
                 
                 <a href="section1_5.html">
-                    <span class="icon"><</span><span><span class="section-number">1.5. </span>Parallel processing in Python</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">1.5. </span>Parallel processing in Python</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="../section2.html"><span><span class="section-number">2. </span>Features</span><span class="icon">></span></a>
+                    <a href="../section2.html"><span><span class="section-number">2. </span>Features</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -520,8 +516,8 @@ the ImageJ macros can be downloaded from
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

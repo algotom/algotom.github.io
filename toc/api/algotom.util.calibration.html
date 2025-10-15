@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>7.5.1. algotom.util.calibration &#8212; Algotom&#39;s documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=0.7.0-1" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=9b2032db" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <script src="../../_static/js/petite-vue.js"></script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="7.5.2. algotom.util.simulation" href="algotom.util.simulation.html" />
@@ -108,7 +104,7 @@
 
         <div class="searchbox_wrapper">
             
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
@@ -116,14 +112,14 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
     </nav>
 </div>
 
     
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../section1.html">1. Basic tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section2.html">2. Features</a></li>
@@ -164,7 +160,7 @@
           <div class="body" role="main">
             
   <section id="module-algotom.util.calibration">
-<span id="algotom-util-calibration"></span><h1><span class="section-number">7.5.1. </span><a class="reference internal" href="#module-algotom.util.calibration" title="algotom.util.calibration"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.calibration</span></code></a><a class="headerlink" href="#module-algotom.util.calibration" title="Permalink to this heading">¶</a></h1>
+<span id="algotom-util-calibration"></span><h1><span class="section-number">7.5.1. </span><a class="reference internal" href="#module-algotom.util.calibration" title="algotom.util.calibration"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.calibration</span></code></a><a class="headerlink" href="#module-algotom.util.calibration" title="Link to this heading">¶</a></h1>
 <p>Module of calibration methods:</p>
 <blockquote>
 <div><ul class="simple">
@@ -179,10 +175,6 @@ coordinates of a point-like object scanned in the range of
 </div></blockquote>
 <p class="rubric"><strong>Functions:</strong></p>
 <table class="autosummary longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#algotom.util.calibration.normalize_background" title="algotom.util.calibration.normalize_background"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalize_background</span></code></a>(mat[, size])</p></td>
 <td><p>Correct a non-uniform background of an image using the median filter.</p></td>
@@ -221,16 +213,16 @@ coordinates of a point-like object scanned in the range of
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.normalize_background">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">normalize_background</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">51</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#normalize_background"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.normalize_background" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">normalize_background</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">51</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#normalize_background"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.normalize_background" title="Link to this definition">¶</a></dt>
 <dd><p>Correct a non-uniform background of an image using the median filter.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
 <li><p><strong>size</strong> (<em>int</em>) – Size of the median filter.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>array_like</em> – 2D array. Corrected image.</p>
 </dd>
 </dl>
@@ -238,11 +230,11 @@ coordinates of a point-like object scanned in the range of
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.normalize_background_based_fft">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">normalize_background_based_fft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#normalize_background_based_fft"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.normalize_background_based_fft" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">normalize_background_based_fft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#normalize_background_based_fft"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.normalize_background_based_fft" title="Link to this definition">¶</a></dt>
 <dd><p>Correct a non-uniform background of an image using a Fourier Gaussian
 filter.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
 <li><p><strong>sigma</strong> (<em>int</em>) – Sigma of the Gaussian.</p></li>
@@ -252,7 +244,7 @@ list is at:
 <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.pad.html">https://numpy.org/doc/stable/reference/generated/numpy.pad.html</a></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>array_like</em> – 2D array. Corrected image.</p>
 </dd>
 </dl>
@@ -260,13 +252,13 @@ list is at:
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.invert_dot_contrast">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">invert_dot_contrast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#invert_dot_contrast"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.invert_dot_contrast" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">invert_dot_contrast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#invert_dot_contrast"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.invert_dot_contrast" title="Link to this definition">¶</a></dt>
 <dd><p>Invert the contrast of a 2D binary array to make sure that a dot is white.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>mat</strong> (<em>array_like</em>) – 2D binary array.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>array_like</em> – 2D array.</p>
 </dd>
 </dl>
@@ -274,16 +266,16 @@ list is at:
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.calculate_threshold">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">calculate_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bgr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bright'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#calculate_threshold"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.calculate_threshold" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">calculate_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bgr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bright'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#calculate_threshold"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.calculate_threshold" title="Link to this definition">¶</a></dt>
 <dd><p>Calculate threshold value based on Algorithm 4 in Ref. [1].</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
 <li><p><strong>bgr</strong> (<em>{“bright”, “dark”}</em>) – To indicate the brightness of the background against image features.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>float</em> – Threshold value.</p>
 </dd>
 </dl>
@@ -293,10 +285,10 @@ list is at:
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.binarize_image">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">binarize_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bgr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bright'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#binarize_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.binarize_image" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">binarize_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bgr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bright'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#binarize_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.binarize_image" title="Link to this definition">¶</a></dt>
 <dd><p>Binarize an image.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
 <li><p><strong>threshold</strong> (<em>float, optional</em>) – Threshold value for binarization. Automatically calculated using
@@ -307,7 +299,7 @@ Algorithm 4 in Ref. [1] if None.</p></li>
 <li><p><strong>invert</strong> (<em>bool, optional</em>) – Invert the contrast if needed.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>array_like</em> – 2D binary array.</p>
 </dd>
 </dl>
@@ -317,16 +309,16 @@ Algorithm 4 in Ref. [1] if None.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.get_dot_size">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">get_dot_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_opt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'max'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#get_dot_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.get_dot_size" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">get_dot_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_opt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'max'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#get_dot_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.get_dot_size" title="Link to this definition">¶</a></dt>
 <dd><p>Get size of binary dots given the option.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat</strong> (<em>array_like</em>) – 2D binary array.</p></li>
 <li><p><strong>size_opt</strong> (<em>{“max”, “min”, “median”, “mean”}</em>) – Select options.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>dot_size</strong> (<em>float</em>) – Size of the dot.</p>
 </dd>
 </dl>
@@ -334,17 +326,17 @@ Algorithm 4 in Ref. [1] if None.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.check_dot_size">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">check_dot_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#check_dot_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.check_dot_size" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">check_dot_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#check_dot_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.check_dot_size" title="Link to this definition">¶</a></dt>
 <dd><p>Check if the size of a dot is in a range.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
 <li><p><strong>min_size</strong> (<em>float</em>) – Minimum size.</p></li>
 <li><p><strong>max_size</strong> (<em>float</em>) – Maximum size.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>bool</em></p>
 </dd>
 </dl>
@@ -352,10 +344,10 @@ Algorithm 4 in Ref. [1] if None.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.select_dot_based_size">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">select_dot_based_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dot_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#select_dot_based_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.select_dot_based_size" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">select_dot_based_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dot_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#select_dot_based_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.select_dot_based_size" title="Link to this definition">¶</a></dt>
 <dd><p>Select dots having a certain size.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
 <li><p><strong>dot_size</strong> (<em>float</em>) – Size of the standard dot.</p></li>
@@ -363,7 +355,7 @@ Algorithm 4 in Ref. [1] if None.</p></li>
 [dot_size - ratio*dot_size; dot_size + ratio*dot_size]</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>array_like</em> – 2D array. Selected dots.</p>
 </dd>
 </dl>
@@ -371,11 +363,11 @@ Algorithm 4 in Ref. [1] if None.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.calculate_distance">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">calculate_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_opt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'max'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bgr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bright'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#calculate_distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.calculate_distance" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">calculate_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_opt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'max'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bgr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bright'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#calculate_distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.calculate_distance" title="Link to this definition">¶</a></dt>
 <dd><p>Calculate the distance between two point-like objects segmented from
 two images. Useful for measuring pixel-size in helical scans (Ref. [1]).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat1</strong> (<em>array_like</em>) – 2D array.</p></li>
 <li><p><strong>mat2</strong> (<em>array_like</em>) – 2D array.</p></li>
@@ -396,16 +388,16 @@ Algorithm 4 in Ref. [2] if None.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.fit_points_to_ellipse">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">fit_points_to_ellipse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#fit_points_to_ellipse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.fit_points_to_ellipse" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">fit_points_to_ellipse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#fit_points_to_ellipse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.fit_points_to_ellipse" title="Link to this definition">¶</a></dt>
 <dd><p>Fit an ellipse to a set of points.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>ndarray</em>) – x-coordinates of the points.</p></li>
 <li><p><strong>y</strong> (<em>ndarray</em>) – y-coordinates of the points.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>roll_angle</strong> (<em>float</em>) – Rotation angle of the ellipse in degree.</p></li>
 <li><p><strong>a_major</strong> (<em>float</em>) – Length of the major axis.</p></li>
@@ -420,18 +412,18 @@ Algorithm 4 in Ref. [2] if None.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.find_tilt_roll_based_linear_fit">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">find_tilt_roll_based_linear_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#find_tilt_roll_based_linear_fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.find_tilt_roll_based_linear_fit" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">find_tilt_roll_based_linear_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#find_tilt_roll_based_linear_fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.find_tilt_roll_based_linear_fit" title="Link to this definition">¶</a></dt>
 <dd><p>Find the tilt and roll of a parallel-beam tomography system given
 coordinates of a point-like object scanned in the range of
 [0, 360] degrees. Uses a linear-fit-based approach [1].</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>ndarray</em>) – x-coordinates of the points.</p></li>
 <li><p><strong>y</strong> (<em>ndarray</em>) – y-coordinates of the points.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>tilt</strong> (<em>float</em>) – Tilt angle in degree.</p></li>
 <li><p><strong>roll</strong> (<em>float</em>) – Roll angle in degree.</p></li>
@@ -445,18 +437,18 @@ coordinates of a point-like object scanned in the range of
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.find_tilt_roll_based_ellipse_fit">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">find_tilt_roll_based_ellipse_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#find_tilt_roll_based_ellipse_fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.find_tilt_roll_based_ellipse_fit" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">find_tilt_roll_based_ellipse_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#find_tilt_roll_based_ellipse_fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.find_tilt_roll_based_ellipse_fit" title="Link to this definition">¶</a></dt>
 <dd><p>Find the tilt and roll of a parallel-beam tomography system given
 coordinates of a point-like object scanned in the range of
 [0, 360] degrees. Uses an ellipse-fit-based approach.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>ndarray</em>) – x-coordinates of the points.</p></li>
 <li><p><strong>y</strong> (<em>ndarray</em>) – y-coordinates of the points.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>tilt</strong> (<em>float</em>) – Tilt angle in degree.</p></li>
 <li><p><strong>roll</strong> (<em>float</em>) – Roll angle in degree.</p></li>
@@ -468,19 +460,19 @@ coordinates of a point-like object scanned in the range of
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.calibration.find_tilt_roll">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">find_tilt_roll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ellipse'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#find_tilt_roll"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.find_tilt_roll" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.calibration.</span></span><span class="sig-name descname"><span class="pre">find_tilt_roll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ellipse'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/calibration.html#find_tilt_roll"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.calibration.find_tilt_roll" title="Link to this definition">¶</a></dt>
 <dd><p>Find the tilt and roll of a parallel-beam tomography system given
 coordinates of a point-like object scanned in the range of
 [0, 360] degrees.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>ndarray</em>) – x-coordinates of the points.</p></li>
 <li><p><strong>y</strong> (<em>ndarray</em>) – y-coordinates of the points.</p></li>
 <li><p><strong>method</strong> (<em>{“linear”, “ellipse”}</em>) – Method for finding tilt and roll.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>tilt</strong> (<em>float</em>) – Tilt angle in degree.</p></li>
 <li><p><strong>roll</strong> (<em>float</em>) – Roll angle in degree.</p></li>
@@ -499,11 +491,11 @@ coordinates of a point-like object scanned in the range of
       </div>
     
         <div id="show_right_sidebar">
-            <p><a class="toggle_right_sidebar" href="#"><span class="icon"><</span><span>Page contents<span></a></p>
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
         </div>
 
         <div id="right_sidebar">
-            <p><a class="toggle_right_sidebar" href="#"><span class="icon">></span><span>Page contents:<span></a></p>
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
 <li><a class="reference internal" href="#">7.5.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.calibration</span></code></a><ul>
@@ -535,13 +527,13 @@ coordinates of a point-like object scanned in the range of
             <div class="left">
                 
                 <a href="algotom.post.postprocessing.html">
-                    <span class="icon"><</span><span><span class="section-number">7.4.1. </span><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.post.postprocessing</span></code></span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">7.4.1. </span><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.post.postprocessing</span></code></span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="algotom.util.simulation.html"><span><span class="section-number">7.5.2. </span><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.simulation</span></code></span><span class="icon">></span></a>
+                    <a href="algotom.util.simulation.html"><span><span class="section-number">7.5.2. </span><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.simulation</span></code></span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -549,8 +541,8 @@ coordinates of a point-like object scanned in the range of
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

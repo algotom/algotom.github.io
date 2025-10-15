@@ -1,23 +1,19 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>algotom.rec.reconstruction &#8212; Algotom&#39;s documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic_mod.css?v=0.7.0-1" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic_mod.css?v=0836103a" />
+    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <script src="../../../_static/js/petite-vue.js"></script>
-    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
   </head><body data-dark_mode_code_blocks="true">
@@ -105,7 +101,7 @@
 
         <div class="searchbox_wrapper">
             
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
@@ -113,14 +109,14 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
     </nav>
 </div>
 
     
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/section1.html">1. Basic tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/section2.html">2. Features</a></li>
@@ -194,7 +190,9 @@
 <span class="c1"># warnings.filterwarnings(&#39;ignore&#39;, category=NumbaPerformanceWarning)</span>
 
 
-<div class="viewcode-block" id="make_smoothing_window"><a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.make_smoothing_window">[docs]</a><span class="k">def</span> <span class="nf">make_smoothing_window</span><span class="p">(</span><span class="n">filter_name</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+<div class="viewcode-block" id="make_smoothing_window">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.make_smoothing_window">[docs]</a>
+<span class="k">def</span> <span class="nf">make_smoothing_window</span><span class="p">(</span><span class="n">filter_name</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Make a 1d smoothing window.</span>
 
@@ -230,7 +228,10 @@
     <span class="k">return</span> <span class="n">window</span></div>
 
 
-<div class="viewcode-block" id="make_2d_ramp_window"><a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.make_2d_ramp_window">[docs]</a><span class="k">def</span> <span class="nf">make_2d_ramp_window</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">filter_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="make_2d_ramp_window">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.make_2d_ramp_window">[docs]</a>
+<span class="k">def</span> <span class="nf">make_2d_ramp_window</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">filter_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Make the 2d ramp window (in the Fourier space) by repeating the 1d ramp</span>
 <span class="sd">    window with the option of adding a smoothing window.</span>
@@ -262,7 +263,10 @@
     <span class="k">return</span> <span class="n">ramp_fourier_2d</span></div>
 
 
-<div class="viewcode-block" id="apply_ramp_filter"><a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.apply_ramp_filter">[docs]</a><span class="k">def</span> <span class="nf">apply_ramp_filter</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">ramp_win</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filter_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+
+<div class="viewcode-block" id="apply_ramp_filter">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.apply_ramp_filter">[docs]</a>
+<span class="k">def</span> <span class="nf">apply_ramp_filter</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">ramp_win</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filter_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                       <span class="n">pad_mode</span><span class="o">=</span><span class="s2">&quot;edge&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Apply the ramp filter to a sinogram with the option of adding a smoothing</span>
@@ -298,6 +302,7 @@
     <span class="n">sino_filtered</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span>
         <span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">sino_fft</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span> <span class="n">axes</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">ascontiguousarray</span><span class="p">(</span><span class="n">sino_filtered</span><span class="p">[:,</span> <span class="n">pad</span><span class="p">:</span><span class="n">ncol</span> <span class="o">+</span> <span class="n">pad</span><span class="p">])</span></div>
+
 
 
 <span class="nd">@cuda</span><span class="o">.</span><span class="n">jit</span>
@@ -337,7 +342,9 @@
         <span class="n">recon</span><span class="p">[</span><span class="n">y_index</span><span class="p">,</span> <span class="n">x_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">num</span>
 
 
-<div class="viewcode-block" id="back_projection_gpu"><a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.back_projection_gpu">[docs]</a><span class="k">def</span> <span class="nf">back_projection_gpu</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>
+<div class="viewcode-block" id="back_projection_gpu">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.back_projection_gpu">[docs]</a>
+<span class="k">def</span> <span class="nf">back_projection_gpu</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>
                         <span class="n">edge_pad</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Implement the back-projection algorithm using GPU.</span>
@@ -371,6 +378,7 @@
                                               <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">nrow</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">ncol</span><span class="p">),</span>
                                               <span class="n">edge_pad</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">recon</span></div>
+
 
 
 <span class="nd">@cuda</span><span class="o">.</span><span class="n">jit</span>
@@ -411,7 +419,9 @@
                         <span class="n">recons</span><span class="p">[</span><span class="n">y_index</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">x_index</span><span class="p">]</span> <span class="o">+=</span> <span class="n">val</span>
 
 
-<div class="viewcode-block" id="back_projection_gpu_chunk"><a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.back_projection_gpu_chunk">[docs]</a><span class="k">def</span> <span class="nf">back_projection_gpu_chunk</span><span class="p">(</span><span class="n">sinograms</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>
+<div class="viewcode-block" id="back_projection_gpu_chunk">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.back_projection_gpu_chunk">[docs]</a>
+<span class="k">def</span> <span class="nf">back_projection_gpu_chunk</span><span class="p">(</span><span class="n">sinograms</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>
                               <span class="n">edge_pad</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Implement the back-projection algorithm for a chunk of sinograms using GPU.</span>
@@ -449,6 +459,7 @@
                                                     <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">num_sino</span><span class="p">),</span>
                                                     <span class="n">edge_pad</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">recons</span></div>
+
 
 
 <span class="nd">@jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -506,7 +517,9 @@
     <span class="k">return</span> <span class="n">recon</span>
 
 
-<div class="viewcode-block" id="fbp_reconstruction"><a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.fbp_reconstruction">[docs]</a><span class="k">def</span> <span class="nf">fbp_reconstruction</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">ramp_win</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<div class="viewcode-block" id="fbp_reconstruction">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.fbp_reconstruction">[docs]</a>
+<span class="k">def</span> <span class="nf">fbp_reconstruction</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">ramp_win</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                        <span class="n">filter_name</span><span class="o">=</span><span class="s2">&quot;hann&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pad_mode</span><span class="o">=</span><span class="s2">&quot;edge&quot;</span><span class="p">,</span>
                        <span class="n">apply_log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -640,7 +653,10 @@
     <span class="k">return</span> <span class="n">recon</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="p">(</span><span class="n">nrow</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="make_circular_ramp_window"><a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.make_circular_ramp_window">[docs]</a><span class="k">def</span> <span class="nf">make_circular_ramp_window</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">filter_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="make_circular_ramp_window">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.make_circular_ramp_window">[docs]</a>
+<span class="k">def</span> <span class="nf">make_circular_ramp_window</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">filter_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Make a circular ramp window (2d) with the option of adding a smoothing</span>
 <span class="sd">    window.</span>
@@ -671,7 +687,10 @@
     <span class="k">return</span> <span class="n">circ_ramp</span></div>
 
 
-<div class="viewcode-block" id="apply_circular_ramp_filter"><a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.apply_circular_ramp_filter">[docs]</a><span class="k">def</span> <span class="nf">apply_circular_ramp_filter</span><span class="p">(</span><span class="n">rec_img</span><span class="p">,</span> <span class="n">ramp_win</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filter_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+
+<div class="viewcode-block" id="apply_circular_ramp_filter">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.apply_circular_ramp_filter">[docs]</a>
+<span class="k">def</span> <span class="nf">apply_circular_ramp_filter</span><span class="p">(</span><span class="n">rec_img</span><span class="p">,</span> <span class="n">ramp_win</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filter_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                <span class="n">pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pad_mode</span><span class="o">=</span><span class="s2">&quot;edge&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Apply the circular ramp filter to a back-projected image.</span>
@@ -707,7 +726,10 @@
     <span class="k">return</span> <span class="n">filt_img</span><span class="p">[</span><span class="n">pad</span><span class="p">:</span><span class="n">ncol</span> <span class="o">+</span> <span class="n">pad</span><span class="p">,</span> <span class="n">pad</span><span class="p">:</span><span class="n">ncol</span> <span class="o">+</span> <span class="n">pad</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="bpf_reconstruction"><a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.bpf_reconstruction">[docs]</a><span class="k">def</span> <span class="nf">bpf_reconstruction</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">ramp_win</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+
+<div class="viewcode-block" id="bpf_reconstruction">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.bpf_reconstruction">[docs]</a>
+<span class="k">def</span> <span class="nf">bpf_reconstruction</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">ramp_win</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                        <span class="n">filter_name</span><span class="o">=</span><span class="s2">&quot;hann&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pad_mode</span><span class="o">=</span><span class="s2">&quot;edge&quot;</span><span class="p">,</span>
                        <span class="n">apply_log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -831,7 +853,10 @@
     <span class="k">return</span> <span class="n">recon</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="p">(</span><span class="n">nrow</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="generate_mapping_coordinate"><a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.generate_mapping_coordinate">[docs]</a><span class="k">def</span> <span class="nf">generate_mapping_coordinate</span><span class="p">(</span><span class="n">width_sino</span><span class="p">,</span> <span class="n">height_sino</span><span class="p">,</span> <span class="n">width_rec</span><span class="p">,</span>
+
+<div class="viewcode-block" id="generate_mapping_coordinate">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.generate_mapping_coordinate">[docs]</a>
+<span class="k">def</span> <span class="nf">generate_mapping_coordinate</span><span class="p">(</span><span class="n">width_sino</span><span class="p">,</span> <span class="n">height_sino</span><span class="p">,</span> <span class="n">width_rec</span><span class="p">,</span>
                                 <span class="n">height_rec</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate coordinates in the sinogram space from coordinates in the</span>
@@ -869,6 +894,7 @@
     <span class="n">theta_mat</span><span class="p">[</span><span class="n">theta_mat</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">]</span> <span class="o">-=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
     <span class="n">theta_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">theta_mat</span> <span class="o">*</span> <span class="p">(</span><span class="n">height_sino</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">r_mat</span><span class="p">,</span> <span class="n">theta_mat</span></div>
+
 
 
 <span class="k">def</span> <span class="nf">__dfi_handle_angles</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">angles</span><span class="p">):</span>
@@ -953,7 +979,9 @@
     <span class="k">return</span> <span class="n">recon</span>
 
 
-<div class="viewcode-block" id="dfi_reconstruction"><a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.dfi_reconstruction">[docs]</a><span class="k">def</span> <span class="nf">dfi_reconstruction</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+<div class="viewcode-block" id="dfi_reconstruction">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.dfi_reconstruction">[docs]</a>
+<span class="k">def</span> <span class="nf">dfi_reconstruction</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                        <span class="n">filter_name</span><span class="o">=</span><span class="s2">&quot;hann&quot;</span><span class="p">,</span> <span class="n">pad_rate</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">pad_mode</span><span class="o">=</span><span class="s2">&quot;edge&quot;</span><span class="p">,</span>
                        <span class="n">apply_log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1054,7 +1082,10 @@
     <span class="k">return</span> <span class="n">recon</span></div>
 
 
-<div class="viewcode-block" id="gridrec_reconstruction"><a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.gridrec_reconstruction">[docs]</a><span class="k">def</span> <span class="nf">gridrec_reconstruction</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+
+<div class="viewcode-block" id="gridrec_reconstruction">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.gridrec_reconstruction">[docs]</a>
+<span class="k">def</span> <span class="nf">gridrec_reconstruction</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                            <span class="n">filter_name</span><span class="o">=</span><span class="s2">&quot;shepp&quot;</span><span class="p">,</span> <span class="n">apply_log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
                            <span class="n">filter_par</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1153,6 +1184,7 @@
     <span class="k">return</span> <span class="n">recon</span></div>
 
 
+
 <span class="k">def</span> <span class="nf">__astra_recon_single</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">pad</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">filter_name</span><span class="p">,</span>
                          <span class="n">num_iter</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
     <span class="k">try</span><span class="p">:</span>
@@ -1191,7 +1223,9 @@
     <span class="k">return</span> <span class="n">recon</span><span class="p">[</span><span class="n">pad</span><span class="p">:</span><span class="n">ncol</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">pad</span><span class="p">:</span><span class="n">ncol</span> <span class="o">-</span> <span class="n">pad</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="astra_reconstruction"><a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.astra_reconstruction">[docs]</a><span class="k">def</span> <span class="nf">astra_reconstruction</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+<div class="viewcode-block" id="astra_reconstruction">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.astra_reconstruction">[docs]</a>
+<span class="k">def</span> <span class="nf">astra_reconstruction</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                          <span class="n">method</span><span class="o">=</span><span class="s2">&quot;FBP_CUDA&quot;</span><span class="p">,</span> <span class="n">num_iter</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">filter_name</span><span class="o">=</span><span class="s2">&quot;hann&quot;</span><span class="p">,</span>
                          <span class="n">pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">apply_log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                          <span class="n">ncore</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
@@ -1215,8 +1249,9 @@
 <span class="sd">    ratio : float</span>
 <span class="sd">        To apply a circle mask to the reconstructed image.</span>
 <span class="sd">    method : str</span>
-<span class="sd">        Reconstruction algorithms. For CPU: &#39;FBP&#39;, &#39;SIRT&#39;, &#39;SART&#39;, &#39;ART&#39;, and</span>
-<span class="sd">        &#39;CGLS&#39;. For GPU: &#39;FBP_CUDA&#39;, &#39;SIRT_CUDA&#39;, &#39;SART_CUDA&#39;, and &#39;CGLS_CUDA&#39;.</span>
+<span class="sd">        Reconstruction algorithms. For CPU: &#39;BP&#39;, &#39;FBP&#39;, &#39;SIRT&#39;, &#39;SART&#39;, &#39;ART&#39;,</span>
+<span class="sd">        and &#39;CGLS&#39;. For GPU: &#39;BP_CUDA&#39;, &#39;FBP_CUDA&#39;, &#39;SIRT_CUDA&#39;, &#39;SART_CUDA&#39;,</span>
+<span class="sd">        and &#39;CGLS_CUDA&#39;.</span>
 <span class="sd">    num_iter : int</span>
 <span class="sd">        Number of iterations if using iteration methods.</span>
 <span class="sd">    filter_name : str or None</span>
@@ -1252,8 +1287,9 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">angles</span><span class="p">)</span> <span class="o">!=</span> <span class="n">nrow</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;!!! Number of angles is not the same as the row &quot;</span>
                              <span class="s2">&quot;number of the sinogram !!!&quot;</span><span class="p">)</span>
-    <span class="n">cpu_method</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;FBP&quot;</span><span class="p">,</span> <span class="s2">&quot;SIRT&quot;</span><span class="p">,</span> <span class="s2">&quot;SART&quot;</span><span class="p">,</span> <span class="s2">&quot;ART&quot;</span><span class="p">,</span> <span class="s2">&quot;CGLS&quot;</span><span class="p">]</span>
-    <span class="n">gpu_method</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;FBP_CUDA&quot;</span><span class="p">,</span> <span class="s2">&quot;SIRT_CUDA&quot;</span><span class="p">,</span> <span class="s2">&quot;SART_CUDA&quot;</span><span class="p">,</span> <span class="s2">&quot;CGLS_CUDA&quot;</span><span class="p">,</span> <span class="s2">&quot;EM_CUDA&quot;</span><span class="p">]</span>
+    <span class="n">cpu_method</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;BP&quot;</span><span class="p">,</span> <span class="s2">&quot;FBP&quot;</span><span class="p">,</span> <span class="s2">&quot;SIRT&quot;</span><span class="p">,</span> <span class="s2">&quot;SART&quot;</span><span class="p">,</span> <span class="s2">&quot;ART&quot;</span><span class="p">,</span> <span class="s2">&quot;CGLS&quot;</span><span class="p">]</span>
+    <span class="n">gpu_method</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;BP_CUDA&quot;</span><span class="p">,</span> <span class="s2">&quot;FBP_CUDA&quot;</span><span class="p">,</span> <span class="s2">&quot;SIRT_CUDA&quot;</span><span class="p">,</span> <span class="s2">&quot;SART_CUDA&quot;</span><span class="p">,</span> <span class="s2">&quot;CGLS_CUDA&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;EM_CUDA&quot;</span><span class="p">]</span>
     <span class="n">gpu</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="k">if</span> <span class="s2">&quot;CUDA&quot;</span> <span class="ow">in</span> <span class="n">method</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
@@ -1317,6 +1353,7 @@
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_sino</span><span class="p">):</span>
                 <span class="n">recon</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">recon</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">mask</span>
     <span class="k">return</span> <span class="n">recon</span></div>
+
 
 
 <span class="k">def</span> <span class="nf">_reconstruct_slice</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">ratio</span><span class="p">,</span> <span class="n">filter_name</span><span class="p">,</span>
@@ -1507,7 +1544,9 @@
         <span class="k">return</span> <span class="n">opt_center</span>
 
 
-<div class="viewcode-block" id="find_center_based_slice_metric"><a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.find_center_based_slice_metric">[docs]</a><span class="k">def</span> <span class="nf">find_center_based_slice_metric</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<div class="viewcode-block" id="find_center_based_slice_metric">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.find_center_based_slice_metric">[docs]</a>
+<span class="k">def</span> <span class="nf">find_center_based_slice_metric</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
                                    <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                                    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;fbp&quot;</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                    <span class="n">ratio</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">filter_name</span><span class="o">=</span><span class="s2">&quot;hann&quot;</span><span class="p">,</span>
@@ -1603,7 +1642,10 @@
     <span class="k">return</span> <span class="n">center</span></div>
 
 
-<div class="viewcode-block" id="find_center_visual_slices"><a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.find_center_visual_slices">[docs]</a><span class="k">def</span> <span class="nf">find_center_visual_slices</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+
+<div class="viewcode-block" id="find_center_visual_slices">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.reconstruction.html#algotom.rec.reconstruction.find_center_visual_slices">[docs]</a>
+<span class="k">def</span> <span class="nf">find_center_visual_slices</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
                               <span class="n">method</span><span class="o">=</span><span class="s2">&quot;fbp&quot;</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                               <span class="n">filter_name</span><span class="o">=</span><span class="s2">&quot;hann&quot;</span><span class="p">,</span> <span class="n">apply_log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                               <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -1676,6 +1718,7 @@
         <span class="k">if</span> <span class="n">display</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">output_base</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">output_base</span></div>
+
 </pre></div>
 
             <div class="clearer"></div>
@@ -1700,8 +1743,8 @@
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

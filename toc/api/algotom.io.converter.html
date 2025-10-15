@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>7.1.1. algotom.io.converter &#8212; Algotom&#39;s documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=0.7.0-1" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=9b2032db" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <script src="../../_static/js/petite-vue.js"></script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="7.1.2. algotom.io.loadersaver" href="algotom.io.loadersaver.html" />
@@ -108,7 +104,7 @@
 
         <div class="searchbox_wrapper">
             
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
@@ -116,14 +112,14 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
     </nav>
 </div>
 
     
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../section1.html">1. Basic tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section2.html">2. Features</a></li>
@@ -164,7 +160,7 @@
           <div class="body" role="main">
             
   <section id="module-algotom.io.converter">
-<span id="algotom-io-converter"></span><h1><span class="section-number">7.1.1. </span><a class="reference internal" href="#module-algotom.io.converter" title="algotom.io.converter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.io.converter</span></code></a><a class="headerlink" href="#module-algotom.io.converter" title="Permalink to this heading">¶</a></h1>
+<span id="algotom-io-converter"></span><h1><span class="section-number">7.1.1. </span><a class="reference internal" href="#module-algotom.io.converter" title="algotom.io.converter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.io.converter</span></code></a><a class="headerlink" href="#module-algotom.io.converter" title="Link to this heading">¶</a></h1>
 <p>Module for converting data type:</p>
 <blockquote>
 <div><ul class="simple">
@@ -175,10 +171,6 @@
 </div></blockquote>
 <p class="rubric"><strong>Functions:</strong></p>
 <table class="autosummary longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#algotom.io.converter.convert_tif_to_hdf" title="algotom.io.converter.convert_tif_to_hdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_tif_to_hdf</span></code></a>(input_path, output_path)</p></td>
 <td><p>Convert a folder of tif files to a hdf/nxs file.</p></td>
@@ -190,21 +182,22 @@
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.io.converter.convert_tif_to_hdf">
-<span class="sig-prename descclassname"><span class="pre">algotom.io.converter.</span></span><span class="sig-name descname"><span class="pre">convert_tif_to_hdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'entry/data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/io/converter.html#convert_tif_to_hdf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.io.converter.convert_tif_to_hdf" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.io.converter.</span></span><span class="sig-name descname"><span class="pre">convert_tif_to_hdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'entry/data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/io/converter.html#convert_tif_to_hdf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.io.converter.convert_tif_to_hdf" title="Link to this definition">¶</a></dt>
 <dd><p>Convert a folder of tif files to a hdf/nxs file.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input_path</strong> (<em>str</em>) – Folder path to the tif files.</p></li>
 <li><p><strong>output_path</strong> (<em>str</em>) – Path to the hdf/nxs file.</p></li>
 <li><p><strong>key_path</strong> (<em>str, optional</em>) – Key path to the dataset.</p></li>
+<li><p><strong>data_type</strong> (<em>str</em>) – Type of data.</p></li>
 <li><p><strong>crop</strong> (<em>tuple of int, optional</em>) – Crop the images from the edges, i.e.
 crop = (crop_top, crop_bottom, crop_left, crop_right).</p></li>
-<li><p><strong>pattern</strong> (<em>str, optional</em>) – Used to find tif files with names matching the pattern.</p></li>
+<li><p><strong>pattern</strong> (<em>str, optional</em>) – Used to find tif files with names matching the pattern.E.g “img”</p></li>
 <li><p><strong>options</strong> (<em>dict, optional</em>) – Add metadata. E.g options={“entry/angles”: angles, “entry/energy”: 53}.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>str</em> – Path to the hdf/nxs file.</p>
 </dd>
 </dl>
@@ -212,10 +205,10 @@ crop = (crop_top, crop_bottom, crop_left, crop_right).</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.io.converter.extract_tif_from_hdf">
-<span class="sig-prename descclassname"><span class="pre">algotom.io.converter.</span></span><span class="sig-name descname"><span class="pre">extract_tif_from_hdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">-1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'img'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/io/converter.html#extract_tif_from_hdf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.io.converter.extract_tif_from_hdf" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.io.converter.</span></span><span class="sig-name descname"><span class="pre">extract_tif_from_hdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">-1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'img'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/io/converter.html#extract_tif_from_hdf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.io.converter.extract_tif_from_hdf" title="Link to this definition">¶</a></dt>
 <dd><p>Extract tif images from a hdf/nxs file.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input_path</strong> (<em>str</em>) – Path to the hdf/nxs file.</p></li>
 <li><p><strong>output_path</strong> (<em>str</em>) – Output folder.</p></li>
@@ -227,7 +220,7 @@ crop = (crop_top, crop_bottom, crop_left, crop_right).</p></li>
 <li><p><strong>prefix</strong> (<em>str, optional</em>) – Prefix of names of tif files.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>str</em> – Folder path to the tif files.</p>
 </dd>
 </dl>
@@ -235,12 +228,12 @@ crop = (crop_top, crop_bottom, crop_left, crop_right).</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="algotom.io.converter.HdfEmulatorFromTif">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">algotom.io.converter.</span></span><span class="sig-name descname"><span class="pre">HdfEmulatorFromTif</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/io/converter.html#HdfEmulatorFromTif"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.io.converter.HdfEmulatorFromTif" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">algotom.io.converter.</span></span><span class="sig-name descname"><span class="pre">HdfEmulatorFromTif</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/io/converter.html#HdfEmulatorFromTif"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.io.converter.HdfEmulatorFromTif" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Emulate an HDF5-like interface for TIF files in a folder, allowing
 indexed and sliced data access.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>folder_path</strong> (<em>str</em>) – Path to the folder containing TIFF files.</p></li>
 <li><p><strong>ncore</strong> (<em>int, optional</em>) – Number of cores to use for parallel processing. The default is 1
@@ -257,12 +250,12 @@ indexed and sliced data access.</p>
 </div>
 <dl class="py property">
 <dt class="sig sig-object py" id="algotom.io.converter.HdfEmulatorFromTif.shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#algotom.io.converter.HdfEmulatorFromTif.shape" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#algotom.io.converter.HdfEmulatorFromTif.shape" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="algotom.io.converter.HdfEmulatorFromTif.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#algotom.io.converter.HdfEmulatorFromTif.dtype" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#algotom.io.converter.HdfEmulatorFromTif.dtype" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -276,11 +269,11 @@ indexed and sliced data access.</p>
       </div>
     
         <div id="show_right_sidebar">
-            <p><a class="toggle_right_sidebar" href="#"><span class="icon"><</span><span>Page contents<span></a></p>
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
         </div>
 
         <div id="right_sidebar">
-            <p><a class="toggle_right_sidebar" href="#"><span class="icon">></span><span>Page contents:<span></a></p>
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
 <li><a class="reference internal" href="#">7.1.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.io.converter</span></code></a><ul>
@@ -306,13 +299,13 @@ indexed and sliced data access.</p>
             <div class="left">
                 
                 <a href="../api.html">
-                    <span class="icon"><</span><span><span class="section-number">7. </span>API Reference</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">7. </span>API Reference</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="algotom.io.loadersaver.html"><span><span class="section-number">7.1.2. </span><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.io.loadersaver</span></code></span><span class="icon">></span></a>
+                    <a href="algotom.io.loadersaver.html"><span><span class="section-number">7.1.2. </span><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.io.loadersaver</span></code></span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -320,8 +313,8 @@ indexed and sliced data access.</p>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

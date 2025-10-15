@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>7.5.3. algotom.util.utility &#8212; Algotom&#39;s documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=0.7.0-1" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic_mod.css?v=9b2032db" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <script src="../../_static/js/petite-vue.js"></script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="7.5.4. algotom.util.correlation" href="algotom.util.correlation.html" />
@@ -108,7 +104,7 @@
 
         <div class="searchbox_wrapper">
             
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
@@ -116,14 +112,14 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
     </nav>
 </div>
 
     
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../section1.html">1. Basic tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section2.html">2. Features</a></li>
@@ -164,7 +160,7 @@
           <div class="body" role="main">
             
   <section id="module-algotom.util.utility">
-<span id="algotom-util-utility"></span><span id="api-util-utility"></span><h1><span class="section-number">7.5.3. </span><a class="reference internal" href="#module-algotom.util.utility" title="algotom.util.utility"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.utility</span></code></a><a class="headerlink" href="#module-algotom.util.utility" title="Permalink to this heading">¶</a></h1>
+<span id="algotom-util-utility"></span><span id="api-util-utility"></span><h1><span class="section-number">7.5.3. </span><a class="reference internal" href="#module-algotom.util.utility" title="algotom.util.utility"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.utility</span></code></a><a class="headerlink" href="#module-algotom.util.utility" title="Link to this heading">¶</a></h1>
 <p>Module of utility methods:</p>
 <blockquote>
 <div><ul class="simple">
@@ -225,10 +221,6 @@
 </div></blockquote>
 <p class="rubric"><strong>Functions:</strong></p>
 <table class="autosummary longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#algotom.util.utility.parallel_process_slices" title="algotom.util.utility.parallel_process_slices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parallel_process_slices</span></code></a>(data, method, parameters)</p></td>
 <td><p>Apply a processing method to slices of a 3D array in parallel.</p></td>
@@ -321,10 +313,10 @@
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.parallel_process_slices">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">parallel_process_slices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'threads'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#parallel_process_slices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.parallel_process_slices" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">parallel_process_slices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'threads'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#parallel_process_slices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.parallel_process_slices" title="Link to this definition">¶</a></dt>
 <dd><p>Apply a processing method to slices of a 3D array in parallel.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>data</strong> (<em>array_like or hdf object</em>) – 3D data array or HDF dataset.</p></li>
 <li><p><strong>method</strong> (<em>callable</em>) – Function to apply to each slice.</p></li>
@@ -336,7 +328,7 @@
 <li><p><strong>**kwargs</strong> (<em>dict</em>) – Additional keyword parameters to pass to the method.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>array_like</em> – Same axis-definition as the input.</p>
 </dd>
 </dl>
@@ -344,15 +336,15 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.apply_method_to_multiple_sinograms">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">apply_method_to_multiple_sinograms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#apply_method_to_multiple_sinograms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.apply_method_to_multiple_sinograms" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">apply_method_to_multiple_sinograms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#apply_method_to_multiple_sinograms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.apply_method_to_multiple_sinograms" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.mapping">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#mapping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.mapping" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#mapping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.mapping" title="Link to this definition">¶</a></dt>
 <dd><p>Apply a geometric transformation to a 2D array</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
 <li><p><strong>x_mat</strong> (<em>array_like</em>) – 2D array of the x-coordinates.</p></li>
@@ -363,7 +355,7 @@ The order has to be in the range 0-5.</p></li>
 its boundaries. Default is ‘reflect’.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>array_like</em> – 2D array.</p>
 </dd>
 </dl>
@@ -371,16 +363,16 @@ its boundaries. Default is ‘reflect’.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.make_circle_mask">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">make_circle_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#make_circle_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.make_circle_mask" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">make_circle_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#make_circle_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.make_circle_mask" title="Link to this definition">¶</a></dt>
 <dd><p>Create a circle mask.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>width</strong> (<em>int</em>) – Width of a square array.</p></li>
 <li><p><strong>ratio</strong> (<em>float</em>) – Ratio between the diameter of the mask and the width of the array.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>array_like</em> – Square array.</p>
 </dd>
 </dl>
@@ -388,17 +380,17 @@ its boundaries. Default is ‘reflect’.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.sort_forward">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">sort_forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#sort_forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.sort_forward" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">sort_forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#sort_forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.sort_forward" title="Link to this definition">¶</a></dt>
 <dd><p>Sort gray-scales of an image along an axis.
 e.g. axis=0 is to sort along each column.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
 <li><p><strong>axis</strong> (<em>int</em>) – Axis along which to sort.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>mat_sort</strong> (<em>array_like</em>) – 2D array. Sorted image.</p></li>
 <li><p><strong>mat_index</strong> (<em>array_like</em>) – 2D array. Index array used for sorting backward.</p></li>
@@ -410,18 +402,18 @@ e.g. axis=0 is to sort along each column.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.sort_backward">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">sort_backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#sort_backward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.sort_backward" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">sort_backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#sort_backward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.sort_backward" title="Link to this definition">¶</a></dt>
 <dd><p>Sort gray-scales of an image using an index array provided.
 e.g. axis=0 is to sort each column.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
 <li><p><strong>mat_index</strong> (<em>array_like</em>) – 2D array. Index array used for sorting.</p></li>
 <li><p><strong>axis</strong> (<em>int</em>) – Axis along which to sort.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>mat_sort</strong> (<em>array_like</em>) – 2D array. Sorted image.</p>
 </dd>
 </dl>
@@ -429,11 +421,11 @@ e.g. axis=0 is to sort each column.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.separate_frequency_component">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">separate_frequency_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#separate_frequency_component"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.separate_frequency_component" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">separate_frequency_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#separate_frequency_component"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.separate_frequency_component" title="Link to this definition">¶</a></dt>
 <dd><p>Separate low and high frequency components of an image along an axis.
 e.g. axis=0 is to apply the separation to each column.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
 <li><p><strong>axis</strong> (<em>int</em>) – Axis along which to apply the filter.</p></li>
@@ -442,7 +434,7 @@ the scipy_window list and its parameters (without window-length).
 E.g window={“name”: “gaussian”, “sigma”: 5}</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>mat_low</strong> (<em>array_like</em>) – 2D array. Low-frequency image.</p></li>
 <li><p><strong>mat_high</strong> (<em>array_like</em>) – 2D array. High-frequency image.</p></li>
@@ -454,11 +446,11 @@ E.g window={“name”: “gaussian”, “sigma”: 5}</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.generate_fitted_image">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">generate_fitted_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_chunk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#generate_fitted_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.generate_fitted_image" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">generate_fitted_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_chunk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#generate_fitted_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.generate_fitted_image" title="Link to this definition">¶</a></dt>
 <dd><p>Apply a polynomial fitting along an axis of an image.
 e.g. axis=0 is to apply the fitting to each column.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
 <li><p><strong>order</strong> (<em>int</em>) – Order of the polynomial used to fit.</p></li>
@@ -466,7 +458,7 @@ e.g. axis=0 is to apply the fitting to each column.</p>
 <li><p><strong>num_chunk</strong> (<em>int</em>) – Number of chunks of rows or columns to apply the fitting.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>mat_fit</strong> (<em>array_like</em>)</p>
 </dd>
 </dl>
@@ -474,16 +466,16 @@ e.g. axis=0 is to apply the fitting to each column.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.detect_stripe">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">detect_stripe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#detect_stripe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.detect_stripe" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">detect_stripe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#detect_stripe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.detect_stripe" title="Link to this definition">¶</a></dt>
 <dd><p>Locate stripe positions using Algorithm 4 in Ref. [1]</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>list_data</strong> (<em>array_like</em>) – 1D array. Normalized data.</p></li>
 <li><p><strong>snr</strong> (<em>float</em>) – Ratio (&gt;1.0) for stripe detection. Greater is less sensitive.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>array_like</em> – 1D binary mask.</p>
 </dd>
 </dl>
@@ -493,17 +485,17 @@ e.g. axis=0 is to apply the fitting to each column.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.calculate_regularization_coefficient">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">calculate_regularization_coefficient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#calculate_regularization_coefficient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.calculate_regularization_coefficient" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">calculate_regularization_coefficient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#calculate_regularization_coefficient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.calculate_regularization_coefficient" title="Link to this definition">¶</a></dt>
 <dd><p>Calculate coefficients used for the regularization-based method.
 Eq. (7) in Ref. [1].</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>width</strong> (<em>int</em>) – Width of a square array.</p></li>
 <li><p><strong>alpha</strong> (<em>float</em>) – Regularization parameter.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>float</em> – Square array.</p>
 </dd>
 </dl>
@@ -513,10 +505,10 @@ Eq. (7) in Ref. [1].</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.make_2d_butterworth_window">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">make_2d_butterworth_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#make_2d_butterworth_window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.make_2d_butterworth_window" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">make_2d_butterworth_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#make_2d_butterworth_window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.make_2d_butterworth_window" title="Link to this definition">¶</a></dt>
 <dd><p>Create a 2d window from the 1D Butterworth window.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>height</strong> (<em>int</em>) – Height of the window.</p></li>
 <li><p><strong>width</strong> (<em>int</em>) – Width of the window.</p></li>
@@ -526,7 +518,7 @@ Eq. (7) in Ref. [1].</p>
 1D Butterworth windows.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>array_like</em> – 2D array.</p>
 </dd>
 </dl>
@@ -534,11 +526,11 @@ Eq. (7) in Ref. [1].</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.make_2d_damping_window">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">make_2d_damping_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gaussian'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#make_2d_damping_window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.make_2d_damping_window" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">make_2d_damping_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gaussian'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#make_2d_damping_window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.make_2d_damping_window" title="Link to this definition">¶</a></dt>
 <dd><p>Make 2D damping window from a list of 1D window for a Fourier-space filter,
 i.e. a high-pass filter.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>height</strong> (<em>int</em>) – Height of the window.</p></li>
 <li><p><strong>width</strong> (<em>int</em>) – Width of the window.</p></li>
@@ -546,7 +538,7 @@ i.e. a high-pass filter.</p>
 <li><p><strong>window_name</strong> (<em>str, optional</em>) – Two options: “gaussian” or “butter”.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>array_like</em> – 2D array of the window.</p>
 </dd>
 </dl>
@@ -554,10 +546,10 @@ i.e. a high-pass filter.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.apply_wavelet_decomposition">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">apply_wavelet_decomposition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelet_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#apply_wavelet_decomposition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.apply_wavelet_decomposition" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">apply_wavelet_decomposition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelet_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#apply_wavelet_decomposition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.apply_wavelet_decomposition" title="Link to this definition">¶</a></dt>
 <dd><p>Apply 2D wavelet decomposition.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
 <li><p><strong>wavelet_name</strong> (<em>str</em>) – Name of a wavelet. E.g. “db5”</p></li>
@@ -565,7 +557,7 @@ i.e. a high-pass filter.</p>
 a minimum size of larger than 16 pixels.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>list</em> – The first element is an 2D-array, next elements are tuples of three
 2D-arrays. i.e [mat_n, (cH_level_n, cV_level_n, cD_level_n), …,
 (cH_level_1, cV_level_1, cD_level_1)]</p>
@@ -575,10 +567,10 @@ a minimum size of larger than 16 pixels.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.apply_wavelet_reconstruction">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">apply_wavelet_reconstruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelet_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#apply_wavelet_reconstruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.apply_wavelet_reconstruction" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">apply_wavelet_reconstruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelet_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#apply_wavelet_reconstruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.apply_wavelet_reconstruction" title="Link to this definition">¶</a></dt>
 <dd><p>Apply 2D wavelet reconstruction.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>data</strong> (<em>list or tuple</em>) – The first element is an 2D-array, next elements are tuples of three
 2D-arrays. i.e [mat_n, (cH_level_n, cV_level_n, cD_level_n), …,
@@ -587,7 +579,7 @@ a minimum size of larger than 16 pixels.</p></li>
 <li><p><strong>ignore_level</strong> (<em>int, optional</em>) – Decomposition level to be ignored for reconstruction.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>array_like</em> – 2D array. Note that the sizes of the array are always even numbers.</p>
 </dd>
 </dl>
@@ -595,17 +587,17 @@ a minimum size of larger than 16 pixels.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.check_level">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">check_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_level</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#check_level"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.check_level" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">check_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_level</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#check_level"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.check_level" title="Link to this definition">¶</a></dt>
 <dd><p>Supplementary method for the method of “apply_filter_to_wavelet_component”.
 To check if the provided level is in the right format.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.apply_filter_to_wavelet_component">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">apply_filter_to_wavelet_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">para</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#apply_filter_to_wavelet_component"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.apply_filter_to_wavelet_component" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">apply_filter_to_wavelet_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">para</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#apply_filter_to_wavelet_component"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.apply_filter_to_wavelet_component" title="Link to this definition">¶</a></dt>
 <dd><p>Apply a filter to a component of the wavelet decomposition of an image.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>data</strong> (<em>list or tuple</em>) – The first element is an 2D-array, next elements are tuples of three
 2D-arrays. i.e [mat_n, (cH_level_n, cV_level_n, cD_level_n), …,
@@ -617,7 +609,7 @@ To check if the provided level is in the right format.</p>
 <li><p><strong>para</strong> (<em>list or tuple</em>) – Parameters of the filter. E.g para=[(1,11)]</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>list or tuple</em> – The first element is an 2D-array, next elements are tuples of three
 2D-arrays. i.e [mat_n, (cH_level_n, cV_level_n, cD_level_n), …,
 (cH_level_1, cV_level_1, cD_level_1)].</p>
@@ -627,18 +619,18 @@ To check if the provided level is in the right format.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.interpolate_inside_stripe">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">interpolate_inside_stripe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_mask</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#interpolate_inside_stripe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.interpolate_inside_stripe" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">interpolate_inside_stripe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_mask</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#interpolate_inside_stripe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.interpolate_inside_stripe" title="Link to this definition">¶</a></dt>
 <dd><p>Interpolate gray-scales inside vertical stripes of an image. Stripe
 locations given by a binary 1D-mask.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
 <li><p><strong>list_mask</strong> (<em>array_like</em>) – 1D array. Must equal the width of an image.</p></li>
 <li><p><strong>kind</strong> (<em>{‘linear’, ‘cubic’, ‘quintic’}, optional</em>) – The kind of spline interpolation to use. Default is ‘linear’.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>array_like</em></p>
 </dd>
 </dl>
@@ -646,10 +638,10 @@ locations given by a binary 1D-mask.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.rectangular_from_polar">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">rectangular_from_polar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width_reg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height_reg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width_pol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height_pol</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#rectangular_from_polar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.rectangular_from_polar" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">rectangular_from_polar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width_reg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height_reg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width_pol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height_pol</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#rectangular_from_polar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.rectangular_from_polar" title="Link to this definition">¶</a></dt>
 <dd><p>Generate coordinates of a rectangular grid from polar coordinates.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>width_reg</strong> (<em>int</em>) – Width of an image in the Cartesian coordinate system.</p></li>
 <li><p><strong>height_reg</strong> (<em>int</em>) – Height of an image in the Cartesian coordinate system.</p></li>
@@ -657,7 +649,7 @@ locations given by a binary 1D-mask.</p>
 <li><p><strong>height_pol</strong> (<em>int</em>) – Height of an image in the polar coordinate system.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>x_mat</strong> (<em>array_like</em>) – 2D array. Broadcast of the x-coordinates.</p></li>
 <li><p><strong>y_mat</strong> (<em>array_like</em>) – 2D array. Broadcast of the y-coordinates.</p></li>
@@ -669,10 +661,10 @@ locations given by a binary 1D-mask.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.polar_from_rectangular">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">polar_from_rectangular</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width_pol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height_pol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width_reg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height_reg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#polar_from_rectangular"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.polar_from_rectangular" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">polar_from_rectangular</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width_pol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height_pol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width_reg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height_reg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#polar_from_rectangular"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.polar_from_rectangular" title="Link to this definition">¶</a></dt>
 <dd><p>Generate polar coordinates from grid coordinates.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>width_pol</strong> (<em>int</em>) – Width of an image in the polar coordinate system.</p></li>
 <li><p><strong>height_pol</strong> (<em>int</em>) – Height of an image in the polar coordinate system.</p></li>
@@ -680,7 +672,7 @@ locations given by a binary 1D-mask.</p>
 <li><p><strong>height_reg</strong> (<em>int</em>) – Height of an image in the Cartesian coordinate system.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>r_mat</strong> (<em>array_like</em>) – 2D array. Broadcast of the r-coordinates.</p></li>
 <li><p><strong>theta_mat</strong> (<em>array_like</em>) – 2D array. Broadcast of the theta-coordinates.</p></li>
@@ -692,17 +684,17 @@ locations given by a binary 1D-mask.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.transform_slice_forward">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">transform_slice_forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord_mat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#transform_slice_forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.transform_slice_forward" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">transform_slice_forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord_mat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#transform_slice_forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.transform_slice_forward" title="Link to this definition">¶</a></dt>
 <dd><p>Transform a reconstructed image into polar coordinates.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat</strong> (<em>array_like</em>) – Square array. Reconstructed image.</p></li>
 <li><p><strong>coord_mat</strong> (<em>tuple of array_like, optional</em>) – (Square array of x-coordinates , square array of y-coordinates) or
 generated if None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>array_like</em> – Transformed image.</p>
 </dd>
 </dl>
@@ -710,18 +702,18 @@ generated if None.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.transform_slice_backward">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">transform_slice_backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord_mat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#transform_slice_backward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.transform_slice_backward" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">transform_slice_backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord_mat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#transform_slice_backward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.transform_slice_backward" title="Link to this definition">¶</a></dt>
 <dd><p>Transform a reconstructed image in polar coordinates back to rectangular
 coordinates.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat</strong> (<em>array_like</em>) – Square array. Reconstructed image in polar coordinates.</p></li>
 <li><p><strong>coord_mat</strong> (<em>tuple of array_like, optional</em>) – (Square array of r-coordinates , square array of theta-coordinates) or
 generated if None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>array_like</em> – Transformed image.</p>
 </dd>
 </dl>
@@ -729,10 +721,10 @@ generated if None.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.make_2d_gaussian_window">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">make_2d_gaussian_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#make_2d_gaussian_window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.make_2d_gaussian_window" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">make_2d_gaussian_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#make_2d_gaussian_window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.make_2d_gaussian_window" title="Link to this definition">¶</a></dt>
 <dd><p>Create a 2D Gaussian window.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>height</strong> (<em>int</em>) – Height of the image.</p></li>
 <li><p><strong>width</strong> (<em>int</em>) – Width of the image.</p></li>
@@ -740,7 +732,7 @@ generated if None.</p></li>
 <li><p><strong>sigma_y</strong> (<em>int</em>) – Sigma in the y-direction.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>array_like</em> – 2D array.</p>
 </dd>
 </dl>
@@ -748,11 +740,11 @@ generated if None.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.apply_gaussian_filter">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">apply_gaussian_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#apply_gaussian_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.apply_gaussian_filter" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">apply_gaussian_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#apply_gaussian_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.apply_gaussian_filter" title="Link to this definition">¶</a></dt>
 <dd><p>Filtering an image in the Fourier domain using a 2D Gaussian window.
 Smaller is stronger.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat</strong> (<em>array_like</em>) – 2D array.</p></li>
 <li><p><strong>sigma_x</strong> (<em>int</em>) – Sigma in the x-direction.</p></li>
@@ -763,7 +755,7 @@ list is at:
 <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.pad.html">https://numpy.org/doc/stable/reference/generated/numpy.pad.html</a></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>array_like</em> – 2D array. Filtered image.</p>
 </dd>
 </dl>
@@ -771,18 +763,18 @@ list is at:
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.apply_1d_regularizer">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">apply_1d_regularizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sijmat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#apply_1d_regularizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.apply_1d_regularizer" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">apply_1d_regularizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sijmat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#apply_1d_regularizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.apply_1d_regularizer" title="Link to this definition">¶</a></dt>
 <dd><p>Supplementary method for the method of “apply_regularization_filter”.
 To apply a regularizer to an 1D-array.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.apply_regularization_filter">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">apply_regularization_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#apply_regularization_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.apply_regularization_filter" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">apply_regularization_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#apply_regularization_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.apply_regularization_filter" title="Link to this definition">¶</a></dt>
 <dd><p>Apply a regularization filter using the method in Ref. [1].
 Note that it’s computationally costly.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat</strong> (<em>array_like</em>) – 2D array</p></li>
 <li><p><strong>alpha</strong> (<em>float</em>) – Regularization parameter, e.g. 0.001. Smaller is stronger.</p></li>
@@ -790,7 +782,7 @@ Note that it’s computationally costly.</p>
 <li><p><strong>ncore</strong> (<em>int or None</em>) – Number of cpu-cores used for computing. Automatically selected if None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>array_like</em> – 2D array. Smoothed image.</p>
 </dd>
 </dl>
@@ -800,11 +792,11 @@ Note that it’s computationally costly.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.transform_1d_window_to_2d">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">transform_1d_window_to_2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">win_1d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#transform_1d_window_to_2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.transform_1d_window_to_2d" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">transform_1d_window_to_2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">win_1d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#transform_1d_window_to_2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.transform_1d_window_to_2d" title="Link to this definition">¶</a></dt>
 <dd><p>Transform a 1d-window to 2d-window.
 Useful for designing a Fourier filter.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>win_1d</strong> (<em>array_like</em>) – 1D array.</p></li>
 <li><p><strong>order</strong> (<em>int, optional</em>) – The order of the spline interpolation, default is 1.
@@ -813,7 +805,7 @@ The order has to be in the range 0-5.</p></li>
 its boundaries. Default is ‘reflect’.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>win_2d</strong> (<em>array_like</em>) – Square array, a 2D version of the 1d-window.</p>
 </dd>
 </dl>
@@ -821,17 +813,17 @@ its boundaries. Default is ‘reflect’.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.detect_sample">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">detect_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sino_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'180'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#detect_sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.detect_sample" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">detect_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sino_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'180'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#detect_sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.detect_sample" title="Link to this definition">¶</a></dt>
 <dd><p>To check if there is a sample in a sinogram using the “double-wedge”
 property of the Fourier transform of the sinogram (Ref. [1]).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>sinogram</strong> (<em>array_like</em>) – 2D array. Sinogram image</p></li>
 <li><p><strong>sino_type</strong> (<em>{“180”, “360”}</em>) – Sinogram type : 180-degree or 360-degree.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>bool</em> – True if there is a sample.</p>
 </dd>
 </dl>
@@ -841,7 +833,7 @@ property of the Fourier transform of the sinogram (Ref. [1]).</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.fix_non_sample_areas">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">fix_non_sample_areas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">overlap_metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'horizontal'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#fix_non_sample_areas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.fix_non_sample_areas" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">fix_non_sample_areas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">overlap_metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'horizontal'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#fix_non_sample_areas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.fix_non_sample_areas" title="Link to this definition">¶</a></dt>
 <dd><p>Used to fix overlap values of grid-cells without sample by copying from
 its neighbours. Input is a 3d-array of overlapping values for each grid
 cell. For example, to a 5 x 3 (n_row x n_column) grid scans, the shape for
@@ -852,14 +844,14 @@ The shape for overlapping values in the vertical direction is:
 The order of calculating overlapping values in a grid is left-to-right,
 top-to-bottom.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>overlap_metadata</strong> (<em>array_like</em>) – A matrix of overlap values of each grid-cell where each element is a
 list of [overlap, side].</p></li>
 <li><p><strong>direction</strong> (<em>{“horizontal”, “vertical”}</em>) – Direction of overlapping calculation.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>metadata</strong> (<em>array_like</em>)</p>
 </dd>
 </dl>
@@ -867,11 +859,11 @@ list of [overlap, side].</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.locate_slice">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">locate_slice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slice_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overlap_metadata</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#locate_slice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.locate_slice" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">locate_slice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slice_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overlap_metadata</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#locate_slice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.locate_slice" title="Link to this definition">¶</a></dt>
 <dd><p>Locate slice indices in grid-rows given a slice index of the reconstruction
 data as a whole.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>slice_idx</strong> (<em>int</em>) – Slice index of full reconstruction data.</p></li>
 <li><p><strong>height</strong> (<em>int</em>) – Height of a projection image of each grid-cell.</p></li>
@@ -880,7 +872,7 @@ list of [overlap, side]. Used to stitch the grid-data along the
 row-direction.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>list of int and float</em> – If the slice is not in the overlapping area between two grid-rows, the
 result is a list of [grid_row_index, slice_index, weight_factor]. If
 the slice is in the overlapping area between two grid-rows, the result
@@ -892,11 +884,11 @@ is a list of [[grid_row_index_0, slice_index_0, weight_factor_0],
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.locate_slice_chunk">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">locate_slice_chunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slice_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slice_stop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overlap_metadata</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#locate_slice_chunk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.locate_slice_chunk" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">locate_slice_chunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slice_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slice_stop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overlap_metadata</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#locate_slice_chunk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.locate_slice_chunk" title="Link to this definition">¶</a></dt>
 <dd><p>Locate slice indices in grid-rows given slice indices of the reconstruction
 data as a whole.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>slice_start</strong> (<em>int</em>) – Starting index of full reconstruction data.</p></li>
 <li><p><strong>slice_stop</strong> (<em>int</em>) – Stopping index of full reconstruction data.</p></li>
@@ -906,7 +898,7 @@ list of [overlap, side]. Used to stitch the grid-data along the
 row-direction.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>list of list of int and float</em> – List of results for each slice index. If a slice is not in the
 overlapping area between two grid-rows, the result is a list of
 [grid_row_index, slice_index, weight_factor]. If a slice is in the
@@ -919,10 +911,10 @@ overlapping area between two grid-rows, the result is a list of
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.generate_spiral_positions">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">generate_spiral_positions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spiral_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#generate_spiral_positions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.generate_spiral_positions" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">generate_spiral_positions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spiral_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#generate_spiral_positions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.generate_spiral_positions" title="Link to this definition">¶</a></dt>
 <dd><p>Generate Fermat spiral positions. Unit is pixel.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>step</strong> (<em>int</em>) – Step size in pixel. ~ 20-&gt; 40</p></li>
 <li><p><strong>num_pos</strong> (<em>int</em>) – Number of positions.</p></li>
@@ -931,7 +923,7 @@ overlapping area between two grid-rows, the result is a list of
 <li><p><strong>spiral_shape</strong> (<em>float, optional</em>) – To define the spiral shape.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>array_like</em> – 2D array. List of (x,y) positions</p>
 </dd>
 </dl>
@@ -939,12 +931,12 @@ overlapping area between two grid-rows, the result is a list of
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.find_center_visual_sinograms">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">find_center_visual_sinograms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sino_180</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#find_center_visual_sinograms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.find_center_visual_sinograms" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">find_center_visual_sinograms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sino_180</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#find_center_visual_sinograms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.find_center_visual_sinograms" title="Link to this definition">¶</a></dt>
 <dd><p>For visually finding the center-of-rotation (COR) using converted
 360-degree sinograms from a 180-degree sinogram at different
 CORs (Ref. [1]).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>sino_180</strong> (<em>array_like</em>) – 2D array. 180-degree sinogram.</p></li>
 <li><p><strong>output</strong> (<em>str</em>) – Base folder for saving converted 360-degree sinograms.</p></li>
@@ -956,7 +948,7 @@ output images by half.</p></li>
 <li><p><strong>display</strong> (<em>bool</em>) – Print the output if True.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>str</em> – Folder path to tif images.</p>
 </dd>
 </dl>
@@ -966,7 +958,7 @@ output images by half.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algotom.util.utility.find_center_visual_slices">
-<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">find_center_visual_slices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#find_center_visual_slices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.find_center_visual_slices" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">algotom.util.utility.</span></span><span class="sig-name descname"><span class="pre">find_center_visual_slices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/algotom/util/utility.html#find_center_visual_slices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#algotom.util.utility.find_center_visual_slices" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </section>
@@ -978,11 +970,11 @@ output images by half.</p></li>
       </div>
     
         <div id="show_right_sidebar">
-            <p><a class="toggle_right_sidebar" href="#"><span class="icon"><</span><span>Page contents<span></a></p>
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
         </div>
 
         <div id="right_sidebar">
-            <p><a class="toggle_right_sidebar" href="#"><span class="icon">></span><span>Page contents:<span></a></p>
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
 <li><a class="reference internal" href="#">7.5.3. <code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.utility</span></code></a><ul>
@@ -1034,13 +1026,13 @@ output images by half.</p></li>
             <div class="left">
                 
                 <a href="algotom.util.simulation.html">
-                    <span class="icon"><</span><span><span class="section-number">7.5.2. </span><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.simulation</span></code></span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">7.5.2. </span><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.simulation</span></code></span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="algotom.util.correlation.html"><span><span class="section-number">7.5.4. </span><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.correlation</span></code></span><span class="icon">></span></a>
+                    <a href="algotom.util.correlation.html"><span><span class="section-number">7.5.4. </span><code class="xref py py-mod docutils literal notranslate"><span class="pre">algotom.util.correlation</span></code></span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -1048,8 +1040,8 @@ output images by half.</p></li>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

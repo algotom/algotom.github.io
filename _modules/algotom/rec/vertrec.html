@@ -1,23 +1,19 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>algotom.rec.vertrec &#8212; Algotom&#39;s documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic_mod.css?v=0.7.0-1" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic_mod.css?v=0836103a" />
+    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <script src="../../../_static/js/petite-vue.js"></script>
-    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
   </head><body data-dark_mode_code_blocks="true">
@@ -105,7 +101,7 @@
 
         <div class="searchbox_wrapper">
             
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
@@ -113,14 +109,14 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
     </nav>
 </div>
 
     
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/section1.html">1. Basic tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../toc/section2.html">2. Features</a></li>
@@ -360,7 +356,9 @@
     <span class="n">recon</span><span class="p">[</span><span class="n">i_index</span><span class="p">,</span> <span class="n">j_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">val_acc</span>
 
 
-<div class="viewcode-block" id="vertical_back_projection_gpu"><a class="viewcode-back" href="../../../toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.vertical_back_projection_gpu">[docs]</a><span class="k">def</span> <span class="nf">vertical_back_projection_gpu</span><span class="p">(</span><span class="n">projections</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">xlist</span><span class="p">,</span> <span class="n">ylist</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span>
+<div class="viewcode-block" id="vertical_back_projection_gpu">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.vertical_back_projection_gpu">[docs]</a>
+<span class="k">def</span> <span class="nf">vertical_back_projection_gpu</span><span class="p">(</span><span class="n">projections</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">xlist</span><span class="p">,</span> <span class="n">ylist</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span>
                                  <span class="n">edge_pad</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Perform vertical back-projection on GPU.</span>
@@ -398,6 +396,7 @@
                      <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">center</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">depth</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">height</span><span class="p">),</span>
                      <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">width</span><span class="p">),</span> <span class="n">edge_pad</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">recon</span></div>
+
 
 
 <span class="nd">@cuda</span><span class="o">.</span><span class="n">jit</span>
@@ -440,7 +439,9 @@
         <span class="n">recons</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">i_index</span><span class="p">,</span> <span class="n">j_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">val_acc</span>
 
 
-<div class="viewcode-block" id="vertical_back_projection_gpu_chunk"><a class="viewcode-back" href="../../../toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.vertical_back_projection_gpu_chunk">[docs]</a><span class="k">def</span> <span class="nf">vertical_back_projection_gpu_chunk</span><span class="p">(</span><span class="n">projections</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">x_mat</span><span class="p">,</span> <span class="n">y_mat</span><span class="p">,</span>
+<div class="viewcode-block" id="vertical_back_projection_gpu_chunk">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.vertical_back_projection_gpu_chunk">[docs]</a>
+<span class="k">def</span> <span class="nf">vertical_back_projection_gpu_chunk</span><span class="p">(</span><span class="n">projections</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">x_mat</span><span class="p">,</span> <span class="n">y_mat</span><span class="p">,</span>
                                        <span class="n">center</span><span class="p">,</span> <span class="n">edge_pad</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Perform vertical back-projection on GPU for multiple slices.</span>
@@ -481,6 +482,7 @@
                      <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">center</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">depth</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">height</span><span class="p">),</span>
                      <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">width</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">num_slice</span><span class="p">),</span> <span class="n">edge_pad</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">recons</span></div>
+
 
 
 <span class="k">def</span> <span class="nf">_get_points_single_line</span><span class="p">(</span><span class="n">slice_index</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
@@ -595,7 +597,9 @@
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">x_mat</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">y_mat</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="vertical_reconstruction"><a class="viewcode-back" href="../../../toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.vertical_reconstruction">[docs]</a><span class="k">def</span> <span class="nf">vertical_reconstruction</span><span class="p">(</span><span class="n">projections</span><span class="p">,</span> <span class="n">slice_index</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+<div class="viewcode-block" id="vertical_reconstruction">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.vertical_reconstruction">[docs]</a>
+<span class="k">def</span> <span class="nf">vertical_reconstruction</span><span class="p">(</span><span class="n">projections</span><span class="p">,</span> <span class="n">slice_index</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
                             <span class="n">flat_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dark_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                             <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">proj_start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">proj_stop</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
                             <span class="n">chunk_size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">ramp_filter</span><span class="o">=</span><span class="s2">&quot;after&quot;</span><span class="p">,</span>
@@ -843,6 +847,7 @@
     <span class="k">return</span> <span class="n">ver_slice</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="p">(</span><span class="n">num_proj</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span></div>
 
 
+
 <span class="k">def</span> <span class="nf">__apply_ver_ramp_filter</span><span class="p">(</span><span class="n">ver_slice</span><span class="p">,</span> <span class="n">ramp_win</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">pad</span><span class="p">,</span> <span class="n">pad_mode</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Supplementary method to apply the ramp filter to a vertical slice.</span>
@@ -854,7 +859,9 @@
     <span class="k">return</span> <span class="n">ver_slice</span>
 
 
-<div class="viewcode-block" id="vertical_reconstruction_multiple"><a class="viewcode-back" href="../../../toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.vertical_reconstruction_multiple">[docs]</a><span class="k">def</span> <span class="nf">vertical_reconstruction_multiple</span><span class="p">(</span><span class="n">projections</span><span class="p">,</span> <span class="n">start_index</span><span class="p">,</span> <span class="n">stop_index</span><span class="p">,</span>
+<div class="viewcode-block" id="vertical_reconstruction_multiple">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.vertical_reconstruction_multiple">[docs]</a>
+<span class="k">def</span> <span class="nf">vertical_reconstruction_multiple</span><span class="p">(</span><span class="n">projections</span><span class="p">,</span> <span class="n">start_index</span><span class="p">,</span> <span class="n">stop_index</span><span class="p">,</span>
                                      <span class="n">center</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">step_index</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                                      <span class="n">flat_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dark_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                      <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
@@ -1125,7 +1132,10 @@
     <span class="k">return</span> <span class="n">ver_slices</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="p">(</span><span class="n">num_proj</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="vertical_reconstruction_different_angles"><a class="viewcode-back" href="../../../toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.vertical_reconstruction_different_angles">[docs]</a><span class="k">def</span> <span class="nf">vertical_reconstruction_different_angles</span><span class="p">(</span><span class="n">projections</span><span class="p">,</span> <span class="n">slice_indices</span><span class="p">,</span>
+
+<div class="viewcode-block" id="vertical_reconstruction_different_angles">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.vertical_reconstruction_different_angles">[docs]</a>
+<span class="k">def</span> <span class="nf">vertical_reconstruction_different_angles</span><span class="p">(</span><span class="n">projections</span><span class="p">,</span> <span class="n">slice_indices</span><span class="p">,</span>
                                              <span class="n">alphas</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">flat_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                              <span class="n">dark_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                              <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">proj_start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
@@ -1400,6 +1410,7 @@
     <span class="k">return</span> <span class="n">ver_slices</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="p">(</span><span class="n">num_proj</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span></div>
 
 
+
 <span class="k">def</span> <span class="nf">__calculate_autocorrelation_coefficient</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate a metric based on auto-correlation coefficient.</span>
@@ -1409,9 +1420,13 @@
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">autocorr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 
 
-<div class="viewcode-block" id="find_center_vertical_slice"><a class="viewcode-back" href="../../../toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.find_center_vertical_slice">[docs]</a><span class="k">def</span> <span class="nf">find_center_vertical_slice</span><span class="p">(</span><span class="n">projections</span><span class="p">,</span> <span class="n">slice_index</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-                               <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                               <span class="n">chunk_size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">ramp_filter</span><span class="o">=</span><span class="s2">&quot;after&quot;</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<div class="viewcode-block" id="find_center_vertical_slice">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.find_center_vertical_slice">[docs]</a>
+<span class="k">def</span> <span class="nf">find_center_vertical_slice</span><span class="p">(</span><span class="n">projections</span><span class="p">,</span> <span class="n">slice_index</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+                               <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">flat_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                               <span class="n">dark_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                               <span class="n">proj_start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">proj_stop</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+                               <span class="n">ramp_filter</span><span class="o">=</span><span class="s2">&quot;after&quot;</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
                                <span class="n">apply_log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>
                                <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">,</span>
                                <span class="n">show_progress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">masking</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -1438,9 +1453,19 @@
 <span class="sd">        Which metric to use.</span>
 <span class="sd">    alpha : float, optional</span>
 <span class="sd">        Angle of the slice in degree, between 0 and 180.</span>
+<span class="sd">    flat_field : array_like, optional</span>
+<span class="sd">        2D array for flat-field correction if not None.</span>
+<span class="sd">    dark_field : array_like, optional</span>
+<span class="sd">        2D array for dark-field correction if not None.</span>
 <span class="sd">    angles : array_like, optional</span>
 <span class="sd">        1D array. Angles corresponding to projections. The unit is radian</span>
 <span class="sd">        to be consistent with other reconstruction methods.</span>
+<span class="sd">    crop : tuple of int, optional</span>
+<span class="sd">        Edges to crop from the images (top, bottom, left, right).</span>
+<span class="sd">    proj_start : int, optional</span>
+<span class="sd">        Start index for processing projections.</span>
+<span class="sd">    proj_stop : int, optional</span>
+<span class="sd">        End index for processing projections.</span>
 <span class="sd">    chunk_size : int, optional</span>
 <span class="sd">        Chunk size to manage memory usage.</span>
 <span class="sd">    ramp_filter : {&quot;after&quot;, &quot;before&quot;}</span>
@@ -1514,10 +1539,11 @@
         <span class="k">if</span> <span class="n">metric</span> <span class="o">==</span> <span class="s2">&quot;entropy&quot;</span><span class="p">:</span>
             <span class="n">center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">list_center</span><span class="p">)</span>
             <span class="n">recon</span> <span class="o">=</span> <span class="n">vertical_reconstruction</span><span class="p">(</span><span class="n">projections</span><span class="p">,</span> <span class="n">slice_index</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span>
-                                            <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">flat_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                                            <span class="n">dark_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="n">angles</span><span class="p">,</span>
-                                            <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">proj_start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                                            <span class="n">proj_stop</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+                                            <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">flat_field</span><span class="o">=</span><span class="n">flat_field</span><span class="p">,</span>
+                                            <span class="n">dark_field</span><span class="o">=</span><span class="n">dark_field</span><span class="p">,</span>
+                                            <span class="n">angles</span><span class="o">=</span><span class="n">angles</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="n">crop</span><span class="p">,</span>
+                                            <span class="n">proj_start</span><span class="o">=</span><span class="n">proj_start</span><span class="p">,</span>
+                                            <span class="n">proj_stop</span><span class="o">=</span><span class="n">proj_stop</span><span class="p">,</span>
                                             <span class="n">chunk_size</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">,</span>
                                             <span class="n">ramp_filter</span><span class="o">=</span><span class="n">ramp_filter</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span>
                                             <span class="n">pad_mode</span><span class="o">=</span><span class="s2">&quot;edge&quot;</span><span class="p">,</span>
@@ -1533,10 +1559,11 @@
         <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">center</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_center</span><span class="p">):</span>
         <span class="n">recon</span> <span class="o">=</span> <span class="n">vertical_reconstruction</span><span class="p">(</span><span class="n">projections</span><span class="p">,</span> <span class="n">slice_index</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span>
-                                        <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">flat_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                                        <span class="n">dark_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="n">angles</span><span class="p">,</span>
-                                        <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">proj_start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                                        <span class="n">proj_stop</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">,</span>
+                                        <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">flat_field</span><span class="o">=</span><span class="n">flat_field</span><span class="p">,</span>
+                                        <span class="n">dark_field</span><span class="o">=</span><span class="n">dark_field</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="n">angles</span><span class="p">,</span>
+                                        <span class="n">crop</span><span class="o">=</span><span class="n">crop</span><span class="p">,</span> <span class="n">proj_start</span><span class="o">=</span><span class="n">proj_start</span><span class="p">,</span>
+                                        <span class="n">proj_stop</span><span class="o">=</span><span class="n">proj_stop</span><span class="p">,</span>
+                                        <span class="n">chunk_size</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">,</span>
                                         <span class="n">ramp_filter</span><span class="o">=</span><span class="n">ramp_filter</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span>
                                         <span class="n">pad_mode</span><span class="o">=</span><span class="s2">&quot;edge&quot;</span><span class="p">,</span> <span class="n">filter_name</span><span class="o">=</span><span class="s2">&quot;hann&quot;</span><span class="p">,</span>
                                         <span class="n">apply_log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="n">gpu</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="n">block</span><span class="p">,</span>
@@ -1576,11 +1603,17 @@
         <span class="k">return</span> <span class="n">center</span></div>
 
 
-<div class="viewcode-block" id="find_center_visual_vertical_slices"><a class="viewcode-back" href="../../../toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.find_center_visual_vertical_slices">[docs]</a><span class="k">def</span> <span class="nf">find_center_visual_vertical_slices</span><span class="p">(</span><span class="n">projections</span><span class="p">,</span> <span class="n">output_folder</span><span class="p">,</span> <span class="n">slice_index</span><span class="p">,</span>
+
+<div class="viewcode-block" id="find_center_visual_vertical_slices">
+<a class="viewcode-back" href="../../../toc/api/algotom.rec.vertrec.html#algotom.rec.vertrec.find_center_visual_vertical_slices">[docs]</a>
+<span class="k">def</span> <span class="nf">find_center_visual_vertical_slices</span><span class="p">(</span><span class="n">projections</span><span class="p">,</span> <span class="n">output_folder</span><span class="p">,</span> <span class="n">slice_index</span><span class="p">,</span>
                                        <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-                                       <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
-                                       <span class="n">ramp_filter</span><span class="o">=</span><span class="s2">&quot;after&quot;</span><span class="p">,</span> <span class="n">apply_log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                                       <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                       <span class="n">flat_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dark_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                       <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                                       <span class="n">proj_start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">proj_stop</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+                                       <span class="n">chunk_size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">ramp_filter</span><span class="o">=</span><span class="s2">&quot;after&quot;</span><span class="p">,</span>
+                                       <span class="n">apply_log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                       <span class="n">block</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="n">ncore</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                        <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;processes&quot;</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                                        <span class="n">masking</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1603,9 +1636,19 @@
 <span class="sd">        Searching step.</span>
 <span class="sd">    alpha : float, optional</span>
 <span class="sd">        Angle of the slice in degree, between 0 and 180.</span>
+<span class="sd">    flat_field : array_like, optional</span>
+<span class="sd">        2D array for flat-field correction if not None.</span>
+<span class="sd">    dark_field : array_like, optional</span>
+<span class="sd">        2D array for dark-field correction if not None.</span>
 <span class="sd">    angles : array_like, optional</span>
 <span class="sd">        1D array. Angles corresponding to projections. The unit is radian</span>
 <span class="sd">        to be consistent with other reconstruction methods.</span>
+<span class="sd">    crop : tuple of int, optional</span>
+<span class="sd">        Edges to crop from the images (top, bottom, left, right).</span>
+<span class="sd">    proj_start : int, optional</span>
+<span class="sd">        Start index for processing projections.</span>
+<span class="sd">    proj_stop : int, optional</span>
+<span class="sd">        End index for processing projections.</span>
 <span class="sd">    chunk_size : int, optional</span>
 <span class="sd">        Chunk size to manage memory usage.</span>
 <span class="sd">    ramp_filter : {&quot;after&quot;, &quot;before&quot;}</span>
@@ -1662,10 +1705,11 @@
         <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">center</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_center</span><span class="p">):</span>
         <span class="n">recon</span> <span class="o">=</span> <span class="n">vertical_reconstruction</span><span class="p">(</span><span class="n">projections</span><span class="p">,</span> <span class="n">slice_index</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span>
-                                        <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">flat_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                                        <span class="n">dark_field</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="n">angles</span><span class="p">,</span>
-                                        <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">proj_start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                                        <span class="n">proj_stop</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">,</span>
+                                        <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">flat_field</span><span class="o">=</span><span class="n">flat_field</span><span class="p">,</span>
+                                        <span class="n">dark_field</span><span class="o">=</span><span class="n">dark_field</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="n">angles</span><span class="p">,</span>
+                                        <span class="n">crop</span><span class="o">=</span><span class="n">crop</span><span class="p">,</span> <span class="n">proj_start</span><span class="o">=</span><span class="n">proj_start</span><span class="p">,</span>
+                                        <span class="n">proj_stop</span><span class="o">=</span><span class="n">proj_stop</span><span class="p">,</span>
+                                        <span class="n">chunk_size</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">,</span>
                                         <span class="n">ramp_filter</span><span class="o">=</span><span class="n">ramp_filter</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span>
                                         <span class="n">pad_mode</span><span class="o">=</span><span class="s2">&quot;edge&quot;</span><span class="p">,</span> <span class="n">filter_name</span><span class="o">=</span><span class="s2">&quot;hann&quot;</span><span class="p">,</span>
                                         <span class="n">apply_log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="n">gpu</span><span class="p">,</span>
@@ -1681,6 +1725,7 @@
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done: </span><span class="si">{0}</span><span class="s2">. Time elapsed </span><span class="si">{1:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                   <span class="n">output_base</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">output_base</span></div>
+
 </pre></div>
 
             <div class="clearer"></div>
@@ -1705,8 +1750,8 @@
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2021, Nghia T. Vo; NSLS-II, Brookhaven National Lab, US; Diamond Light Source, UK.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>
