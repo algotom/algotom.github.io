@@ -245,11 +245,48 @@ Depending on the problem and how input data are used, their performance can be s
 example, the “threads” option gives the best performance. Note that we can’t use the above approaches for
 parallel reading or writing data from/to a hdf file. There is a <a class="reference external" href="https://docs.h5py.org/en/stable/mpi.html">different way</a> of doing these.</p>
 </li>
-<li><p>Users can also refer to how Algotom uses Joblib for different use-cases as shown <a class="reference external" href="https://github.com/algotom/algotom/blob/e4241fdce435ffeed512c657b25e07d9e9a1a45f/algotom/util/utility.py#L68">here</a>,
-<a class="reference external" href="https://github.com/algotom/algotom/blob/e4241fdce435ffeed512c657b25e07d9e9a1a45f/algotom/prep/calculation.py#L176">here</a>,
-or <a class="reference external" href="https://github.com/algotom/algotom/blob/e4241fdce435ffeed512c657b25e07d9e9a1a45f/algotom/util/correlation.py#L1155">here</a>.</p></li>
 </ul>
 </div></blockquote>
+<p>For convenient use, Algotom provides a wrapper for the Joblib library. Users can easily apply a method to multiple images or sinograms as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>
+<span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">gaussian_filter</span>
+<span class="kn">import</span> <span class="nn">algotom.prep.filtering</span> <span class="k">as</span> <span class="nn">filt</span>
+<span class="kn">import</span> <span class="nn">algotom.util.utility</span> <span class="k">as</span> <span class="nn">util</span>
+
+<span class="n">num_img</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2000</span>
+<span class="n">sim_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num_img</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+
+<span class="c1"># Serial processing:</span>
+<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">smooth_data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_img</span><span class="p">):</span>
+   <span class="n">smooth_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">sim_data</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">smooth_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">smooth_data</span><span class="p">)</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time elapsed for serial processing: </span><span class="si">{</span><span class="n">t1</span><span class="o">-</span><span class="n">t0</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Parallel processing using Algotom utility module:</span>
+<span class="n">num_core</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span>
+<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">smooth_data</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">parallel_process_slices</span><span class="p">(</span><span class="n">sim_data</span><span class="p">,</span> <span class="n">gaussian_filter</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="n">num_core</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time elapsed for parallel processing using &#39;threads&#39;: </span><span class="si">{</span><span class="n">t1</span><span class="o">-</span><span class="n">t0</span><span class="si">}</span><span class="s2">. Number of core: </span><span class="si">{</span><span class="n">num_core</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">smooth_data</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">parallel_process_slices</span><span class="p">(</span><span class="n">sim_data</span><span class="p">,</span> <span class="n">gaussian_filter</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="n">num_core</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;processes&quot;</span><span class="p">)</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time elapsed for parallel processing using &#39;processes&#39;: </span><span class="si">{</span><span class="n">t1</span><span class="o">-</span><span class="n">t0</span><span class="si">}</span><span class="s2">. Number of core: </span><span class="si">{</span><span class="n">num_core</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># We can pass any processing method and its parameters as follows; check Algotom document to know how to pass arguments.</span>
+<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">smooth_data</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">parallel_process_slices</span><span class="p">(</span><span class="n">sim_data</span><span class="p">,</span> <span class="n">filt</span><span class="o">.</span><span class="n">fresnel_filter</span><span class="p">,</span> <span class="p">[</span><span class="mf">100.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ncore</span><span class="o">=</span><span class="n">num_core</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time elapsed for applying Fresnel filter: </span><span class="si">{</span><span class="n">t1</span><span class="o">-</span><span class="n">t0</span><span class="si">}</span><span class="s2">. Number of core: </span><span class="si">{</span><span class="n">num_core</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 
 

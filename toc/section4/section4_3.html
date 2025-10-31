@@ -370,7 +370,7 @@ image-rotation-based methods.</p>
 <span class="n">sino_corr</span> <span class="o">=</span> <span class="n">apply_customized_filter</span><span class="p">(</span><span class="n">sino_calc</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span>
 
 <span class="c1"># Reconstruct</span>
-<span class="n">img_rec</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">dfi_reconstruction</span><span class="p">(</span><span class="n">sino_corr</span><span class="p">,</span> <span class="p">(</span><span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">apply_log</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">img_rec</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">fbp_reconstruction</span><span class="p">(</span><span class="n">sino_corr</span><span class="p">,</span> <span class="p">(</span><span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">apply_log</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 <figure class="align-center" id="fig-4-3-8" style="width: 80%">

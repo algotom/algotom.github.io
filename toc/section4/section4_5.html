@@ -391,9 +391,11 @@ be installed along with Algotom.</p>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
     <span class="c1"># Perform reconstruction</span>
     <span class="c1"># Using a cpu method</span>
-    <span class="n">rec_img</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">dfi_reconstruction</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="n">angles</span><span class="p">,</span>
-                                     <span class="n">apply_log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">rec_img</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">fbp_reconstruction</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="n">angles</span><span class="p">,</span>
+                                     <span class="n">apply_log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="c1"># # Other options:</span>
+    <span class="c1"># rec_img = rec.dfi_reconstruction(sinogram, center, angles=angles,</span>
+    <span class="c1">#                                  apply_log=True)</span>
     <span class="c1"># # Using a gpu method</span>
     <span class="c1"># rec_img = rec.fbp_reconstruction(sinogram, center, angles=angles,</span>
     <span class="c1">#                                  apply_log=True, gpu=True)</span>
@@ -562,9 +564,11 @@ transition between the two halves of the sinogram, as illustrated in the figure 
 <li><p>The second manual method involves reconstructing a list of slices using a list of estimated CORs. Users
 can find the best COR by visually inspecting the reconstructed slices and selecting the one with the least
 streak artifacts.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">output_base</span> <span class="o">=</span> <span class="s2">&quot;E:/tmp/manual_finding/using_slices/&quot;</span>
-<span class="n">util</span><span class="o">.</span><span class="n">find_center_visual_slices</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">output_base</span><span class="p">,</span> <span class="n">width</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span>
-                               <span class="n">width</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;fbp&quot;</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">algotom.rec.reconstruction</span> <span class="k">as</span> <span class="nn">rec</span>
+
+<span class="n">output_base</span> <span class="o">=</span> <span class="s2">&quot;E:/tmp/manual_finding/using_slices/&quot;</span>
+<span class="n">rec</span><span class="o">.</span><span class="n">find_center_visual_slices</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">output_base</span><span class="p">,</span> <span class="n">width</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span>
+                              <span class="n">width</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;fbp&quot;</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../../_images/img_4_5_6.jpg" id="img-4-5-6"><img alt="../../_images/img_4_5_6.jpg" class="align-center" id="img-4-5-6" src="../../_images/img_4_5_6.jpg" style="width: 100%;" />
@@ -796,8 +800,8 @@ options to make it easier to modify the workflow later on.</p>
 
 <span class="c1"># Give alias to a reconstruction method which is convenient for later change</span>
 <span class="c1"># recon_method = rec.dfi_reconstruction</span>
-<span class="c1"># recon_method = rec.fbp_reconstruction</span>
-<span class="n">recon_method</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">gridrec_reconstruction</span> <span class="c1"># Fast cpu-method. Must install Tomopy.</span>
+<span class="n">recon_method</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">fbp_reconstruction</span>
+<span class="c1"># recon_method = rec.gridrec_reconstruction # Fast cpu-method. Must install Tomopy.</span>
 <span class="c1"># recon_method = rec.astra_reconstruction # To use iterative methods. Must install Astra.</span>
 
 <span class="c1"># Provide metadata for loading hdf file, get data shape and rotation angles.</span>
